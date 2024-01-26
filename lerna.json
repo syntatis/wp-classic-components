@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/lerna/schemas/lerna-schema.json",
+  "packages": ["."],
+  "command": {
+    "version": {
+      "message": "Version bump",
+      "changelog": false,
+      "private": true,
+      "push": true,
+      "exact": true,
+      "tagVersionPrefix": "v",
+      "ignoreChanges": [
+        "**/*.md",
+        "**/*.spec.ts",
+        "**/*.spec.tsx",
+        "**/*.stories.ts",
+        "**/*.stories.tsx",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/*.yml",
+        "**/test/**",
+        ".*",
+        ".**/**",
+        ".config.*",
+        "Dockerfile",
+        "tsconfig.*"
+      ]
+    },
+    "publish": {
+      "verifyAccess": true,
+      "private": false,
+      "registry": "https://npm.pkg.github.com"
+    }
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@stylistic/js",
+    "@stylistic/ts"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/stylistic",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:react-hooks/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": true,
+      "node": true
+    }
+  },
+  "rules": {
+    "@stylistic/js/array-bracket-newline": [
+      "error",
+      "consistent"
+    ],
+    "@stylistic/js/array-element-newline": [
+      "error",
+      "consistent"
+    ],
+    "@stylistic/js/arrow-parens": [
+      "error",
+      "always"
+    ],
+    "@stylistic/js/eol-last": [
+      "error",
+      "always"
+    ],
+    "@stylistic/js/function-call-argument-newline": [
+      "error",
+      "consistent"
+    ],
+    "@stylistic/js/function-paren-newline": [
+      "error",
+      "multiline"
+    ],
+    "@stylistic/js/generator-star-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": false
+      }
+    ],
+    "@stylistic/js/implicit-arrow-linebreak": [
+      "error",
+      "beside"
+    ],
+    "@stylistic/js/jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "@stylistic/js/max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "@stylistic/js/multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
+    "@stylistic/js/no-confusing-arrow": "error",
+    "@stylistic/js/no-floating-decimal": "error",
+    "@stylistic/js/no-mixed-operators": "error",
+    "@stylistic/js/template-tag-spacing": "error",
+    // TypeScript
+    "@stylistic/ts/brace-style": "error",
+    "@stylistic/ts/comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "@stylistic/ts/member-delimiter-style": "error",
+    "@stylistic/ts/no-extra-parens": [
+      "error",
+      "all",
+      {
+        "returnAssign": false,
+        "nestedBinaryExpressions": false,
+        "ternaryOperandBinaryExpressions": false,
+        "ignoreJSX": "all"
+      }
+    ],
+    "@stylistic/ts/no-extra-semi": "error",
+    "@stylistic/ts/object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "@stylistic/js/padded-blocks": [
+      "error",
+      "never"
+    ],
+    "@stylistic/js/padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      }
+    ],
+    "@stylistic/ts/quotes": [
+      "error",
+      "single"
+    ],
+    "@stylistic/ts/semi": [
+      "error",
+      "always"
+    ],
+    "@stylistic/js/new-parens": [
+      "error",
+      "never"
+    ],
+    "import/newline-after-import": [
+      "error",
+      {
+        "count": 1
+      }
+    ],
+    "import/no-cycle": [
+      2,
+      {
+        "maxDepth": 1
+      }
+    ],
+    /**
+     * @see https://notes.webutvikling.org/default-exports/
+     * @see https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/ by Nicholas C. Zakas
+     */
+    "import/no-default-export": "error",
+    "import/no-duplicates": [
+      "error",
+      {
+        "prefer-inline": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          [
+            "type",
+            "object"
+          ],
+          [
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "orderImportKind": "asc"
+        },
+        "newlines-between": "never"
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "useTabs": false,
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 120
+      }
+    ],
+    "react/prop-types": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.config.{js,jsx,ts,tsx}",
+        "*.d.{js,jsx,ts,tsx}",
+        "*.stories.{js,jsx,ts,tsx}",
+        "*.stories.{js,jsx,ts,tsx}"
+      ],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
+}

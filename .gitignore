@@ -1,0 +1,49 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.idea
+
+# compiled
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.zip
+*.tgz
+
+# dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# build
+storybook-static
+dist
+.parcel-*
+
+# misc
+.DS_Store
+*.pem
+tmp
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# wp
+entrypoints.json
+
+# composer
+wordpress
+vendor
