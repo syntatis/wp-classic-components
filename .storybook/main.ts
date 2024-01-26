@@ -1,3 +1,5 @@
+import * as path from 'path';
+import tsconfigPaths from 'vite-tsconfig-paths'
 import { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
@@ -29,6 +31,15 @@ const config: StorybookConfig = {
       },
       propFilter: () => true,
     },
+  },
+  async viteFinal(config) {
+    config.plugins?.push(
+      tsconfigPaths({
+        projects: [path.resolve(path.dirname(__dirname), 'tsconfig.json')],
+      })
+    );
+
+    return config;
   },
 };
 

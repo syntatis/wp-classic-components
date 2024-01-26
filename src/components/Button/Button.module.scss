@@ -2,7 +2,7 @@
   &[data-has-affix="true"] {
     align-items: center;
     display: flex;
-    gap: 0.5rem;
+    gap: 0.3rem;
   }
 
   .affix {
@@ -10,7 +10,7 @@
     place-content: center;
 
     svg {
-      max-width: 18px;
+      max-width: var(--wp-classic-button-affix-size, 16px);
       height: auto;
       fill: currentColor;
     }
