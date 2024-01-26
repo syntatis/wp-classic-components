@@ -10,7 +10,7 @@ interface ButtonProps extends Omit<AriaButtonProps, 'elementType' | 'target'>, H
    * The class name to add to the button.
    */
   className?: string;
-  /**
+  /*
    * The inline CSS styles to add to the button.
    */
   style?: CSSProperties;
@@ -31,12 +31,12 @@ interface ButtonProps extends Omit<AriaButtonProps, 'elementType' | 'target'>, H
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, forwardedRef) => {
-  const ref = useObjectRef(forwardedRef);
   const { children, type = 'button', variant = 'primary', className, prefix, suffix, autoFocus } = props;
-  const { clsx } = useClasses('Button');
+  const ref = useObjectRef(forwardedRef);
   const { buttonProps } = useButton(props, ref);
   const { hoverProps } = useHover(props);
   const { focusProps } = useFocusRing({ autoFocus });
+  const { clsx } = useClasses('Button');
   const hasAffix = !!prefix || !!suffix;
 
   return (
