@@ -200,7 +200,7 @@
   "overrides": [
     {
       "files": [
-        "*.config.{js,jsx,ts,tsx}",
+        "*.config.{js,jsx,ts,tsx,mts}",
         "*.d.{js,jsx,ts,tsx}",
         "*.stories.{js,jsx,ts,tsx}",
         "*.stories.{js,jsx,ts,tsx}"
