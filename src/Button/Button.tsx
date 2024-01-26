@@ -20,12 +20,18 @@ interface ButtonProps extends Omit<AriaButtonProps, 'elementType' | 'target'>, H
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, forwardedRef) => {
+  const { type = 'button' } = props;
   const ref = useObjectRef(forwardedRef);
   const { children, variant = 'primary', className } = props;
   const { buttonProps } = useButton(props, ref);
 
   return (
-    <button {...filterDOMProps(props)} {...buttonProps} className={clsx(`button button-${variant}`, className)}>
+    <button
+      {...filterDOMProps(props)}
+      {...buttonProps}
+      type={type}
+      className={clsx(`button button-${variant}`, className)}
+    >
       {children}
     </button>
   );
