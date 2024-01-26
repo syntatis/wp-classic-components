@@ -28,6 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.d.ts",
+    "vitest.config.mts",
   ],
   "exclude": [
     "node_modules",
