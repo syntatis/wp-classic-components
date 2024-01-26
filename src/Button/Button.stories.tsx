@@ -1,3 +1,4 @@
+import { Icon, download, upload } from '@wordpress/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 
@@ -39,6 +40,20 @@ export const Disabled: Story = {
   },
   args: {
     isDisabled: true,
+  },
+};
+
+export const WithPrefix: Story = {
+  args: {
+    children: 'Upload',
+    suffix: <Icon icon={upload} />,
+  },
+};
+
+export const WithSuffix: Story = {
+  args: {
+    children: 'Download',
+    suffix: <Icon icon={download} />,
   },
 };
 

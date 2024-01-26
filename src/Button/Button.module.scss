@@ -1,0 +1,18 @@
+.root {
+  &[data-has-affix="true"] {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .affix {
+    display: flex;
+    place-content: center;
+
+    svg {
+      max-width: 18px;
+      height: auto;
+      fill: currentColor;
+    }
+  }
+}
