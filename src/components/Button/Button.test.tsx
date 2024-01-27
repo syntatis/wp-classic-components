@@ -36,6 +36,30 @@ describe('Button', async () => {
 		expect(button.classList.contains('foo-bar')).toBe(true);
 	});
 
+	it('should render the button with the id', () => {
+		render(<Button id="1">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button.id).toBe('1');
+	});
+
+	it('should render the button with the tabindex attribute', () => {
+		render(<Button tabIndex={1}>Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button.tabIndex).toBe(1);
+	});
+
+	it('should render the button with the role attribute', () => {
+		render(<Button role="presentation">Save changes</Button>);
+
+		const button = screen.getByRole('presentation');
+
+		expect(button.textContent).toBe('Save changes');
+	});
+
 	it('should render the button with the inline style', () => {
 		render(<Button style={{ width: 100 }}>Save changes</Button>);
 

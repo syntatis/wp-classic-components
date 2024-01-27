@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import { AriaRole, CSSProperties, ReactNode } from 'react';
 
 export interface Styleable {
 	className?: string;
@@ -14,3 +14,14 @@ export interface Prefixable {
 }
 
 export interface Affixable extends Prefixable, Suffixable {}
+
+/**
+ * A selection of HTML attributes that can be applied to any HTML element.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
+ */
+export interface HTMLGlobalAttributes extends Styleable {
+	id?: string | undefined;
+	role?: AriaRole | undefined;
+	tabIndex?: number | undefined;
+}

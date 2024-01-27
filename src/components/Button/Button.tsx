@@ -8,13 +8,13 @@ import {
 	useHover,
 } from 'react-aria';
 import { useClasses } from '~/hooks';
-import { Affixable, Styleable } from '~/types';
+import { Affixable, HTMLGlobalAttributes } from '~/types';
 import classes from './Button.module.scss';
 
 interface ButtonProps
-	extends HoverProps,
-		Styleable,
+	extends HTMLGlobalAttributes,
 		Affixable,
+		HoverProps,
 		Omit<AriaButtonProps, 'elementType' | 'target'> {
 	children?: ReactNode;
 	/**
@@ -40,6 +40,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			autoFocus,
 			style,
 			size,
+			tabIndex,
+			role,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { buttonProps } = useButton(props, ref);
@@ -53,6 +55,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{...filterDOMProps(props, { labelable: true })}
 				{...mergeProps(buttonProps, hoverProps, focusProps)}
 				style={style}
+				tabIndex={tabIndex}
+				role={role}
 				className={clsx({
 					prefixed: 'root',
 					classNames: [

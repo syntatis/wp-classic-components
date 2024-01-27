@@ -32,7 +32,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 
 		return (
 			<a
-				{...filterDOMProps(props, { labelable: true, isLink: true })}
+				{...filterDOMProps(props, { labelable: true })}
 				{...mergeProps(linkProps, hoverProps)}
 				ref={ref}
 			>

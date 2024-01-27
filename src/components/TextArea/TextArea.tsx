@@ -2,11 +2,11 @@ import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import { useClasses } from '~/hooks';
-import { Styleable } from '~/types';
+import { HTMLGlobalAttributes } from '~/types';
 import classes from './TextArea.module.scss';
 
 export interface TextFieldProps
-	extends Styleable,
+	extends HTMLGlobalAttributes,
 		Omit<AriaTextFieldProps, 'isInvalid' | 'errorMessage' | 'type'> {
 	/**
 	 * Setting this `true` will render the text within the text field
@@ -22,7 +22,7 @@ export interface TextFieldProps
 	/**
 	 * Defines the number of columnes in the `textarea`.
 	 *
-	 * @default 10
+	 * @default 50
 	 */
 	cols?: number;
 }
