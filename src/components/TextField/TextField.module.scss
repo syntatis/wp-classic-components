@@ -1,4 +1,4 @@
-@use '../../styles/variables' as vars;
+@use '../../styles/colors';
 
 .root {
 
@@ -15,22 +15,22 @@
 	}
 
 	.description {
-		color: #646970;
+		color: colors.$gray-50;
 	}
 
 	.errorMessage {
-		color: vars.$color-danger;
+		color: colors.$red-50;
 	}
 
 	.markedRequired {
 		margin-inline-start: 4px;
-		color: vars.$color-danger;
+		color: colors.$red-50;
 	}
 
 	&[data-invalid="true"] {
 		.input {
-			border-color: vars.$color-danger;
-			outline-color: vars.$color-danger;
+			border-color: colors.$red-50;
+			outline-color: colors.$red-50;
 			outline-width: 1px;
 		};
 	}
