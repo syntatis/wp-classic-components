@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextField } from './TextField';
+import { TextArea } from './TextArea';
 
-const meta: Meta<typeof TextField> = {
-	title: 'Components/TextField',
-	component: TextField,
+const meta: Meta<typeof TextArea> = {
+	title: 'Components/TextArea',
+	component: TextArea,
 	tags: ['autodocs'],
 	parameters: {
 		actions: {
@@ -13,6 +13,8 @@ const meta: Meta<typeof TextField> = {
 			include: [
 				'label',
 				'description',
+				'rows',
+				'cols',
 				'isCode',
 				'isDisabled',
 				'isReadOnly',
@@ -34,7 +36,7 @@ const meta: Meta<typeof TextField> = {
 	},
 };
 
-type Story = StoryObj<typeof TextField>;
+type Story = StoryObj<typeof TextArea>;
 
 export const Default: Story = {};
 

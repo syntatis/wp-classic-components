@@ -1,0 +1,31 @@
+@use '../../styles/variables/colors';
+
+@mixin styles() {
+  .label {
+		display: block;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
+	.description,
+	.errorMessage {
+		margin-top: 4px;
+		margin-bottom: 0;
+	}
+	.description {
+		color: colors.$gray-50;
+	}
+	.errorMessage {
+		color: colors.$red-50;
+	}
+	.markedRequired {
+		margin-inline-start: 4px;
+		color: colors.$red-50;
+	}
+	&[data-invalid="true"] {
+		.input {
+			border-color: colors.$red-50;
+			outline-color: colors.$red-50;
+			outline-width: 1px;
+		}
+	}
+}

@@ -3,28 +3,41 @@ import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import { useClasses } from '~/hooks';
 import { Styleable } from '~/types';
-import classes from './TextField.module.scss';
+import classes from './TextArea.module.scss';
 
 export interface TextFieldProps
 	extends Styleable,
-		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid'> {
+		Omit<AriaTextFieldProps, 'isInvalid' | 'errorMessage' | 'type'> {
 	/**
 	 * Setting this `true` will render the text within the text field
 	 * with a monospace font.
 	 */
 	isCode?: boolean;
 	/**
-	 * Whether to allow or disallow 1Password helper.
+	 * Defines the number of rows in the `textarea`.
 	 *
-	 * @default false
-	 * @see https://developer.1password.com/docs/web/compatible-website-design/
+	 * @default 5
 	 */
-	ignore1Password?: boolean;
+	rows?: number;
+	/**
+	 * Defines the number of columnes in the `textarea`.
+	 *
+	 * @default 10
+	 */
+	cols?: number;
 }
 
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextFieldProps>(
 	(props, forwardedRef) => {
-		const { style, className, label, description, isRequired, wo } = props;
+		const {
+			style,
+			className,
+			label,
+			description,
+			isRequired,
+			rows = 5,
+			cols = 50,
+		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { clsx } = useClasses('TextField');
 		const {
@@ -34,7 +47,13 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			descriptionProps,
 			errorMessageProps,
 			validationErrors,
-		} = useTextField(props, ref);
+		} = useTextField(
+			{
+				...props,
+				inputElementType: 'textarea',
+			},
+			ref
+		);
 
 		return (
 			<div
@@ -65,11 +84,13 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 						:	''}
 					</label>
 				)}
-				<input
+				<textarea
 					{...filterDOMProps(props)}
 					{...inputProps}
 					ref={ref}
 					style={style}
+					rows={rows}
+					cols={cols}
 					className={clsx({
 						prefixed: 'input',
 						classNames: {
@@ -105,4 +126,4 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	}
 );
 
-TextField.displayName = 'TextField';
+TextArea.displayName = 'TextArea';
