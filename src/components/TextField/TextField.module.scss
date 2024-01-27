@@ -1,0 +1,35 @@
+.root {
+
+	.label {
+		display: block;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
+
+	.errorMessage,
+	.description {
+		margin-top: 4px;
+    margin-bottom: 0;
+	}
+
+	.description {
+		color: #646970;
+	}
+
+	.errorMessage {
+		color: #d63638;
+	}
+
+	.markedRequired {
+		margin-inline-start: 4px;
+		color: #d63638;
+	}
+
+	&[data-invalid="true"] {
+		.input {
+			border-color: #d63638;
+			outline-color: #d63638;
+			outline-width: 1px;
+		};
+	}
+}

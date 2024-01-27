@@ -53,40 +53,43 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{...filterDOMProps(props, { labelable: true })}
 				{...mergeProps(buttonProps, hoverProps, focusProps)}
 				style={style}
-				className={clsx('root', [
-					classes.root,
-					`button button-${variant}`,
-					`${size ? `button-${size}` : ''}`,
-					className,
-				])}
+				className={clsx({
+					prefixed: 'root',
+					classNames: [
+						`${size ? `button-${size}` : ''}`,
+						`button button-${variant}`,
+						className,
+						classes.root,
+					],
+				})}
 				data-has-affix={hasAffix || undefined}
 			>
 				{prefix && (
 					<span
-						className={clsx('affix', [
-							clsx('prefix', [classes.prefix]),
-							classes.affix,
-						])}
+						className={clsx({
+							prefixed: ['affix', 'prefix'],
+							classNames: [classes.prefix, classes.affix],
+						})}
 					>
 						{prefix}
 					</span>
 				)}
 				{hasAffix ?
 					<span
-						className={clsx('affix', [
-							clsx('infix', [classes.infix]),
-							classes.affix,
-						])}
+						className={clsx({
+							prefixed: ['affix', 'infix'],
+							classNames: [classes.infix, classes.affix],
+						})}
 					>
 						{children}
 					</span>
 				:	children}
 				{suffix && (
 					<span
-						className={clsx('affix', [
-							clsx('suffix', [classes.suffix]),
-							classes.affix,
-						])}
+						className={clsx({
+							prefixed: ['affix', 'suffix'],
+							classNames: [classes.suffix, classes.affix],
+						})}
 					>
 						{suffix}
 					</span>
