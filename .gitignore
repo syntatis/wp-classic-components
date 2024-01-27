@@ -21,6 +21,7 @@ node_modules
 
 # build
 storybook-static
+build-storybook*
 dist
 .parcel-*
 
