@@ -22,7 +22,11 @@ interface ButtonProps
 	 *
 	 * @default 'primary'
 	 */
-	variant?: 'primary' | 'secondary';
+	variant?: 'primary' | 'secondary' | 'link';
+	/**
+	 * The size of the button.
+	 */
+	size?: 'small' | 'large' | 'hero';
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -35,6 +39,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			suffix,
 			autoFocus,
 			style,
+			size,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { buttonProps } = useButton(props, ref);
@@ -51,6 +56,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				className={clsx('root', [
 					classes.root,
 					`button button-${variant}`,
+					`${size ? `button-${size}` : ''}`,
 					className,
 				])}
 				data-has-affix={hasAffix || undefined}

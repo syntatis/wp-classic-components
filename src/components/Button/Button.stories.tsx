@@ -14,6 +14,7 @@ const meta: Meta<typeof Button> = {
 			include: [
 				'children',
 				'isDisabled',
+				'size',
 				'type',
 				'variant',
 				'onPress',
@@ -30,9 +31,7 @@ const meta: Meta<typeof Button> = {
 		},
 	},
 	args: {
-		children: 'Submit',
-		type: 'button',
-		variant: 'primary',
+		children: 'Save changes',
 	},
 };
 

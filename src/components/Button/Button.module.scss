@@ -2,12 +2,12 @@
   &[data-has-affix="true"] {
     align-items: center;
     display: flex;
-    gap: 0.3rem;
+    gap: 0.2rem;
   }
 
   .affix {
     display: flex;
-    place-content: center;
+    align-items: center;
 
     svg {
       max-width: var(--wp-classic-button-affix-size, 16px);
@@ -15,4 +15,28 @@
       fill: currentColor;
     }
   }
+
+	&:global(.button-small) {
+		.affix {
+			svg {
+				max-width: var(--wp-classic-button-affix-size, 14px);
+			}
+		}
+	}
+
+	&:global(.button-large) {
+		.affix {
+			svg {
+				max-width: var(--wp-classic-button-affix-size, 18px);
+			}
+		}
+	}
+
+	&:global(.button-hero) {
+		.affix {
+			svg {
+				max-width: var(--wp-classic-button-affix-size, 20px);
+			}
+		}
+	}
 }
