@@ -52,14 +52,6 @@ describe('Button', async () => {
 		expect(button.tabIndex).toBe(1);
 	});
 
-	it('should render the button with the role attribute', () => {
-		render(<Button role="presentation">Save changes</Button>);
-
-		const button = screen.getByRole('presentation');
-
-		expect(button.textContent).toBe('Save changes');
-	});
-
 	it('should render the button with the inline style', () => {
 		render(<Button style={{ width: 100 }}>Save changes</Button>);
 

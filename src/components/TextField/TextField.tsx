@@ -6,7 +6,7 @@ import { HTMLGlobalAttributes } from '~/types';
 import classes from './TextField.module.scss';
 
 export interface TextFieldProps
-	extends HTMLGlobalAttributes,
+	extends Omit<HTMLGlobalAttributes, 'id'>,
 		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid'> {
 	/**
 	 * Setting this `true` will render the text within the text field
@@ -24,7 +24,7 @@ export interface TextFieldProps
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, forwardedRef) => {
-		const { style, className, label, description, isRequired, wo } = props;
+		const { style, className, label, description, isRequired } = props;
 		const ref = useObjectRef(forwardedRef);
 		const { clsx } = useClasses('TextField');
 		const {
