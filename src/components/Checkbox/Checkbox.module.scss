@@ -1,10 +1,12 @@
 .root {
 
-	&[data-readonly="true"] {
+	&[data-readonly="true"],
+	.input:read-only {
 		cursor: default;
 	}
 
-	&[data-disabled="true"] {
+	&[data-disabled="true"],
+	.input:disabled {
 		cursor: not-allowed;
 	}
 }
