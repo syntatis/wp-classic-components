@@ -1,3 +1,5 @@
+@use '../../styles/variables' as vars;
+
 .root {
 
 	.label {
@@ -17,18 +19,18 @@
 	}
 
 	.errorMessage {
-		color: #d63638;
+		color: vars.$color-danger;
 	}
 
 	.markedRequired {
 		margin-inline-start: 4px;
-		color: #d63638;
+		color: vars.$color-danger;
 	}
 
 	&[data-invalid="true"] {
 		.input {
-			border-color: #d63638;
-			outline-color: #d63638;
+			border-color: vars.$color-danger;
+			outline-color: vars.$color-danger;
 			outline-width: 1px;
 		};
 	}
