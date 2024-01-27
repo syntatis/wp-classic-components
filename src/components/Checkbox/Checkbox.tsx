@@ -1,45 +1,53 @@
-import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
+import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
-import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
+import { AriaCheckboxProps, useCheckbox } from 'react-aria';
+import { useToggleState } from 'react-stately';
+import { useClasses } from '~/hooks';
 import { HTMLGlobalAttributes } from '~/types';
+import classes from './Checkbox.module.scss';
 
-export interface LinkProps
-	extends HTMLGlobalAttributes,
-		Omit<HoverProps, 'isDisabled'>,
-		Omit<
-			AriaLinkOptions,
-			| 'isDisabled'
-			| 'onKeyDown'
-			| 'onKeyUp'
-			| 'onPress'
-			| 'onPressChange'
-			| 'onPressEnd'
-			| 'onPressStart'
-			| 'onPressUp'
-		> {
+export interface CheckboxProps extends HTMLGlobalAttributes, AriaCheckboxProps {
 	/**
 	 * The content to display inside the link.
 	 */
 	children: ReactNode;
 }
 
-export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	(props, forwardedRef) => {
-		const { children } = props;
+		const { children, className } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { linkProps } = useLink(props, ref);
-		const { hoverProps } = useHover(props);
+		const state = useToggleState(props);
+		const { inputProps, labelProps, isReadOnly, isDisabled } = useCheckbox(
+			props,
+			state,
+			ref
+		);
+		const { clsx } = useClasses('Checkbox');
 
 		return (
-			<a
-				{...filterDOMProps(props, { labelable: true })}
-				{...mergeProps(linkProps, hoverProps)}
-				ref={ref}
+			<label
+				{...labelProps}
+				className={clsx({
+					prefixed: 'root',
+					classNames: [classes.root, className],
+				})}
+				data-disabled={isDisabled || undefined}
+				data-readonly={isReadOnly || undefined}
 			>
+				<input
+					{...filterDOMProps(props, { labelable: true })}
+					{...inputProps}
+					ref={ref}
+					className={clsx({
+						prefixed: 'input',
+						classNames: [classes.input],
+					})}
+				/>
 				{children}
-			</a>
+			</label>
 		);
 	}
 );
 
-Link.displayName = 'Link';
+Checkbox.displayName = 'Checkbox';

@@ -1,0 +1,10 @@
+.root {
+
+	&[data-readonly="true"] {
+		cursor: default;
+	}
+
+	&[data-disabled="true"] {
+		cursor: not-allowed;
+	}
+}

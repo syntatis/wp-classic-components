@@ -7,7 +7,7 @@ type ArgumentArray = Argument[];
 
 interface ClsxArgs {
 	prefixed: string | string[];
-	classNames: Argument | ArgumentArray;
+	classNames?: Argument | ArgumentArray;
 }
 
 interface ClassesReturn {
