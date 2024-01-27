@@ -3,36 +3,52 @@ import { describe, expect, it } from 'vitest';
 import { Button } from './Button';
 
 describe('Button', async () => {
-  it('should render the button', () => {
-    render(<Button>Save changes</Button>);
+	it('should render the button', () => {
+		render(<Button>Save changes</Button>);
 
-    const button = screen.getByRole('button', { name: 'Save changes' });
+		const button = screen.getByRole('button', { name: 'Save changes' });
 
-    expect(button).toBeInTheDocument();
-  });
+		expect(button).toBeInTheDocument();
+	});
 
-  it('should render the button with the static class', () => {
-    render(<Button>Save changes</Button>);
+	it('should render the button with the static class', () => {
+		render(<Button>Save changes</Button>);
 
-    const button = screen.getByRole('button', { name: 'Save changes' });
+		const button = screen.getByRole('button', { name: 'Save changes' });
 
-    expect(button.classList.contains('button')).toBe(true);
-    expect(button.classList.contains('button-primary')).toBe(true);
-  });
+		expect(button.classList.contains('button')).toBe(true);
+		expect(button.classList.contains('button-primary')).toBe(true);
+	});
 
-  it('should render the button with the custom class name', () => {
-    render(<Button className="foo-bar">Save changes</Button>);
+	it('should render the button with the "secondary" variant class name', () => {
+		render(<Button variant="secondary">Save changes</Button>);
 
-    const button = screen.getByRole('button', { name: 'Save changes' });
+		const button = screen.getByRole('button', { name: 'Save changes' });
 
-    expect(button.classList.contains('foo-bar')).toBe(true);
-  });
+		expect(button.classList.contains('button-secondary')).toBe(true);
+	});
 
-  it('should render the button with the "secondary" variant class name', () => {
-    render(<Button variant="secondary">Save changes</Button>);
+	it('should render the button with the custom class name', () => {
+		render(<Button className="foo-bar">Save changes</Button>);
 
-    const button = screen.getByRole('button', { name: 'Save changes' });
+		const button = screen.getByRole('button', { name: 'Save changes' });
 
-    expect(button.classList.contains('button-secondary')).toBe(true);
-  });
+		expect(button.classList.contains('foo-bar')).toBe(true);
+	});
+
+	it('should render the button with the inline style', () => {
+		render(<Button style={{ width: 100 }}>Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button.style.width).toEqual('100px');
+	});
+
+	it('should render the button with the "aria-*" label', () => {
+		render(<Button aria-label="Save changes" />);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button.ariaLabel).toEqual('Save changes');
+	});
 });
