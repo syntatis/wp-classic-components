@@ -49,7 +49,8 @@ export const Disabled: Story = {
 	},
 };
 
-export const Readonly: Story = {
+export const ReadOnly: Story = {
+	name: 'ReadOnly',
 	parameters: {
 		controls: {
 			exclude: ['isReadOnly'],
