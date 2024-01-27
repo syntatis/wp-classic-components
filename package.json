@@ -85,6 +85,6 @@
     "watch": "parcel watch",
     "tsc": "tsc --noEmit",
     "test": "vitest run",
-    "chromatic": "npx chromatic --project-token=chpt_41a7266c0db519a --build-script-name=storybook-build"
+    "chromatic": "npx chromatic --build-script-name=storybook-build"
   }
 }
