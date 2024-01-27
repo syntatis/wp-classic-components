@@ -13,9 +13,10 @@ const meta: Meta<typeof TextField> = {
 			include: [
 				'label',
 				'description',
-				'isRequired',
+				'isCode',
 				'isDisabled',
 				'isReadOnly',
+				'isRequired',
 				'onChange',
 			],
 		},
@@ -68,6 +69,7 @@ export const Invalid: Story = {
 	},
 	args: {
 		isRequired: true,
+		description: 'In a few words, explain what this site is about.',
 		validate(value) {
 			if (!value) {
 				return 'This field is required.';

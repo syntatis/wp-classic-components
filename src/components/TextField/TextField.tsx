@@ -10,6 +10,11 @@ export interface TextFieldProps
 		Styleable,
 		AriaTextFieldProps {
 	/**
+	 * Setting this `true` will render the text within the text field
+	 * with a monospace font.
+	 */
+	isCode?: boolean;
+	/**
 	 * Whether to allow or disallow 1Password helper.
 	 *
 	 * @default false
@@ -68,10 +73,13 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					style={style}
 					className={clsx({
 						prefixed: 'input',
-						classNames: classes.input,
+						classNames: {
+							[classes.input]: true,
+							['code']: props.isCode,
+						},
 					})}
 				/>
-				{isInvalid ?
+				{isInvalid && (
 					<p
 						{...errorMessageProps}
 						className={clsx({
@@ -81,18 +89,18 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					>
 						{validationErrors.join(' ')}
 					</p>
-				:	description && (
-						<p
-							{...descriptionProps}
-							className={clsx({
-								prefixed: 'description',
-								classNames: [classes.description, 'description'],
-							})}
-						>
-							{description}
-						</p>
-					)
-				}
+				)}
+				{description && (
+					<p
+						{...descriptionProps}
+						className={clsx({
+							prefixed: 'description',
+							classNames: [classes.description, 'description'],
+						})}
+					>
+						{description}
+					</p>
+				)}
 			</div>
 		);
 	}
