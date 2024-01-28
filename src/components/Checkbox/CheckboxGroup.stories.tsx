@@ -3,16 +3,27 @@ import { Checkbox } from './Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
 
 const meta: Meta<typeof CheckboxGroup> = {
-	title: 'Components/CheckboxGroup',
+	title: 'Components/Checkbox/CheckboxGroup',
 	component: CheckboxGroup,
 	tags: ['autodocs'],
 	parameters: {
 		controls: {
-			include: ['label', 'description'],
+			include: [
+				'label',
+				'description',
+				'orientation',
+				'isRequired',
+				'isDisabled',
+				'isReadOnly',
+				'onChange',
+			],
 		},
 	},
 	argTypes: {
-		children: {
+		label: {
+			control: 'text',
+		},
+		description: {
 			control: 'text',
 		},
 	},
@@ -33,6 +44,99 @@ export const Default: Story = {
 			</CheckboxGroup>
 		);
 	},
+};
+
+export const Disabled: Story = {
+	parameters: {
+		controls: {
+			exclude: ['isDisabled'],
+		},
+	},
+	args: {
+		isDisabled: true,
+	},
+	render(args) {
+		return (
+			<CheckboxGroup {...args}>
+				<Checkbox value="permalink">Permalink</Checkbox>
+				<Checkbox value="excerpt">Excerpt</Checkbox>
+				<Checkbox value="discussion">Discussion</Checkbox>
+			</CheckboxGroup>
+		);
+	},
+};
+
+export const ReadOnly: Story = {
+	name: 'ReadOnly',
+	parameters: {
+		controls: {
+			exclude: ['isReadOnly'],
+		},
+	},
+	args: {
+		isReadOnly: true,
+		value: ['permalink', 'excerpt'],
+	},
+	render(args) {
+		return (
+			<CheckboxGroup {...args}>
+				<Checkbox value="permalink">Permalink</Checkbox>
+				<Checkbox value="excerpt">Excerpt</Checkbox>
+				<Checkbox value="discussion">Discussion</Checkbox>
+			</CheckboxGroup>
+		);
+	},
+};
+
+export const Required: Story = {
+	parameters: {
+		controls: {
+			exclude: ['isRequired'],
+		},
+	},
+	args: {
+		isRequired: true,
+	},
+	render: Default.render,
+};
+
+export const Invalid: Story = {
+	parameters: {
+		controls: {
+			exclude: ['isRequired'],
+		},
+	},
+	args: {
+		isRequired: true,
+		validate(value) {
+			if (value.length === 0) {
+				return 'Please select at least one option.';
+			}
+		},
+	},
+	render: Default.render,
+};
+
+export const Selected: Story = {
+	name: 'Selected (controlled)',
+	args: {
+		value: ['permalink', 'discussion'],
+	},
+	render: Default.render,
+};
+
+export const WithDefaultValue: Story = {
+	args: {
+		defaultValue: ['permalink'],
+	},
+	render: Default.render,
+};
+
+export const WithDescription: Story = {
+	args: {
+		description: 'Choose which elements to hide on screen.',
+	},
+	render: Default.render,
 };
 
 export default meta;

@@ -1,4 +1,5 @@
 .root {
+	width: max-content;
 
 	&[data-readonly="true"],
 	.input:read-only {
