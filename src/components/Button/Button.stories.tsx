@@ -7,9 +7,6 @@ const meta: Meta<typeof Button> = {
 	component: Button,
 	tags: ['autodocs'],
 	parameters: {
-		actions: {
-			argTypesRegex: '^on[A-Z].*',
-		},
 		controls: {
 			include: [
 				'children',

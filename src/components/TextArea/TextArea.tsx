@@ -6,7 +6,7 @@ import { HTMLGlobalAttributes } from '~/types';
 import classes from './TextArea.module.scss';
 
 export interface TextFieldProps
-	extends HTMLGlobalAttributes,
+	extends Omit<HTMLGlobalAttributes, 'id'>,
 		Omit<AriaTextFieldProps, 'isInvalid' | 'errorMessage' | 'type'> {
 	/**
 	 * Setting this `true` will render the text within the text field

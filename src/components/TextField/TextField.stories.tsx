@@ -6,12 +6,10 @@ const meta: Meta<typeof TextField> = {
 	component: TextField,
 	tags: ['autodocs'],
 	parameters: {
-		actions: {
-			argTypesRegex: '^on[A-Z].*',
-		},
 		controls: {
 			include: [
 				'label',
+				'type',
 				'description',
 				'isCode',
 				'isDisabled',

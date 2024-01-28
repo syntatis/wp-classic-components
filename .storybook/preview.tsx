@@ -36,7 +36,10 @@ const preview: Preview = {
       defaultValue: DEFAULT_THEME,
     },
   },
-  parameters: {
+	parameters: {
+		actions: {
+			argTypesRegex: '^on[A-Z].*',
+		},
     options: {
       storySort: {
         method: 'alphabetical',

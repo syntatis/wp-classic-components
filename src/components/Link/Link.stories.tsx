@@ -6,9 +6,6 @@ const meta: Meta<typeof Link> = {
 	component: Link,
 	tags: ['autodocs'],
 	parameters: {
-		actions: {
-			argTypesRegex: '^on[A-Z].*',
-		},
 		controls: {
 			include: ['children', 'href', 'target', 'onFocusChange', 'onHoverChange'],
 		},

@@ -6,9 +6,6 @@ const meta: Meta<typeof Checkbox> = {
 	component: Checkbox,
 	tags: ['autodocs'],
 	parameters: {
-		actions: {
-			argTypesRegex: '^on[A-Z].*',
-		},
 		controls: {
 			include: ['children', 'onChange', 'onFocusChange'],
 		},

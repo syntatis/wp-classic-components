@@ -6,9 +6,6 @@ const meta: Meta<typeof TextArea> = {
 	component: TextArea,
 	tags: ['autodocs'],
 	parameters: {
-		actions: {
-			argTypesRegex: '^on[A-Z].*',
-		},
 		controls: {
 			include: [
 				'label',
