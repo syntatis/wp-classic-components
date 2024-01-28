@@ -1,33 +1,46 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
-import { ReactNode, forwardRef } from 'react';
-import { AriaCheckboxProps, useCheckbox } from 'react-aria';
+import { forwardRef, useContext, useRef } from 'react';
+import {
+	AriaCheckboxProps,
+	useCheckbox,
+	useCheckboxGroupItem,
+} from 'react-aria';
 import { useToggleState } from 'react-stately';
 import { useClasses } from '~/hooks';
-import { HTMLGlobalAttributes } from '~/types';
+import { GlobalAttributes } from '~/types';
 import classes from './Checkbox.module.scss';
+import { CheckboxGroupContext } from './CheckboxGroup';
 
-export interface CheckboxProps extends HTMLGlobalAttributes, AriaCheckboxProps {
-	/**
-	 * The content to display inside the link.
-	 */
-	children: ReactNode;
-}
+export interface CheckboxProps extends GlobalAttributes, AriaCheckboxProps {}
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
 		const { children, className } = props;
 		const ref = useObjectRef(forwardedRef);
-		const state = useToggleState(props);
-		const { inputProps, labelProps, isReadOnly, isDisabled } = useCheckbox(
-			props,
-			state,
-			ref
-		);
+		const inputRef = useRef<HTMLInputElement>(null);
+		const groupState = useContext(CheckboxGroupContext);
+		const { inputProps, labelProps, isDisabled, isReadOnly } =
+			groupState ?
+				// eslint-disable-next-line react-hooks/rules-of-hooks
+				useCheckboxGroupItem(
+					{
+						...props,
+						// Value is optional for standalone checkboxes, but required for CheckboxGroup items.
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-expect-error
+						value: props.value,
+					},
+					groupState,
+					inputRef
+				)
+				// eslint-disable-next-line react-hooks/rules-of-hooks
+			:	useCheckbox(props, useToggleState(props), inputRef);
 		const { clsx } = useClasses('Checkbox');
 
 		return (
 			<label
 				{...labelProps}
+				ref={ref}
 				className={clsx({
 					prefixed: 'root',
 					classNames: [classes.root, className],
@@ -38,7 +51,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 				<input
 					{...filterDOMProps(props, { labelable: true })}
 					{...inputProps}
-					ref={ref}
+					ref={inputRef}
 					className={clsx({
 						prefixed: 'input',
 						classNames: [classes.input],

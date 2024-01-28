@@ -2,10 +2,10 @@ import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
 import { useClasses } from '~/hooks';
-import { HTMLGlobalAttributes } from '~/types';
+import { GlobalAttributes } from '~/types';
 
 export interface LinkProps
-	extends HTMLGlobalAttributes,
+	extends GlobalAttributes,
 		Omit<HoverProps, 'isDisabled'>,
 		Omit<
 			AriaLinkOptions,

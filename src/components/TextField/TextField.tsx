@@ -2,11 +2,11 @@ import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import { useClasses } from '~/hooks';
-import { HTMLGlobalAttributes } from '~/types';
+import { GlobalAttributes } from '~/types';
 import classes from './TextField.module.scss';
 
-export interface TextFieldProps
-	extends Omit<HTMLGlobalAttributes, 'id'>,
+interface TextFieldProps
+	extends GlobalAttributes,
 		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid'> {
 	/**
 	 * Setting this `true` will render the text within the text field

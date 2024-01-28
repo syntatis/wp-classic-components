@@ -2,11 +2,11 @@ import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import { useClasses } from '~/hooks';
-import { HTMLGlobalAttributes } from '~/types';
+import { GlobalAttributes } from '~/types';
 import classes from './TextArea.module.scss';
 
-export interface TextFieldProps
-	extends Omit<HTMLGlobalAttributes, 'id'>,
+interface TextAreaProps
+	extends GlobalAttributes,
 		Omit<AriaTextFieldProps, 'isInvalid' | 'errorMessage' | 'type'> {
 	/**
 	 * Setting this `true` will render the text within the text field
@@ -27,7 +27,7 @@ export interface TextFieldProps
 	cols?: number;
 }
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextFieldProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	(props, forwardedRef) => {
 		const {
 			style,

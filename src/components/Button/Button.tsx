@@ -8,11 +8,11 @@ import {
 	useHover,
 } from 'react-aria';
 import { useClasses } from '~/hooks';
-import { Affixable, HTMLGlobalAttributes } from '~/types';
+import { Affixable, GlobalAttributes } from '~/types';
 import classes from './Button.module.scss';
 
 interface ButtonProps
-	extends HTMLGlobalAttributes,
+	extends GlobalAttributes,
 		Affixable,
 		HoverProps,
 		Omit<AriaButtonProps, 'elementType' | 'target'> {
