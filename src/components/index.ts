@@ -7,3 +7,4 @@ export * from './PostBox';
 export * from './RadioGroup';
 export * from './TextArea';
 export * from './TextField';
+export { Item } from '@react-stately/collections';

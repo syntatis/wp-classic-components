@@ -19,7 +19,10 @@
   "types": "dist/types.d.ts",
   "engineStrict": true,
   "dependencies": {
+    "@react-aria/checkbox": "^3.13.0",
     "@react-aria/utils": "^3.23.0",
+    "@react-stately/checkbox": "^3.6.1",
+    "@react-stately/collections": "^3.10.4",
     "react-aria": "^3.31.1",
     "react-stately": "^3.29.1"
   },
