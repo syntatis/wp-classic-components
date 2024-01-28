@@ -1,9 +1,37 @@
 @use '../../styles/variables/colors';
 
 .root {
+	.prefix,
+	.suffix {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.prefix {
+		margin-inline-end: 4px;
+	}
+
+	.suffix {
+		margin-inline-start: 4px;
+	}
+
+	.affix {
+
+    svg {
+      max-width: var(--wp-classic-button-affix-size, 18px);
+      height: auto;
+      fill: currentColor;
+    }
+  }
+
+	&.hasAffix {
+		vertical-align: middle;
+	}
+
 	&.severityWarning {
 		color: colors.$yellow-50;
 	}
+
 	&.severityDanger {
 		color: colors.$red-50;
 	}
