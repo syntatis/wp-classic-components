@@ -1,12 +1,6 @@
 @use '../../styles/variables/colors';
 
 .root {
-  &.hasAffix {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-  }
-
   .affix {
     display: flex;
     align-items: center;
@@ -16,6 +10,12 @@
       height: auto;
       fill: currentcolor;
     }
+  }
+
+	&.hasAffix {
+    display: flex;
+    gap: 4px;
+    align-items: center;
   }
 
 	&:global(.button-small) {
