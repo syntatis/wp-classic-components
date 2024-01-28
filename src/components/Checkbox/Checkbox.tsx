@@ -43,7 +43,6 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 		return (
 			<label
 				{...filterDOMProps(props, { labelable: true })}
-				{...labelProps}
 				ref={ref}
 				className={clsx({
 					prefixed: 'root',
@@ -60,7 +59,7 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 						classNames: [classes.input],
 					})}
 				/>
-				{children}
+				<span {...labelProps}>{children}</span>
 			</label>
 		);
 	}

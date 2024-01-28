@@ -1,18 +1,14 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
-import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
-import { AriaCheckboxGroupProps, useCheckboxGroup } from 'react-aria';
-import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately';
+import { ReactElement, ReactNode, forwardRef } from 'react';
+import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
+import { useRadioGroupState } from 'react-stately';
 import { useClasses } from '~/hooks';
 import { GlobalAttributes } from '~/types';
-import classes from './CheckboxGroup.module.scss';
-import { CheckboxProps } from '../Checkbox';
+import { RadioContext } from './Radio';
+import classes from './RadioGroup.module.scss';
 
-export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
-	null
-);
-
-interface CheckboxGroupProps extends GlobalAttributes, AriaCheckboxGroupProps {
-	children: ReactElement<CheckboxProps> | ReactElement<CheckboxProps>[];
+interface RadioGroupProps extends GlobalAttributes, AriaRadioGroupProps {
+	children: ReactElement | ReactElement[];
 	description?: ReactNode;
 	/**
 	 * Where to place the description.
@@ -28,40 +24,38 @@ interface CheckboxGroupProps extends GlobalAttributes, AriaCheckboxGroupProps {
 	orientation?: 'horizontal' | 'vertical';
 }
 
-export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 	(props, forwardedRef) => {
 		const {
-			children,
 			label,
+			children,
 			description,
+			orientation,
 			descriptionArea,
-			orientation = 'vertical',
-			className,
 			isRequired,
-			isDisabled,
+			className,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
-		const state = useCheckboxGroupState(props);
+		const state = useRadioGroupState(props);
 		const {
-			groupProps,
-			labelProps,
 			descriptionProps,
 			errorMessageProps,
+			labelProps,
+			radioGroupProps,
 			isInvalid,
 			validationErrors,
-		} = useCheckboxGroup(props, state);
-		const { clsx } = useClasses('CheckboxGroup');
+		} = useRadioGroup(props, state);
+		const { clsx } = useClasses('RadioGroup');
 
 		return (
 			<div
 				{...filterDOMProps(props, { labelable: true })}
-				{...groupProps}
+				{...radioGroupProps}
 				ref={ref}
 				className={clsx({
 					prefixed: 'root',
 					classNames: [classes.root, className],
 				})}
-				data-disabled={isDisabled || undefined}
 				data-orientation={orientation || undefined}
 				data-description-area={descriptionArea}
 			>
@@ -69,7 +63,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					{...labelProps}
 					className={clsx({
 						prefixed: 'label',
-						classNames: [classes.label],
+						classNames: classes.label,
 					})}
 				>
 					{label}
@@ -84,22 +78,22 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 						</span>
 					:	''}
 				</span>
-				<CheckboxGroupContext.Provider value={state}>
+				<RadioContext.Provider value={state}>
 					<div
 						className={clsx({
 							prefixed: 'items',
-							classNames: [classes.items],
+							classNames: classes.items,
 						})}
 					>
 						{children}
 					</div>
-				</CheckboxGroupContext.Provider>
+				</RadioContext.Provider>
 				{isInvalid && (
 					<div
 						{...errorMessageProps}
 						className={clsx({
 							prefixed: 'error-message',
-							classNames: [classes.errorMessage],
+							classNames: classes.errorMessage,
 						})}
 					>
 						{validationErrors.join(' ')}
@@ -110,7 +104,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 						{...descriptionProps}
 						className={clsx({
 							prefixed: 'description',
-							classNames: [classes.description],
+							classNames: classes.description,
 						})}
 					>
 						{description}
@@ -121,4 +115,4 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 	}
 );
 
-CheckboxGroup.displayName = 'CheckboxGroup';
+RadioGroup.displayName = 'RadioGroup';

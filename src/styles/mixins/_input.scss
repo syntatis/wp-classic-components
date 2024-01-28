@@ -12,6 +12,13 @@
 		margin-block-end: 0.5rem;
 		grid-row-start: 1;
 		grid-row-end: 2;
+		cursor: pointer;
+	}
+
+	&[data-disabled="true"] {
+		.label {
+			cursor: not-allowed;
+		}
 	}
 
 	.description {

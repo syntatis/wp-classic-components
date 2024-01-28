@@ -41,6 +41,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			label,
 			description,
 			isRequired,
+			isDisabled,
 			rows = 5,
 			cols = 50,
 			descriptionArea,
@@ -68,6 +69,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 					prefixed: 'root',
 					classNames: [classes.root, className],
 				})}
+				data-disabled={isDisabled || undefined}
 				data-invalid={isInvalid || undefined}
 				data-description-area={descriptionArea}
 			>

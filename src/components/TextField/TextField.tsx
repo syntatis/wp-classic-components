@@ -37,6 +37,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			description,
 			descriptionArea,
 			isRequired,
+			isDisabled,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { clsx } = useClasses('TextField');
@@ -55,6 +56,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					prefixed: 'root',
 					classNames: [classes.root, className],
 				})}
+				data-disabled={isDisabled || undefined}
 				data-invalid={isInvalid || undefined}
 				data-description-area={descriptionArea}
 			>

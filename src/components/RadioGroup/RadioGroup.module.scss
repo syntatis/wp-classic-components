@@ -1,0 +1,18 @@
+@use '../../styles/mixins/input';
+
+.root {
+	@include input.styles();
+
+	.items {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-block: 0.5rem;
+	}
+
+	&[data-orientation='horizontal'] {
+		.items {
+			flex-direction: row;
+		}
+	}
+}
