@@ -27,7 +27,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "**/*.d.ts",
+    "*.d.ts",
     "vitest.config.mts",
   ],
   "exclude": [
