@@ -11,7 +11,10 @@ import { GlobalAttributes } from '~/types';
 import classes from './Checkbox.module.scss';
 import { CheckboxGroupContext } from './CheckboxGroup';
 
-export interface CheckboxProps extends GlobalAttributes, AriaCheckboxProps {}
+export interface CheckboxProps
+	extends GlobalAttributes,
+		// WordPress does not support indeterminate state for checkboxes (yet).
+		Omit<AriaCheckboxProps, 'isIndeterminate'> {}
 
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
