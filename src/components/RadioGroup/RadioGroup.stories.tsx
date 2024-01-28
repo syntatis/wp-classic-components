@@ -30,16 +30,12 @@ const meta: Meta<typeof RadioGroup> = {
 	},
 	args: {
 		label: 'Time format',
-		defaultValue: 'g:i a',
 	},
 };
 
 type Story = StoryObj<typeof RadioGroup>;
 
 export const Default: Story = {
-	args: {
-		defaultValue: 'g:i a',
-	},
 	render(args) {
 		return (
 			<RadioGroup {...args}>
@@ -72,6 +68,32 @@ export const ReadOnly: Story = {
 	},
 	args: {
 		isReadOnly: true,
+	},
+	render: Default.render,
+};
+
+export const Invalid: Story = {
+	args: {
+		isRequired: true,
+		validate(value) {
+			if (!value) {
+				return 'Please select a time format.';
+			}
+		},
+	},
+	render: Default.render,
+};
+
+export const WithDefaultValue: Story = {
+	args: {
+		defaultValue: 'g:i a',
+	},
+	render: Default.render,
+};
+
+export const WithDescription: Story = {
+	args: {
+		description: 'The time format will be used when displaying dates.',
 	},
 	render: Default.render,
 };
