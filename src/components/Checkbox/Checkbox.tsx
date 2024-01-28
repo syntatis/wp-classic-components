@@ -9,7 +9,7 @@ import { useToggleState } from 'react-stately';
 import { useClasses } from '~/hooks';
 import { GlobalAttributes } from '~/types';
 import classes from './Checkbox.module.scss';
-import { CheckboxGroupContext } from './CheckboxGroup';
+import { CheckboxGroupContext } from '../CheckboxGroup';
 
 export interface CheckboxProps
 	extends GlobalAttributes,

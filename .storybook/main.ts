@@ -8,9 +8,7 @@ const config: StorybookConfig = {
   ],
   addons: [
     '@storybook/addon-a11y',
-    '@storybook/addon-designs',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
     '@storybook/addon-links',
     '@storybook/addon-styling',
   ],
