@@ -77,7 +77,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						classes.root,
 					],
 				})}
-				data-has-affix={hasAffix || undefined}
 			>
 				{prefix && (
 					<span
