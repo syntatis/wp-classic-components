@@ -18,8 +18,6 @@ const ThemeDecorator: Decorator = (Story, context) => {
         }
       });
     }
-
-    document.documentElement.classList.add('__wp-core-body__');
 	}, [theme, viewMode, id]);
 
 	return (
