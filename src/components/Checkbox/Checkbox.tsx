@@ -20,7 +20,7 @@ export interface CheckboxProps
 
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
-		const { children, className, description } = props;
+		const { children, className, description, style } = props;
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
 		const descriptionId =
@@ -61,6 +61,7 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 		return (
 			<label
 				{...filterDOMProps(props, { labelable: true })}
+				style={style}
 				ref={ref}
 				className={clsx({
 					prefixed: 'root',

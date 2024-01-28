@@ -41,6 +41,7 @@ export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
 			collapsible,
 			defaultExpanded = true,
 			footer,
+			style,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const buttonRef = useRef<HTMLButtonElement>(null);
@@ -82,6 +83,7 @@ export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
 						'postbox',
 					],
 				})}
+				style={style}
 			>
 				<div
 					className={clsx({
