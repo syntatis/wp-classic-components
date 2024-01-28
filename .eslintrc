@@ -70,17 +70,6 @@
       "error",
       "prefer-double"
     ],
-    "@stylistic/js/max-len": [
-      "error",
-      {
-				"code": 80,
-        "comments": 120,
-				"ignoreRegExpLiterals": true,
-				"ignoreStrings": true,
-				"ignoreTemplateLiterals": true,
-				"ignoreUrls": true
-      }
-    ],
     "@stylistic/js/no-confusing-arrow": "error",
     "@stylistic/js/no-floating-decimal": "error",
     "@stylistic/js/no-mixed-operators": "error",
