@@ -41,7 +41,12 @@ export const Default: Story = {
 			<CheckboxGroup {...args}>
 				<Checkbox value="permalink">Permalink</Checkbox>
 				<Checkbox value="excerpt">Excerpt</Checkbox>
-				<Checkbox value="discussion">Discussion</Checkbox>
+				<Checkbox
+					value="discussion"
+					description="Hide the WordPress built-in comment metabox in the post editor"
+				>
+					Discussion
+				</Checkbox>
 			</CheckboxGroup>
 		);
 	},
@@ -56,15 +61,7 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	render(args) {
-		return (
-			<CheckboxGroup {...args}>
-				<Checkbox value="permalink">Permalink</Checkbox>
-				<Checkbox value="excerpt">Excerpt</Checkbox>
-				<Checkbox value="discussion">Discussion</Checkbox>
-			</CheckboxGroup>
-		);
-	},
+	render: Default.render,
 };
 
 export const ReadOnly: Story = {
@@ -78,15 +75,7 @@ export const ReadOnly: Story = {
 		isReadOnly: true,
 		value: ['permalink', 'excerpt'],
 	},
-	render(args) {
-		return (
-			<CheckboxGroup {...args}>
-				<Checkbox value="permalink">Permalink</Checkbox>
-				<Checkbox value="excerpt">Excerpt</Checkbox>
-				<Checkbox value="discussion">Discussion</Checkbox>
-			</CheckboxGroup>
-		);
-	},
+	render: Default.render,
 };
 
 export const Required: Story = {

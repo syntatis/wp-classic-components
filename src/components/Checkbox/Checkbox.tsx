@@ -1,5 +1,5 @@
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
-import { forwardRef, useContext, useRef } from 'react';
+import { filterDOMProps, useId, useObjectRef } from '@react-aria/utils';
+import { ReactNode, forwardRef, useContext, useRef } from 'react';
 import {
 	AriaCheckboxProps,
 	useCheckbox,
@@ -14,13 +14,20 @@ import { CheckboxGroupContext } from '../CheckboxGroup';
 export interface CheckboxProps
 	extends GlobalAttributes,
 		// WordPress does not support indeterminate state for checkboxes (yet).
-		Omit<AriaCheckboxProps, 'isIndeterminate'> {}
+		Omit<AriaCheckboxProps, 'isIndeterminate'> {
+	description?: ReactNode;
+}
 
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
-		const { children, className } = props;
+		const { children, className, description } = props;
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
+		const descriptionId =
+			description ?
+				// eslint-disable-next-line react-hooks/rules-of-hooks
+				useId()
+			:	undefined;
 		const groupState = useContext(CheckboxGroupContext);
 		const { inputProps, labelProps, isDisabled, isReadOnly } =
 			groupState ?
@@ -39,6 +46,17 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 				// eslint-disable-next-line react-hooks/rules-of-hooks
 			:	useCheckbox(props, useToggleState(props), inputRef);
 		const { clsx } = useClasses('Checkbox');
+		const label = (
+			<span
+				{...labelProps}
+				className={clsx({
+					prefixed: 'label-group',
+					classNames: classes.labelGroup,
+				})}
+			>
+				{children}
+			</span>
+		);
 
 		return (
 			<label
@@ -53,13 +71,32 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 			>
 				<input
 					{...inputProps}
+					aria-describedby={descriptionId}
 					ref={inputRef}
 					className={clsx({
 						prefixed: 'input',
-						classNames: [classes.input],
+						classNames: classes.input,
 					})}
 				/>
-				<span {...labelProps}>{children}</span>
+				{description ?
+					<div
+						className={clsx({
+							prefixed: 'label-group',
+							classNames: classes.labelGroup,
+						})}
+					>
+						{label}
+						<p
+							id={descriptionId}
+							className={clsx({
+								prefixed: 'description',
+								classNames: [classes.description, 'description'],
+							})}
+						>
+							{description}
+						</p>
+					</div>
+				:	label}
 			</label>
 		);
 	}

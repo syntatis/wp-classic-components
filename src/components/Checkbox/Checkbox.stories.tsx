@@ -51,4 +51,11 @@ export const WithDefaultSelected: Story = {
 	},
 };
 
+export const WithDescription: Story = {
+	args: {
+		description:
+			'When enabled, the editor will attempt to correct invalidly nested XHTML automatically. For example, if you open a `<strong>` tag but forget to close it, the editor will automatically close it for you.',
+	},
+};
+
 export default meta;

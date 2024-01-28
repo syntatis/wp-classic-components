@@ -1,5 +1,18 @@
+@use '../../styles/variables/colors';
+
 .root {
 	width: max-content;
+	max-width: 100%;
+	display: flex;
+	gap: 8px;
+
+	.input[type="checkbox"] {
+		margin: 0;
+	}
+
+	.description {
+		color: colors.$gray-50;
+	}
 
 	&[data-readonly="true"],
 	.input:read-only {
