@@ -42,6 +42,7 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 
 		return (
 			<label
+				{...filterDOMProps(props, { labelable: true })}
 				{...labelProps}
 				ref={ref}
 				className={clsx({
@@ -52,7 +53,6 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 				data-readonly={isReadOnly || undefined}
 			>
 				<input
-					{...filterDOMProps(props, { labelable: true })}
 					{...inputProps}
 					ref={inputRef}
 					className={clsx({

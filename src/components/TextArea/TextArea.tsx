@@ -9,9 +9,9 @@ interface TextAreaProps
 	extends GlobalAttributes,
 		Omit<AriaTextFieldProps, 'isInvalid' | 'errorMessage' | 'type'> {
 	/**
-	 * Defines where to put the description.
+	 * Where to place the description.
 	 *
-	 * @default 'before-input'
+	 * @before 'after-input'
 	 */
 	descriptionArea?: 'before-input' | 'after-input';
 	/**

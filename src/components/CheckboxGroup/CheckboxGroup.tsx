@@ -1,21 +1,24 @@
-import { useObjectRef } from '@react-aria/utils';
-import { ReactNode, createContext, forwardRef } from 'react';
+import { filterDOMProps, useObjectRef } from '@react-aria/utils';
+import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
 import { AriaCheckboxGroupProps, useCheckboxGroup } from 'react-aria';
 import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately';
 import { useClasses } from '~/hooks';
 import { GlobalAttributes } from '~/types';
 import classes from './CheckboxGroup.module.scss';
-
-const DEFAULT_ORIENTATION = 'vertical';
+import { CheckboxProps } from '../Checkbox';
 
 export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
 	null
 );
 
 interface CheckboxGroupProps extends GlobalAttributes, AriaCheckboxGroupProps {
-	label: ReactNode;
-	children: ReactNode | ReactNode[];
+	children: ReactElement<CheckboxProps> | ReactElement<CheckboxProps>[];
 	description?: ReactNode;
+	/**
+	 * Where to place the description.
+	 *
+	 * @before 'after-input'
+	 */
 	descriptionArea?: 'before-input' | 'after-input';
 	/**
 	 * The orientation of the checkbox group.
@@ -50,15 +53,14 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 
 		return (
 			<div
+				{...filterDOMProps(props, { labelable: true })}
 				{...groupProps}
 				ref={ref}
 				className={clsx({
 					prefixed: 'root',
 					classNames: [classes.root, className],
 				})}
-				data-orientation={
-					orientation === DEFAULT_ORIENTATION ? undefined : orientation
-				}
+				data-orientation={orientation}
 				data-description-area={descriptionArea}
 			>
 				<span

@@ -23,8 +23,10 @@ const ThemeDecorator: Decorator = (Story, context) => {
 	}, [theme, viewMode, id]);
 
 	return (
-    <div className="wp-core-ui">
-      <Story {...context} />
+		<div className="wp-core-ui">
+			<div style={{ maxWidth: "50vw", width: "100%" }}>
+				<Story {...context} />
+			</div>
 		</div>
 	);
 }
