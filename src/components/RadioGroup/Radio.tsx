@@ -49,7 +49,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 					ref={inputRef}
 					className={clsx({
 						prefixed: 'input',
-						classNames: [classes.input],
+						classNames: classes.input,
 					})}
 				/>
 				<span {...labelProps}>{children}</span>
