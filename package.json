@@ -87,7 +87,6 @@
 		"storybook-build": "storybook build",
 		"storybook": "storybook dev -p 6007",
 		"build": "parcel build",
-		"watch": "parcel watch",
 		"tsc": "tsc --noEmit",
 		"test": "vitest run",
 		"chromatic": "npx chromatic --build-script-name=storybook-build"
