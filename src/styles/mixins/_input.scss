@@ -6,7 +6,8 @@
 	grid-template-rows: max-content max-content 1fr max-content max-content;
 
   .label {
-		display: block;
+		display: inline-block;
+		width: max-content;
 		font-weight: 600;
 		margin-block-end: 0.5rem;
 		grid-row-start: 1;
@@ -15,8 +16,9 @@
 
 	.description {
 		color: colors.$gray-50;
-		grid-row-start: 3;
-		grid-row-end: 4;
+		grid-row-start: 4;
+		grid-row-end: 5;
+		margin-block-start: 0.5rem;
 		margin-block-end: 0;
 	}
 
@@ -36,11 +38,13 @@
 	.errorMessage {
 		margin-block-start: 0.5rem;
 		margin-block-end: 0;
+		grid-row-start: 3;
+		grid-row-end: 4;
 		color: colors.$red-50;
 	}
 
 	.markedRequired {
-		margin-inline-start: 0.5rem;
+		margin-inline-start: 0.25rem;
 		color: colors.$red-50;
 	}
 

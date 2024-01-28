@@ -77,6 +77,12 @@ export const Invalid: Story = {
 	},
 };
 
+export const WithDefaultValue: Story = {
+	args: {
+		defaultValue: 'Blog',
+	},
+};
+
 export const WithDescription: Story = {
 	args: {
 		description: 'In a few words, explain what this site is about.',
