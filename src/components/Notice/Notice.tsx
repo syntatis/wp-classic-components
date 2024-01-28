@@ -12,7 +12,13 @@ interface NoticeProps extends GlobalAttributes {
 	 *
 	 * @default 'info'
 	 */
-	variant?: 'info' | 'success' | 'warning' | 'error';
+	level?: 'info' | 'success' | 'warning' | 'error';
+	/**
+	 * The notice style variations.
+	 *
+	 * @default 'default'
+	 */
+	variant?: 'default' | 'alt';
 	/**
 	 * Determines whether the notice can be dismissed. You can customize the label
 	 * of the dismiss button by passing an object, which is useful for
@@ -33,7 +39,8 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 			children,
 			className,
 			dismissable = false,
-			variant = 'info',
+			level = 'info',
+			variant,
 			onDismiss,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
@@ -46,6 +53,9 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 			},
 			buttonRef
 		);
+		const isDismissable =
+			dismissable === true ||
+			(typeof dismissable === 'object' && dismissable.label);
 
 		return (
 			<div
@@ -53,7 +63,13 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 				ref={ref}
 				className={clsx({
 					prefixed: 'root',
-					classNames: ['notice', `notice-${variant}`, classes.root, className],
+					classNames: [
+						'notice',
+						`notice-${level}`,
+						classes.root,
+						className,
+						{ 'notice-alt': variant === 'alt' },
+					],
 				})}
 			>
 				<div
@@ -64,7 +80,7 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 				>
 					{children}
 				</div>
-				{dismissable && (
+				{isDismissable && (
 					<button
 						{...buttonProps}
 						className="notice-dismiss"

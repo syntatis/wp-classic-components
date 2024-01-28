@@ -7,7 +7,7 @@ const meta: Meta<typeof Notice> = {
 	tags: ['autodocs'],
 	parameters: {
 		controls: {
-			include: ['children', 'variant', 'onDismiss'],
+			include: ['children', 'level', 'variant', 'onDismiss'],
 		},
 	},
 	argTypes: {
@@ -17,6 +17,8 @@ const meta: Meta<typeof Notice> = {
 	},
 	args: {
 		children: 'Settings saved.',
+		level: 'info',
+		variant: 'default',
 	},
 };
 
