@@ -63,4 +63,17 @@ export const Disabled: Story = {
 	render: Default.render,
 };
 
+export const ReadOnly: Story = {
+	name: 'ReadOnly',
+	parameters: {
+		controls: {
+			exclude: ['isReadOnly'],
+		},
+	},
+	args: {
+		isReadOnly: true,
+	},
+	render: Default.render,
+};
+
 export default meta;

@@ -15,7 +15,7 @@
 		cursor: pointer;
 	}
 
-	&[data-disabled="true"] {
+	&[aria-disabled="true"] {
 		.label {
 			cursor: not-allowed;
 		}

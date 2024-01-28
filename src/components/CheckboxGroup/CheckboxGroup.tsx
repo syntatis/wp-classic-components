@@ -38,7 +38,6 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			orientation = 'vertical',
 			className,
 			isRequired,
-			isDisabled,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const state = useCheckboxGroupState(props);
@@ -61,8 +60,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					prefixed: 'root',
 					classNames: [classes.root, className],
 				})}
-				data-disabled={isDisabled || undefined}
-				data-orientation={orientation || undefined}
+				aria-orientation={orientation || undefined}
 				data-description-area={descriptionArea}
 			>
 				<span
