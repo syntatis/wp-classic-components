@@ -81,6 +81,7 @@
   "scripts": {
     "format:scripts": "eslint --fix",
     "lint:scripts": "eslint .",
+    "lint:styles": "stylelint '**/*.scss'",
     "lint": "npm run lint:scripts",
     "storybook-build": "storybook build",
     "storybook": "storybook dev -p 6007",

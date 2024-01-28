@@ -1,7 +1,7 @@
 @use '../../styles/mixins/input';
 
 .root {
-	@include input.styles();
+	@include input.styles;
 
 	.items {
 		display: flex;
@@ -18,8 +18,8 @@
 
 	&[aria-orientation='horizontal'] {
 		.items {
-			gap: 12px;
 			flex-direction: row;
+			gap: 12px;
 		}
 	}
 }

@@ -1,5 +1,5 @@
 @use '../../styles/mixins/input';
 
 .root {
-	@include input.styles();
+	@include input.styles;
 }
