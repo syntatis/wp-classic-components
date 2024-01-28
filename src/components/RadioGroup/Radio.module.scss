@@ -1,4 +1,14 @@
 .root {
 	display: flex;
 	align-items: center;
+	gap: 0.5rem;
+
+	.input {
+		margin: 0;
+	}
+
+	&[data-disabled="true"],
+	.input:disabled {
+		cursor: not-allowed;
+	}
 }

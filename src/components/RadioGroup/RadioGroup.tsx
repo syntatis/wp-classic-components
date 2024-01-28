@@ -33,6 +33,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 			orientation,
 			descriptionArea,
 			isRequired,
+			isDisabled,
 			className,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
@@ -56,6 +57,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 					prefixed: 'root',
 					classNames: [classes.root, className],
 				})}
+				data-disabled={isDisabled || undefined}
 				data-orientation={orientation || undefined}
 				data-description-area={descriptionArea}
 			>

@@ -30,6 +30,7 @@ const meta: Meta<typeof RadioGroup> = {
 	},
 	args: {
 		label: 'Time format',
+		defaultValue: 'g:i a',
 	},
 };
 
@@ -48,6 +49,18 @@ export const Default: Story = {
 			</RadioGroup>
 		);
 	},
+};
+
+export const Disabled: Story = {
+	parameters: {
+		controls: {
+			exclude: ['isDisabled'],
+		},
+	},
+	args: {
+		isDisabled: true,
+	},
+	render: Default.render,
 };
 
 export default meta;

@@ -32,7 +32,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 			throw new Error('Radio must be added as a group');
 		}
 
-		const { inputProps, labelProps } = radioProps;
+		const { inputProps, labelProps, isDisabled } = radioProps;
 
 		return (
 			<label
@@ -42,8 +42,16 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 					prefixed: 'root',
 					classNames: [classes.root, className],
 				})}
+				data-disabled={isDisabled || undefined}
 			>
-				<input {...inputProps} />
+				<input
+					{...inputProps}
+					ref={inputRef}
+					className={clsx({
+						prefixed: 'input',
+						classNames: [classes.input],
+					})}
+				/>
 				<span {...labelProps}>{children}</span>
 			</label>
 		);
