@@ -14,7 +14,9 @@ export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
 	null
 );
 
-interface CheckboxGroupProps extends GlobalComponentProps, AriaCheckboxGroupProps {
+interface CheckboxGroupProps
+	extends GlobalComponentProps,
+		AriaCheckboxGroupProps {
 	children: ReactElement<CheckboxProps> | ReactElement<CheckboxProps>[];
 	description?: ReactNode;
 	/**
@@ -70,7 +72,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					{...labelProps}
 					className={clsx({
 						prefixed: 'label',
-						classNames: [classes.label],
+						classNames: classes.label,
 					})}
 				>
 					{label}
@@ -89,7 +91,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					<div
 						className={clsx({
 							prefixed: 'items',
-							classNames: [classes.items],
+							classNames: classes.items,
 						})}
 					>
 						{children}
@@ -100,7 +102,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 						{...errorMessageProps}
 						className={clsx({
 							prefixed: 'error-message',
-							classNames: [classes.errorMessage],
+							classNames: classes.errorMessage,
 						})}
 					>
 						{validationErrors.join(' ')}
@@ -111,7 +113,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 						{...descriptionProps}
 						className={clsx({
 							prefixed: 'description',
-							classNames: [classes.description],
+							classNames: classes.description,
 						})}
 					>
 						{description}
