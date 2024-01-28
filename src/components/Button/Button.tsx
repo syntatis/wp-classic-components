@@ -24,6 +24,13 @@ interface ButtonProps
 	 */
 	variant?: 'primary' | 'secondary' | 'link';
 	/**
+	 * Specify the level or severity of the action the button will carry out.
+	 *
+	 * This will affect the button's color, and at the moment only applicable
+	 * to the `link` variant.
+	 */
+	level?: 'warning' | 'danger';
+	/**
 	 * The size of the button.
 	 */
 	size?: 'small' | 'large' | 'hero';
@@ -40,6 +47,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			autoFocus,
 			style,
 			size,
+			level,
 			tabIndex,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
@@ -59,7 +67,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					prefixed: 'root',
 					classNames: [
 						`${size ? `button-${size}` : ''}`,
-						`button button-${variant}`,
+						'button',
+						`button-${variant}`,
+						{
+							'button-link-delete': variant === 'link' && level === 'danger',
+						},
 						className,
 						classes.root,
 					],
