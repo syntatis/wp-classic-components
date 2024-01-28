@@ -7,5 +7,6 @@
     "formulahendry.auto-rename-tag",
     "jock.svg",
     "meganrogge.template-string-converter",
+    "stylelint.vscode-stylelint",
   ]
 }
