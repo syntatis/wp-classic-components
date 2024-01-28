@@ -1,8 +1,18 @@
+@use '../../styles/variables/colors';
+
 .root {
   &[data-has-affix="true"] {
     align-items: center;
     display: flex;
     gap: 0.2rem;
+  }
+
+	&[data-level="danger"] {
+    color: colors.$red-50;
+  }
+
+	&[data-level="warning"] {
+    color: colors.$yellow-50;
   }
 
   .affix {

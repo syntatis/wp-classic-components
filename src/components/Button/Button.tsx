@@ -76,6 +76,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						classes.root,
 					],
 				})}
+				data-level={(variant === 'link' && level) || undefined}
 				data-has-affix={hasAffix || undefined}
 			>
 				{prefix && (
