@@ -16,6 +16,7 @@ interface CheckboxGroupProps extends GlobalAttributes, AriaCheckboxGroupProps {
 	label: ReactNode;
 	children: ReactNode | ReactNode[];
 	description?: ReactNode;
+	descriptionArea?: 'before-input' | 'after-input';
 	/**
 	 * The orientation of the checkbox group.
 	 *
@@ -30,6 +31,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			children,
 			label,
 			description,
+			descriptionArea,
 			orientation = 'vertical',
 			className,
 			isRequired,
@@ -50,13 +52,14 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			<div
 				{...groupProps}
 				ref={ref}
-				data-orientation={
-					orientation === DEFAULT_ORIENTATION ? undefined : orientation
-				}
 				className={clsx({
 					prefixed: 'root',
 					classNames: [classes.root, className],
 				})}
+				data-orientation={
+					orientation === DEFAULT_ORIENTATION ? undefined : orientation
+				}
+				data-description-area={descriptionArea}
 			>
 				<span
 					{...labelProps}

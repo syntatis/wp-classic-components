@@ -11,6 +11,7 @@ const meta: Meta<typeof CheckboxGroup> = {
 			include: [
 				'label',
 				'description',
+				'descriptionArea',
 				'orientation',
 				'isRequired',
 				'isDisabled',
