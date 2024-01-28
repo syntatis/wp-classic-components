@@ -38,13 +38,6 @@ export const ReadOnly: Story = {
 	},
 };
 
-export const Selected: Story = {
-	name: 'Selected (controlled)',
-	args: {
-		isSelected: true,
-	},
-};
-
 export const WithDefaultSelected: Story = {
 	args: {
 		defaultSelected: true,

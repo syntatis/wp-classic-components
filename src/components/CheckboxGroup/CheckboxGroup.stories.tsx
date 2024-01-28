@@ -107,14 +107,6 @@ export const Invalid: Story = {
 	render: Default.render,
 };
 
-export const Selected: Story = {
-	name: 'Selected (controlled)',
-	args: {
-		value: ['permalink', 'discussion'],
-	},
-	render: Default.render,
-};
-
 export const WithDefaultValue: Story = {
 	args: {
 		defaultValue: ['permalink'],
