@@ -6,8 +6,26 @@ import { GlobalAttributes } from '~/types';
 import classes from './PostBox.module.scss';
 
 interface PostBoxProps extends GlobalAttributes {
+	/**
+	 * The title of the post box.
+	 *
+	 * @example 'Welcome'
+	 */
 	title: ReactNode;
+	/**
+	 * The content to add in the post box. It can be a simple text,
+	 * inputs, buttons, etc.
+	 */
 	children?: ReactNode;
+	/**
+	 * The content to add in the footer of the content.
+	 */
+	footer?: ReactNode | ReactNode[];
+	/**
+	 * Whether the post box should be collapsible or not. If it is
+	 * collapsible, a button will be added to the header to toggle
+	 * the visibility of the content.
+	 */
 	collapsible?:
 		| boolean
 		| { label: string }
@@ -17,10 +35,16 @@ interface PostBoxProps extends GlobalAttributes {
 
 export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
 	(props, forwardedRef) => {
-		const { title, children, collapsible, defaultExpanded = true } = props;
+		const {
+			title,
+			children,
+			collapsible,
+			defaultExpanded = true,
+			footer,
+		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const buttonRef = useRef<HTMLButtonElement>(null);
-		const insideId = useId();
+		const contentId = useId();
 		const [expanded, setExpanded] = useState(defaultExpanded);
 		const { clsx } = useClasses('PostBox');
 		const { buttonProps } = useButton(
@@ -78,7 +102,7 @@ export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
 							{...buttonProps}
 							type="button"
 							className="handlediv"
-							aria-controls={insideId}
+							aria-controls={contentId}
 							aria-expanded={expanded}
 							aria-label={toggleLabel}
 						>
@@ -90,13 +114,23 @@ export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
 				</div>
 				{expanded && (
 					<div
-						id={insideId}
+						id={contentId}
 						className={clsx({
-							prefixed: 'inside',
-							classNames: [classes.inside, 'inside'],
+							prefixed: 'content',
+							classNames: classes.content,
 						})}
 					>
 						{children}
+					</div>
+				)}
+				{expanded && footer && (
+					<div
+						className={clsx({
+							prefixed: 'footer',
+							classNames: classes.footer,
+						})}
+					>
+						{footer}
 					</div>
 				)}
 			</div>

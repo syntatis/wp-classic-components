@@ -23,8 +23,19 @@
     line-height: 1.4;
 	}
 
-	.inside {
-		margin-block-end: 0;
+	.content {
+		line-height: 1.4;
+    font-size: 13px;
+		padding: var(--wp-classic-postbox-content-padding, 0 12px 12px);
+		margin: var(--wp-classic-postbox-content-margin, 11px 0 0);
+    position: relative;
+	}
+
+	.footer {
+		padding: 10px;
+    clear: both;
+    border-top: 1px solid colors.$gray-5;
+    background: colors.$gray-0;
 	}
 
 	&.collapsed {
