@@ -3,6 +3,7 @@ import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
 import { useClasses } from '~/hooks';
 import { GlobalAttributes } from '~/types';
+import classes from './Link.module.scss';
 
 export interface LinkProps
 	extends GlobalAttributes,
@@ -22,11 +23,15 @@ export interface LinkProps
 	 * The content to display inside the link.
 	 */
 	children: ReactNode;
+	/**
+	 * Specify the level or severity that the link will carry out.
+	 */
+	severity?: 'warning' | 'danger';
 }
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 	(props, forwardedRef) => {
-		const { children, className } = props;
+		const { children, className, severity } = props;
 		const ref = useObjectRef(forwardedRef);
 		const { linkProps } = useLink(props, ref);
 		const { hoverProps } = useHover(props);
@@ -39,7 +44,14 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				ref={ref}
 				className={clsx({
 					prefixed: 'root',
-					classNames: [className],
+					classNames: [
+						classes.root,
+						{
+							[classes.severityWarning]: severity === 'warning',
+							[classes.severityDanger]: severity === 'danger',
+						},
+						className,
+					],
 				})}
 			>
 				{children}

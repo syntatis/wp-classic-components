@@ -29,7 +29,7 @@ interface ButtonProps
 	 * This will affect the button's color, and at the moment only applicable
 	 * to the `link` variant.
 	 */
-	level?: 'warning' | 'danger';
+	severity?: 'danger';
 	/**
 	 * The size of the button.
 	 */
@@ -47,7 +47,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			autoFocus,
 			style,
 			size,
-			level,
+			severity,
 			tabIndex,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
@@ -70,13 +70,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						'button',
 						`button-${variant}`,
 						{
-							'button-link-delete': variant === 'link' && level === 'danger',
+							[classes.hasAffix]: hasAffix,
+							'button-link-delete': variant === 'link' && severity === 'danger',
 						},
 						className,
 						classes.root,
 					],
 				})}
-				data-level={(variant === 'link' && level) || undefined}
 				data-has-affix={hasAffix || undefined}
 			>
 				{prefix && (

@@ -7,7 +7,14 @@ const meta: Meta<typeof Link> = {
 	tags: ['autodocs'],
 	parameters: {
 		controls: {
-			include: ['children', 'href', 'target', 'onFocusChange', 'onHoverChange'],
+			include: [
+				'children',
+				'href',
+				'target',
+				'severity',
+				'onFocusChange',
+				'onHoverChange',
+			],
 		},
 	},
 	argTypes: {

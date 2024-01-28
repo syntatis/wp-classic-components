@@ -1,0 +1,10 @@
+@use '../../styles/variables/colors';
+
+.root {
+	&.severityWarning {
+		color: colors.$yellow-50;
+	}
+	&.severityDanger {
+		color: colors.$red-50;
+	}
+}
