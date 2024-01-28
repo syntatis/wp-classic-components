@@ -8,12 +8,18 @@ const meta: Meta<typeof PostBox> = {
 	tags: ['autodocs'],
 	parameters: {
 		controls: {
-			include: ['title', 'children'],
+			include: ['title', 'children', 'collapsible'],
 		},
 	},
 	argTypes: {
+		title: {
+			control: 'text',
+		},
 		children: {
 			control: 'text',
+		},
+		collapsible: {
+			control: 'boolean',
 		},
 	},
 	args: {

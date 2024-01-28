@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Decorator, Preview } from '@storybook/react';
-import './preview.css';
+import './preview.scss';
 
 const DEFAULT_THEME = 'light' as const;
 
