@@ -1,11 +1,17 @@
 @use '../../styles/variables/colors';
 
-@mixin styles() {
-	display: grid;
-	grid-template-columns: auto;
-	grid-template-rows: max-content max-content 1fr max-content max-content;
+@mixin styles-input() {
+	&[data-invalid="true"] {
+		.input {
+			border-color: colors.$invalid;
+			outline-color: colors.$invalid;
+			outline-width: 1px;
+		}
+	}
+}
 
-  .label {
+@mixin styles-label() {
+	.label {
 		display: inline-block;
 		width: max-content;
 		font-weight: 600;
@@ -15,14 +21,27 @@
 		cursor: pointer;
 	}
 
+	.markedRequired {
+		margin-inline-start: 0.25rem;
+		color: colors.$invalid;
+	}
+
 	&[aria-disabled="true"] {
 		.label {
 			cursor: not-allowed;
 		}
 	}
 
+	&[data-description-area="before-input"] {
+		.label {
+			margin-block-end: 0;
+		}
+	}
+}
+
+@mixin styles-description() {
 	.description {
-		color: colors.$gray-50;
+		color: colors.$description;
 		grid-row-start: 4;
 		grid-row-end: 5;
 		margin-block-start: 6px;
@@ -30,10 +49,6 @@
 	}
 
 	&[data-description-area="before-input"] {
-		.label {
-			margin-block-end: 0;
-		}
-
 		.description {
 			grid-row-start: 2;
 			grid-row-end: 3;
@@ -41,25 +56,25 @@
 			margin-block-end: 6px;
 		}
 	}
+}
 
+@mixin styles-error-message() {
 	.errorMessage {
 		margin-block-start: 6px;
 		margin-block-end: 0;
 		grid-row-start: 3;
 		grid-row-end: 4;
-		color: colors.$red-50;
+		color: colors.$invalid;
 	}
+}
 
-	.markedRequired {
-		margin-inline-start: 0.25rem;
-		color: colors.$red-50;
-	}
+@mixin styles() {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: max-content max-content 1fr max-content max-content;
 
-	&[data-invalid="true"] {
-		.input {
-			border-color: colors.$red-50;
-			outline-color: colors.$red-50;
-			outline-width: 1px;
-		}
-	}
+	@include styles-input();
+	@include styles-label();
+	@include styles-description();
+	@include styles-error-message();
 }

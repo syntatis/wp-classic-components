@@ -1,7 +1,10 @@
 // https://make.wordpress.org/design/2019/11/26/proposal-a-new-palette-for-wordpress/
 // https://codepen.io/tfirdaus/pen/abMVQGL
+
+// Base
 $white: #fff;
 $black: #000;
+
 $gray-0: #f6f7f7;
 $gray-5: #dcdcde;
 $gray-10: #c3c4c7;
@@ -14,6 +17,7 @@ $gray-70: #3c434a;
 $gray-80: #2c3338;
 $gray-90: #1d2327;
 $gray-100: #101517;
+
 $blue-0: #f0f6fc;
 $blue-5: #c5d9ed;
 $blue-10: #9ec2e6;
@@ -26,6 +30,7 @@ $blue-70: #0a4b78;
 $blue-80: #043959;
 $blue-90: #01263a;
 $blue-100: #00131c;
+
 $red-0: #fcf0f1;
 $red-5: #facfd2;
 $red-10: #ffabaf;
@@ -38,6 +43,7 @@ $red-70: #8a2424;
 $red-80: #691c1c;
 $red-90: #451313;
 $red-100: #240a0a;
+
 $yellow-0: #fcf9e8;
 $yellow-5: #f5e6ab;
 $yellow-10: #f2d675;
@@ -50,6 +56,7 @@ $yellow-70: #614200;
 $yellow-80: #4a3200;
 $yellow-90: #362400;
 $yellow-100: #211600;
+
 $green-0: #edfaef;
 $green-5: #b8e6bf;
 $green-10: #68de7c;
@@ -61,4 +68,8 @@ $green-60: #007017;
 $green-70: #005c12;
 $green-80: #00450c;
 $green-90: #003008;
-$green-100: #001c05
+$green-100: #001c05;
+
+// UI
+$description: $gray-50;
+$invalid: $red-50;
