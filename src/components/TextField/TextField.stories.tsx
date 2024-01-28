@@ -11,6 +11,7 @@ const meta: Meta<typeof TextField> = {
 				'label',
 				'type',
 				'description',
+				'descriptionArea',
 				'isCode',
 				'isDisabled',
 				'isReadOnly',

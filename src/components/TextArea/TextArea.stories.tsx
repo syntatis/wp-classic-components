@@ -10,6 +10,7 @@ const meta: Meta<typeof TextArea> = {
 			include: [
 				'label',
 				'description',
+				'descriptionArea',
 				'rows',
 				'cols',
 				'isCode',

@@ -1,26 +1,49 @@
 @use '../../styles/variables/colors';
 
 @mixin styles() {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: max-content max-content 1fr max-content max-content;
+
   .label {
 		display: block;
 		font-weight: 600;
-		margin-bottom: 0.5rem;
+		margin-block-end: 0.5rem;
+		grid-row-start: 1;
+		grid-row-end: 2;
 	}
-	.description,
-	.errorMessage {
-		margin-top: 4px;
-		margin-bottom: 0;
-	}
+
 	.description {
 		color: colors.$gray-50;
+		grid-row-start: 3;
+		grid-row-end: 4;
+		margin-block-end: 0;
 	}
+
+	&[data-description-area="before-input"] {
+		.label {
+			margin-block-end: 0;
+		}
+
+		.description {
+			grid-row-start: 2;
+			grid-row-end: 3;
+			margin-block-start: 0;
+			margin-block-end: 0.5rem;
+		}
+	}
+
 	.errorMessage {
+		margin-block-start: 0.5rem;
+		margin-block-end: 0;
 		color: colors.$red-50;
 	}
+
 	.markedRequired {
-		margin-inline-start: 4px;
+		margin-inline-start: 0.5rem;
 		color: colors.$red-50;
 	}
+
 	&[data-invalid="true"] {
 		.input {
 			border-color: colors.$red-50;

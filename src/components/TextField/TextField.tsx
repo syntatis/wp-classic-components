@@ -9,6 +9,12 @@ interface TextFieldProps
 	extends GlobalAttributes,
 		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid'> {
 	/**
+	 * Defines where to put the description.
+	 *
+	 * @default 'before-input'
+	 */
+	descriptionArea?: 'before-input' | 'after-input';
+	/**
 	 * Setting this `true` will render the text within the text field
 	 * with a monospace font.
 	 */
@@ -24,7 +30,14 @@ interface TextFieldProps
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, forwardedRef) => {
-		const { style, className, label, description, isRequired } = props;
+		const {
+			style,
+			className,
+			label,
+			description,
+			descriptionArea,
+			isRequired,
+		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { clsx } = useClasses('TextField');
 		const {
@@ -43,6 +56,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					classNames: [classes.root, className],
 				})}
 				data-invalid={isInvalid || undefined}
+				data-description-area={descriptionArea}
 			>
 				{label && (
 					<label
