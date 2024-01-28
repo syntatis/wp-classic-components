@@ -11,7 +11,8 @@
 	}
 
 	&[aria-readonly="true"] {
-		:global(.wp-classic-Radio-root) {
+		:global(.wp-classic-Radio-root),
+		:global(.wp-classic-Radio-input) {
 			cursor: default;
 		}
 	}
