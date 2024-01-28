@@ -6,8 +6,8 @@
 	.items {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
-		margin-block: 0.25rem;
+		gap: 6px;
+		margin-block: 2px;
 	}
 
 	&[aria-readonly="true"] {
@@ -18,7 +18,7 @@
 
 	&[aria-orientation='horizontal'] {
 		.items {
-			gap: 1rem;
+			gap: 12px;
 			flex-direction: row;
 		}
 	}
