@@ -1,11 +1,11 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
-import { useClasses } from '~/hooks';
-import { GlobalAttributes } from '~/types';
 import classes from './Notice.module.scss';
+import { useClasses } from '../../hooks';
+import { GlobalComponentProps } from '../../types';
 
-interface NoticeProps extends GlobalAttributes {
+interface NoticeProps extends GlobalComponentProps {
 	children: ReactNode;
 	/**
 	 * The severity level of the notice.

@@ -20,7 +20,7 @@ export interface Affixable extends Prefixable, Suffixable {}
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
  */
-export interface GlobalAttributes extends Styleable {
+export interface GlobalComponentProps extends Styleable {
 	id?: string | undefined;
 	tabIndex?: number | undefined;
 }

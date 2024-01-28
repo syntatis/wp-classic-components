@@ -1,11 +1,11 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef, useId, useRef, useState } from 'react';
 import { useButton } from 'react-aria';
-import { useClasses } from '~/hooks';
-import { GlobalAttributes } from '~/types';
 import classes from './PostBox.module.scss';
+import { useClasses } from '../../hooks';
+import { GlobalComponentProps } from '../../types';
 
-interface PostBoxProps extends GlobalAttributes {
+interface PostBoxProps extends GlobalComponentProps {
 	/**
 	 * The title of the post box.
 	 *

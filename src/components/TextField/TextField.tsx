@@ -1,12 +1,12 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
-import { useClasses } from '~/hooks';
-import { GlobalAttributes } from '~/types';
 import classes from './TextField.module.scss';
+import { useClasses } from '../../hooks';
+import { GlobalComponentProps } from '../../types';
 
 interface TextFieldProps
-	extends GlobalAttributes,
+	extends GlobalComponentProps,
 		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid'> {
 	/**
 	 * Where to place the description.

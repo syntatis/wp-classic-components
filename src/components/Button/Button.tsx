@@ -7,12 +7,12 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
-import { useClasses } from '~/hooks';
-import { Affixable, GlobalAttributes } from '~/types';
 import classes from './Button.module.scss';
+import { useClasses } from '../../hooks';
+import { Affixable, GlobalComponentProps } from '../../types';
 
 interface ButtonProps
-	extends GlobalAttributes,
+	extends GlobalComponentProps,
 		Affixable,
 		HoverProps,
 		Omit<AriaButtonProps, 'elementType' | 'target'> {

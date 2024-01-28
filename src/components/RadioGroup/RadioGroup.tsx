@@ -2,12 +2,12 @@ import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { ReactElement, ReactNode, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';
-import { useClasses } from '~/hooks';
-import { GlobalAttributes } from '~/types';
 import { RadioContext } from './Radio';
 import classes from './RadioGroup.module.scss';
+import { useClasses } from '../../hooks';
+import { GlobalComponentProps } from '../../types';
 
-interface RadioGroupProps extends GlobalAttributes, AriaRadioGroupProps {
+interface RadioGroupProps extends GlobalComponentProps, AriaRadioGroupProps {
 	children: ReactElement | ReactElement[];
 	description?: ReactNode;
 	/**

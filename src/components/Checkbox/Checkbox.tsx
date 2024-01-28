@@ -6,13 +6,13 @@ import {
 	useCheckboxGroupItem,
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
-import { useClasses } from '~/hooks';
-import { GlobalAttributes } from '~/types';
 import classes from './Checkbox.module.scss';
+import { useClasses } from '../../hooks';
+import { GlobalComponentProps } from '../../types';
 import { CheckboxGroupContext } from '../CheckboxGroup';
 
 export interface CheckboxProps
-	extends GlobalAttributes,
+	extends GlobalComponentProps,
 		// WordPress does not support indeterminate state for checkboxes (yet).
 		Omit<AriaCheckboxProps, 'isIndeterminate'> {
 	description?: ReactNode;
