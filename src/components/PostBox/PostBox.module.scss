@@ -1,0 +1,33 @@
+@use '../../styles/variables/colors';
+
+.root {
+	// Redefine the "postbox" styles as the full styles of the postbox
+	// may not be loaded in some admin screens.
+	position: relative;
+	min-width: 255px;
+	border: 1px solid colors.$gray-10;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	background: #fff;
+
+	.header {
+		display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid colors.$gray-10;
+	}
+
+	.heading {
+		font-size: 14px;
+    padding: 8px 12px;
+    margin: 0;
+    line-height: 1.4;
+	}
+
+	.inside {
+		margin-block-end: 0;
+	}
+
+	&.collapsed {
+		border-block-end-width: 0;
+	}
+}
