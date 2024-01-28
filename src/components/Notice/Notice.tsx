@@ -8,7 +8,7 @@ import classes from './Notice.module.scss';
 interface NoticeProps extends GlobalAttributes {
 	children: ReactNode;
 	/**
-	 * The variant of the notice.
+	 * The severity level of the notice.
 	 *
 	 * @default 'info'
 	 */
