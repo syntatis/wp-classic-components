@@ -80,6 +80,22 @@
     "@stylistic/js/no-floating-decimal": "error",
     "@stylistic/js/no-mixed-operators": "error",
     "@stylistic/js/template-tag-spacing": "error",
+		"@stylistic/js/padded-blocks": [
+      "error",
+      "never"
+    ],
+    "@stylistic/js/padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      }
+    ],
+		"@stylistic/js/new-parens": [
+      "error",
+      "never"
+    ],
     // TypeScript
     "@stylistic/ts/brace-style": "error",
     "@stylistic/ts/comma-dangle": [
@@ -108,18 +124,6 @@
       "error",
       "always"
     ],
-    "@stylistic/js/padded-blocks": [
-      "error",
-      "never"
-    ],
-    "@stylistic/js/padding-line-between-statements": [
-      "error",
-      {
-        "blankLine": "always",
-        "prev": "*",
-        "next": "return"
-      }
-    ],
     "@stylistic/ts/quotes": [
       "error",
       "single"
@@ -127,10 +131,6 @@
     "@stylistic/ts/semi": [
       "error",
       "always"
-    ],
-    "@stylistic/js/new-parens": [
-      "error",
-      "never"
     ],
     "import/newline-after-import": [
       "error",
