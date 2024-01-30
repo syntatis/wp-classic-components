@@ -3,10 +3,10 @@ import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import classes from './TextArea.module.scss';
 import { useClasses } from '../../hooks';
-import { GlobalComponentProps } from '../../types';
+import { GlobalProps } from '../../types';
 
 interface TextAreaProps
-	extends GlobalComponentProps,
+	extends GlobalProps,
 		Omit<AriaTextFieldProps, 'isInvalid' | 'errorMessage' | 'type'> {
 	/**
 	 * Where to place the description.

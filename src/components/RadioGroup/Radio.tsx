@@ -10,11 +10,11 @@ import { AriaRadioProps, useRadio } from 'react-aria';
 import { RadioGroupState } from 'react-stately';
 import classes from './Radio.module.scss';
 import { useClasses } from '../../hooks';
-import { GlobalComponentProps } from '../../types';
+import { GlobalProps } from '../../types';
 
 export const RadioContext = createContext<RadioGroupState | null>(null);
 
-interface RadioProps extends GlobalComponentProps, AriaRadioProps {
+interface RadioProps extends GlobalProps, AriaRadioProps {
 	children: ReactNode;
 }
 

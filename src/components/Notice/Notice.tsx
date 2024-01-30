@@ -3,9 +3,9 @@ import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
 import classes from './Notice.module.scss';
 import { useClasses } from '../../hooks';
-import { GlobalComponentProps } from '../../types';
+import { GlobalProps } from '../../types';
 
-interface NoticeProps extends GlobalComponentProps {
+interface NoticeProps extends GlobalProps {
 	children: ReactNode;
 	/**
 	 * The severity level of the notice.

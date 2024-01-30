@@ -5,9 +5,9 @@ import { useRadioGroupState } from 'react-stately';
 import { RadioContext } from './Radio';
 import classes from './RadioGroup.module.scss';
 import { useClasses } from '../../hooks';
-import { GlobalComponentProps } from '../../types';
+import { GlobalProps } from '../../types';
 
-interface RadioGroupProps extends GlobalComponentProps, AriaRadioGroupProps {
+interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
 	children: ReactElement | ReactElement[];
 	description?: ReactNode;
 	/**

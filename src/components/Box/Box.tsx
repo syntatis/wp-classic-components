@@ -1,11 +1,11 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef, useId, useRef, useState } from 'react';
 import { useButton } from 'react-aria';
-import classes from './PostBox.module.scss';
+import classes from './Box.module.scss';
 import { useClasses } from '../../hooks';
-import { GlobalComponentProps } from '../../types';
+import { GlobalProps } from '../../types';
 
-interface PostBoxProps extends GlobalComponentProps {
+interface PostBoxProps extends GlobalProps {
 	/**
 	 * The title of the post box.
 	 *
@@ -85,35 +85,37 @@ export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
 				})}
 				style={style}
 			>
-				<div
-					className={clsx({
-						prefixed: 'header',
-						classNames: [classes.header, 'postbox-header'],
-					})}
-				>
-					<h2
+				{title && (
+					<div
 						className={clsx({
-							prefixed: 'heading',
-							classNames: classes.heading,
+							prefixed: 'header',
+							classNames: [classes.header, 'postbox-header'],
 						})}
 					>
-						{title}
-					</h2>
-					{isCollapsible && (
-						<button
-							{...buttonProps}
-							type="button"
-							className="handlediv"
-							aria-controls={contentId}
-							aria-expanded={expanded}
-							aria-label={toggleLabel}
+						<h2
+							className={clsx({
+								prefixed: 'heading',
+								classNames: classes.heading,
+							})}
 						>
-							{expanded ?
-								<span className="dashicons dashicons-arrow-down"></span>
-							:	<span className="dashicons dashicons-arrow-up"></span>}
-						</button>
-					)}
-				</div>
+							{title}
+						</h2>
+						{isCollapsible && (
+							<button
+								{...buttonProps}
+								type="button"
+								className="handlediv"
+								aria-controls={contentId}
+								aria-expanded={expanded}
+								aria-label={toggleLabel}
+							>
+								{expanded ?
+									<span className="dashicons dashicons-arrow-down"></span>
+								:	<span className="dashicons dashicons-arrow-up"></span>}
+							</button>
+						)}
+					</div>
+				)}
 				{expanded && (
 					<div
 						id={contentId}

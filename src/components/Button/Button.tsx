@@ -9,10 +9,10 @@ import {
 } from 'react-aria';
 import classes from './Button.module.scss';
 import { useClasses } from '../../hooks';
-import { Affixable, GlobalComponentProps } from '../../types';
+import { Affixable, GlobalProps } from '../../types';
 
 interface ButtonProps
-	extends GlobalComponentProps,
+	extends GlobalProps,
 		Affixable,
 		HoverProps,
 		Omit<AriaButtonProps, 'elementType' | 'target'> {

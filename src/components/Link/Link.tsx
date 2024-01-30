@@ -3,10 +3,10 @@ import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
 import classes from './Link.module.scss';
 import { useClasses } from '../../hooks';
-import { GlobalComponentProps } from '../../types';
+import { GlobalProps } from '../../types';
 
 export interface LinkProps
-	extends GlobalComponentProps,
+	extends GlobalProps,
 		Omit<HoverProps, 'isDisabled'>,
 		Omit<
 			AriaLinkOptions,

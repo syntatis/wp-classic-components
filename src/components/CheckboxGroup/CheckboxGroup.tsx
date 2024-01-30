@@ -7,7 +7,7 @@ import {
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
 import classes from './CheckboxGroup.module.scss';
 import { useClasses } from '../../hooks';
-import { GlobalComponentProps } from '../../types';
+import { GlobalProps } from '../../types';
 import { CheckboxProps } from '../Checkbox';
 
 export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
@@ -15,7 +15,7 @@ export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
 );
 
 interface CheckboxGroupProps
-	extends GlobalComponentProps,
+	extends GlobalProps,
 		AriaCheckboxGroupProps {
 	children: ReactElement<CheckboxProps> | ReactElement<CheckboxProps>[];
 	description?: ReactNode;
