@@ -21,6 +21,6 @@
         ]
       }
     ],
-    "unit-disallowed-list": ["em", "ms"],
+    "unit-disallowed-list": ["em", "ms"]
 	}
 }
