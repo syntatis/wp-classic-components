@@ -10,6 +10,18 @@
 			"version": "20.11.0",
 			"nvmVersion": "latest"
 		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"stylelint.vscode-stylelint",
+				"meganrogge.template-string-converter",
+				"jock.svg",
+				"EditorConfig.EditorConfig",
+				"dbaeumer.vscode-eslint",
+				"DavidAnson.vscode-markdownlint"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.

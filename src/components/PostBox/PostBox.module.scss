@@ -3,11 +3,11 @@
 .root {
 	// Redefine the "postbox" styles as the full styles of the postbox
 	// may not be loaded in some admin screens.
-	position: relative;
-	min-width: 255px;
-	background: colors.$white;
-	border: 1px solid colors.$gray-10;
-	box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
+	// position: relative;
+	// min-width: 255px;
+	// background: colors.$white;
+	// border: 1px solid colors.$gray-10;
+	// box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
 
 	.header {
 		display: flex;
