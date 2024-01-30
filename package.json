@@ -83,11 +83,11 @@
 		"format:styles": "stylelint '**/*.scss' --fix",
 		"lint:scripts": "eslint .",
 		"lint:styles": "stylelint '**/*.scss'",
+		"lint:types": "tsc --noEmit",
 		"lint": "npm run lint:scripts && npm run lint:styles",
-		"storybook-build": "storybook build",
 		"storybook": "storybook dev -p 6007",
+		"build:storybook": "storybook build",
 		"build": "parcel build",
-		"tsc": "tsc --noEmit",
 		"test": "vitest run",
 		"chromatic": "npx chromatic --build-script-name=storybook-build"
 	}

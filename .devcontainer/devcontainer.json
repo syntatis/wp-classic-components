@@ -5,7 +5,11 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "ghcr.io/syntatis/php:7.4-cli",
 	"features": {
-		"ghcr.io/devcontainers/features/node:1": {}
+		"ghcr.io/devcontainers/features/node:1": {
+			"nodeGypDependencies": true,
+			"version": "20.11.0",
+			"nvmVersion": "latest"
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
