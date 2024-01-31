@@ -19,7 +19,8 @@
 				"jock.svg",
 				"EditorConfig.EditorConfig",
 				"dbaeumer.vscode-eslint",
-				"DavidAnson.vscode-markdownlint"
+				"DavidAnson.vscode-markdownlint",
+				"ZixuanChen.vitest-explorer"
 			]
 		}
 	}

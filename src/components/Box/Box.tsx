@@ -5,18 +5,18 @@ import classes from './Box.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 
-interface PostBoxProps extends GlobalProps {
+interface BoxProps extends GlobalProps {
 	/**
 	 * The title of the post box.
 	 *
 	 * @example 'Welcome'
 	 */
-	title: ReactNode;
+	title?: ReactNode;
 	/**
 	 * The content to add in the post box. It can be a simple text,
 	 * inputs, buttons, etc.
 	 */
-	children?: ReactNode;
+	children: ReactNode;
 	/**
 	 * The content to add in the footer of the content.
 	 */
@@ -33,7 +33,7 @@ interface PostBoxProps extends GlobalProps {
 	defaultExpanded?: boolean;
 }
 
-export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
+export const Box = forwardRef<HTMLDivElement, BoxProps>(
 	(props, forwardedRef) => {
 		const {
 			title,
@@ -47,7 +47,7 @@ export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
 		const buttonRef = useRef<HTMLButtonElement>(null);
 		const contentId = useId();
 		const [expanded, setExpanded] = useState(defaultExpanded);
-		const { clsx } = useClasses('PostBox');
+		const { clsx } = useClasses('Box');
 		const { buttonProps } = useButton(
 			{
 				...props,
@@ -142,4 +142,4 @@ export const PostBox = forwardRef<HTMLDivElement, PostBoxProps>(
 	}
 );
 
-PostBox.displayName = 'PostBox';
+Box.displayName = 'Box';
