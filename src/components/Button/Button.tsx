@@ -48,7 +48,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			style,
 			size,
 			severity,
-			tabIndex,
+			role,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { buttonProps } = useButton(props, ref);
@@ -62,7 +62,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{...filterDOMProps(props, { labelable: true })}
 				{...mergeProps(buttonProps, hoverProps, focusProps)}
 				style={style}
-				tabIndex={tabIndex}
+				role={role}
 				className={clsx({
 					prefixed: 'root',
 					classNames: [

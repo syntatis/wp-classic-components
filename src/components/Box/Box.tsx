@@ -1,6 +1,6 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
-import { ReactNode, forwardRef, useId, useRef, useState } from 'react';
-import { useButton } from 'react-aria';
+import { ReactNode, forwardRef, useRef, useState } from 'react';
+import { useButton, useId } from 'react-aria';
 import classes from './Box.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
@@ -25,11 +25,18 @@ interface BoxProps extends GlobalProps {
 	 * Whether the post box should be collapsible or not. If it is
 	 * collapsible, a button will be added to the header to toggle
 	 * the visibility of the content.
+	 *
+	 * @default false
 	 */
 	collapsible?:
 		| boolean
 		| { label: string }
 		| { label: (isExpanded: boolean) => string };
+	/**
+	 * Whether the post box should be expanded by default or not.
+	 *
+	 * @default true
+	 */
 	defaultExpanded?: boolean;
 }
 
@@ -38,7 +45,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 		const {
 			title,
 			children,
-			collapsible,
+			collapsible = false,
 			defaultExpanded = true,
 			footer,
 			style,
@@ -55,11 +62,8 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 			},
 			buttonRef
 		);
-		const isCollapsible =
-			collapsible === true ||
-			(typeof collapsible === 'object' && collapsible.label);
 
-		let toggleLabel = `Toggle panel: ${title}`;
+		let toggleLabel = title ? `Toggle panel: ${title}` : 'Toggle panel';
 
 		if (typeof collapsible === 'object') {
 			if (typeof collapsible.label === 'function') {
@@ -85,7 +89,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 				})}
 				style={style}
 			>
-				{title && (
+				{(title || collapsible) && (
 					<div
 						className={clsx({
 							prefixed: 'header',
@@ -100,7 +104,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 						>
 							{title}
 						</h2>
-						{isCollapsible && (
+						{collapsible && (
 							<button
 								{...buttonProps}
 								type="button"

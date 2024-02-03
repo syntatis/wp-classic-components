@@ -22,5 +22,5 @@ export interface Affixable extends Prefixable, Suffixable {}
  */
 export interface GlobalProps extends Styleable {
 	id?: string | undefined;
-	tabIndex?: number | undefined;
+	role?: string | undefined;
 }

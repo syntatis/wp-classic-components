@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PostBox } from './PostBox';
+import { Box } from './Box';
 import { Button } from '../Button';
 
-const meta: Meta<typeof PostBox> = {
-	title: 'Components/PostBox',
-	component: PostBox,
+const meta: Meta<typeof Box> = {
+	title: 'Components/Box',
+	component: Box,
 	tags: ['autodocs'],
 	parameters: {
 		controls: {
@@ -23,13 +23,12 @@ const meta: Meta<typeof PostBox> = {
 		},
 	},
 	args: {
-		title: 'Site Health',
 		children:
 			'Your site has critical issues that should be addressed as soon as possible to improve its performance and security.',
 	},
 };
 
-type Story = StoryObj<typeof PostBox>;
+type Story = StoryObj<typeof Box>;
 
 export const Default: Story = {};
 
@@ -39,9 +38,14 @@ export const Collapsible: Story = {
 	},
 };
 
+export const WithTitle: Story = {
+	args: {
+		title: 'Site Health',
+	},
+};
+
 export const WithFooter: Story = {
 	args: {
-		collapsible: true,
 		footer: <Button>Save changes</Button>,
 	},
 };

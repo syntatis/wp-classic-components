@@ -16,8 +16,8 @@ describe('Button', async () => {
 
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
-		expect(button.classList.contains('button')).toBe(true);
-		expect(button.classList.contains('button-primary')).toBe(true);
+		expect(button).toHaveClass('button');
+		expect(button).toHaveClass('button-primary');
 	});
 
 	it('should render the button with the "secondary" variant class name', () => {
@@ -25,7 +25,7 @@ describe('Button', async () => {
 
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
-		expect(button.classList.contains('button-secondary')).toBe(true);
+		expect(button).toHaveClass('button-secondary');
 	});
 
 	it('should render the button with the custom class name', () => {
@@ -33,7 +33,7 @@ describe('Button', async () => {
 
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
-		expect(button.classList.contains('foo-bar')).toBe(true);
+		expect(button).toHaveClass('foo-bar');
 	});
 
 	it('should render the button with the id', () => {
@@ -41,15 +41,15 @@ describe('Button', async () => {
 
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
-		expect(button.id).toBe('1');
+		expect(button).toHaveAttribute('id', '1');
 	});
 
 	it('should render the button with the tabindex attribute', () => {
-		render(<Button tabIndex={1}>Save changes</Button>);
+		render(<Button excludeFromTabOrder>Save changes</Button>);
 
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
-		expect(button.tabIndex).toBe(1);
+		expect(button).toHaveAttribute('tabindex', '-1');
 	});
 
 	it('should render the button with the inline style', () => {
@@ -57,7 +57,7 @@ describe('Button', async () => {
 
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
-		expect(button.style.width).toEqual('100px');
+		expect(button).toHaveStyle({ width: '100px' });
 	});
 
 	it('should render the button with the "aria-*" label', () => {
@@ -65,6 +65,22 @@ describe('Button', async () => {
 
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
-		expect(button.ariaLabel).toEqual('Save changes');
+		expect(button).toHaveAttribute('aria-label', 'Save changes');
+	});
+
+	it('should render the button with the "role" attribute', () => {
+		render(<Button role="link">Save changes</Button>);
+
+		const button = screen.getByRole('link', { name: 'Save changes' });
+
+		expect(button).toBeInTheDocument();
+	});
+
+	it('should render the button with the "button-link-delete" class', () => {
+		render(<Button role="link">Save changes</Button>);
+
+		const button = screen.getByRole('link', { name: 'Save changes' });
+
+		expect(button).toBeInTheDocument();
 	});
 });

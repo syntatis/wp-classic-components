@@ -1,44 +1,46 @@
 @use '../../styles/variables/colors';
 
-.root {
-  .affix {
-    display: flex;
-    align-items: center;
-		justify-content: center;
-
-    svg {
-      max-width: var(--wp-classic-button-affix-size, 18px);
-      height: auto;
-      fill: currentcolor;
-    }
-  }
-
-	&.hasAffix {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-  }
-
-	&:global(.button-small) {
+:global(.wp-core-ui) {
+	.root {
 		.affix {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
 			svg {
-				max-width: var(--wp-classic-button-affix-size, 16px);
+				max-width: var(--wp-classic-button-affix-size, 18px);
+				height: auto;
+				fill: currentcolor;
 			}
 		}
-	}
 
-	&:global(.button-large) {
-		.affix {
-			svg {
-				max-width: var(--wp-classic-button-affix-size, 20px);
+		&.hasAffix {
+			display: flex;
+			gap: 4px;
+			align-items: center;
+		}
+
+		&:global(.button-small) {
+			.affix {
+				svg {
+					max-width: var(--wp-classic-button-affix-size, 16px);
+				}
 			}
 		}
-	}
 
-	&:global(.button-hero) {
-		.affix {
-			svg {
-				max-width: var(--wp-classic-button-affix-size, 24px);
+		&:global(.button-large) {
+			.affix {
+				svg {
+					max-width: var(--wp-classic-button-affix-size, 20px);
+				}
+			}
+		}
+
+		&:global(.button-hero) {
+			.affix {
+				svg {
+					max-width: var(--wp-classic-button-affix-size, 24px);
+				}
 			}
 		}
 	}
