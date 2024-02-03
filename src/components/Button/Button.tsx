@@ -22,14 +22,7 @@ interface ButtonProps
 	 *
 	 * @default 'primary'
 	 */
-	variant?: 'primary' | 'secondary' | 'link';
-	/**
-	 * Specify the level or severity of the action the button will carry out.
-	 *
-	 * This will affect the button's color, and at the moment only applicable
-	 * to the `link` variant.
-	 */
-	severity?: 'danger';
+	variant?: 'primary' | 'secondary' | 'link' | 'link-danger';
 	/**
 	 * The size of the button.
 	 */
@@ -47,7 +40,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			autoFocus,
 			style,
 			size,
-			severity,
 			role,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
@@ -71,7 +63,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						`button-${variant}`,
 						{
 							[classes.hasAffix]: hasAffix,
-							'button-link-delete': variant === 'link' && severity === 'danger',
+							'button-link-delete': variant === 'link-danger',
 						},
 						className,
 						classes.root,

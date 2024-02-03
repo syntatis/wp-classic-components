@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, it, vi } from 'vitest';
 import { Button } from './Button';
 
 describe('Button', async () => {
@@ -9,6 +10,22 @@ describe('Button', async () => {
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
 		expect(button).toBeInTheDocument();
+	});
+
+	it('should render the button with the "submit" type', () => {
+		render(<Button type="submit">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveAttribute('type', 'submit');
+	});
+
+	it('should render the button with the "reset" type', () => {
+		render(<Button type="reset">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveAttribute('type', 'reset');
 	});
 
 	it('should render the button with the static class', () => {
@@ -26,6 +43,30 @@ describe('Button', async () => {
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
 		expect(button).toHaveClass('button-secondary');
+	});
+
+	it('should render the button with the small "size" variant class name', () => {
+		render(<Button size="small">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveClass('button-small');
+	});
+
+	it('should render the button with the large "size" variant class name', () => {
+		render(<Button size="large">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveClass('button-large');
+	});
+
+	it('should render the button with the hero "size" variant class name', () => {
+		render(<Button size="hero">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveClass('button-hero');
 	});
 
 	it('should render the button with the custom class name', () => {
@@ -82,5 +123,29 @@ describe('Button', async () => {
 		const button = screen.getByRole('link', { name: 'Save changes' });
 
 		expect(button).toBeInTheDocument();
+	});
+
+	it('should call the "onPress" callback', async () => {
+		const fn = vi.fn();
+		const user = userEvent.setup();
+
+		render(<Button onPress={fn}>Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		await user.click(button);
+		expect(fn).toBeCalledTimes(1);
+	});
+
+	it('should call the "onHoverChange" callback', async () => {
+		const fn = vi.fn();
+		const user = userEvent.setup();
+
+		render(<Button onHoverChange={fn}>Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		await user.hover(button);
+		expect(fn).toBeCalledTimes(1);
 	});
 });
