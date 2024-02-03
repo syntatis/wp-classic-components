@@ -53,7 +53,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 		return (
 			<div
 				className={clsx({
-					prefixed: 'root',
+					prefixedNames: 'root',
 					classNames: [classes.root, className],
 				})}
 				data-disabled={isDisabled || undefined}
@@ -64,7 +64,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					<label
 						{...labelProps}
 						className={clsx({
-							prefixed: 'label',
+							prefixedNames: 'label',
 							classNames: classes.label,
 						})}
 					>
@@ -72,7 +72,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 						{isRequired ?
 							<span
 								className={clsx({
-									prefixed: 'marked-required',
+									prefixedNames: 'marked-required',
 									classNames: classes.markedRequired,
 								})}
 							>
@@ -87,7 +87,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					ref={ref}
 					style={style}
 					className={clsx({
-						prefixed: 'input',
+						prefixedNames: 'input',
 						classNames: {
 							[classes.input]: true,
 							['code']: props.isCode,
@@ -98,7 +98,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					<p
 						{...errorMessageProps}
 						className={clsx({
-							prefixed: 'error-message',
+							prefixedNames: 'error-message',
 							classNames: classes.errorMessage,
 						})}
 					>
@@ -109,7 +109,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					<p
 						{...descriptionProps}
 						className={clsx({
-							prefixed: 'description',
+							prefixedNames: 'description',
 							classNames: [classes.description, 'description'],
 						})}
 					>

@@ -56,7 +56,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				style={style}
 				role={role}
 				className={clsx({
-					prefixed: 'root',
+					prefixedNames: 'root',
 					classNames: [
 						`${size ? `button-${size}` : ''}`,
 						'button',
@@ -73,7 +73,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{prefix && (
 					<span
 						className={clsx({
-							prefixed: ['affix', 'prefix'],
+							prefixedNames: ['affix', 'prefix'],
 							classNames: [classes.prefix, classes.affix],
 						})}
 					>
@@ -83,7 +83,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							prefixed: ['affix', 'infix'],
+							prefixedNames: ['affix', 'infix'],
 							classNames: [classes.infix, classes.affix],
 						})}
 					>
@@ -93,7 +93,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{suffix && (
 					<span
 						className={clsx({
-							prefixed: ['affix', 'suffix'],
+							prefixedNames: ['affix', 'suffix'],
 							classNames: [classes.suffix, classes.affix],
 						})}
 					>

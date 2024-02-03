@@ -52,7 +52,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{...mergeProps(linkProps, hoverProps)}
 				ref={ref}
 				className={clsx({
-					prefixed: 'root',
+					prefixedNames: 'root',
 					classNames: [
 						classes.root,
 						{
@@ -67,7 +67,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{prefix && (
 					<span
 						className={clsx({
-							prefixed: ['affix', 'prefix'],
+							prefixedNames: ['affix', 'prefix'],
 							classNames: [classes.prefix, classes.affix],
 						})}
 					>
@@ -77,7 +77,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							prefixed: ['affix', 'infix'],
+							prefixedNames: ['affix', 'infix'],
 							classNames: [classes.infix, classes.affix],
 						})}
 					>
@@ -87,7 +87,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{suffix && (
 					<span
 						className={clsx({
-							prefixed: ['affix', 'suffix'],
+							prefixedNames: ['affix', 'suffix'],
 							classNames: [classes.suffix, classes.affix],
 						})}
 					>

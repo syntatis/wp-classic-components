@@ -6,8 +6,8 @@ type Argument = Value | Mapping | ArgumentArray;
 type ArgumentArray = Argument[];
 
 interface ClsxArgs {
-	prefixed: string | string[];
 	classNames?: Argument | ArgumentArray;
+	prefixedNames?: string | string[];
 }
 
 interface ClassesReturn {
@@ -23,18 +23,25 @@ interface ClassesReturn {
 	clsx: (args: ClsxArgs) => string;
 }
 
+export function parsePrefixedNames(names: string | string[]): string[] {
+	if (typeof names === 'string') {
+		return names.split(' ');
+	}
+
+	return names.map((name) => name.split(' ')).flat();
+}
+
 export function useClasses(component: string): ClassesReturn {
 	const prefix = `wp-classic-${component}-`;
 
 	return {
 		clsx: (args: ClsxArgs) => {
-			const { prefixed, classNames } = args;
-			const prefixedNames = (
-				typeof prefixed === 'string' ?
-					prefixed.split(' ')
-				:	prefixed).map((name) => `${prefix}${name}`);
+			const { prefixedNames = '', classNames = '' } = args;
+			const prefixed = parsePrefixedNames(prefixedNames).map(
+				(name) => `${prefix}${name}`
+			);
 
-			return cx(prefixedNames, classNames);
+			return cx(prefixed, classNames);
 		},
 	};
 }

@@ -12,6 +12,7 @@ const meta: Meta<typeof Checkbox> = {
 				'excludeFromTabOrder',
 				'isDisabled',
 				'isReadOnly',
+				'isSelected',
 				'onChange',
 				'onFocusChange',
 			],
@@ -45,9 +46,17 @@ export const ReadOnly: Story = {
 	},
 };
 
-export const WithDefaultSelected: Story = {
+export const SelectedDefault: Story = {
+	name: 'Selected (default)',
 	args: {
 		defaultSelected: true,
+	},
+};
+
+export const SelectedControlled: Story = {
+	name: 'Selected (controlled)',
+	args: {
+		isSelected: true,
 	},
 };
 

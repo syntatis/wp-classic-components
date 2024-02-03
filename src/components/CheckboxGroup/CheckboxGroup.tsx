@@ -60,7 +60,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 				{...groupProps}
 				ref={ref}
 				className={clsx({
-					prefixed: 'root',
+					prefixedNames: 'root',
 					classNames: [classes.root, className],
 				})}
 				aria-orientation={orientation || undefined}
@@ -69,7 +69,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 				<span
 					{...labelProps}
 					className={clsx({
-						prefixed: 'label',
+						prefixedNames: 'label',
 						classNames: classes.label,
 					})}
 				>
@@ -77,7 +77,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					{isRequired ?
 						<span
 							className={clsx({
-								prefixed: 'marked-required',
+								prefixedNames: 'marked-required',
 								classNames: classes.markedRequired,
 							})}
 						>
@@ -88,7 +88,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 				<CheckboxGroupContext.Provider value={state}>
 					<div
 						className={clsx({
-							prefixed: 'items',
+							prefixedNames: 'items',
 							classNames: classes.items,
 						})}
 					>
@@ -99,7 +99,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					<div
 						{...errorMessageProps}
 						className={clsx({
-							prefixed: 'error-message',
+							prefixedNames: 'error-message',
 							classNames: classes.errorMessage,
 						})}
 					>
@@ -110,7 +110,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					<div
 						{...descriptionProps}
 						className={clsx({
-							prefixed: 'description',
+							prefixedNames: 'description',
 							classNames: classes.description,
 						})}
 					>

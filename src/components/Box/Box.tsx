@@ -78,7 +78,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 				{...filterDOMProps(props)}
 				ref={ref}
 				className={clsx({
-					prefixed: 'root',
+					prefixedNames: 'root',
 					classNames: [
 						classes.root,
 						{
@@ -92,13 +92,13 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 				{(title || collapsible) && (
 					<div
 						className={clsx({
-							prefixed: 'header',
+							prefixedNames: 'header',
 							classNames: [classes.header, 'postbox-header'],
 						})}
 					>
 						<h2
 							className={clsx({
-								prefixed: 'heading',
+								prefixedNames: 'heading',
 								classNames: classes.heading,
 							})}
 						>
@@ -124,7 +124,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 					<div
 						id={contentId}
 						className={clsx({
-							prefixed: 'content',
+							prefixedNames: 'content',
 							classNames: classes.content,
 						})}
 					>
@@ -134,7 +134,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 				{expanded && footer && (
 					<div
 						className={clsx({
-							prefixed: 'footer',
+							prefixedNames: 'footer',
 							classNames: classes.footer,
 						})}
 					>

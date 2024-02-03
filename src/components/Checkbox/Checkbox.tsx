@@ -23,6 +23,7 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 		const { children, className, description, style } = props;
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
+		const labelId = useId();
 		const descriptionId =
 			description ?
 				// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -49,9 +50,10 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 		const label = (
 			<span
 				{...labelProps}
+				id={labelId}
 				className={clsx({
-					prefixed: 'label-group',
 					classNames: classes.labelGroup,
+					prefixedNames: 'label-group',
 				})}
 			>
 				{children}
@@ -60,42 +62,42 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 
 		return (
 			<label
-				{...filterDOMProps(props, { labelable: true })}
 				style={style}
 				ref={ref}
 				className={clsx({
-					prefixed: 'root',
 					classNames: [classes.root, className],
+					prefixedNames: 'root',
 				})}
 				data-disabled={isDisabled || undefined}
 				data-readonly={isReadOnly || undefined}
 			>
 				<input
 					{...inputProps}
-					aria-describedby={descriptionId}
 					ref={inputRef}
+					aria-labelledby={labelId}
+					aria-describedby={descriptionId}
 					className={clsx({
-						prefixed: 'input',
+						prefixedNames: 'input',
 						classNames: classes.input,
 					})}
 				/>
 				{description ?
 					<div
 						className={clsx({
-							prefixed: 'label-group',
 							classNames: classes.labelGroup,
+							prefixedNames: 'label-group',
 						})}
 					>
 						{label}
-						<p
+						<div
 							id={descriptionId}
 							className={clsx({
-								prefixed: 'description',
 								classNames: [classes.description, 'description'],
+								prefixedNames: 'description',
 							})}
 						>
 							{description}
-						</p>
+						</div>
 					</div>
 				:	label}
 			</label>

@@ -62,7 +62,7 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 				{...filterDOMProps(props)}
 				ref={ref}
 				className={clsx({
-					prefixed: 'root',
+					prefixedNames: 'root',
 					classNames: [
 						'notice',
 						`notice-${level}`,
@@ -74,7 +74,7 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 			>
 				<div
 					className={clsx({
-						prefixed: 'content',
+						prefixedNames: 'content',
 						classNames: classes.content,
 					})}
 				>
