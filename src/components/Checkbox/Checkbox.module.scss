@@ -14,13 +14,19 @@
 		color: colors.$description;
 	}
 
-	&[data-readonly="true"],
+	&.readOnly,
 	.input:read-only {
 		cursor: default;
 	}
 
-	&[data-disabled="true"],
+	&.disabled,
 	.input:disabled {
 		cursor: not-allowed;
+	}
+
+	.labelGroup {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
 	}
 }

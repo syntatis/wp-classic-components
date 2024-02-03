@@ -65,11 +65,16 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 				style={style}
 				ref={ref}
 				className={clsx({
-					classNames: [classes.root, className],
+					classNames: [
+						classes.root,
+						className,
+						{
+							[classes.disabled]: isDisabled,
+							[classes.readOnly]: isReadOnly,
+						},
+					],
 					prefixedNames: 'root',
 				})}
-				data-disabled={isDisabled || undefined}
-				data-readonly={isReadOnly || undefined}
 			>
 				<input
 					{...inputProps}
