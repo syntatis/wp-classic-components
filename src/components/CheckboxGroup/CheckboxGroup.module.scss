@@ -3,6 +3,10 @@
 .root {
 	@include input.styles;
 
+	.label {
+		cursor: default;
+	}
+
 	.items {
 		display: flex;
 		flex-direction: column;

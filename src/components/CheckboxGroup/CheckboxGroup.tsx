@@ -1,5 +1,5 @@
 import { AriaCheckboxGroupProps, useCheckboxGroup } from '@react-aria/checkbox';
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
+import { useObjectRef } from '@react-aria/utils';
 import {
 	CheckboxGroupState,
 	useCheckboxGroupState,
@@ -56,7 +56,6 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 
 		return (
 			<div
-				{...filterDOMProps(props, { labelable: true })}
 				{...groupProps}
 				ref={ref}
 				className={clsx({
