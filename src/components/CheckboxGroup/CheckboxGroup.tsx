@@ -14,9 +14,7 @@ export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
 	null
 );
 
-interface CheckboxGroupProps
-	extends GlobalProps,
-		AriaCheckboxGroupProps {
+interface CheckboxGroupProps extends GlobalProps, AriaCheckboxGroupProps {
 	children: ReactElement<CheckboxProps> | ReactElement<CheckboxProps>[];
 	description?: ReactNode;
 	/**

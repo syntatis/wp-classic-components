@@ -7,7 +7,14 @@ const meta: Meta<typeof Checkbox> = {
 	tags: ['autodocs'],
 	parameters: {
 		controls: {
-			include: ['children', 'onChange', 'onFocusChange'],
+			include: [
+				'children',
+				'excludeFromTabOrder',
+				'isDisabled',
+				'isReadOnly',
+				'onChange',
+				'onFocusChange',
+			],
 		},
 	},
 	argTypes: {

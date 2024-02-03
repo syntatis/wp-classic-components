@@ -14,7 +14,7 @@ import { CheckboxGroupContext } from '../CheckboxGroup';
 export interface CheckboxProps
 	extends GlobalProps,
 		// WordPress does not support indeterminate state for checkboxes (yet).
-		Omit<AriaCheckboxProps, 'isIndeterminate'> {
+		Omit<AriaCheckboxProps, 'isIndeterminate' | 'isRequired' | 'isInvalid'> {
 	description?: ReactNode;
 }
 

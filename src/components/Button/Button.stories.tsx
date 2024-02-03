@@ -10,11 +10,11 @@ const meta: Meta<typeof Button> = {
 		controls: {
 			include: [
 				'children',
-				'isDisabled',
 				'size',
 				'variant',
-				'level',
 				'type',
+				'isDisabled',
+				'excludeFromTabOrder',
 				'onPress',
 				'onHoverChange',
 				'onFocusChange',
