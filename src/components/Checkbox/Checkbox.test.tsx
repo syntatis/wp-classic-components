@@ -85,15 +85,18 @@ describe('a11y', () => {
 });
 
 describe('states', () => {
-	it('should be readonly', () => {
-		render(<Checkbox isReadOnly>Agree</Checkbox>);
+	it('should be checked', async () => {
+		render(<Checkbox>Agree</Checkbox>);
 
+		const user = userEvent.setup();
 		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
-		expect(checkbox).toHaveAttribute('aria-readonly', 'true');
+		await user.click(checkbox);
+
+		expect(checkbox).toBeChecked();
 	});
 
-	it('should be checked by default', () => {
+	it('should be checked (by default)', () => {
 		render(<Checkbox defaultSelected>Agree</Checkbox>);
 
 		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
@@ -107,6 +110,14 @@ describe('states', () => {
 		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
 		expect(checkbox).toBeChecked();
+	});
+
+	it('should be readonly', () => {
+		render(<Checkbox isReadOnly>Agree</Checkbox>);
+
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+		expect(checkbox).toHaveAttribute('aria-readonly', 'true');
 	});
 
 	it('should be disabled', () => {
