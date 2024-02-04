@@ -84,9 +84,18 @@ export const Invalid: Story = {
 	render: Default.render,
 };
 
-export const WithDefaultValue: Story = {
+export const CheckedDefault: Story = {
+	name: 'Checked (default)',
 	args: {
 		defaultValue: 'g:i a',
+	},
+	render: Default.render,
+};
+
+export const CheckedControlled: Story = {
+	name: 'Checked (controlled)',
+	args: {
+		value: 'g:i a',
 	},
 	render: Default.render,
 };

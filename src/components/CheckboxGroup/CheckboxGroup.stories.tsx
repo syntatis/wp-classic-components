@@ -110,6 +110,14 @@ export const CheckedDefault: Story = {
 	render: Default.render,
 };
 
+export const CheckedControlled: Story = {
+	name: 'Checked (controlled)',
+	args: {
+		value: ['permalink'],
+	},
+	render: Default.render,
+};
+
 export const WithDescription: Story = {
 	args: {
 		description: 'Choose which elements to hide on screen.',
