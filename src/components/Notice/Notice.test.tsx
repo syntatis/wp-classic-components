@@ -19,41 +19,6 @@ it('should render the notice dismiss button', () => {
 	expect(screen.getByRole('button', { name: 'Dismiss notice' })).toBeEnabled();
 });
 
-describe('states', () => {
-	it('should be dismissed', () => {
-		render(
-			<Notice data-testid="notice" isDismissed>
-				Changes saved
-			</Notice>
-		);
-
-		expect(screen.queryByTestId('notice')).not.toBeInTheDocument();
-	});
-
-	it('should dismiss the notice when clicking the dismiss button', async () => {
-		const fn = vi.fn();
-		const user = userEvent.setup();
-
-		render(
-			<Notice data-testid="notice" dismissable onDismiss={fn}>
-				Changes saved
-			</Notice>
-		);
-
-		const notice = screen.getByTestId('notice');
-		const dismissButton = screen.getByRole('button', {
-			name: 'Dismiss notice',
-		});
-
-		expect(notice).toBeInTheDocument();
-		expect(dismissButton).toBeEnabled();
-
-		await user.click(dismissButton);
-
-		expect(fn).toBeCalledTimes(1);
-	});
-});
-
 describe('variants', () => {
 	it('should render as "alt" variant', () => {
 		render(
@@ -176,5 +141,42 @@ describe('attributes', () => {
 		const notice = screen.getByTestId('notice');
 
 		expect(notice).not.toHaveAttribute('foo');
+	});
+});
+
+describe('states', () => {
+	it('should be dismissed', () => {
+		render(
+			<Notice data-testid="notice" isDismissed>
+				Changes saved
+			</Notice>
+		);
+
+		expect(screen.queryByTestId('notice')).not.toBeInTheDocument();
+	});
+});
+
+describe('events', () => {
+	it('should dismiss the notice when clicking the dismiss button', async () => {
+		const fn = vi.fn();
+		const user = userEvent.setup();
+
+		render(
+			<Notice data-testid="notice" dismissable onDismiss={fn}>
+				Changes saved
+			</Notice>
+		);
+
+		const notice = screen.getByTestId('notice');
+		const dismissButton = screen.getByRole('button', {
+			name: 'Dismiss notice',
+		});
+
+		expect(notice).toBeInTheDocument();
+		expect(dismissButton).toBeEnabled();
+
+		await user.click(dismissButton);
+
+		expect(fn).toBeCalledTimes(1);
 	});
 });

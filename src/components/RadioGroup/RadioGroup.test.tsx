@@ -201,7 +201,9 @@ describe('states', () => {
 			})
 		).toHaveAttribute('aria-required', 'true');
 	});
+});
 
+describe('events', () => {
 	it('should be checked between inputs on click', async () => {
 		const user = userEvent.setup();
 

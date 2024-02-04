@@ -47,16 +47,6 @@ describe('styles', () => {
 	});
 });
 
-describe('a11y', () => {
-	it('should be excluded from tab order', () => {
-		render(<Checkbox excludeFromTabOrder>Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).toHaveAttribute('tabindex', '-1');
-	});
-});
-
 describe('attributes', () => {
 	it('should render with the "name" attribute', () => {
 		render(<Checkbox name="agree">Agree</Checkbox>);
@@ -81,6 +71,16 @@ describe('attributes', () => {
 		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
 		expect(checkbox).not.toHaveAttribute('foo');
+	});
+});
+
+describe('a11y', () => {
+	it('should be excluded from tab order', () => {
+		render(<Checkbox excludeFromTabOrder>Agree</Checkbox>);
+
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+		expect(checkbox).toHaveAttribute('tabindex', '-1');
 	});
 });
 
@@ -156,5 +156,11 @@ describe('events', () => {
 		await user.click(checkbox);
 
 		expect(fn).toBeCalledTimes(1);
+		expect(fn).toBeCalledWith(true);
+
+		await user.click(checkbox);
+
+		expect(fn).toBeCalledTimes(2);
+		expect(fn).toBeCalledWith(false);
 	});
 });

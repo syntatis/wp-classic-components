@@ -45,16 +45,6 @@ describe('variants', () => {
 	});
 });
 
-describe('states', () => {
-	it('should be disabled', () => {
-		render(<Button isDisabled>Save changes</Button>);
-
-		const button = screen.getByRole('button', { name: 'Save changes' });
-
-		expect(button).toBeDisabled();
-	});
-});
-
 describe('styles', () => {
 	it('should render with the static class', () => {
 		render(<Button>Save changes</Button>);
@@ -79,6 +69,32 @@ describe('styles', () => {
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
 		expect(button).toHaveStyle({ width: '100px' });
+	});
+});
+
+describe('attributes', () => {
+	it('should render with the "id"', () => {
+		render(<Button id="1">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveAttribute('id', '1');
+	});
+
+	it('should render with the type "submit"', () => {
+		render(<Button type="submit">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveAttribute('type', 'submit');
+	});
+
+	it('should render with the type "reset"', () => {
+		render(<Button type="reset">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveAttribute('type', 'reset');
 	});
 });
 
@@ -108,29 +124,13 @@ describe('a11y', () => {
 	});
 });
 
-describe('attributes', () => {
-	it('should render with the "id"', () => {
-		render(<Button id="1">Save changes</Button>);
+describe('states', () => {
+	it('should be disabled', () => {
+		render(<Button isDisabled>Save changes</Button>);
 
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
-		expect(button).toHaveAttribute('id', '1');
-	});
-
-	it('should render with the type "submit"', () => {
-		render(<Button type="submit">Save changes</Button>);
-
-		const button = screen.getByRole('button', { name: 'Save changes' });
-
-		expect(button).toHaveAttribute('type', 'submit');
-	});
-
-	it('should render with the type "reset"', () => {
-		render(<Button type="reset">Save changes</Button>);
-
-		const button = screen.getByRole('button', { name: 'Save changes' });
-
-		expect(button).toHaveAttribute('type', 'reset');
+		expect(button).toBeDisabled();
 	});
 });
 
