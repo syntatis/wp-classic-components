@@ -28,4 +28,5 @@
   "stylelint.validate": [
     "scss"
   ],
+  "testing.automaticallyOpenPeekView": "never",
 }
