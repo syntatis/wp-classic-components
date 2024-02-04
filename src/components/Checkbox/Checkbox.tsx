@@ -1,4 +1,4 @@
-import { filterDOMProps, useId, useObjectRef } from '@react-aria/utils';
+import { useId, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef, useContext, useRef } from 'react';
 import {
 	AriaCheckboxProps,

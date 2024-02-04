@@ -1,3 +1,5 @@
+'use client';
+
 import { AriaCheckboxGroupProps, useCheckboxGroup } from '@react-aria/checkbox';
 import { useObjectRef } from '@react-aria/utils';
 import {
