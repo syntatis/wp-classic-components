@@ -84,7 +84,7 @@
 		"lint:scripts": "eslint .",
 		"lint:styles": "stylelint '**/*.scss'",
 		"lint:types": "tsc --noEmit",
-		"lint": "npm run lint:scripts && npm run lint:styles",
+		"lint": "npm run lint:scripts && npm run lint:styles && npm run lint:types",
 		"storybook": "storybook dev -p 6007",
 		"build:storybook": "storybook build",
 		"build": "parcel build",
