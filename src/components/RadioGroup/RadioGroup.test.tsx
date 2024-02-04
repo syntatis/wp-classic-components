@@ -146,4 +146,20 @@ describe('states', () => {
 
 		expect(secondRadio).not.toBeChecked();
 	});
+
+	it('should be required', () => {
+		render(
+			<RadioGroup label="For each post in a feed, include" isRequired>
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		expect(
+			screen.getByRole('radiogroup', {
+				// Has the asterisk.
+				name: 'For each post in a feed, include *',
+			})
+		).toHaveAttribute('aria-required', 'true');
+	});
 });
