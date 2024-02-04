@@ -89,6 +89,6 @@
 		"build:storybook": "storybook build",
 		"build": "parcel build",
 		"test": "vitest run",
-		"chromatic": "npx chromatic --build-script-name=storybook-build"
+		"chromatic": "npx chromatic --build-script-name=build:storybook"
 	}
 }
