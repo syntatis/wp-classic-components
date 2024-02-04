@@ -51,7 +51,7 @@
 			{
 				"blankLine": "always",
 				"prev": "*",
-				"next": ["block-like", "return", "continue", "multiline-expression"]
+				"next": ["block-like", "return", "continue"]
 			},
 			{
 				"blankLine": "always",
