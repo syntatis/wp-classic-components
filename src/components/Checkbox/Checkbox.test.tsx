@@ -11,36 +11,12 @@ describe('Checkbox', async () => {
 		expect(checkbox).toBeInTheDocument();
 	});
 
-	it('should have the custom class', () => {
-		render(<Checkbox className="foo-bar">Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox.parentNode?.parentNode).toHaveClass('foo-bar');
-	});
-
 	it('should render with the description', () => {
 		render(<Checkbox description="This is the description">Agree</Checkbox>);
 
 		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
 		expect(checkbox).toHaveAccessibleDescription('This is the description');
-	});
-
-	it('should have the "name" attribute', () => {
-		render(<Checkbox name="agree">Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).toHaveAttribute('name', 'agree');
-	});
-
-	it('should have the "id" attribute', () => {
-		render(<Checkbox id="tos-agreement">Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).toHaveAttribute('id', 'tos-agreement');
 	});
 
 	it('should be readonly', () => {
@@ -73,5 +49,31 @@ describe('Checkbox', async () => {
 		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
 		expect(checkbox).toHaveAttribute('tabindex', '-1');
+	});
+
+	describe('attributes', () => {
+		it('should render with the custom class', () => {
+			render(<Checkbox className="foo-bar">Agree</Checkbox>);
+
+			const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+			expect(checkbox.parentNode?.parentNode).toHaveClass('foo-bar');
+		});
+
+		it('should render with the "name" attribute', () => {
+			render(<Checkbox name="agree">Agree</Checkbox>);
+
+			const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+			expect(checkbox).toHaveAttribute('name', 'agree');
+		});
+
+		it('should render with the "id" attribute', () => {
+			render(<Checkbox id="tos-agreement">Agree</Checkbox>);
+
+			const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+			expect(checkbox).toHaveAttribute('id', 'tos-agreement');
+		});
 	});
 });
