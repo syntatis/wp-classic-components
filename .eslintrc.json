@@ -170,6 +170,14 @@
 			"rules": {
 				"import/no-default-export": "off"
 			}
+		},
+		{
+			"files": [
+				"*.test.{js,jsx,ts,tsx,mts}"
+			],
+			"rules": {
+				"@typescript-eslint/ban-ts-comment": "off"
+			}
 		}
 	]
 }
