@@ -1,5 +1,3 @@
-'use client';
-
 import { AriaCheckboxGroupProps, useCheckboxGroup } from '@react-aria/checkbox';
 import { useObjectRef } from '@react-aria/utils';
 import {
@@ -43,6 +41,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			orientation = 'vertical',
 			className,
 			isRequired,
+			errorMessage,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const state = useCheckboxGroupState(props);
@@ -53,6 +52,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			errorMessageProps,
 			isInvalid,
 			validationErrors,
+			validationDetails,
 		} = useCheckboxGroup(props, state);
 		const { clsx } = useClasses('CheckboxGroup');
 
@@ -60,11 +60,17 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			<div
 				{...groupProps}
 				ref={ref}
+				aria-invalid={isInvalid}
 				className={clsx({
 					prefixedNames: 'root',
-					classNames: [classes.root, className],
+					classNames: [
+						classes.root,
+						className,
+						{
+							[classes.orientationHorizontal]: orientation === 'horizontal',
+						},
+					],
 				})}
-				aria-orientation={orientation || undefined}
 				data-description-area={descriptionArea}
 			>
 				<span
@@ -96,17 +102,6 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 						{children}
 					</div>
 				</CheckboxGroupContext.Provider>
-				{isInvalid && (
-					<div
-						{...errorMessageProps}
-						className={clsx({
-							prefixedNames: 'error-message',
-							classNames: classes.errorMessage,
-						})}
-					>
-						{validationErrors.join(' ')}
-					</div>
-				)}
 				{description && (
 					<div
 						{...descriptionProps}
@@ -116,6 +111,24 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 						})}
 					>
 						{description}
+					</div>
+				)}
+				{isInvalid && (
+					<div
+						{...errorMessageProps}
+						className={clsx({
+							prefixedNames: 'error-message',
+							classNames: classes.errorMessage,
+						})}
+					>
+						{typeof errorMessage === 'function' ?
+							errorMessage({
+								isInvalid,
+								validationErrors,
+								validationDetails,
+							})
+						:	errorMessage}
+						{validationErrors.join(' ')}
 					</div>
 				)}
 			</div>

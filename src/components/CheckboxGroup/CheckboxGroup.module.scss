@@ -14,7 +14,7 @@
 		margin-block: 2px;
 	}
 
-	&[aria-orientation='horizontal'] {
+	&.orientationHorizontal {
 		.items {
 			flex-direction: row;
 		}
