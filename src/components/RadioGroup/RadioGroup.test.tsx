@@ -83,7 +83,7 @@ describe('styles', () => {
 		});
 	});
 
-	it('should render with inline style', () => {
+	it('should render with the inline style', () => {
 		render(
 			<RadioGroup
 				label="For each post in a feed, include"
@@ -120,6 +120,84 @@ describe('styles', () => {
 				padding: '10px',
 			});
 		});
+	});
+});
+
+describe('attributes', () => {
+	it('should render with the "id" attribute', async () => {
+		render(
+			<RadioGroup label="For each post in a feed, include" id="radio-group-1">
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		expect(
+			screen.getByRole('radiogroup', {
+				name: 'For each post in a feed, include',
+			})
+		).toHaveAttribute('id', 'radio-group-1');
+	});
+
+	it('should not render with invalid html attribute', async () => {
+		render(
+			// @ts-expect-error
+			<RadioGroup label="For each post in a feed, include" foo="bar">
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		expect(
+			screen.getByRole('radiogroup', {
+				name: 'For each post in a feed, include',
+			})
+		).not.toHaveAttribute('foo');
+	});
+});
+
+describe('a11y', () => {
+	it('should retain the role', () => {
+		render(
+			<RadioGroup label="For each post in a feed, include" role="presentation">
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		// Role "presentation" does not override the role "radiogroup".
+		expect(screen.getByRole('radiogroup')).toBeInTheDocument();
+	});
+
+	it('should render with default orientation', () => {
+		render(
+			<RadioGroup label="For each post in a feed, include">
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		expect(screen.getByRole('radiogroup')).toHaveAttribute(
+			'aria-orientation',
+			'vertical'
+		);
+	});
+
+	it('should set orientation to horizontal', () => {
+		render(
+			<RadioGroup
+				label="For each post in a feed, include"
+				orientation="horizontal"
+			>
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		expect(screen.getByRole('radiogroup')).toHaveAttribute(
+			'aria-orientation',
+			'horizontal'
+		);
 	});
 });
 
