@@ -50,7 +50,6 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 		const label = (
 			<span
 				{...labelProps}
-				id={labelId}
 				className={clsx({
 					classNames: classes.labelGroup,
 					prefixedNames: 'label-group',
@@ -61,9 +60,8 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 		);
 
 		return (
-			<label
+			<div
 				style={style}
-				ref={ref}
 				className={clsx({
 					classNames: [
 						classes.root,
@@ -76,36 +74,38 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 					prefixedNames: 'root',
 				})}
 			>
-				<input
-					{...inputProps}
-					ref={inputRef}
-					aria-labelledby={labelId}
-					aria-describedby={descriptionId}
+				<label
+					ref={ref}
+					id={labelId}
 					className={clsx({
-						prefixedNames: 'input',
-						classNames: classes.input,
+						classNames: classes.label,
+						prefixedNames: 'label',
 					})}
-				/>
-				{description ?
-					<div
+				>
+					<input
+						{...inputProps}
+						ref={inputRef}
+						aria-labelledby={labelId}
+						aria-describedby={descriptionId}
 						className={clsx({
-							classNames: classes.labelGroup,
-							prefixedNames: 'label-group',
+							prefixedNames: 'input',
+							classNames: classes.input,
+						})}
+					/>
+					{label}
+				</label>
+				{description && (
+					<div
+						id={descriptionId}
+						className={clsx({
+							classNames: [classes.description, 'description'],
+							prefixedNames: 'description',
 						})}
 					>
-						{label}
-						<div
-							id={descriptionId}
-							className={clsx({
-								classNames: [classes.description, 'description'],
-								prefixedNames: 'description',
-							})}
-						>
-							{description}
-						</div>
+						{description}
 					</div>
-				:	label}
-			</label>
+				)}
+			</div>
 		);
 	}
 );

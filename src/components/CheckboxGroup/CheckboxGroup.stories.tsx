@@ -41,12 +41,7 @@ export const Default: Story = {
 			<CheckboxGroup {...args}>
 				<Checkbox value="permalink">Permalink</Checkbox>
 				<Checkbox value="excerpt">Excerpt</Checkbox>
-				<Checkbox
-					value="discussion"
-					description="Hide the WordPress built-in comment metabox in the post editor"
-				>
-					Discussion
-				</Checkbox>
+				<Checkbox value="discussion">Discussion</Checkbox>
 			</CheckboxGroup>
 		);
 	},

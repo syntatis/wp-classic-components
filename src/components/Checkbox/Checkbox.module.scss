@@ -2,9 +2,15 @@
 
 .root {
 	display: flex;
-	gap: 8px;
+	flex-direction: column;
+	gap: 4px;
 	width: max-content;
 	max-width: 100%;
+
+	.label {
+		display: flex;
+		gap: 8px;
+	}
 
 	.input[type="checkbox"] {
 		margin: 0;
