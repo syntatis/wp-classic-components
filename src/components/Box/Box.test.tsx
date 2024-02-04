@@ -45,4 +45,56 @@ describe('Button', async () => {
 
 		expect(button).toBeInTheDocument();
 	});
+
+	describe('attributes', () => {
+		it('should render with the static class', () => {
+			render(<Box data-testid="box-1">This is the content of the box</Box>);
+
+			expect(screen.getByTestId('box-1')).toHaveClass(
+				'wp-classic-Box-root',
+				'postbox'
+			);
+		});
+
+		it('should render with the custom class', () => {
+			render(
+				<Box data-testid="box-1" className="box-1-class-name">
+					This is the content of the box
+				</Box>
+			);
+
+			expect(screen.getByTestId('box-1')).toHaveClass('box-1-class-name');
+		});
+
+		it('should render with the custom class', () => {
+			render(
+				<Box data-testid="box-1" className="box-1-class-name">
+					This is the content of the box
+				</Box>
+			);
+
+			expect(screen.getByTestId('box-1')).toHaveClass('box-1-class-name');
+		});
+
+		it('should render with the id', () => {
+			render(
+				<Box data-testid="box-1" id="box-1-id">
+					This is the content of the box
+				</Box>
+			);
+
+			expect(screen.getByTestId('box-1')).toHaveAttribute('id', 'box-1-id');
+		});
+
+		it('should not render with invalid html attribute', () => {
+			render(
+				// @ts-expect-error
+				<Box data-testid="box-1" foo="bar">
+					This is the content of the box
+				</Box>
+			);
+
+			expect(screen.getByTestId('box-1')).not.toHaveAttribute('foo');
+		});
+	});
 });

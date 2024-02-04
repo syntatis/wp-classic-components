@@ -49,6 +49,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 			defaultExpanded = true,
 			footer,
 			style,
+			className,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const buttonRef = useRef<HTMLButtonElement>(null);
@@ -75,16 +76,17 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 
 		return (
 			<div
-				{...filterDOMProps(props)}
+				{...filterDOMProps(props, { labelable: true })}
 				ref={ref}
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [
+						'postbox',
 						classes.root,
+						className,
 						{
 							[classes.collapsed]: !expanded,
 						},
-						'postbox',
 					],
 				})}
 				style={style}
