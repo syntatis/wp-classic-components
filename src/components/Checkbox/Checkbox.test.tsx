@@ -2,23 +2,23 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Checkbox } from './Checkbox';
 
-describe('Checkbox', async () => {
-	it('should render the checkbox', () => {
-		render(<Checkbox>Agree</Checkbox>);
+it('should render the checkbox', () => {
+	render(<Checkbox>Agree</Checkbox>);
 
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+	const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
-		expect(checkbox).toBeInTheDocument();
-	});
+	expect(checkbox).toBeInTheDocument();
+});
 
-	it('should render with the description', () => {
-		render(<Checkbox description="This is the description">Agree</Checkbox>);
+it('should render with the description', () => {
+	render(<Checkbox description="This is the description">Agree</Checkbox>);
 
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+	const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
-		expect(checkbox).toHaveAccessibleDescription('This is the description');
-	});
+	expect(checkbox).toHaveAccessibleDescription('This is the description');
+});
 
+describe('states', () => {
 	it('should be readonly', () => {
 		render(<Checkbox isReadOnly>Agree</Checkbox>);
 
@@ -42,7 +42,37 @@ describe('Checkbox', async () => {
 
 		expect(checkbox).toBeDisabled();
 	});
+});
 
+describe('styles', () => {
+	it('should render with the static class', () => {
+		render(<Checkbox>Agree</Checkbox>);
+
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+		expect(checkbox.parentNode?.parentNode).toHaveClass(
+			'wp-classic-Checkbox-root'
+		);
+	});
+
+	it('should render with the custom class', () => {
+		render(<Checkbox className="foo-bar">Agree</Checkbox>);
+
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+		expect(checkbox.parentNode?.parentNode).toHaveClass('foo-bar');
+	});
+
+	it('should render with the inline styles', () => {
+		render(<Checkbox style={{ padding: 30 }}>Agree</Checkbox>);
+
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+		expect(checkbox.parentNode?.parentNode).toHaveStyle({ padding: '30px' });
+	});
+});
+
+describe('a11y', () => {
 	it('should be excluded from tab order', () => {
 		render(<Checkbox excludeFromTabOrder>Agree</Checkbox>);
 
@@ -50,30 +80,31 @@ describe('Checkbox', async () => {
 
 		expect(checkbox).toHaveAttribute('tabindex', '-1');
 	});
+});
 
-	describe('attributes', () => {
-		it('should render with the custom class', () => {
-			render(<Checkbox className="foo-bar">Agree</Checkbox>);
+describe('attributes', () => {
+	it('should render with the "name" attribute', () => {
+		render(<Checkbox name="agree">Agree</Checkbox>);
 
-			const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
-			expect(checkbox.parentNode?.parentNode).toHaveClass('foo-bar');
-		});
+		expect(checkbox).toHaveAttribute('name', 'agree');
+	});
 
-		it('should render with the "name" attribute', () => {
-			render(<Checkbox name="agree">Agree</Checkbox>);
+	it('should render with the "id" attribute', () => {
+		render(<Checkbox id="tos-agreement">Agree</Checkbox>);
 
-			const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
-			expect(checkbox).toHaveAttribute('name', 'agree');
-		});
+		expect(checkbox).toHaveAttribute('id', 'tos-agreement');
+	});
 
-		it('should render with the "id" attribute', () => {
-			render(<Checkbox id="tos-agreement">Agree</Checkbox>);
+	it('should not render with invalid html attribute', () => {
+		// @ts-expect-error
+		render(<Checkbox foo="bar">Agree</Checkbox>);
 
-			const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
-			expect(checkbox).toHaveAttribute('id', 'tos-agreement');
-		});
+		expect(checkbox).not.toHaveAttribute('foo');
 	});
 });

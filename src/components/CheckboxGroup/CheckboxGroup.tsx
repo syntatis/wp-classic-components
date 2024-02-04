@@ -42,6 +42,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			className,
 			isRequired,
 			errorMessage,
+			style,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const state = useCheckboxGroupState(props);
@@ -61,6 +62,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 				{...groupProps}
 				ref={ref}
 				aria-invalid={isInvalid}
+				style={style}
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [

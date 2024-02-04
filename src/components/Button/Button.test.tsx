@@ -45,6 +45,69 @@ describe('variants', () => {
 	});
 });
 
+describe('states', () => {
+	it('should be disabled', () => {
+		render(<Button isDisabled>Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toBeDisabled();
+	});
+});
+
+describe('styles', () => {
+	it('should render with the static class', () => {
+		render(<Button>Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveClass('button');
+		expect(button).toHaveClass('button-primary');
+	});
+
+	it('should render with the custom class name', () => {
+		render(<Button className="foo-bar">Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveClass('foo-bar');
+	});
+
+	it('should render with the inline style', () => {
+		render(<Button style={{ width: 100 }}>Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveStyle({ width: '100px' });
+	});
+});
+
+describe('a11y', () => {
+	it('should render with the "aria-*" label', () => {
+		render(<Button aria-label="Save changes" />);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveAttribute('aria-label', 'Save changes');
+	});
+
+	it('should render with the "role" attribute', () => {
+		render(<Button role="link">Save changes</Button>);
+
+		const button = screen.getByRole('link', { name: 'Save changes' });
+
+		expect(button).toBeInTheDocument();
+	});
+
+	it('should render with the "tabindex" attribute', () => {
+		render(<Button excludeFromTabOrder>Save changes</Button>);
+
+		const button = screen.getByRole('button', { name: 'Save changes' });
+
+		expect(button).toHaveAttribute('tabindex', '-1');
+	});
+});
+
 describe('attributes', () => {
 	it('should render with the "id"', () => {
 		render(<Button id="1">Save changes</Button>);
@@ -68,59 +131,6 @@ describe('attributes', () => {
 		const button = screen.getByRole('button', { name: 'Save changes' });
 
 		expect(button).toHaveAttribute('type', 'reset');
-	});
-
-	describe('styles', () => {
-		it('should render with the static class', () => {
-			render(<Button>Save changes</Button>);
-
-			const button = screen.getByRole('button', { name: 'Save changes' });
-
-			expect(button).toHaveClass('button');
-			expect(button).toHaveClass('button-primary');
-		});
-
-		it('should render with the custom class name', () => {
-			render(<Button className="foo-bar">Save changes</Button>);
-
-			const button = screen.getByRole('button', { name: 'Save changes' });
-
-			expect(button).toHaveClass('foo-bar');
-		});
-
-		it('should render with the inline style', () => {
-			render(<Button style={{ width: 100 }}>Save changes</Button>);
-
-			const button = screen.getByRole('button', { name: 'Save changes' });
-
-			expect(button).toHaveStyle({ width: '100px' });
-		});
-	});
-
-	describe('a11y', () => {
-		it('should render with the "aria-*" label', () => {
-			render(<Button aria-label="Save changes" />);
-
-			const button = screen.getByRole('button', { name: 'Save changes' });
-
-			expect(button).toHaveAttribute('aria-label', 'Save changes');
-		});
-
-		it('should render with the "role" attribute', () => {
-			render(<Button role="link">Save changes</Button>);
-
-			const button = screen.getByRole('link', { name: 'Save changes' });
-
-			expect(button).toBeInTheDocument();
-		});
-
-		it('should render with the "tabindex" attribute', () => {
-			render(<Button excludeFromTabOrder>Save changes</Button>);
-
-			const button = screen.getByRole('button', { name: 'Save changes' });
-
-			expect(button).toHaveAttribute('tabindex', '-1');
-		});
 	});
 });
 
