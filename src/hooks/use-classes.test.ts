@@ -32,7 +32,7 @@ describe('useClasses', async () => {
 		).toEqual('wp-classic-ComponentName-test');
 	});
 
-	it('should return class with prefix and the rest of class', () => {
+	it('should return class with prefix and the rest of class names', () => {
 		expect(
 			result.current.clsx({
 				classNames: ['foo', { bar: true }, { abc: false }],

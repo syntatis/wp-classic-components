@@ -39,11 +39,11 @@ export interface AnchorProps
 
 export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
 	(props, forwardedRef) => {
-		const { children, className, variant, prefix, suffix } = props;
+		const { children, className, variant, prefix, suffix, style } = props;
 		const ref = useObjectRef(forwardedRef);
 		const { linkProps } = useLink(props, ref);
 		const { hoverProps } = useHover(props);
-		const { clsx } = useClasses('Link');
+		const { clsx } = useClasses('Anchor');
 		const hasAffix = !!prefix || !!suffix;
 
 		return (
@@ -51,6 +51,7 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
 				{...filterDOMProps(props, { labelable: true, isLink: true })}
 				{...mergeProps(linkProps, hoverProps)}
 				ref={ref}
+				style={style}
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [
