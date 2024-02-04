@@ -17,6 +17,7 @@
 	&.orientationHorizontal {
 		.items {
 			flex-direction: row;
+			gap: 12px;
 		}
 	}
 }

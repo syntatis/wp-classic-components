@@ -54,11 +54,17 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			<div
 				className={clsx({
 					prefixedNames: 'root',
-					classNames: [classes.root, className],
+					classNames: [
+						classes.root,
+						className,
+						{
+							[classes.disabled]: isDisabled,
+							[classes.invalid]: isInvalid,
+							[classes.descriptionBeforeInput]:
+								descriptionArea === 'before-input',
+						},
+					],
 				})}
-				data-disabled={isDisabled || undefined}
-				data-invalid={isInvalid || undefined}
-				data-description-area={descriptionArea}
 			>
 				{label && (
 					<label

@@ -7,7 +7,7 @@
 		margin: 0;
 	}
 
-	&[data-disabled="true"],
+	&.disabled,
 	.input:disabled {
 		cursor: not-allowed;
 	}

@@ -41,9 +41,14 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 				style={style}
 				className={clsx({
 					prefixedNames: 'root',
-					classNames: [classes.root, className],
+					classNames: [
+						classes.root,
+						className,
+						{
+							[classes.disabled]: isDisabled,
+						},
+					],
 				})}
-				data-disabled={isDisabled || undefined}
 			>
 				<input
 					{...inputProps}

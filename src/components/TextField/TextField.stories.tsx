@@ -77,9 +77,17 @@ export const Invalid: Story = {
 	},
 };
 
-export const WithDefaultValue: Story = {
+export const ValueDefault: Story = {
+	name: 'Value (default)',
 	args: {
-		defaultValue: 'Blog',
+		defaultValue: 'Hello World',
+	},
+};
+
+export const ValueControlled: Story = {
+	name: 'Value (controlled)',
+	args: {
+		value: 'Hello World',
 	},
 };
 

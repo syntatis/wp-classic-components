@@ -78,6 +78,20 @@ export const Invalid: Story = {
 	},
 };
 
+export const ValueDefault: Story = {
+	name: 'Value (default)',
+	args: {
+		defaultValue: 'Hello World',
+	},
+};
+
+export const ValueControlled: Story = {
+	name: 'Value (controlled)',
+	args: {
+		value: 'Hello World',
+	},
+};
+
 export const WithDescription: Story = {
 	args: {
 		description: 'In a few words, explain what this site is about.',
