@@ -28,6 +28,12 @@ interface NoticeProps extends GlobalProps {
 	 */
 	dismissable?: boolean | { label: string };
 	/**
+	 * Whether the notice should be dismissed.
+	 *
+	 * @default false
+	 */
+	isDismissed?: boolean;
+	/**
 	 * The callback to call when the notice is dismissed.
 	 */
 	onDismiss?: () => void;
@@ -41,6 +47,8 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 			dismissable = false,
 			level = 'info',
 			variant,
+			style,
+			isDismissed,
 			onDismiss,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
@@ -48,51 +56,54 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 		const { clsx } = useClasses('Notice');
 		const { buttonProps } = useButton(
 			{
-				...props,
 				onPress: () => onDismiss?.(),
 			},
 			buttonRef
 		);
+
 		const isDismissable =
 			dismissable === true ||
 			(typeof dismissable === 'object' && dismissable.label);
 
 		return (
-			<div
-				{...filterDOMProps(props)}
-				ref={ref}
-				className={clsx({
-					prefixedNames: 'root',
-					classNames: [
-						'notice',
-						`notice-${level}`,
-						classes.root,
-						className,
-						{ 'notice-alt': variant === 'alt' },
-					],
-				})}
-			>
+			!isDismissed && (
 				<div
+					{...filterDOMProps(props, { labelable: true })}
+					ref={ref}
+					style={style}
 					className={clsx({
-						prefixedNames: 'content',
-						classNames: classes.content,
+						prefixedNames: 'root',
+						classNames: [
+							'notice',
+							`notice-${level}`,
+							classes.root,
+							className,
+							{ 'notice-alt': variant === 'alt' },
+						],
 					})}
 				>
-					{children}
+					<div
+						className={clsx({
+							prefixedNames: 'content',
+							classNames: classes.content,
+						})}
+					>
+						{children}
+					</div>
+					{isDismissable && (
+						<button
+							{...buttonProps}
+							className="notice-dismiss"
+							type="button"
+							aria-label={
+								typeof dismissable === 'object' ?
+									dismissable.label
+								:	'Dismiss notice'
+							}
+						/>
+					)}
 				</div>
-				{isDismissable && (
-					<button
-						{...buttonProps}
-						className="notice-dismiss"
-						type="button"
-						aria-label={
-							typeof dismissable === 'object' ?
-								dismissable.label
-							:	'Dismiss this notice'
-						}
-					/>
-				)}
-			</div>
+			)
 		);
 	}
 );
