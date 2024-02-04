@@ -97,4 +97,17 @@ export const WithDescription: Story = {
 	},
 };
 
+export const WithDescriptionBeforeInput: Story = {
+	name: 'With Description (before-input)',
+	parameters: {
+		controls: {
+			exclude: ['descriptionArea'],
+		},
+	},
+	args: {
+		descriptionArea: 'before-input',
+		description: 'In a few words, explain what this site is about.',
+	},
+};
+
 export default meta;

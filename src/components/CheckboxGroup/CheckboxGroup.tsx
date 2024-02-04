@@ -69,11 +69,12 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 						classes.root,
 						className,
 						{
-							[classes.orientationHorizontal]: orientation === 'horizontal',
+							[classes.horizontal]: orientation === 'horizontal',
+							[classes.descriptionBeforeInput]:
+								descriptionArea === 'before-input',
 						},
 					],
 				})}
-				data-description-area={descriptionArea}
 			>
 				<span
 					{...labelProps}

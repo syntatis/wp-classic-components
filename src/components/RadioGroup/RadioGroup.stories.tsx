@@ -100,7 +100,34 @@ export const CheckedControlled: Story = {
 	render: Default.render,
 };
 
+export const OrientationHorizontal: Story = {
+	name: 'Orientation (horizontal)',
+	parameters: {
+		controls: {
+			exclude: ['orientation'],
+		},
+	},
+	args: {
+		orientation: 'horizontal',
+		value: 'g:i a',
+	},
+	render: Default.render,
+};
+
 export const WithDescription: Story = {
+	args: {
+		description: 'The time format will be used when displaying dates.',
+	},
+	render: Default.render,
+};
+
+export const WithDescriptionBeforeInput: Story = {
+	name: 'With Description (before-input)',
+	parameters: {
+		controls: {
+			exclude: ['descriptionArea'],
+		},
+	},
 	args: {
 		description: 'The time format will be used when displaying dates.',
 	},

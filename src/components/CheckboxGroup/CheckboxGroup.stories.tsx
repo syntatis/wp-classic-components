@@ -118,8 +118,35 @@ export const CheckedControlled: Story = {
 	render: Default.render,
 };
 
+export const OrientationHorizontal: Story = {
+	name: 'Orientation (horizontal)',
+	parameters: {
+		controls: {
+			exclude: ['orientation'],
+		},
+	},
+	args: {
+		orientation: 'horizontal',
+	},
+	render: Default.render,
+};
+
 export const WithDescription: Story = {
 	args: {
+		description: 'Choose which elements to hide on screen.',
+	},
+	render: Default.render,
+};
+
+export const WithDescriptionBeforeInput: Story = {
+	name: 'With Description (before-input)',
+	parameters: {
+		controls: {
+			exclude: ['descriptionArea'],
+		},
+	},
+	args: {
+		descriptionArea: 'before-input',
 		description: 'Choose which elements to hide on screen.',
 	},
 	render: Default.render,

@@ -55,7 +55,14 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 				style={style}
 				className={clsx({
 					prefixedNames: 'root',
-					classNames: [classes.root, className],
+					classNames: [
+						classes.root,
+						className,
+						{
+							[classes.descriptionBeforeInput]:
+								descriptionArea === 'before-input',
+						},
+					],
 				})}
 				data-description-area={descriptionArea}
 			>
