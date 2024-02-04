@@ -6,8 +6,7 @@
 	},
 	"parser": "@typescript-eslint/parser",
 	"plugins": [
-		"@stylistic/js",
-		"@stylistic/ts"
+		"@stylistic"
 	],
 	"extends": [
 		"eslint:recommended",
@@ -52,7 +51,7 @@
 			{
 				"blankLine": "always",
 				"prev": "*",
-				"next": "return"
+				"next": ["block-like", "return", "continue", "multiline-expression"]
 			},
 			{
 				"blankLine": "always",
