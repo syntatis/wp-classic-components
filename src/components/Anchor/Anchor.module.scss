@@ -27,11 +27,11 @@
 		vertical-align: middle;
 	}
 
-	&.severityWarning {
+	&.variantWarning {
 		color: colors.$yellow-50;
 	}
 
-	&.severityDanger {
+	&.variantDanger {
 		color: colors.$red-50;
 	}
 }

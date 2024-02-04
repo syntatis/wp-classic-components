@@ -1,11 +1,11 @@
 import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
-import classes from './Link.module.scss';
+import classes from './Anchor.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 
-export interface LinkProps
+export interface AnchorProps
 	extends GlobalProps,
 		Omit<HoverProps, 'isDisabled'>,
 		Omit<
@@ -24,9 +24,9 @@ export interface LinkProps
 	 */
 	children: ReactNode;
 	/**
-	 * Specify the level or severity that the link will carry out.
+	 * Change the link variant.
 	 */
-	severity?: 'warning' | 'danger';
+	variant?: 'warning' | 'danger';
 	/**
 	 * The content displayed before the link label.
 	 */
@@ -37,9 +37,9 @@ export interface LinkProps
 	suffix?: ReactNode;
 }
 
-export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
 	(props, forwardedRef) => {
-		const { children, className, severity, prefix, suffix } = props;
+		const { children, className, variant, prefix, suffix } = props;
 		const ref = useObjectRef(forwardedRef);
 		const { linkProps } = useLink(props, ref);
 		const { hoverProps } = useHover(props);
@@ -55,12 +55,12 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 					prefixedNames: 'root',
 					classNames: [
 						classes.root,
-						{
-							[classes.severityWarning]: severity === 'warning',
-							[classes.severityDanger]: severity === 'danger',
-							[classes.hasAffix]: hasAffix,
-						},
 						className,
+						{
+							[classes.hasAffix]: hasAffix,
+							[classes.variantDanger]: variant === 'danger',
+							[classes.variantWarning]: variant === 'warning',
+						},
 					],
 				})}
 			>
@@ -99,4 +99,4 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 	}
 );
 
-Link.displayName = 'Link';
+Anchor.displayName = 'Anchor';

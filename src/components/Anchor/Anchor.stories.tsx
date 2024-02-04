@@ -1,10 +1,10 @@
 import { Icon, wordpress, external } from '@wordpress/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Link } from './Link';
+import { Anchor } from './Anchor';
 
-const meta: Meta<typeof Link> = {
-	title: 'Components/Link',
-	component: Link,
+const meta: Meta<typeof Anchor> = {
+	title: 'Components/Anchor',
+	component: Anchor,
 	tags: ['autodocs'],
 	parameters: {
 		controls: {
@@ -33,7 +33,7 @@ const meta: Meta<typeof Link> = {
 	},
 };
 
-type Story = StoryObj<typeof Link>;
+type Story = StoryObj<typeof Anchor>;
 
 export const Default: Story = {};
 
