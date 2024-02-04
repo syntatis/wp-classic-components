@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Radio } from './Radio';
 import { RadioGroup } from './RadioGroup';
 
@@ -124,7 +124,31 @@ describe('styles', () => {
 });
 
 describe('states', () => {
-	it('should be checked by default', () => {
+	it('should be checked', async () => {
+		const user = userEvent.setup();
+
+		render(
+			<RadioGroup label="For each post in a feed, include">
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		const firstRadio = screen.getByRole('radio', { name: 'Full text' });
+		const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+
+		expect(firstRadio).not.toBeChecked();
+		expect(secondRadio).not.toBeChecked();
+
+		await user.click(firstRadio);
+
+		expect(firstRadio).toBeChecked();
+		expect(secondRadio).not.toBeChecked();
+	});
+
+	it('should be checked (by default)', async () => {
+		const user = userEvent.setup();
+
 		render(
 			<RadioGroup
 				label="For each post in a feed, include"
@@ -135,8 +159,38 @@ describe('states', () => {
 			</RadioGroup>
 		);
 
-		expect(screen.getByRole('radio', { name: 'Full text' })).toBeChecked();
-		expect(screen.getByRole('radio', { name: 'Excerpt' })).not.toBeChecked();
+		const firstRadio = screen.getByRole('radio', { name: 'Full text' });
+		const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+
+		expect(firstRadio).toBeChecked();
+		expect(secondRadio).not.toBeChecked();
+
+		await user.click(secondRadio);
+
+		expect(firstRadio).not.toBeChecked();
+		expect(secondRadio).toBeChecked();
+	});
+
+	it('should be checked (controlled)', async () => {
+		const user = userEvent.setup();
+
+		render(
+			<RadioGroup label="For each post in a feed, include" value="full-text">
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		const firstRadio = screen.getByRole('radio', { name: 'Full text' });
+		const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+
+		expect(firstRadio).toBeChecked();
+		expect(secondRadio).not.toBeChecked();
+
+		await user.click(secondRadio);
+
+		expect(firstRadio).toBeChecked(); // Remains to be checked.
+		expect(secondRadio).not.toBeChecked();
 	});
 
 	it('should be disabled', () => {
@@ -204,11 +258,16 @@ describe('states', () => {
 });
 
 describe('events', () => {
-	it('should be checked between inputs on click', async () => {
+	it('should call the "onChange" callback', async () => {
+		const fn = vi.fn();
 		const user = userEvent.setup();
 
 		render(
-			<RadioGroup label="For each post in a feed, include">
+			<RadioGroup
+				label="For each post in a feed, include"
+				onChange={fn}
+				defaultValue="full-text"
+			>
 				<Radio value="full-text">Full text</Radio>
 				<Radio value="excerpt">Excerpt</Radio>
 			</RadioGroup>
@@ -217,11 +276,6 @@ describe('events', () => {
 		const firstRadio = screen.getByRole('radio', { name: 'Full text' });
 		const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
 
-		expect(firstRadio).not.toBeChecked();
-		expect(secondRadio).not.toBeChecked();
-
-		await user.click(firstRadio);
-
 		expect(firstRadio).toBeChecked();
 		expect(secondRadio).not.toBeChecked();
 
@@ -229,5 +283,7 @@ describe('events', () => {
 
 		expect(firstRadio).not.toBeChecked();
 		expect(secondRadio).toBeChecked();
+		expect(fn).toBeCalledTimes(1);
+		expect(fn).toBeCalledWith('excerpt');
 	});
 });

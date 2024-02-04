@@ -157,7 +157,7 @@ describe('states', () => {
 });
 
 describe('events', () => {
-	it('should dismiss the notice when clicking the dismiss button', async () => {
+	it('should call the "onDismiss" callback', async () => {
 		const fn = vi.fn();
 		const user = userEvent.setup();
 
