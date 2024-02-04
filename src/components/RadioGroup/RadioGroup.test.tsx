@@ -82,6 +82,45 @@ describe('styles', () => {
 			expect(radio.parentNode).toHaveClass('radio-item-class');
 		});
 	});
+
+	it('should render with inline style', () => {
+		render(
+			<RadioGroup
+				label="For each post in a feed, include"
+				description="The length of text to display on the feed"
+				style={{ margin: 15 }}
+			>
+				<Radio
+					value="full-text"
+					className="radio-item-class"
+					style={{ padding: 10 }}
+				>
+					Full text
+				</Radio>
+				<Radio
+					value="excerpt"
+					className="radio-item-class"
+					style={{ padding: 10 }}
+				>
+					Excerpt
+				</Radio>
+			</RadioGroup>
+		);
+
+		expect(
+			screen.getByRole('radiogroup', {
+				name: 'For each post in a feed, include',
+			})
+		).toHaveStyle({
+			margin: '15px',
+		});
+
+		screen.getAllByRole('radio').forEach((radio) => {
+			expect(radio.parentNode).toHaveStyle({
+				padding: '10px',
+			});
+		});
+	});
 });
 
 describe('states', () => {
@@ -161,5 +200,32 @@ describe('states', () => {
 				name: 'For each post in a feed, include *',
 			})
 		).toHaveAttribute('aria-required', 'true');
+	});
+
+	it('should be checked between inputs on click', async () => {
+		const user = userEvent.setup();
+
+		render(
+			<RadioGroup label="For each post in a feed, include">
+				<Radio value="full-text">Full text</Radio>
+				<Radio value="excerpt">Excerpt</Radio>
+			</RadioGroup>
+		);
+
+		const firstRadio = screen.getByRole('radio', { name: 'Full text' });
+		const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+
+		expect(firstRadio).not.toBeChecked();
+		expect(secondRadio).not.toBeChecked();
+
+		await user.click(firstRadio);
+
+		expect(firstRadio).toBeChecked();
+		expect(secondRadio).not.toBeChecked();
+
+		await user.click(secondRadio);
+
+		expect(firstRadio).not.toBeChecked();
+		expect(secondRadio).toBeChecked();
 	});
 });

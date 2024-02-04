@@ -20,7 +20,7 @@ interface RadioProps extends GlobalProps, AriaRadioProps {
 
 export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 	(props, forwardedRef) => {
-		const { children, className } = props;
+		const { children, className, style } = props;
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
 		const state = useContext(RadioContext);
@@ -38,6 +38,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 			<label
 				{...filterDOMProps(props, { labelable: true })}
 				ref={ref}
+				style={style}
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [classes.root, className],

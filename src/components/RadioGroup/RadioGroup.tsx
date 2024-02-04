@@ -33,6 +33,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 			descriptionArea,
 			isRequired,
 			className,
+			style,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const state = useRadioGroupState(props);
@@ -51,6 +52,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 				{...filterDOMProps(props, { labelable: true })}
 				{...radioGroupProps}
 				ref={ref}
+				style={style}
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [classes.root, className],

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Checkbox } from './Checkbox';
 
 it('should render the checkbox', () => {
@@ -117,7 +117,7 @@ describe('states', () => {
 		expect(checkbox).toBeDisabled();
 	});
 
-	it('should marked the as checked on click', async () => {
+	it('should be checked on click', async () => {
 		render(<Checkbox name="agree">Agree</Checkbox>);
 
 		const user = userEvent.setup();
@@ -128,7 +128,7 @@ describe('states', () => {
 		expect(checkbox).toBeChecked();
 	});
 
-	it('should marked the as unchecked on click', async () => {
+	it('should be unchecked on click', async () => {
 		render(
 			<Checkbox name="agree" defaultSelected>
 				Agree
@@ -141,5 +141,20 @@ describe('states', () => {
 		expect(checkbox).toBeChecked();
 		await user.click(checkbox);
 		expect(checkbox).not.toBeChecked();
+	});
+});
+
+describe('events', () => {
+	it('should call the "onChange" callback', async () => {
+		const fn = vi.fn();
+		const user = userEvent.setup();
+
+		render(<Checkbox onChange={fn}>Agree</Checkbox>);
+
+		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+
+		await user.click(checkbox);
+
+		expect(fn).toBeCalledTimes(1);
 	});
 });
