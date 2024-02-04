@@ -16,7 +16,7 @@ describe('Checkbox', async () => {
 
 		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
 
-		expect(checkbox.parentNode).toHaveClass('foo-bar');
+		expect(checkbox.parentNode?.parentNode).toHaveClass('foo-bar');
 	});
 
 	it('should render with the description', () => {
