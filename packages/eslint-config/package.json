@@ -1,7 +1,7 @@
 {
 	"name": "@syntatis/eslint-config",
 	"description": "JavaScript, TypeScript, and React lint configurations",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"license": "MIT",
 	"keywords": [
 		"config",
