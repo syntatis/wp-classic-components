@@ -31,6 +31,7 @@
       ]
     },
     "publish": {
+			"preDistTag": "next",
       "private": false,
 			"ignoreChanges": [
         "ignored-file",
