@@ -1,6 +1,9 @@
 {
   "$schema": "./node_modules/lerna/schemas/lerna-schema.json",
-  "packages": ["."],
+	"version": "independent",
+	"packages": [
+    "packages/*"
+  ],
   "command": {
     "version": {
       "message": "Version bump",

@@ -12,6 +12,10 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			external: ['clsx', 'react', 'react/jsx-runtime'],
+			output: {
+				assetFileNames: '[name][extname]',
+				entryFileNames: '[name].js',
+			},
 		},
 	},
 });
