@@ -114,3 +114,13 @@ it('should call "onChange" callback', async () => {
 
 	expect(fn).toHaveBeenCalledWith('Abc');
 });
+
+it('should not render invalid html attributes', async () => {
+	// @ts-expect-error
+	render(<TextArea label="Comment" foo="bar" />);
+
+	const textarea = screen.getByLabelText('Comment');
+
+	expect(textarea).not.toHaveAttribute('foo');
+	expect(textarea.parentNode).not.toHaveAttribute('foo');
+});
