@@ -7,8 +7,8 @@
 
 A collection of ESLint configurations for JavaScript, TypeScript and React projects. Based on popular style guides, like:
 
+- [Import](https://github.com/import-js/eslint-plugin-import)
 - [Prettier](https://github.com/prettier/prettier)
+- [React](https://github.com/jsx-eslint/eslint-plugin-react)
 - [Stylistic](https://eslint.style)
-- [typescript-eslint](https://typescript-eslint.io)
-- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)
-- [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)
+- [Typescript](https://typescript-eslint.io)

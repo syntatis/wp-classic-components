@@ -17,7 +17,7 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"stylelint-config-recess-order": "^4.4.0",
+		"stylelint-config-recess-order": "^4.6.0",
 		"stylelint-config-standard-scss": "^13.0.0"
 	},
 	"peerDependencies": {

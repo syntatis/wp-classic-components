@@ -7,5 +7,5 @@
 
 A collection of Stylelint configurations for CSS and SCSS. Based on popular style guides, like:
 
-- [Stylelint SCSS](https://github.com/stylelint-scss/stylelint-config-standard-scss)
-- [stylelint-config-recess-order](https://www.npmjs.com/package/stylelint-config-recess-order)
+- [Standard](https://github.com/stylelint-scss/stylelint-config-standard-scss)
+- [Recess Order](https://www.npmjs.com/package/stylelint-config-recess-order)
