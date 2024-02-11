@@ -31,7 +31,6 @@
       ]
     },
     "publish": {
-      "verifyAccess": true,
       "private": false,
 			"ignoreChanges": [
         "ignored-file",
