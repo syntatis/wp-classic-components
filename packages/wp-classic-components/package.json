@@ -1,6 +1,6 @@
 {
 	"name": "@syntatis/wp-classic-components",
-	"description": "WordPress components with classic styles",
+	"description": "WordPress dashboard UI components with the classic styles",
 	"version": "0.1.1-alpha.0",
 	"license": "GPL-3.0-or-later",
 	"private": true,
