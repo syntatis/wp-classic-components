@@ -1,7 +1,7 @@
 {
 	"name": "@syntatis/stylelint-config",
 	"description": "CSS and SCSS stylelint configuration",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"license": "MIT",
 	"keywords": [
 		"config",
@@ -14,8 +14,8 @@
 		"index.js"
 	],
 	"publishConfig": {
-    "access": "public"
-  },
+		"access": "public"
+	},
 	"dependencies": {
 		"stylelint-config-recess-order": "^4.4.0",
 		"stylelint-config-standard-scss": "^13.0.0"

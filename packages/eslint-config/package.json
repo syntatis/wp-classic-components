@@ -1,7 +1,7 @@
 {
 	"name": "@syntatis/eslint-config",
 	"description": "JavaScript, TypeScript, and React lint configurations",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"license": "MIT",
 	"keywords": [
 		"config",
@@ -15,8 +15,8 @@
 		"index.js"
 	],
 	"publishConfig": {
-    "access": "public"
-  },
+		"access": "public"
+	},
 	"dependencies": {
 		"@babel/eslint-parser": "^7.22.15",
 		"@stylistic/eslint-plugin": "^1.5.4",
