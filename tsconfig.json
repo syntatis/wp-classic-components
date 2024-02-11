@@ -20,16 +20,13 @@
 		"baseUrl": "."
 	},
 	"include": [
+		"**/*.mts",
 		"**/*.ts",
 		"**/*.tsx",
-		"*.d.ts",
-		"vitest.config.mts",
+		"*.d.ts"
 	],
 	"exclude": [
 		"node_modules",
 		"dist"
-	],
-	"types": [
-		"vitest/globals"
-	],
+	]
 }
