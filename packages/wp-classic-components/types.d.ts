@@ -1,5 +1,7 @@
 declare module '*.module.scss' {
-	const classes: Record<string, string>;
-
-	export default classes;
+	interface IClassNames {
+		[className: string]: string;
+	}
+	const classNames: IClassNames;
+	export = classNames;
 }
