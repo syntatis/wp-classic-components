@@ -32,7 +32,10 @@
     "publish": {
       "verifyAccess": true,
       "private": false,
-      "registry": "https://npm.pkg.github.com"
+			"ignoreChanges": [
+        "ignored-file",
+        "*.md"
+      ]
     }
   }
 }
