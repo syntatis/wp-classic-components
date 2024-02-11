@@ -1,0 +1,5 @@
+@use '../../styles/mixins/input';
+
+.root {
+	@include input.styles;
+}

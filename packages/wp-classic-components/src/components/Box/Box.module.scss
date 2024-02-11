@@ -1,0 +1,38 @@
+@use '../../styles/variables/colors';
+
+:global(.wp-core-ui) {
+	.root {
+		.header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid colors.$gray-10;
+		}
+
+		.heading {
+			padding: 8px 12px;
+			margin: 0;
+			font-size: 14px;
+			line-height: 1.4;
+		}
+
+		.content {
+			position: relative;
+			padding: var(--wp-classic-postbox-content-padding, 0 12px 12px);
+			margin: var(--wp-classic-postbox-content-margin, 11px 0 0);
+			font-size: 13px;
+			line-height: 1.4;
+		}
+
+		.footer {
+			padding: 10px;
+			clear: both;
+			background: colors.$gray-0;
+			border-top: 1px solid colors.$gray-5;
+		}
+
+		&.collapsed {
+			border-block-end-width: 0;
+		}
+	}
+}

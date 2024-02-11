@@ -1,3 +1,6 @@
-# wp-classic-ui
+<div align="center">
+  <strong>📦 wp-classic-components</strong>
+  <p>WordPress dashboard UI components with the classic styles</p>
+</div>
 
-A collection of UI component in WordPress with the classic styles
+---

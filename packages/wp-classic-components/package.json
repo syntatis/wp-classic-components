@@ -1,0 +1,54 @@
+{
+	"name": "@syntatis/wp-classic-components",
+	"description": "WordPress components with classic styles",
+	"version": "0.1.0-alpha.0",
+	"license": "GPL-3.0-or-later",
+	"private": true,
+	"type": "module",
+	"keywords": [
+		"admin-dashboard",
+		"react-components",
+		"wordpress"
+	],
+	"module": "index.js",
+	"types": "types.d.ts",
+	"dependencies": {
+		"@react-aria/checkbox": "^3.13.0",
+		"@react-aria/utils": "^3.23.0",
+		"@react-stately/checkbox": "^3.6.1",
+		"@react-stately/collections": "^3.10.4",
+		"react-aria": "^3.31.1",
+		"react-stately": "^3.29.1"
+	},
+	"devDependencies": {
+		"@testing-library/jest-dom": "^6.3.0",
+		"@testing-library/react": "^14.1.2",
+		"@types/react": "^18.2.48",
+		"@types/react-dom": "^18.2.18",
+		"@vitejs/plugin-react": "^4.2.1",
+		"eslint": "^8.55.0",
+		"jsdom": "^24.0.0",
+		"prettier": "^3.2.4",
+		"sass": "^1.70.0",
+		"stylelint": "^16.2.0",
+		"typescript": "^5.3.3",
+		"vite": "^5.1.1",
+		"vite-plugin-dts": "^3.7.2",
+		"vitest": "^1.2.1"
+	},
+	"peerDependencies": {
+		"clsx": "^2.1.0",
+		"react": "^18.0.0"
+	},
+	"scripts": {
+		"build": "vite build",
+		"format": "npm run format:scripts && npm run format:styles",
+		"format:scripts": "eslint --fix",
+		"format:styles": "stylelint '**/*.scss' --fix",
+		"lint": "npm run lint:scripts && npm run lint:styles && npm run lint:types",
+		"lint:scripts": "eslint .",
+		"lint:styles": "stylelint '**/*.scss'",
+		"lint:types": "tsc --noEmit",
+		"test": "vitest run"
+	}
+}

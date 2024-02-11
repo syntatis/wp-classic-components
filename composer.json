@@ -1,5 +1,5 @@
 {
-	"name": "syntatis/wp-classic-ui",
+	"name": "syntatis/wp-classic-components",
 	"license": "GPL-3.0-or-later",
 	"description": "WordPress admin UI with classic styles",
 	"keywords": [
@@ -7,7 +7,7 @@
     "react-components",
     "wordpress"
   ],
-	"homepage": "https://github.com/syntatis/wp-classic-ui#README",
+	"homepage": "https://github.com/syntatis/wp-classic-components#README",
 	"authors": [
 		{
 			"name": "Thoriq Firdaus",

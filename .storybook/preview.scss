@@ -1,0 +1,17 @@
+@import url('../wordpress/wp-admin/css/common.css');
+@import url('../wordpress/wp-admin/css/edit.css');
+@import url('../wordpress/wp-includes/css/dashicons.css');
+@import url('../wordpress/wp-includes/css/buttons.css');
+
+.wp-core-ui {
+	// Wrap form styles are global in a class to prevent them from affecting the Storybook UI.
+	@import "../wordpress/wp-admin/css/forms";
+}
+
+.__wp-core-body__ {
+	background: #f0f0f1;
+	color: #3c434a;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	line-height: 1.4em;
+	min-width: 600px;
+}

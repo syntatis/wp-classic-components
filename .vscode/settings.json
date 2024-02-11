@@ -11,13 +11,21 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
+	"[scss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
   "[svg]": {
     "editor.defaultFormatter": "jock.svg"
   },
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
-  "eslint.format.enable": true,
   "js/ts.implicitProjectConfig.checkJs": true,
+	"eslint.format.enable": true,
+	"stylelint.enable": true,
+  "stylelint.validate": [
+    "scss"
+  ],
 }

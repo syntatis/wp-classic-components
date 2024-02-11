@@ -1,2 +1,5 @@
-storybook-static/
-node_modules/
+coverage
+dist
+node_modules
+storybook-static
+temp
