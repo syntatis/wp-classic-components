@@ -14,9 +14,6 @@
 	"files": [
 		"index.js"
 	],
-	"publishConfig": {
-		"access": "public"
-	},
 	"dependencies": {
 		"@babel/eslint-parser": "^7.22.15",
 		"@stylistic/eslint-plugin": "^1.5.4",
