@@ -5,7 +5,7 @@ import {
 	useCheckboxGroupState,
 } from '@react-stately/checkbox';
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
-import classes from './CheckboxGroup.module.scss';
+import * as classes from './CheckboxGroup.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 import { CheckboxProps } from '../Checkbox';

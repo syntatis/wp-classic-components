@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { AriaRadioProps, useRadio } from 'react-aria';
 import { RadioGroupState } from 'react-stately';
-import classes from './Radio.module.scss';
+import * as classes from './Radio.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 

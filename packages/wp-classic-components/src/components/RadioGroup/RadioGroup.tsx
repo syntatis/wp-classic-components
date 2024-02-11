@@ -3,7 +3,7 @@ import { ReactElement, ReactNode, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';
 import { RadioContext } from './Radio';
-import classes from './RadioGroup.module.scss';
+import * as classes from './RadioGroup.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 

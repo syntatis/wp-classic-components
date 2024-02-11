@@ -1,7 +1,7 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
-import classes from './TextArea.module.scss';
+import * as classes from './TextArea.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 
