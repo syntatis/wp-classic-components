@@ -46,7 +46,15 @@ it('should render with the inline style', () => {
 	expect(input.parentNode).toHaveStyle({ 'padding-right': '30px' });
 });
 
-it('should render with description', () => {
+it('should render with the description', () => {
+	render(<TextField label="Username" description="This is the description!" />);
+
+	const input = screen.getByLabelText('Username');
+
+	expect(input).toHaveAccessibleDescription('This is the description!');
+});
+
+it('should render with the description', () => {
 	render(<TextField label="Username" description="This is the description!" />);
 
 	const input = screen.getByLabelText('Username');
@@ -96,12 +104,31 @@ it('should be disabled', () => {
 	expect(input).toBeDisabled();
 });
 
+it('should be readonly', () => {
+	render(<TextField label="Username" isReadOnly />);
+
+	const input = screen.getByLabelText('Username');
+
+	expect(input).toHaveAttribute('readonly');
+});
+
 it('should be marked as required', () => {
 	render(<TextField label="Username" isRequired />);
 
 	const input = screen.getByLabelText(new RegExp('Username *'));
 
 	expect(input).toBeRequired();
+});
+
+it('should be marked as invalid and show error message', () => {
+	render(
+		<TextField label="Username" validate={() => 'This is the error message!'} />
+	);
+
+	const input = screen.getByLabelText('Username');
+
+	expect(input).toBeInvalid();
+	expect(input).toHaveAccessibleDescription('This is the error message!');
 });
 
 it('should have value (default)', async () => {

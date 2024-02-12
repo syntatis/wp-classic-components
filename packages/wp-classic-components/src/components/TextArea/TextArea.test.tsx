@@ -96,12 +96,31 @@ it('should be disabled', () => {
 	expect(textarea).toBeDisabled();
 });
 
+it('should be readonly', () => {
+	render(<TextArea label="Comment" isReadOnly />);
+
+	const textarea = screen.getByLabelText('Comment');
+
+	expect(textarea).toHaveAttribute('readonly');
+});
+
 it('should be marked as required', () => {
 	render(<TextArea label="Comment" isRequired />);
 
 	const textarea = screen.getByLabelText(new RegExp('Comment *'));
 
 	expect(textarea).toBeRequired();
+});
+
+it('should be marked as invalid and show error message', () => {
+	render(
+		<TextArea label="Comment" validate={() => 'This is an error message!'} />
+	);
+
+	const textarea = screen.getByLabelText('Comment');
+
+	expect(textarea).toBeInvalid();
+	expect(textarea).toHaveAccessibleDescription('This is an error message!');
 });
 
 it('should have value (default)', async () => {
