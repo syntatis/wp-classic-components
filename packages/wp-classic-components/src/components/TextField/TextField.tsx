@@ -52,6 +52,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
 		return (
 			<div
+				style={style}
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [
@@ -88,10 +89,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					</label>
 				)}
 				<input
-					{...filterDOMProps(props)}
 					{...inputProps}
 					ref={ref}
-					style={style}
 					className={clsx({
 						prefixedNames: 'input',
 						classNames: {

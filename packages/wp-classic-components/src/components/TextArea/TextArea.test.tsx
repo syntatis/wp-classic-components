@@ -80,12 +80,12 @@ it('should be disabled', () => {
 	expect(textarea).toBeDisabled();
 });
 
-it('should have value (controlled)', () => {
-	render(<TextArea label="Comment" value="Hello World!" />);
+it('should be marked as required', () => {
+	render(<TextArea label="Comment" isRequired />);
 
-	const textarea = screen.getByLabelText('Comment');
+	const textarea = screen.getByLabelText(new RegExp('Comment *'));
 
-	expect(textarea).toHaveValue('Hello World!');
+	expect(textarea).toBeRequired();
 });
 
 it('should have value (default)', async () => {
@@ -100,6 +100,20 @@ it('should have value (default)', async () => {
 	await user.type(textarea, ' World!');
 
 	expect(textarea).toHaveValue('Hello World!');
+});
+
+it('should have value (controlled)', async () => {
+	const user = userEvent.setup();
+
+	render(<TextArea label="Comment" value="Hello" />);
+
+	const input = screen.getByLabelText('Comment');
+
+	expect(input).toHaveValue('Hello');
+
+	await user.type(input, ' World!');
+
+	expect(input).toHaveValue('Hello');
 });
 
 it('should call "onChange" callback', async () => {
