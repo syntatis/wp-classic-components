@@ -12,8 +12,16 @@ it('should render the radio input', () => {
 		</RadioGroup>
 	);
 
-	expect(screen.getByRole('radio', { name: 'Full text' })).toBeInTheDocument();
-	expect(screen.getByRole('radio', { name: 'Excerpt' })).toBeInTheDocument();
+	const firstRadio = screen.getByRole('radio', { name: 'Full text' });
+	const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+
+	expect(firstRadio).toBeInTheDocument();
+	expect(firstRadio).toBeEnabled();
+	expect(firstRadio).toHaveAttribute('type', 'radio');
+
+	expect(secondRadio).toBeInTheDocument();
+	expect(secondRadio).toBeEnabled();
+	expect(secondRadio).toHaveAttribute('type', 'radio');
 });
 
 it('should render with the description', () => {
@@ -309,6 +317,30 @@ it('should be readonly', async () => {
 	await user.click(secondRadio);
 
 	expect(secondRadio).not.toBeChecked();
+});
+
+it('should be marked as invalid and show error message', () => {
+	render(
+		<RadioGroup
+			label="For each post in a feed, include"
+			validate={() => 'Please select one of the options!'}
+		>
+			<Radio value="full-text">Full text</Radio>
+			<Radio value="excerpt">Excerpt</Radio>
+		</RadioGroup>
+	);
+
+	expect(
+		screen.getByRole('radiogroup', {
+			name: 'For each post in a feed, include',
+		})
+	).toBeInvalid();
+
+	expect(
+		screen.getByRole('radiogroup', {
+			name: 'For each post in a feed, include',
+		})
+	).toHaveAccessibleDescription('Please select one of the options!');
 });
 
 it('should be marked as required', () => {
