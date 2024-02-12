@@ -11,7 +11,12 @@
 		"wordpress"
 	],
 	"module": "index.js",
-	"types": "types.d.ts",
+	"types": "index.d.ts",
+	"files": [
+		"index.js",
+		"index.d.ts",
+		"style.css"
+	],
 	"dependencies": {
 		"@react-aria/checkbox": "^3.13.0",
 		"@react-aria/utils": "^3.23.0",

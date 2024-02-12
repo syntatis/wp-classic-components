@@ -8,6 +8,7 @@ export default defineConfig({
 	cacheDir: resolve(__dirname, '../../node_modules/.vite'),
 	plugins: [react(), dts({ rollupTypes: true })],
 	build: {
+		outDir: resolve(__dirname, './'),
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
 			formats: ['es'],
