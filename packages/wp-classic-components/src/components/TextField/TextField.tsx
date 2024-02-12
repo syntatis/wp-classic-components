@@ -1,4 +1,4 @@
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
+import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import * as classes from './TextField.module.scss';
@@ -8,6 +8,12 @@ import { GlobalProps } from '../../types';
 interface TextFieldProps
 	extends GlobalProps,
 		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid'> {
+	/**
+	 * The input type.
+	 *
+	 * @default 'text'
+	 */
+	type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
 	/**
 	 * Where to place the description.
 	 *

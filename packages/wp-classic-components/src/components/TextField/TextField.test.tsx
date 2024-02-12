@@ -10,6 +10,7 @@ it('should render the textarea', () => {
 
 	expect(input).toBeInTheDocument();
 	expect(input).toBeEnabled();
+	expect(input).toHaveAttribute('type', 'text');
 });
 
 it('should render with the static class', () => {
@@ -51,6 +52,40 @@ it('should render with description', () => {
 	const input = screen.getByLabelText('Username');
 
 	expect(input).toHaveAccessibleDescription('This is the description!');
+});
+
+it('should render with "id" attribute', () => {
+	render(<TextField label="Username" id="input-id-1" />);
+
+	const input = screen.getByLabelText('Username');
+
+	expect(input).toHaveAttribute('id', 'input-id-1');
+});
+
+it('should render with "tabindex" attribute', () => {
+	render(<TextField label="Username" excludeFromTabOrder />);
+
+	const input = screen.getByLabelText('Username');
+
+	expect(input).toHaveAttribute('tabindex', '-1');
+});
+
+it('should render with "type" attribute', () => {
+	render(<TextField label="Username" type="email" />);
+
+	const input = screen.getByLabelText('Username');
+
+	expect(input).toHaveAttribute('type', 'email');
+});
+
+it('should not render invalid html attributes', async () => {
+	// @ts-expect-error
+	render(<TextField label="Username" foo="bar" />);
+
+	const input = screen.getByLabelText('Username');
+
+	expect(input).not.toHaveAttribute('foo');
+	expect(input.parentNode).not.toHaveAttribute('foo');
 });
 
 it('should be disabled', () => {
@@ -106,14 +141,4 @@ it('should call "onChange" callback', async () => {
 	await user.type(input, 'Hello World!');
 
 	expect(fn).toHaveBeenCalledWith('Hello World!');
-});
-
-it('should not render invalid html attributes', async () => {
-	// @ts-expect-error
-	render(<TextField label="Username" foo="bar" />);
-
-	const input = screen.getByLabelText('Username');
-
-	expect(input).not.toHaveAttribute('foo');
-	expect(input.parentNode).not.toHaveAttribute('foo');
 });

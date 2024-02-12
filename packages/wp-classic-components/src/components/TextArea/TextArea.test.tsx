@@ -64,6 +64,22 @@ it('should render the "rows" attribute', () => {
 	expect(textarea).toHaveAttribute('rows', '200');
 });
 
+it('should render with the "id" attribute', () => {
+	render(<TextArea label="Comment" id="textarea-id-1" />);
+
+	const textarea = screen.getByLabelText('Comment');
+
+	expect(textarea).toHaveAttribute('id', 'textarea-id-1');
+});
+
+it('should render with the "tabindex" attribute', () => {
+	render(<TextArea label="Comment" excludeFromTabOrder />);
+
+	const textarea = screen.getByLabelText('Comment');
+
+	expect(textarea).toHaveAttribute('tabindex', '-1');
+});
+
 it('should render with description', () => {
 	render(<TextArea label="Comment" description="This is the description!" />);
 
@@ -107,13 +123,13 @@ it('should have value (controlled)', async () => {
 
 	render(<TextArea label="Comment" value="Hello" />);
 
-	const input = screen.getByLabelText('Comment');
+	const textarea = screen.getByLabelText('Comment');
 
-	expect(input).toHaveValue('Hello');
+	expect(textarea).toHaveValue('Hello');
 
-	await user.type(input, ' World!');
+	await user.type(textarea, ' World!');
 
-	expect(input).toHaveValue('Hello');
+	expect(textarea).toHaveValue('Hello');
 });
 
 it('should call "onChange" callback', async () => {
