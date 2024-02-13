@@ -21,16 +21,4 @@ export default defineConfig({
 			},
 		},
 	},
-	test: {
-		alias: {
-			tests: resolve(__dirname, '../../tests'),
-		},
-		cache: {
-			dir: resolve(__dirname, '../../node_modules/.vitest'),
-		},
-		environment: 'jsdom',
-		globals: true,
-		include: ['src/**/*.test.{js,ts,mts,jsx,tsx}'],
-		setupFiles: resolve(__dirname, '../../tests/setup.ts'),
-	},
 });
