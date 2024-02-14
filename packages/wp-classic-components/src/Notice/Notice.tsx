@@ -1,9 +1,9 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { useClasses } from '@syntatis/react-hooks';
+import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
 import * as classes from './Notice.module.scss';
-import { GlobalProps } from '../types';
 
 interface NoticeProps extends GlobalProps {
 	children: ReactNode;

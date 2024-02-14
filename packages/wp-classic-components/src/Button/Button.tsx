@@ -1,5 +1,6 @@
 import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
 import { useClasses } from '@syntatis/react-hooks';
+import { Affixable, GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef } from 'react';
 import {
 	AriaButtonProps,
@@ -9,7 +10,6 @@ import {
 	useHover,
 } from 'react-aria';
 import * as classes from './Button.module.scss';
-import { Affixable, GlobalProps } from '../types';
 
 interface ButtonProps
 	extends GlobalProps,

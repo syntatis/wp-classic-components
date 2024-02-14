@@ -1,9 +1,9 @@
 import { useObjectRef } from '@react-aria/utils';
 import { useClasses } from '@syntatis/react-hooks';
+import { GlobalProps } from '@syntatis/types';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import * as classes from './TextArea.module.scss';
-import { GlobalProps } from '../types';
 
 interface TextAreaProps
 	extends GlobalProps,

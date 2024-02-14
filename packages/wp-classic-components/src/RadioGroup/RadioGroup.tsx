@@ -1,11 +1,11 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { useClasses } from '@syntatis/react-hooks';
+import { GlobalProps } from '@syntatis/types';
 import { ReactElement, ReactNode, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';
 import { RadioContext } from './Radio';
 import * as classes from './RadioGroup.module.scss';
-import { GlobalProps } from '../types';
 
 interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
 	children: ReactElement | ReactElement[];

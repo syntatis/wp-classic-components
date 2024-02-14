@@ -1,5 +1,6 @@
 import { useId, useObjectRef } from '@react-aria/utils';
 import { useClasses } from '@syntatis/react-hooks';
+import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef, useContext, useRef } from 'react';
 import {
 	AriaCheckboxProps,
@@ -8,7 +9,6 @@ import {
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
 import * as classes from './Checkbox.module.scss';
-import { GlobalProps } from '../types';
 import { CheckboxGroupContext } from '../CheckboxGroup';
 
 export interface CheckboxProps

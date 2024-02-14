@@ -1,0 +1,11 @@
+{
+	"name": "@syntatis/types",
+	"version": "0.1.0-alpha.1",
+	"license": "GPL-3.0-or-later",
+	"private": true,
+	"type": "module",
+	"types": "index.d.ts",
+  "peerDependencies": {
+    "react": "^18.0.0"
+  }
+}

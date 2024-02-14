@@ -1,12 +1,15 @@
-import cx from 'clsx';
+// eslint-disable-next-line import/no-named-as-default
+import clsx from 'clsx';
 
 type Value = string | number | boolean | undefined | null;
 type Mapping = Record<string, unknown>;
 type Argument = Value | Mapping | ArgumentArray;
 type ArgumentArray = Argument[];
 
+export type ClassNamesArgs = Argument | ArgumentArray;
+
 interface ClsxArgs {
-	classNames?: Argument | ArgumentArray;
+	classNames?: ClassNamesArgs;
 	prefixedNames?: string | string[];
 }
 
@@ -41,7 +44,7 @@ export function useClasses(component: string): ClassesReturn {
 				(name) => `${prefix}${name}`
 			);
 
-			return cx(prefixed, classNames);
+			return clsx(prefixed, classNames);
 		},
 	};
 }

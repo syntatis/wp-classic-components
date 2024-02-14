@@ -15,6 +15,9 @@
 	"dependencies": {
 		"clsx": "^2.1.0"
 	},
+	"devDependencies": {
+		"@syntatis/types": "^0.1.0-alpha.1"
+	},
 	"peerDependencies": {
 		"react": "^18.0.0"
 	}

@@ -1,5 +1,6 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { useClasses } from '@syntatis/react-hooks';
+import { GlobalProps } from '@syntatis/types';
 import {
 	ReactNode,
 	createContext,
@@ -10,7 +11,6 @@ import {
 import { AriaRadioProps, useRadio } from 'react-aria';
 import { RadioGroupState } from 'react-stately';
 import * as classes from './Radio.module.scss';
-import { GlobalProps } from '../types';
 
 export const RadioContext = createContext<RadioGroupState | null>(null);
 

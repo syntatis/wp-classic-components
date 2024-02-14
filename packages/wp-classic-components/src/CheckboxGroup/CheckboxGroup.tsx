@@ -5,9 +5,9 @@ import {
 	useCheckboxGroupState,
 } from '@react-stately/checkbox';
 import { useClasses } from '@syntatis/react-hooks';
+import { GlobalProps } from '@syntatis/types';
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
 import * as classes from './CheckboxGroup.module.scss';
-import { GlobalProps } from '../types';
 import { CheckboxProps } from '../Checkbox';
 
 export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(

@@ -1,9 +1,9 @@
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
+import { useObjectRef } from '@react-aria/utils';
 import { useClasses } from '@syntatis/react-hooks';
+import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef, useRef, useState } from 'react';
 import { useButton, useId } from 'react-aria';
 import * as classes from './Box.module.scss';
-import { GlobalProps } from '../types';
 
 interface BoxProps extends GlobalProps {
 	/**
@@ -76,7 +76,6 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 
 		return (
 			<div
-				{...filterDOMProps(props, { labelable: true })}
 				ref={ref}
 				className={clsx({
 					prefixedNames: 'root',
