@@ -65,11 +65,13 @@ it('should render the "rows" attribute', () => {
 });
 
 it('should render with the "id" attribute', () => {
-	render(<TextArea label="Comment" id="textarea-id-1" />);
+	render(
+		<TextArea label="Comment" id="textarea-id-1" data-testid="textarea" />
+	);
 
-	const textarea = screen.getByLabelText('Comment');
+	const root = screen.getByTestId('textarea');
 
-	expect(textarea).toHaveAttribute('id', 'textarea-id-1');
+	expect(root).toHaveAttribute('id', 'textarea-id-1');
 });
 
 it('should render with the "tabindex" attribute', () => {

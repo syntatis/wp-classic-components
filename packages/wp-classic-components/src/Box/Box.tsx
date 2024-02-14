@@ -1,5 +1,5 @@
 import { useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { ReactNode, forwardRef, useRef, useState } from 'react';
 import { useButton, useId } from 'react-aria';
@@ -48,17 +48,15 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 			collapsible = false,
 			defaultExpanded = true,
 			footer,
-			style,
-			className,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const buttonRef = useRef<HTMLButtonElement>(null);
 		const contentId = useId();
 		const [expanded, setExpanded] = useState(defaultExpanded);
-		const { clsx } = useClasses('Box');
+		const { clsx, rootProps, componentProps } = useProps('Box', props);
 		const { buttonProps } = useButton(
 			{
-				...props,
+				...componentProps,
 				onPress: () => setExpanded((prev) => !prev),
 			},
 			buttonRef
@@ -76,19 +74,16 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 
 		return (
 			<div
-				ref={ref}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						'postbox',
 						classes.root,
-						className,
 						{
 							[classes.collapsed]: !expanded,
 						},
 					],
 				})}
-				style={style}
+				ref={ref}
 			>
 				{(title || collapsible) && (
 					<div

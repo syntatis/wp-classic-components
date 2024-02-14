@@ -15,7 +15,7 @@ export function useProps<T>(name: string, props?: PropsArgs & T) {
 		className,
 		'data-testid': testId,
 		...componentProps
-	} = props || {};
+	} = props || ({} as PropsArgs & T);
 	const { clsx } = useClasses(name);
 
 	return {

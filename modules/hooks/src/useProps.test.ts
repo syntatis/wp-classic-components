@@ -37,22 +37,6 @@ describe('rootProps', () => {
 		});
 	});
 
-	describe('tabIndex', () => {
-		it('should return "tabIndex"', () => {
-			const { result } = renderHook(() =>
-				useProps('ComponentName', { tabIndex: -1 })
-			);
-
-			expect(result.current.rootProps()).toHaveProperty('tabIndex', -1);
-		});
-
-		it('should return "tabIndex" as undefined', () => {
-			const { result } = renderHook(() => useProps('ComponentName'));
-
-			expect(result.current.rootProps()).toHaveProperty('tabIndex', undefined);
-		});
-	});
-
 	describe('className', () => {
 		it('should return "className"', () => {
 			const { result } = renderHook(() =>

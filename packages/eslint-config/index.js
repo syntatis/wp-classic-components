@@ -33,7 +33,7 @@ module.exports = {
 			{
 				// Primary use is to set limit for the comments.
 				// @see prettier/prettier.
-				code: 80,
+				code: 90,
 				comments: 120,
 				ignoreRegExpLiterals: true,
 				ignoreStrings: true,

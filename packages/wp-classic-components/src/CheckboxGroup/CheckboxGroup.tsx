@@ -4,7 +4,7 @@ import {
 	CheckboxGroupState,
 	useCheckboxGroupState,
 } from '@react-stately/checkbox';
-import { useClasses } from 'modules/hooks';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
 import * as classes from './CheckboxGroup.module.scss';
@@ -39,13 +39,16 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			description,
 			descriptionArea,
 			orientation = 'vertical',
-			className,
 			isRequired,
 			errorMessage,
-			style,
+			id,
 		} = props;
+		const { clsx, rootProps, componentProps } = useProps(
+			'CheckboxGroup',
+			props
+		);
 		const ref = useObjectRef(forwardedRef);
-		const state = useCheckboxGroupState(props);
+		const state = useCheckboxGroupState(componentProps);
 		const {
 			groupProps,
 			labelProps,
@@ -54,20 +57,19 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			isInvalid,
 			validationErrors,
 			validationDetails,
-		} = useCheckboxGroup(props, state);
-		const { clsx } = useClasses('CheckboxGroup');
+		} = useCheckboxGroup(
+			{
+				id,
+				...componentProps,
+			},
+			state
+		);
 
 		return (
 			<div
-				{...groupProps}
-				ref={ref}
-				aria-invalid={isInvalid}
-				style={style}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						classes.root,
-						className,
 						{
 							[classes.horizontal]: orientation === 'horizontal',
 							[classes.descriptionBeforeInput]:
@@ -75,6 +77,9 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 						},
 					],
 				})}
+				{...groupProps}
+				ref={ref}
+				aria-invalid={isInvalid}
 			>
 				<span
 					{...labelProps}

@@ -1,9 +1,12 @@
 import { useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import * as classes from './TextArea.module.scss';
+
+const DEFAULT_ROWS = 5;
+const DEFAULT_COLS = 50;
 
 interface TextAreaProps
 	extends GlobalProps,
@@ -36,18 +39,16 @@ interface TextAreaProps
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	(props, forwardedRef) => {
 		const {
-			style,
-			className,
 			label,
 			description,
 			isRequired,
 			isDisabled,
-			rows = 5,
-			cols = 50,
+			rows = DEFAULT_ROWS,
+			cols = DEFAULT_COLS,
 			descriptionArea,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
-		const { clsx } = useClasses('TextArea');
+		const { clsx, rootProps, componentProps } = useProps('TextArea', props);
 		const {
 			isInvalid,
 			inputProps,
@@ -57,7 +58,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			validationErrors,
 		} = useTextField(
 			{
-				...props,
+				...componentProps,
 				inputElementType: 'textarea',
 			},
 			ref
@@ -65,12 +66,9 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
 		return (
 			<div
-				style={style}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						classes.root,
-						className,
 						{
 							[classes.disabled]: isDisabled,
 							[classes.invalid]: isInvalid,

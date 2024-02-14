@@ -1,5 +1,5 @@
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { useObjectRef } from '@react-aria/utils';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import {
 	ReactNode,
@@ -20,13 +20,17 @@ interface RadioProps extends GlobalProps, AriaRadioProps {
 
 export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 	(props, forwardedRef) => {
-		const { children, className, style } = props;
+		const { children, className } = props;
+		const {
+			clsx,
+			rootProps,
+			componentProps: restProps,
+		} = useProps('Radio', props);
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
 		const state = useContext(RadioContext);
 		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const radioProps = state ? useRadio(props, state, inputRef) : null;
-		const { clsx } = useClasses('Radio');
+		const radioProps = state ? useRadio(restProps, state, inputRef) : null;
 
 		if (!radioProps) {
 			throw new Error('Radio must be added as a group');
@@ -36,11 +40,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 
 		return (
 			<label
-				{...filterDOMProps(props, { labelable: true })}
-				ref={ref}
-				style={style}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						classes.root,
 						className,
@@ -49,6 +49,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 						},
 					],
 				})}
+				ref={ref}
 			>
 				<input
 					{...inputProps}

@@ -1,5 +1,5 @@
 import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { useClasses, useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
@@ -47,40 +47,29 @@ export interface LinkButtonProps
 
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 	(props, forwardedRef) => {
-		const {
-			children,
-			className,
-			variant = DEFAULT_VARIANT,
-			size,
-			prefix,
-			suffix,
-			style,
-		} = props;
+		const { children, variant = DEFAULT_VARIANT, size } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { linkProps } = useLink(props, ref);
-		const { hoverProps } = useHover(props);
-		const { clsx } = useClasses('LinkButton');
+		const { clsx, rootProps, componentProps } = useProps('LinkButton', props);
+		const { linkProps } = useLink(componentProps, ref);
+		const { hoverProps } = useHover(componentProps);
+		const { prefix, suffix } = props;
 		const hasAffix = !!prefix || !!suffix;
 
 		return (
 			<a
-				{...filterDOMProps(props, { labelable: true, isLink: true })}
-				{...mergeProps(linkProps, hoverProps)}
-				ref={ref}
-				style={style}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						'button',
-						`button-${variant}`,
 						`${size ? `button-${size}` : ''}`,
+						`button-${variant}`,
 						classes.root,
-						className,
 						{
 							[classes.hasAffix]: hasAffix,
 						},
 					],
 				})}
+				{...mergeProps(linkProps, hoverProps)}
+				ref={ref}
 			>
 				{prefix && (
 					<span

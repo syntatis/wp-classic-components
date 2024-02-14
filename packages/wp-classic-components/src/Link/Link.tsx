@@ -1,5 +1,5 @@
-import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { mergeProps, useObjectRef } from '@react-aria/utils';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
@@ -39,24 +39,18 @@ export interface LinkProps
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 	(props, forwardedRef) => {
-		const { children, className, variant, prefix, suffix, style } = props;
+		const { children, variant, prefix, suffix } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { linkProps } = useLink(props, ref);
-		const { hoverProps } = useHover(props);
-		const { clsx } = useClasses('Link');
+		const { clsx, rootProps, componentProps } = useProps('Link', props);
+		const { linkProps } = useLink(componentProps, ref);
+		const { hoverProps } = useHover(componentProps);
 		const hasAffix = !!prefix || !!suffix;
 
 		return (
 			<a
-				{...filterDOMProps(props, { labelable: true, isLink: true })}
-				{...mergeProps(linkProps, hoverProps)}
-				ref={ref}
-				style={style}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						classes.root,
-						className,
 						{
 							[classes.hasAffix]: hasAffix,
 							[classes.variantDanger]: variant === 'danger',
@@ -64,6 +58,8 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 						},
 					],
 				})}
+				{...mergeProps(linkProps, hoverProps)}
+				ref={ref}
 			>
 				{prefix && (
 					<span

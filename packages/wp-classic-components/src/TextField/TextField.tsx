@@ -1,5 +1,5 @@
 import { useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
@@ -36,17 +36,10 @@ interface TextFieldProps
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, forwardedRef) => {
-		const {
-			style,
-			className,
-			label,
-			description,
-			descriptionArea,
-			isRequired,
-			isDisabled,
-		} = props;
+		const { label, isRequired, isDisabled } = props;
+		const { description, descriptionArea } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { clsx } = useClasses('TextField');
+		const { clsx, rootProps, componentProps } = useProps('TextField', props);
 		const {
 			isInvalid,
 			inputProps,
@@ -54,16 +47,13 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			descriptionProps,
 			errorMessageProps,
 			validationErrors,
-		} = useTextField(props, ref);
+		} = useTextField(componentProps, ref);
 
 		return (
 			<div
-				style={style}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						classes.root,
-						className,
 						{
 							[classes.disabled]: isDisabled,
 							[classes.invalid]: isInvalid,

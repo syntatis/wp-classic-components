@@ -1,5 +1,5 @@
-import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { mergeProps, useObjectRef } from '@react-aria/utils';
+import { useProps } from 'modules/hooks';
 import { Affixable, GlobalProps } from 'modules/types';
 import { ReactNode, forwardRef } from 'react';
 import {
@@ -34,11 +34,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		const {
 			children,
 			variant = 'primary',
-			className,
 			prefix,
 			suffix,
 			autoFocus,
-			style,
 			size,
 			role,
 		} = props;
@@ -46,17 +44,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		const { buttonProps } = useButton(props, ref);
 		const { hoverProps } = useHover(props);
 		const { focusProps } = useFocusRing({ autoFocus });
-		const { clsx } = useClasses('Button');
+		const { clsx, rootProps } = useProps('Button', props);
 		const hasAffix = !!prefix || !!suffix;
 
 		return (
 			<button
-				{...filterDOMProps(props, { labelable: true })}
-				{...mergeProps(buttonProps, hoverProps, focusProps)}
-				style={style}
-				role={role}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						`${size ? `button-${size}` : ''}`,
 						'button',
@@ -65,10 +58,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 							[classes.hasAffix]: hasAffix,
 							'button-link-delete': variant === 'link-danger',
 						},
-						className,
 						classes.root,
 					],
 				})}
+				{...mergeProps(buttonProps, hoverProps, focusProps)}
+				role={role}
 			>
 				{prefix && (
 					<span

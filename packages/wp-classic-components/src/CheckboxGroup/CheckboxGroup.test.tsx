@@ -70,7 +70,7 @@ it('should render with the inline style', () => {
 
 it('should render with the "id" attribute', () => {
 	render(
-		<CheckboxGroup label="Post types" id="12345">
+		<CheckboxGroup label="Post types" id="checkbox-group-1">
 			<Checkbox>Pages</Checkbox>
 			<Checkbox>Posts</Checkbox>
 		</CheckboxGroup>
@@ -78,7 +78,7 @@ it('should render with the "id" attribute', () => {
 
 	expect(screen.getByRole('group', { name: 'Post types' })).toHaveAttribute(
 		'id',
-		'12345'
+		'checkbox-group-1'
 	);
 });
 

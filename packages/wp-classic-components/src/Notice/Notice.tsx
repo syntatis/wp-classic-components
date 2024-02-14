@@ -1,5 +1,5 @@
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { useObjectRef } from '@react-aria/utils';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
@@ -43,17 +43,15 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 	(props, forwardedRef) => {
 		const {
 			children,
-			className,
 			dismissable = false,
 			level = 'info',
 			variant,
-			style,
 			isDismissed,
 			onDismiss,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const buttonRef = useObjectRef<HTMLButtonElement>(null);
-		const { clsx } = useClasses('Notice');
+		const { clsx, rootProps } = useProps('Notice', props);
 		const { buttonProps } = useButton(
 			{
 				onPress: () => onDismiss?.(),
@@ -68,19 +66,15 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 		return (
 			!isDismissed && (
 				<div
-					{...filterDOMProps(props, { labelable: true })}
-					ref={ref}
-					style={style}
-					className={clsx({
-						prefixedNames: 'root',
+					{...rootProps({
 						classNames: [
 							'notice',
 							`notice-${level}`,
 							classes.root,
-							className,
 							{ 'notice-alt': variant === 'alt' },
 						],
 					})}
+					ref={ref}
 				>
 					<div
 						className={clsx({

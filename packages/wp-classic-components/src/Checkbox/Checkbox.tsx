@@ -1,5 +1,5 @@
 import { useId, useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { ReactNode, forwardRef, useContext, useRef } from 'react';
 import {
@@ -21,6 +21,7 @@ export interface CheckboxProps
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
 		const { children, className, description, style } = props;
+		const { clsx, rootProps, componentProps } = useProps('Checkbox', props);
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
 		const labelId = useId();
@@ -35,18 +36,18 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 				// eslint-disable-next-line react-hooks/rules-of-hooks
 				useCheckboxGroupItem(
 					{
-						...props,
+						...componentProps,
 						// Value is optional for standalone checkboxes, but required for CheckboxGroup items.
 						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 						// @ts-expect-error
-						value: props.value,
+						value: componentProps.value,
 					},
 					groupState,
 					inputRef
 				)
 				// eslint-disable-next-line react-hooks/rules-of-hooks
-			:	useCheckbox(props, useToggleState(props), inputRef);
-		const { clsx } = useClasses('Checkbox');
+			:	useCheckbox(componentProps, useToggleState(componentProps), inputRef);
+
 		const label = (
 			<span
 				{...labelProps}
@@ -61,17 +62,14 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 
 		return (
 			<div
-				style={style}
-				className={clsx({
+				{...rootProps({
 					classNames: [
 						classes.root,
-						className,
 						{
 							[classes.disabled]: isDisabled,
 							[classes.readOnly]: isReadOnly,
 						},
 					],
-					prefixedNames: 'root',
 				})}
 			>
 				<label

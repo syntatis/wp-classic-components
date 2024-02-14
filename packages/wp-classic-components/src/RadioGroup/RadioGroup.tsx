@@ -1,5 +1,5 @@
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
-import { useClasses } from 'modules/hooks';
+import { useObjectRef } from '@react-aria/utils';
+import { useProps } from 'modules/hooks';
 import { GlobalProps } from 'modules/types';
 import { ReactElement, ReactNode, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
@@ -26,44 +26,39 @@ interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 	(props, forwardedRef) => {
-		const {
-			label,
-			children,
-			description,
-			descriptionArea,
-			isRequired,
-			className,
-			style,
-		} = props;
+		const { label, children, isRequired, id } = props;
+		const { description, descriptionArea } = props;
+		const { clsx, rootProps, componentProps } = useProps('RadioGroup', props);
 		const ref = useObjectRef(forwardedRef);
-		const state = useRadioGroupState(props);
+		const state = useRadioGroupState(componentProps);
 		const {
 			descriptionProps,
 			errorMessageProps,
+			isInvalid,
 			labelProps,
 			radioGroupProps,
-			isInvalid,
 			validationErrors,
-		} = useRadioGroup(props, state);
-		const { clsx } = useClasses('RadioGroup');
+		} = useRadioGroup(
+			{
+				id,
+				...componentProps,
+			},
+			state
+		);
 
 		return (
 			<div
-				{...filterDOMProps(props, { labelable: true })}
-				{...radioGroupProps}
-				ref={ref}
-				style={style}
-				className={clsx({
-					prefixedNames: 'root',
+				{...rootProps({
 					classNames: [
 						classes.root,
-						className,
 						{
 							[classes.descriptionBeforeInput]:
 								descriptionArea === 'before-input',
 						},
 					],
 				})}
+				{...radioGroupProps}
+				ref={ref}
 				data-description-area={descriptionArea}
 			>
 				<span

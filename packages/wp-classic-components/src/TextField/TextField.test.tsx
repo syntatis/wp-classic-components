@@ -63,11 +63,13 @@ it('should render with the description', () => {
 });
 
 it('should render with "id" attribute', () => {
-	render(<TextField label="Username" id="input-id-1" />);
+	render(
+		<TextField label="Username" id="input-id-1" data-testid="textfield" />
+	);
 
-	const input = screen.getByLabelText('Username');
+	const root = screen.getByTestId('textfield');
 
-	expect(input).toHaveAttribute('id', 'input-id-1');
+	expect(root).toHaveAttribute('id', 'input-id-1');
 });
 
 it('should render with "tabindex" attribute', () => {
