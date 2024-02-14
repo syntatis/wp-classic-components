@@ -9,9 +9,11 @@ const meta: Meta<typeof LinkButton> = {
 		controls: {
 			include: [
 				'children',
-				'size',
-				'variant',
 				'excludeFromTabOrder',
+				'href',
+				'size',
+				'target',
+				'variant',
 				'onFocusChange',
 				'onHoverChange',
 			],
