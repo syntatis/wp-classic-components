@@ -1,6 +1,6 @@
 import { useId, useObjectRef } from '@react-aria/utils';
-import { useClasses } from '@syntatis/react-hooks';
-import { GlobalProps } from '@syntatis/types';
+import { useClasses } from 'modules/hooks';
+import { GlobalProps } from 'modules/types';
 import { ReactNode, forwardRef, useContext, useRef } from 'react';
 import {
 	AriaCheckboxProps,

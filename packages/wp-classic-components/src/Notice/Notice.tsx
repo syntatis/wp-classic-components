@@ -1,6 +1,6 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
-import { useClasses } from '@syntatis/react-hooks';
-import { GlobalProps } from '@syntatis/types';
+import { useClasses } from 'modules/hooks';
+import { GlobalProps } from 'modules/types';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
 import * as classes from './Notice.module.scss';
