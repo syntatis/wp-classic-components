@@ -1,13 +1,19 @@
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
+import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
-import classes from './TextField.module.scss';
+import * as classes from './TextField.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 
 interface TextFieldProps
 	extends GlobalProps,
 		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid'> {
+	/**
+	 * The input type.
+	 *
+	 * @default 'text'
+	 */
+	type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
 	/**
 	 * Where to place the description.
 	 *
@@ -52,6 +58,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
 		return (
 			<div
+				style={style}
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [
@@ -88,10 +95,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					</label>
 				)}
 				<input
-					{...filterDOMProps(props)}
 					{...inputProps}
 					ref={ref}
-					style={style}
 					className={clsx({
 						prefixedNames: 'input',
 						classNames: {

@@ -8,6 +8,7 @@ export default defineConfig({
 	cacheDir: resolve(__dirname, '../../node_modules/.vite'),
 	plugins: [react(), dts({ rollupTypes: true })],
 	build: {
+		outDir: resolve(__dirname, './'),
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
 			formats: ['es'],
@@ -19,17 +20,5 @@ export default defineConfig({
 				entryFileNames: '[name].js',
 			},
 		},
-	},
-	test: {
-		alias: {
-			tests: resolve(__dirname, '../../tests'),
-		},
-		cache: {
-			dir: resolve(__dirname, '../../node_modules/.vitest'),
-		},
-		environment: 'jsdom',
-		globals: true,
-		include: ['src/**/*.test.{js,ts,mts,jsx,tsx}'],
-		setupFiles: resolve(__dirname, '../../tests/setup.ts'),
 	},
 });

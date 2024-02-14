@@ -2,7 +2,7 @@ import { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   stories: [
-    '../packages/core/src/**/*.stories.@(ts|tsx)',
+    '../packages/wp-classic-components/src/**/*.stories.@(ts|tsx)',
   ],
   addons: [
     '@storybook/addon-a11y',

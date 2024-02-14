@@ -22,17 +22,38 @@
 		"@storybook/react": "^7.6.10",
 		"@storybook/testing-library": "^0.2.2",
 		"@storybook/theming": "^7.6.10",
-		"@syntatis/eslint-config": "^0.0.0",
-		"@syntatis/stylelint-config": "^0.0.0",
+		"@syntatis/eslint-config": "^0.1.4",
+		"@syntatis/stylelint-config": "^0.1.4",
+		"@testing-library/jest-dom": "^6.3.0",
+		"@testing-library/react": "^14.1.2",
+		"@types/react-dom": "^18.2.18",
+		"@types/react": "^18.2.48",
+		"@vitejs/plugin-react": "^4.2.1",
 		"@wordpress/icons": "^9.41.0",
 		"chromatic": "^10.6.1",
+		"eslint": "^8.55.0",
 		"eslint-plugin-storybook": "^0.6.15",
+		"jsdom": "^24.0.0",
 		"lerna": "^8.0.0",
-		"storybook": "^7.6.10"
+		"prettier": "^3.2.4",
+		"sass": "^1.70.0",
+		"storybook": "^7.6.10",
+		"stylelint": "^16.2.0",
+		"typescript": "^5.3.3",
+		"vitest": "^1.2.1"
 	},
 	"scripts": {
-		"chromatic": "chromatic --build-script-name=build:storybook",
 		"build:storybook": "storybook build",
-		"storybook": "storybook dev -p 6007"
+		"build": "npm run build --workspaces --if-present",
+		"chromatic": "chromatic --build-script-name=build:storybook",
+		"format:scripts": "eslint --fix",
+		"format:styles": "stylelint '**/*.scss' --fix",
+		"format": "npm run format:scripts && npm run format:styles",
+		"lint:scripts": "eslint .",
+		"lint:styles": "stylelint '**/*.scss'",
+		"lint:types": "tsc --noEmit",
+		"lint": "npm run lint:scripts && npm run lint:styles && npm run lint:types",
+		"storybook": "storybook dev -p 6007",
+		"test": "vitest run"
 	}
 }

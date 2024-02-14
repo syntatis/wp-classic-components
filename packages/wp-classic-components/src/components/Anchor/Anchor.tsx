@@ -1,7 +1,7 @@
 import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
-import classes from './Anchor.module.scss';
+import * as classes from './Anchor.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 

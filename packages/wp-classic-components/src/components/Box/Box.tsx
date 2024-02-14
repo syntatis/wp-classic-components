@@ -1,7 +1,7 @@
 import { filterDOMProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef, useRef, useState } from 'react';
 import { useButton, useId } from 'react-aria';
-import classes from './Box.module.scss';
+import * as classes from './Box.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 

@@ -1,7 +1,7 @@
-import { filterDOMProps, useObjectRef } from '@react-aria/utils';
+import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
-import classes from './TextArea.module.scss';
+import * as classes from './TextArea.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 
@@ -47,7 +47,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			descriptionArea,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
-		const { clsx } = useClasses('TextField');
+		const { clsx } = useClasses('TextArea');
 		const {
 			isInvalid,
 			inputProps,
@@ -65,6 +65,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
 		return (
 			<div
+				style={style}
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [
@@ -101,10 +102,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 					</label>
 				)}
 				<textarea
-					{...filterDOMProps(props)}
 					{...inputProps}
 					ref={ref}
-					style={style}
 					rows={rows}
 					cols={cols}
 					className={clsx({

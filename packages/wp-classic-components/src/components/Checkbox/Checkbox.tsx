@@ -6,7 +6,7 @@ import {
 	useCheckboxGroupItem,
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
-import classes from './Checkbox.module.scss';
+import * as classes from './Checkbox.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 import { CheckboxGroupContext } from '../CheckboxGroup';

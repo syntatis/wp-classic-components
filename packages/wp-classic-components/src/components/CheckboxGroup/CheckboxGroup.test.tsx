@@ -29,89 +29,83 @@ it('should render the description', () => {
 	).toHaveAccessibleDescription('This is a description');
 });
 
-describe('styles', () => {
-	it('should render with the static class', () => {
-		render(
-			<CheckboxGroup label="Post types">
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
+it('should render with the static class', () => {
+	render(
+		<CheckboxGroup label="Post types">
+			<Checkbox>Pages</Checkbox>
+			<Checkbox>Posts</Checkbox>
+		</CheckboxGroup>
+	);
 
-		expect(screen.getByRole('group', { name: 'Post types' })).toHaveClass(
-			'wp-classic-CheckboxGroup-root'
-		);
-	});
+	expect(screen.getByRole('group', { name: 'Post types' })).toHaveClass(
+		'wp-classic-CheckboxGroup-root'
+	);
+});
 
-	it('should render with the custom class', () => {
-		render(
-			<CheckboxGroup label="Post types" className="post-type-setting">
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
+it('should render with the custom class', () => {
+	render(
+		<CheckboxGroup label="Post types" className="post-type-setting">
+			<Checkbox>Pages</Checkbox>
+			<Checkbox>Posts</Checkbox>
+		</CheckboxGroup>
+	);
 
-		expect(screen.getByRole('group', { name: 'Post types' })).toHaveClass(
-			'post-type-setting'
-		);
-	});
+	expect(screen.getByRole('group', { name: 'Post types' })).toHaveClass(
+		'post-type-setting'
+	);
+});
 
-	it('should render with the inline style', () => {
-		render(
-			<CheckboxGroup label="Post types" style={{ margin: 50 }}>
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
+it('should render with the inline style', () => {
+	render(
+		<CheckboxGroup label="Post types" style={{ margin: 50 }}>
+			<Checkbox>Pages</Checkbox>
+			<Checkbox>Posts</Checkbox>
+		</CheckboxGroup>
+	);
 
-		expect(screen.getByRole('group', { name: 'Post types' })).toHaveStyle({
-			margin: '50px',
-		});
+	expect(screen.getByRole('group', { name: 'Post types' })).toHaveStyle({
+		margin: '50px',
 	});
 });
 
-describe('attributes', () => {
-	it('should render with the "id" attribute', () => {
-		render(
-			<CheckboxGroup label="Post types" id="12345">
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
+it('should render with the "id" attribute', () => {
+	render(
+		<CheckboxGroup label="Post types" id="12345">
+			<Checkbox>Pages</Checkbox>
+			<Checkbox>Posts</Checkbox>
+		</CheckboxGroup>
+	);
 
-		expect(screen.getByRole('group', { name: 'Post types' })).toHaveAttribute(
-			'id',
-			'12345'
-		);
-	});
-
-	it('should not render with invalid html attribute', () => {
-		render(
-			// @ts-expect-error
-			<CheckboxGroup label="Post types" foo="bar">
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
-
-		expect(
-			screen.getByRole('group', { name: 'Post types' })
-		).not.toHaveAttribute('foo');
-	});
+	expect(screen.getByRole('group', { name: 'Post types' })).toHaveAttribute(
+		'id',
+		'12345'
+	);
 });
 
-describe('a11y', () => {
-	it('should retain the role', () => {
-		render(
-			<CheckboxGroup label="Post types" role="presentation">
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
+it('should not render with invalid html attribute', () => {
+	render(
+		// @ts-expect-error
+		<CheckboxGroup label="Post types" foo="bar">
+			<Checkbox>Pages</Checkbox>
+			<Checkbox>Posts</Checkbox>
+		</CheckboxGroup>
+	);
 
-		// Role "presentation" does not override the role "group".
-		expect(screen.getByRole('group')).toBeInTheDocument();
-	});
+	expect(screen.getByRole('group', { name: 'Post types' })).not.toHaveAttribute(
+		'foo'
+	);
+});
+
+it('should retain the role', () => {
+	render(
+		<CheckboxGroup label="Post types" role="presentation">
+			<Checkbox>Pages</Checkbox>
+			<Checkbox>Posts</Checkbox>
+		</CheckboxGroup>
+	);
+
+	// Role "presentation" does not override the role "group".
+	expect(screen.getByRole('group')).toBeInTheDocument();
 });
 
 describe('states', () => {
