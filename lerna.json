@@ -9,10 +9,9 @@
       "message": "Version bump",
 			"allowBranch": ["main", "next", "feat/*"],
       "changelog": false,
-      "private": true,
+      "private": false,
       "push": true,
       "exact": true,
-      "tagVersionPrefix": "v",
       "ignoreChanges": [
         "**/*.md",
         "**/*.spec.ts",
