@@ -2,6 +2,8 @@
 
 :global(.wp-core-ui) {
 	.root {
+		width: max-content;
+
 		.affix {
 			display: flex;
 			align-items: center;

@@ -1,3 +1,4 @@
+import { Icon, external } from '@wordpress/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { LinkButton } from './LinkButton';
 
@@ -41,5 +42,17 @@ const meta: Meta<typeof LinkButton> = {
 type Story = StoryObj<typeof LinkButton>;
 
 export const Default: Story = {};
+
+export const WithPrefix: Story = {
+	args: {
+		suffix: <Icon icon={external} />,
+	},
+};
+
+export const WithSuffix: Story = {
+	args: {
+		suffix: <Icon icon={external} />,
+	},
+};
 
 export default meta;

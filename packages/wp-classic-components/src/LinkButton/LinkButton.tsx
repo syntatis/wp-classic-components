@@ -59,7 +59,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 		const ref = useObjectRef(forwardedRef);
 		const { linkProps } = useLink(props, ref);
 		const { hoverProps } = useHover(props);
-		const { clsx } = useClasses('Link');
+		const { clsx } = useClasses('LinkButton');
 		const hasAffix = !!prefix || !!suffix;
 
 		return (
