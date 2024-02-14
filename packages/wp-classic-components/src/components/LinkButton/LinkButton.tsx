@@ -1,11 +1,13 @@
 import { filterDOMProps, mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
-import * as classes from './Anchor.module.scss';
+import * as classes from './LinkButton.module.scss';
 import { useClasses } from '../../hooks';
 import { GlobalProps } from '../../types';
 
-export interface AnchorProps
+const DEFAULT_VARIANT = 'primary';
+
+export interface LinkButtonProps
 	extends GlobalProps,
 		Omit<HoverProps, 'isDisabled'>,
 		Omit<
@@ -25,8 +27,14 @@ export interface AnchorProps
 	children: ReactNode;
 	/**
 	 * Change the link variant.
+	 *
+	 * @default 'primary'
 	 */
-	variant?: 'warning' | 'danger';
+	variant?: 'primary' | 'secondary';
+	/**
+	 * The size of the button.
+	 */
+	size?: 'small' | 'large' | 'hero';
 	/**
 	 * The content displayed before the link label.
 	 */
@@ -37,13 +45,21 @@ export interface AnchorProps
 	suffix?: ReactNode;
 }
 
-export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
+export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 	(props, forwardedRef) => {
-		const { children, className, variant, prefix, suffix, style } = props;
+		const {
+			children,
+			className,
+			variant = DEFAULT_VARIANT,
+			size,
+			prefix,
+			suffix,
+			style,
+		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { linkProps } = useLink(props, ref);
 		const { hoverProps } = useHover(props);
-		const { clsx } = useClasses('Anchor');
+		const { clsx } = useClasses('Link');
 		const hasAffix = !!prefix || !!suffix;
 
 		return (
@@ -55,12 +71,13 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
 				className={clsx({
 					prefixedNames: 'root',
 					classNames: [
+						'button',
+						`button-${variant}`,
+						`${size ? `button-${size}` : ''}`,
 						classes.root,
 						className,
 						{
 							[classes.hasAffix]: hasAffix,
-							[classes.variantDanger]: variant === 'danger',
-							[classes.variantWarning]: variant === 'warning',
 						},
 					],
 				})}
@@ -100,4 +117,4 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
 	}
 );
 
-Anchor.displayName = 'Anchor';
+LinkButton.displayName = 'Link';

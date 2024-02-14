@@ -1,21 +1,14 @@
 import { Icon, wordpress, external } from '@wordpress/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Anchor } from './Anchor';
+import { Link } from './Link';
 
-const meta: Meta<typeof Anchor> = {
-	title: 'Components/Anchor',
-	component: Anchor,
+const meta: Meta<typeof Link> = {
+	title: 'Components/Link',
+	component: Link,
 	tags: ['autodocs'],
 	parameters: {
 		controls: {
-			include: [
-				'children',
-				'href',
-				'target',
-				'severity',
-				'onFocusChange',
-				'onHoverChange',
-			],
+			include: ['children', 'href', 'target', 'onFocusChange', 'onHoverChange'],
 		},
 	},
 	argTypes: {
@@ -33,7 +26,7 @@ const meta: Meta<typeof Anchor> = {
 	},
 };
 
-type Story = StoryObj<typeof Anchor>;
+type Story = StoryObj<typeof Link>;
 
 export const Default: Story = {};
 

@@ -2,7 +2,7 @@ export * from './Box';
 export * from './Button';
 export * from './Checkbox';
 export * from './CheckboxGroup';
-export * from './Anchor';
+export * from './Link';
 export * from './Notice';
 export * from './RadioGroup';
 export * from './TextArea';

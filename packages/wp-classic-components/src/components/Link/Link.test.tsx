@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { Icon, download, wordpress } from '@wordpress/icons';
 import { expect, it } from 'vitest';
-import { Anchor } from './Anchor';
+import { Link } from './Link';
 
 it('should render the anchor tag', () => {
-	render(<Anchor href="/">Hello world</Anchor>);
+	render(<Link href="/">Hello world</Link>);
 
 	expect(
 		screen.getByRole('link', {
@@ -14,20 +14,20 @@ it('should render the anchor tag', () => {
 });
 
 it('should render with the static class', () => {
-	render(<Anchor href="/">Hello world</Anchor>);
+	render(<Link href="/">Hello world</Link>);
 
 	expect(
 		screen.getByRole('link', {
 			name: 'Hello world',
 		})
-	).toHaveClass('wp-classic-Anchor-root');
+	).toHaveClass('wp-classic-Link-root');
 });
 
 it('should render with the custom class', () => {
 	render(
-		<Anchor href="/" className="hello-world">
+		<Link href="/" className="hello-world">
 			Hello world
-		</Anchor>
+		</Link>
 	);
 
 	expect(
@@ -39,9 +39,9 @@ it('should render with the custom class', () => {
 
 it('should render with the inline style', () => {
 	render(
-		<Anchor href="/" style={{ margin: 10 }}>
+		<Link href="/" style={{ margin: 10 }}>
 			Hello world
-		</Anchor>
+		</Link>
 	);
 
 	expect(
@@ -53,9 +53,9 @@ it('should render with the inline style', () => {
 
 it('should render with the "id" attribute', () => {
 	render(
-		<Anchor href="/" id="hello-world-1">
+		<Link href="/" id="hello-world-1">
 			Hello world
-		</Anchor>
+		</Link>
 	);
 
 	expect(
@@ -68,9 +68,9 @@ it('should render with the "id" attribute', () => {
 it('should not render with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
-		<Anchor href="/" foo="bar">
+		<Link href="/" foo="bar">
 			Hello world
-		</Anchor>
+		</Link>
 	);
 
 	expect(
@@ -82,9 +82,9 @@ it('should not render with invalid html attribute', () => {
 
 it('should render with the prefix node', () => {
 	render(
-		<Anchor href="/" prefix={<Icon data-testid="wp-icon" icon={wordpress} />}>
+		<Link href="/" prefix={<Icon data-testid="wp-icon" icon={wordpress} />}>
 			Hello world
-		</Anchor>
+		</Link>
 	);
 
 	expect(screen.getByTestId('wp-icon')).toBeInTheDocument();
@@ -92,12 +92,12 @@ it('should render with the prefix node', () => {
 
 it('should render with the suffix node', () => {
 	render(
-		<Anchor
+		<Link
 			href="/"
 			suffix={<Icon data-testid="wp-icon-download" icon={download} />}
 		>
 			Hello world
-		</Anchor>
+		</Link>
 	);
 
 	expect(screen.getByTestId('wp-icon-download')).toBeInTheDocument();
