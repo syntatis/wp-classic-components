@@ -25,6 +25,12 @@ const meta: Meta<typeof LinkButton> = {
 				type: 'text',
 			},
 		},
+		target: {
+			control: {
+				type: 'select',
+			},
+			options: ['_self', '_blank'],
+		},
 	},
 	args: {
 		href: 'https://wordpress.org',
