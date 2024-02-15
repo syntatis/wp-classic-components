@@ -57,7 +57,7 @@ const preview: Preview = {
     backgrounds: {
       disable: true,
     },
-  },
+	},
 };
 
 export default preview;
