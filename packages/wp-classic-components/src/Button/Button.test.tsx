@@ -1,8 +1,6 @@
-'use strict';
-'use asm';
-
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Icon, desktop } from '@wordpress/icons';
 import { expect, it, vi } from 'vitest';
 import { Button } from './Button';
 
@@ -126,6 +124,30 @@ it('should be disabled', () => {
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
 	expect(button).toBeDisabled();
+});
+
+it('should render with the prefix', () => {
+	render(
+		<Button prefix={<Icon icon={desktop} data-testid="prefix" />}>
+			Save changes
+		</Button>
+	);
+
+	const icon = screen.queryByTestId('prefix');
+
+	expect(icon).toBeInTheDocument();
+});
+
+it('should render with the suffix', () => {
+	render(
+		<Button suffix={<Icon icon={desktop} data-testid="suffix" />}>
+			Save changes
+		</Button>
+	);
+
+	const icon = screen.queryByTestId('suffix');
+
+	expect(icon).toBeInTheDocument();
 });
 
 it('should call the "onPress" callback', async () => {

@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { Icon, wordpress } from '@wordpress/icons';
 import { expect, it } from 'vitest';
 import { LinkButton } from './LinkButton';
 
@@ -130,4 +131,34 @@ it('should render with the "data-*" label attributes', () => {
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
 	expect(link).toHaveAttribute('data-invalid', 'true');
+});
+
+it('should render with the prefix', () => {
+	render(
+		<LinkButton
+			href="https://wordpress.org"
+			prefix={<Icon icon={wordpress} data-testid="prefix" />}
+		>
+			Go to WordPress
+		</LinkButton>
+	);
+
+	const icon = screen.queryByTestId('prefix');
+
+	expect(icon).toBeInTheDocument();
+});
+
+it('should render with the suffix', () => {
+	render(
+		<LinkButton
+			href="https://wordpress.org"
+			suffix={<Icon icon={wordpress} data-testid="suffix" />}
+		>
+			Go to WordPress
+		</LinkButton>
+	);
+
+	const icon = screen.queryByTestId('suffix');
+
+	expect(icon).toBeInTheDocument();
 });
