@@ -10,7 +10,6 @@ interface RootPropsArgs {
 export function useProps<T>(name: string, props?: PropsArgs & T) {
 	const {
 		id,
-		tabIndex,
 		style,
 		className,
 		'data-testid': testId,
@@ -27,7 +26,6 @@ export function useProps<T>(name: string, props?: PropsArgs & T) {
 			return {
 				id,
 				style,
-				tabIndex,
 				className: clsx({
 					classNames: [classNames, className],
 					prefixedNames: 'root',
