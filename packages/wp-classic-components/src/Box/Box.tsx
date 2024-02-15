@@ -61,7 +61,6 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 			},
 			buttonRef
 		);
-
 		let toggleLabel = title ? `Toggle panel: ${title}` : 'Toggle panel';
 
 		if (typeof collapsible === 'object') {

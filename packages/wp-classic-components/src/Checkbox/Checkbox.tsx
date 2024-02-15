@@ -20,7 +20,7 @@ export interface CheckboxProps
 
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
-		const { children, className, description, style } = props;
+		const { children, description } = props;
 		const { clsx, rootProps, componentProps } = useProps('Checkbox', props);
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
@@ -47,7 +47,6 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 				)
 				// eslint-disable-next-line react-hooks/rules-of-hooks
 			:	useCheckbox(componentProps, useToggleState(componentProps), inputRef);
-
 		const label = (
 			<span
 				{...labelProps}
