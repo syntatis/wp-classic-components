@@ -1,13 +1,17 @@
+'use strict';
+'use asm';
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
 import { Button } from './Button';
 
-it('should render the button', () => {
+it('should render the component', () => {
 	render(<Button>Save changes</Button>);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
+	expect(button).toBeEnabled();
 	expect(button).toBeInTheDocument();
 });
 
@@ -19,7 +23,7 @@ it('should render as "secondary" variant', () => {
 	expect(button).toHaveClass('button-secondary');
 });
 
-it('should render as small "size" variant', () => {
+it('should render "small" size', () => {
 	render(<Button size="small">Save changes</Button>);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -27,7 +31,7 @@ it('should render as small "size" variant', () => {
 	expect(button).toHaveClass('button-small');
 });
 
-it('should render as large "size" variant', () => {
+it('should render "large" size', () => {
 	render(<Button size="large">Save changes</Button>);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -35,7 +39,7 @@ it('should render as large "size" variant', () => {
 	expect(button).toHaveClass('button-large');
 });
 
-it('should render as hero "size" variant', () => {
+it('should render "hero" size', () => {
 	render(<Button size="hero">Save changes</Button>);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -133,6 +137,7 @@ it('should call the "onPress" callback', async () => {
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
 	await user.click(button);
+
 	expect(fn).toBeCalledTimes(1);
 });
 
@@ -146,4 +151,21 @@ it('should call the "onHoverChange" callback', async () => {
 
 	await user.hover(button);
 	expect(fn).toBeCalledTimes(1);
+});
+
+it('should call the "onFocusChange" callback', async () => {
+	const fn = vi.fn();
+	const user = userEvent.setup();
+
+	render(<Button onFocusChange={fn}>Save changes</Button>);
+
+	await user.tab();
+
+	expect(fn).toBeCalledTimes(1);
+	expect(fn).toBeCalledWith(true); // isFocused: `true`.
+
+	await user.tab();
+
+	expect(fn).toBeCalledTimes(2);
+	expect(fn).toBeCalledWith(false); // isFocused: `false`.
 });

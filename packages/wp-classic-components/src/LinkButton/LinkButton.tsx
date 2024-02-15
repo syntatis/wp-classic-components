@@ -24,7 +24,7 @@ export interface LinkButtonProps
 	/**
 	 * The content to display inside the link.
 	 */
-	children: ReactNode;
+	children?: ReactNode;
 	/**
 	 * Change the link variant.
 	 *
