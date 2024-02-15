@@ -30,6 +30,20 @@ type Story = StoryObj<typeof Link>;
 
 export const Default: Story = {};
 
+export const VariantDanger: Story = {
+	name: 'Variant (danger)',
+	args: {
+		variant: 'danger',
+	},
+};
+
+export const VariantWarning: Story = {
+	name: 'Variant (warning)',
+	args: {
+		variant: 'warning',
+	},
+};
+
 export const WithPrefix: Story = {
 	args: {
 		prefix: <Icon icon={wordpress} />,

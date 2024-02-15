@@ -43,6 +43,54 @@ type Story = StoryObj<typeof LinkButton>;
 
 export const Default: Story = {};
 
+export const VariantSecondary: Story = {
+	name: 'Variant (secondary)',
+	parameters: {
+		controls: {
+			exclude: ['variant'],
+		},
+	},
+	args: {
+		variant: 'secondary',
+	},
+};
+
+export const SizeSmall: Story = {
+	name: 'Size (small)',
+	parameters: {
+		controls: {
+			exclude: ['size'],
+		},
+	},
+	args: {
+		size: 'small',
+	},
+};
+
+export const SizeLarge: Story = {
+	name: 'Size (large)',
+	parameters: {
+		controls: {
+			exclude: ['size'],
+		},
+	},
+	args: {
+		size: 'large',
+	},
+};
+
+export const SizeHero: Story = {
+	name: 'Size (hero)',
+	parameters: {
+		controls: {
+			exclude: ['size'],
+		},
+	},
+	args: {
+		size: 'hero',
+	},
+};
+
 export const WithPrefix: Story = {
 	args: {
 		suffix: <Icon icon={external} />,
