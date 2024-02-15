@@ -51,9 +51,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			<button
 				{...rootProps({
 					classNames: [
-						`${size ? `button-${size}` : ''}`,
 						'button',
-						`button-${variant}`,
+						`${size ? `button-${size}` : ''}`,
+						`${variant === 'link-danger' ? 'button-link' : `button-${variant}`}`,
 						{
 							[classes.hasAffix]: hasAffix,
 							'button-link-delete': variant === 'link-danger',
