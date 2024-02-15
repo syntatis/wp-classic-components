@@ -57,11 +57,15 @@ describe('attributes', () => {
 	});
 
 	it('should render with the "id" attribute', () => {
-		render(<Checkbox id="tos-agreement">Agree</Checkbox>);
+		render(
+			<Checkbox id="checkbox-1" data-testid="checkbox">
+				Agree
+			</Checkbox>
+		);
 
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+		const root = screen.getByTestId('checkbox');
 
-		expect(checkbox).toHaveAttribute('id', 'tos-agreement');
+		expect(root).toHaveAttribute('id', 'checkbox-1');
 	});
 
 	it('should not render with invalid html attribute', () => {
