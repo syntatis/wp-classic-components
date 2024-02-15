@@ -1,4 +1,5 @@
 import { StorybookConfig } from '@storybook/react-vite';
+import tsConfigPaths from 'vite-tsconfig-paths';
 
 const config: StorybookConfig = {
   stories: [
@@ -27,7 +28,11 @@ const config: StorybookConfig = {
       },
       propFilter: () => true,
     },
-  },
+	},
+	viteFinal: (config) => {
+		config.plugins?.push(tsConfigPaths());
+		return config;
+	}
 };
 
 export default config;
