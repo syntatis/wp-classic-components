@@ -7,7 +7,10 @@
 	"type": "module",
 	"keywords": [
 		"admin-dashboard",
-		"react-components",
+		"classic",
+		"css-modules",
+		"react",
+		"ui-components",
 		"wordpress"
 	],
 	"module": "index.js",

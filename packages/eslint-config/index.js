@@ -46,7 +46,7 @@ module.exports = {
 			{
 				blankLine: 'always',
 				prev: '*',
-				next: ['block-like', 'return', 'continue'],
+				next: ['block-like', 'return', 'continue', 'throw'],
 			},
 			{
 				blankLine: 'always',
@@ -54,7 +54,7 @@ module.exports = {
 				next: '*',
 			},
 			{
-				blankLine: 'any',
+				blankLine: 'never',
 				prev: ['const', 'let', 'var'],
 				next: ['const', 'let', 'var'],
 			},
@@ -64,14 +64,24 @@ module.exports = {
 				next: '*',
 			},
 			{
-				blankLine: 'any',
+				blankLine: 'never',
 				prev: 'directive',
 				next: 'directive',
 			},
 			{
 				blankLine: 'always',
-				prev: ['case', 'default'],
-				next: '*',
+				prev: '*',
+				next: 'default',
+			},
+			{
+				blankLine: 'never',
+				prev: '*',
+				next: 'break',
+			},
+			{
+				blankLine: 'never',
+				prev: 'case',
+				next: 'case',
 			},
 		],
 		'import/newline-after-import': [
