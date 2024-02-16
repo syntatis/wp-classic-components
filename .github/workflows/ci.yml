@@ -22,9 +22,6 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
-        with:
-          node-version: ${{ env.BUN_VERSION }}
-          cache: "npm"
 
       - name: Install dependencies
         run: bun install
@@ -40,9 +37,6 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
-        with:
-          node-version: ${{ env.BUN_VERSION }}
-          cache: "npm"
 
       - name: Install dependencies
         run: bun install
