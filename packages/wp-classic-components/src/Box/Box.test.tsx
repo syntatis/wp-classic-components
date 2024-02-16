@@ -7,7 +7,7 @@ import { Button } from '../Button';
 
 const Box = composeStory(Default, Meta);
 
-it('should render the box', () => {
+it('should render the component', () => {
 	render(<Box />);
 
 	expect(
