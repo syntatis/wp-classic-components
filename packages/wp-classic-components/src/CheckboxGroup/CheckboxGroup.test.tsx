@@ -1,195 +1,153 @@
+import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { CheckboxGroup } from './CheckboxGroup';
-import { Checkbox } from '../Checkbox';
+import { expect, it } from 'vitest';
+import Meta, { Default } from './CheckboxGroup.stories';
+
+const CheckboxGroup = composeStory(Default, Meta);
 
 it('should render the checkboxes', () => {
-	render(
-		<CheckboxGroup label="Post types">
-			<Checkbox>Pages</Checkbox>
-			<Checkbox>Posts</Checkbox>
-		</CheckboxGroup>
-	);
+	render(<CheckboxGroup />);
 
-	expect(screen.getByRole('group', { name: 'Post types' })).toBeInTheDocument();
-	expect(screen.getByRole('checkbox', { name: 'Pages' })).toBeInTheDocument();
-	expect(screen.getByRole('checkbox', { name: 'Posts' })).toBeInTheDocument();
+	const root = screen.queryByRole('group', { name: 'Hide on screen' });
+
+	expect(root).toBeInTheDocument();
+
+	const permalink = screen.queryByRole('checkbox', { name: 'Permalink' });
+	const excerpt = screen.queryByRole('checkbox', { name: 'Excerpt' });
+	const author = screen.queryByRole('checkbox', { name: 'Author' });
+
+	expect(permalink).toBeInTheDocument();
+	expect(permalink).toBeEnabled();
+	expect(excerpt).toBeInTheDocument();
+	expect(excerpt).toBeEnabled();
+	expect(author).toBeInTheDocument();
+	expect(author).toBeEnabled();
 });
 
 it('should render the description', () => {
 	render(
-		<CheckboxGroup label="Post types" description="This is a description">
-			<Checkbox>Pages</Checkbox>
-			<Checkbox>Posts</Checkbox>
-		</CheckboxGroup>
+		<CheckboxGroup description="When checked the option will be removed from the editor" />
 	);
 
-	expect(
-		screen.getByRole('group', { name: 'Post types' })
-	).toHaveAccessibleDescription('This is a description');
+	const root = screen.getByRole('group', { name: 'Hide on screen' });
+
+	expect(root).toHaveAccessibleDescription(
+		'When checked the option will be removed from the editor'
+	);
 });
 
 it('should render with the static class', () => {
-	render(
-		<CheckboxGroup label="Post types">
-			<Checkbox>Pages</Checkbox>
-			<Checkbox>Posts</Checkbox>
-		</CheckboxGroup>
-	);
+	render(<CheckboxGroup />);
 
-	expect(screen.getByRole('group', { name: 'Post types' })).toHaveClass(
-		'wp-classic-CheckboxGroup-root'
-	);
+	const root = screen.getByRole('group', { name: 'Hide on screen' });
+
+	expect(root).toHaveClass('wp-classic-CheckboxGroup-root');
 });
 
 it('should render with the custom class', () => {
-	render(
-		<CheckboxGroup label="Post types" className="post-type-setting">
-			<Checkbox>Pages</Checkbox>
-			<Checkbox>Posts</Checkbox>
-		</CheckboxGroup>
-	);
+	render(<CheckboxGroup className="post-type-setting" />);
 
-	expect(screen.getByRole('group', { name: 'Post types' })).toHaveClass(
+	const root = screen.getByRole('group', { name: 'Hide on screen' });
+
+	expect(root).toHaveClass(
+		'wp-classic-CheckboxGroup-root',
 		'post-type-setting'
 	);
 });
 
 it('should render with the inline style', () => {
-	render(
-		<CheckboxGroup label="Post types" style={{ margin: 50 }}>
-			<Checkbox>Pages</Checkbox>
-			<Checkbox>Posts</Checkbox>
-		</CheckboxGroup>
-	);
+	render(<CheckboxGroup style={{ margin: 50 }} />);
 
-	expect(screen.getByRole('group', { name: 'Post types' })).toHaveStyle({
-		margin: '50px',
-	});
+	const root = screen.getByRole('group', { name: 'Hide on screen' });
+
+	expect(root).toHaveStyle({ margin: '50px' });
 });
 
 it('should render with the "id" attribute', () => {
-	render(
-		<CheckboxGroup label="Post types" id="checkbox-group-1">
-			<Checkbox>Pages</Checkbox>
-			<Checkbox>Posts</Checkbox>
-		</CheckboxGroup>
-	);
+	render(<CheckboxGroup id="checkbox-group-1" />);
 
-	expect(screen.getByRole('group', { name: 'Post types' })).toHaveAttribute(
-		'id',
-		'checkbox-group-1'
-	);
+	const root = screen.getByRole('group', { name: 'Hide on screen' });
+
+	expect(root).toHaveAttribute('id', 'checkbox-group-1');
 });
 
 it('should not render with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
-		<CheckboxGroup label="Post types" foo="bar">
-			<Checkbox>Pages</Checkbox>
-			<Checkbox>Posts</Checkbox>
-		</CheckboxGroup>
+		<CheckboxGroup foo="bar" />
 	);
 
-	expect(screen.getByRole('group', { name: 'Post types' })).not.toHaveAttribute(
-		'foo'
-	);
+	const root = screen.getByRole('group', { name: 'Hide on screen' });
+	const checkboxes = screen.getAllByRole('checkbox');
+
+	expect(root).not.toHaveAttribute('foo');
+
+	checkboxes.forEach((checkbox) => {
+		expect(checkbox).not.toHaveAttribute('foo');
+	});
 });
 
 it('should retain the role', () => {
-	render(
-		<CheckboxGroup label="Post types" role="presentation">
-			<Checkbox>Pages</Checkbox>
-			<Checkbox>Posts</Checkbox>
-		</CheckboxGroup>
-	);
+	render(<CheckboxGroup role="presentation" />);
 
 	// Role "presentation" does not override the role "group".
 	expect(screen.getByRole('group')).toBeInTheDocument();
 });
 
-describe('states', () => {
-	it('should be disabled', () => {
-		render(
-			<CheckboxGroup label="Post types" isDisabled>
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
+it('should be disabled', () => {
+	render(<CheckboxGroup isDisabled />);
 
-		expect(screen.getByRole('checkbox', { name: 'Pages' })).toBeDisabled();
-		expect(screen.getByRole('checkbox', { name: 'Posts' })).toBeDisabled();
+	const checkboxes = screen.getAllByRole('checkbox');
+
+	checkboxes.forEach((checkbox) => {
+		expect(checkbox).toBeDisabled();
+	});
+});
+
+it('should be readonly', () => {
+	render(<CheckboxGroup isReadOnly />);
+
+	const checkboxes = screen.getAllByRole('checkbox');
+
+	checkboxes.forEach((checkbox) => {
+		expect(checkbox).toHaveAttribute('aria-readonly', 'true');
+	});
+});
+
+it('should be marked as invalid', () => {
+	render(<CheckboxGroup isInvalid />);
+
+	const checkboxes = screen.getAllByRole('checkbox');
+
+	checkboxes.forEach((checkbox) => {
+		expect(checkbox).toBeInvalid();
+	});
+});
+
+it('should be marked as invalid and render the error message', () => {
+	render(
+		<CheckboxGroup errorMessage="Please select on of the options" isInvalid />
+	);
+
+	const checkboxes = screen.getAllByRole('checkbox');
+
+	checkboxes.forEach((checkbox) => {
+		expect(checkbox).toBeInvalid();
 	});
 
-	it('should be readonly', () => {
-		render(
-			<CheckboxGroup label="Post types" isReadOnly>
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
+	expect(screen.getByRole('group')).toHaveAccessibleDescription(
+		'Please select on of the options'
+	);
+});
 
-		expect(screen.getByRole('checkbox', { name: 'Pages' })).toHaveAttribute(
-			'aria-readonly',
-			'true'
-		);
+it('should be marked as required', () => {
+	render(<CheckboxGroup isRequired />);
 
-		expect(screen.getByRole('checkbox', { name: 'Posts' })).toHaveAttribute(
-			'aria-readonly',
-			'true'
-		);
-	});
+	expect(screen.getByRole('group')).toHaveAccessibleName('Hide on screen *');
 
-	it('should be marked as invalid', () => {
-		render(
-			<CheckboxGroup label="Post types" isInvalid>
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
+	const checkboxes = screen.getAllByRole('checkbox');
 
-		expect(screen.getByRole('checkbox', { name: 'Pages' })).toBeInvalid();
-		expect(screen.getByRole('checkbox', { name: 'Posts' })).toBeInvalid();
-	});
-
-	it('should be marked as invalid and render the error message', () => {
-		render(
-			<CheckboxGroup
-				label="Post types"
-				errorMessage="This is an error message"
-				isInvalid
-			>
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
-
-		expect(screen.getByRole('checkbox', { name: 'Pages' })).toBeInvalid();
-		expect(screen.getByRole('checkbox', { name: 'Posts' })).toBeInvalid();
-
-		expect(screen.getByRole('group')).toHaveAccessibleDescription(
-			'This is an error message'
-		);
-	});
-
-	it('should be marked as required', () => {
-		render(
-			<CheckboxGroup label="Post types" isRequired>
-				<Checkbox>Pages</Checkbox>
-				<Checkbox>Posts</Checkbox>
-			</CheckboxGroup>
-		);
-
-		expect(screen.getByRole('group')).toHaveAccessibleName('Post types *');
-
-		expect(screen.getByRole('checkbox', { name: 'Pages' })).toHaveAttribute(
-			'aria-required',
-			'true'
-		);
-
-		expect(screen.getByRole('checkbox', { name: 'Posts' })).toHaveAttribute(
-			'aria-required',
-			'true'
-		);
+	checkboxes.forEach((checkbox) => {
+		expect(checkbox).toHaveAttribute('aria-required', 'true');
 	});
 });
