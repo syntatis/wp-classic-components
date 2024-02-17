@@ -7,7 +7,7 @@
 
 .wp-core-ui {
 	// Wrap form styles are global in a class to prevent them from affecting the Storybook UI.
-	@import "../wordpress/wp-admin/css/forms.css";
+	@import "../wordpress/wp-admin/css/forms";
 }
 
 .__wp-core-body__ {
