@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-declare module '*.png';
-declare module '*.webp';
-declare module '*.jpg';
+declare module '*.avif';
+declare module '*.bmp';
 declare module '*.gif';
+declare module '*.ico';
+declare module '*.jpeg';
+declare module '*.jpg';
+declare module '*.png';
 declare module '*.webp';
 declare module '*.svg' {
 	/**
