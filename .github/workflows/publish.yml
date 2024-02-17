@@ -2,15 +2,22 @@ name: publish
 
 on:
   workflow_dispatch:
-  release:
-    types: [published]
+    inputs:
+      semver:
+        description: 'Semver version'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
   cancel-in-progress: true
 
 env:
-  NODE_ENV: "development"
   NODE_VERSION: 20
 
 jobs:
@@ -29,15 +36,9 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit
 
-      - name: Run build
-        run: npm run build --workspace=@syntatis/wp-classic-components
-
       - name: Publish (NPM)
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: npx lerna publish from-package --yes
-
-      - name: Publish (Github)
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx lerna publish from-package --yes
+        run: |
+          npx lerna version ${{ inputs.semver }} --yes
+          npx lerna publish from-package --yes
