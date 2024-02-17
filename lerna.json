@@ -9,7 +9,7 @@
       "message": "Version bump",
 			"allowBranch": ["main", "next", "feat/*"],
       "changelog": false,
-      "private": true,
+      "private": false,
       "push": true,
       "exact": true,
       "ignoreChanges": [
