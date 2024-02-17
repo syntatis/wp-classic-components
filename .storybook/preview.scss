@@ -1,3 +1,5 @@
+/* stylelint-disable no-invalid-position-at-import-rule */
+/* stylelint-disable selector-class-pattern */
 @import '../wordpress/wp-admin/css/common.css';
 @import '../wordpress/wp-admin/css/edit.css';
 @import '../wordpress/wp-includes/css/dashicons.css';
@@ -5,7 +7,7 @@
 
 .wp-core-ui {
 	// Wrap form styles are global in a class to prevent them from affecting the Storybook UI.
-	@import "../wordpress/wp-admin/css/forms";
+	@import "../wordpress/wp-admin/css/forms.css";
 }
 
 .__wp-core-body__ {
