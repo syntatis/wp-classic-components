@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       semver:
-        description: "Semver version"
+        description: "SemVer"
         required: true
         default: "patch"
         type: choice
