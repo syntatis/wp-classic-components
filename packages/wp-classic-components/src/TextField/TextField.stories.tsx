@@ -29,7 +29,7 @@ const meta: Meta<typeof TextField> = {
 		},
 	},
 	args: {
-		label: 'Tagline',
+		label: 'Site Name',
 	},
 };
 
