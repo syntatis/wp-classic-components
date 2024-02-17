@@ -33,7 +33,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 		const radioProps = state ? useRadio(restProps, state, inputRef) : null;
 
 		if (!radioProps) {
-			throw new Error('Radio must be added as a group');
+			throw new Error('"Radio" input must be added as a group');
 		}
 
 		const { inputProps, labelProps, isDisabled } = radioProps;
