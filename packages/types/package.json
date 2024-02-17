@@ -1,13 +1,12 @@
 {
-	"name": "@syntatis/stylelint-config",
-	"description": "CSS and SCSS linter configs",
-	"version": "0.1.4",
+	"name": "@syntatis/types",
+	"description": "Common type definitions",
+	"version": "0.1.0",
 	"license": "MIT",
 	"keywords": [
-		"config",
-		"css",
-		"scss",
-		"stylelint"
+		"typescript",
+		"css-modules",
+		"extensions"
 	],
 	"main": "index.cjs",
 	"files": [
