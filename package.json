@@ -24,6 +24,7 @@
     "@storybook/theming": "^7.6.10",
     "@syntatis/eslint-config": "^0.1.4",
     "@syntatis/stylelint-config": "^0.1.4",
+    "@syntatis/types": "^0.1.0",
     "@testing-library/jest-dom": "^6.3.0",
     "@testing-library/react": "^14.1.2",
     "@types/react": "^18.2.48",

@@ -8,9 +8,8 @@
 		"css-modules",
 		"extensions"
 	],
-	"main": "index.cjs",
 	"files": [
-		"index.cjs"
+		"extensions.d.ts"
 	],
 	"dependencies": {
 		"stylelint-config-recess-order": "^4.6.0",
