@@ -1,40 +1,33 @@
+import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
-import { Notice } from './Notice';
+import Meta, { Default } from './Notice.stories';
+
+const Notice = composeStory(Default, Meta);
 
 it('should render the notice', () => {
-	render(<Notice data-testid="notice">Changes saved</Notice>);
+	render(<Notice data-testid="notice" />);
 
-	expect(screen.getByTestId('notice')).toHaveTextContent('Changes saved');
+	const notice = screen.queryByTestId('notice');
+
+	expect(notice).toHaveTextContent('Settings saved.');
 });
 
 it('should render the notice dismiss button', () => {
-	render(
-		<Notice data-testid="notice" dismissable>
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" dismissable />);
 
 	expect(screen.getByRole('button', { name: 'Dismiss notice' })).toBeEnabled();
 });
 
 it('should render the notice dismiss button with custom label', () => {
-	render(
-		<Notice data-testid="notice" dismissable={{ label: 'Ignore' }}>
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" dismissable={{ label: 'Ignore' }} />);
 
 	expect(screen.getByRole('button', { name: 'Ignore' })).toBeEnabled();
 });
 
 it('should render as "alt" variant', () => {
-	render(
-		<Notice data-testid="notice" variant="alt">
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" variant="alt" />);
 
 	const notice = screen.getByTestId('notice');
 
@@ -42,7 +35,7 @@ it('should render as "alt" variant', () => {
 });
 
 it('should render as info "level" variant', () => {
-	render(<Notice data-testid="notice">Changes saved</Notice>);
+	render(<Notice data-testid="notice" />);
 
 	const notice = screen.getByTestId('notice');
 
@@ -62,11 +55,7 @@ it('should render as success "level" variant', () => {
 });
 
 it('should render as warning "level" variant', () => {
-	render(
-		<Notice data-testid="notice" level="warning">
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" level="warning" />);
 
 	const notice = screen.getByTestId('notice');
 
@@ -74,11 +63,7 @@ it('should render as warning "level" variant', () => {
 });
 
 it('should render as error "level" variant', () => {
-	render(
-		<Notice data-testid="notice" level="error">
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" level="error" />);
 
 	const notice = screen.getByTestId('notice');
 
@@ -86,7 +71,7 @@ it('should render as error "level" variant', () => {
 });
 
 it('should render with the static class', () => {
-	render(<Notice data-testid="notice">Changes saved</Notice>);
+	render(<Notice data-testid="notice" />);
 
 	const notice = screen.getByTestId('notice');
 
@@ -94,11 +79,7 @@ it('should render with the static class', () => {
 });
 
 it('should render with the custom class', () => {
-	render(
-		<Notice data-testid="notice" className="notice-foo-bar">
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" className="notice-foo-bar" />);
 
 	const notice = screen.getByTestId('notice');
 
@@ -106,25 +87,15 @@ it('should render with the custom class', () => {
 });
 
 it('should render with the inline style', () => {
-	render(
-		<Notice data-testid="notice" style={{ margin: 100 }}>
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" style={{ margin: 100 }} />);
 
 	const notice = screen.getByTestId('notice');
 
-	expect(notice).toHaveStyle({
-		margin: '100px',
-	});
+	expect(notice).toHaveStyle({ margin: '100px' });
 });
 
 it('should render with the "id" attributes', () => {
-	render(
-		<Notice data-testid="notice" id="notice-2">
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" id="notice-2" />);
 
 	const notice = screen.getByTestId('notice');
 
@@ -134,9 +105,7 @@ it('should render with the "id" attributes', () => {
 it('should not render with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
-		<Notice data-testid="notice" foo="bar">
-			Changes saved
-		</Notice>
+		<Notice data-testid="notice" foo="bar" />
 	);
 
 	const notice = screen.getByTestId('notice');
@@ -145,24 +114,18 @@ it('should not render with invalid html attribute', () => {
 });
 
 it('should be dismissed', () => {
-	render(
-		<Notice data-testid="notice" isDismissed>
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" isDismissed />);
 
-	expect(screen.queryByTestId('notice')).not.toBeInTheDocument();
+	const notice = screen.queryByTestId('notice');
+
+	expect(notice).not.toBeInTheDocument();
 });
 
 it('should call the "onDismiss" callback', async () => {
 	const fn = vi.fn();
 	const user = userEvent.setup();
 
-	render(
-		<Notice data-testid="notice" dismissable onDismiss={fn}>
-			Changes saved
-		</Notice>
-	);
+	render(<Notice data-testid="notice" dismissable onDismiss={fn} />);
 
 	const notice = screen.getByTestId('notice');
 	const dismissButton = screen.getByRole('button', {
