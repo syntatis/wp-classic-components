@@ -10,9 +10,9 @@
 		"react",
 		"typescript"
 	],
-	"main": "index.js",
+	"main": "index.cjs",
 	"files": [
-		"index.js"
+		"index.cjs"
 	],
 	"dependencies": {
 		"@babel/eslint-parser": "^7.22.15",
