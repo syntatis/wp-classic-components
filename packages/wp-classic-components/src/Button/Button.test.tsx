@@ -53,8 +53,11 @@ it('should render with the static class', () => {
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
-	expect(button).toHaveClass('button');
-	expect(button).toHaveClass('button-primary');
+	expect(button).toHaveClass(
+		'wp-classic-Button-root',
+		'button',
+		'button-primary'
+	);
 });
 
 it('should render with the custom class name', () => {

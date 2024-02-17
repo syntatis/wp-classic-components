@@ -31,6 +31,17 @@ type Story = StoryObj<typeof IconButton>;
 
 export const Default: Story = {};
 
+export const Disabled: Story = {
+	parameters: {
+		controls: {
+			exclude: ['isDisabled'],
+		},
+	},
+	args: {
+		isDisabled: true,
+	},
+};
+
 export const VariantSecondary: Story = {
 	name: 'Variant (secondary)',
 	parameters: {
