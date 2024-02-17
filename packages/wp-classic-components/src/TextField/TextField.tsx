@@ -1,6 +1,6 @@
+import { useProps } from '@/hooks';
+import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
-import { useProps } from 'modules/hooks';
-import { GlobalProps } from 'modules/types';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import * as classes from './TextField.module.scss';

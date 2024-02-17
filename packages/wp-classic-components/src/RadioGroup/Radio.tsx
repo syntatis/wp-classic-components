@@ -1,6 +1,6 @@
+import { useProps } from '@/hooks';
+import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
-import { useProps } from 'modules/hooks';
-import { GlobalProps } from 'modules/types';
 import {
 	ReactNode,
 	createContext,
@@ -33,7 +33,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 		const radioProps = state ? useRadio(restProps, state, inputRef) : null;
 
 		if (!radioProps) {
-			throw new Error('Radio must be added as a group');
+			throw new Error('"Radio" input must be added as a group');
 		}
 
 		const { inputProps, labelProps, isDisabled } = radioProps;

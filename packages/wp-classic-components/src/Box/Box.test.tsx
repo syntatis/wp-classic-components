@@ -1,25 +1,33 @@
+import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
-import { Box } from './Box';
+import { expect, it } from 'vitest';
+import Meta, { Default } from './Box.stories';
 import { Button } from '../Button';
 
-it('should render the box', () => {
-	render(<Box>Hello world</Box>);
+const Box = composeStory(Default, Meta);
 
-	expect(screen.getByText('Hello world')).toBeInTheDocument();
+it('should render the component', () => {
+	render(<Box />);
+
+	expect(
+		screen.getByText(
+			'Your site has critical issues that should be addressed as soon as possible to improve its performance and security.'
+		)
+	).toBeInTheDocument();
 });
 
 it('should render with the title', () => {
-	render(<Box title="This is the title">Hello world</Box>);
+	render(<Box title="Site Health" />);
 
 	expect(
-		screen.getByRole('heading', { name: 'This is the title' })
+		screen.getByRole('heading', { name: 'Site Health' })
 	).toBeInTheDocument();
 });
 
 it('should render with the toggle button', async () => {
-	render(<Box collapsible>This is the content of the box</Box>);
+	render(<Box collapsible />);
+
 	const button = screen.getByRole('button', { name: 'Toggle panel' });
 
 	expect(button).toBeInTheDocument();
@@ -27,88 +35,67 @@ it('should render with the toggle button', async () => {
 });
 
 it('should render with the footer', () => {
-	render(
-		<Box footer={<Button>Save changes</Button>}>
-			This is the content of the box
-		</Box>
-	);
+	render(<Box footer={<Button>Save changes</Button>} />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
 	expect(button).toBeInTheDocument();
+	expect(button).toBeEnabled();
 });
 
-describe('styles', () => {
-	it('should render with the static class', () => {
-		render(<Box data-testid="box-1">This is the content of the box</Box>);
+it('should render with the static class', () => {
+	render(<Box data-testid="box" />);
 
-		expect(screen.getByTestId('box-1')).toHaveClass(
-			'wp-classic-Box-root',
-			'postbox'
-		);
-	});
+	expect(screen.getByTestId('box')).toHaveClass(
+		'wp-classic-Box-root',
+		'postbox'
+	);
+});
 
-	it('should render with the custom class name', () => {
-		render(
-			<Box data-testid="box-1" className="box-1-class-name">
-				This is the content of the box
-			</Box>
-		);
+it('should render with the custom class name', () => {
+	render(<Box data-testid="box" className="box-1-class-name" />);
 
-		expect(screen.getByTestId('box-1')).toHaveClass('box-1-class-name');
-	});
+	expect(screen.getByTestId('box')).toHaveClass('box-1-class-name');
+});
 
-	it('should render with the inline style', () => {
-		render(
-			<Box data-testid="box-1" style={{ padding: 20 }}>
-				This is the content of the box
-			</Box>
-		);
+it('should render with the inline style', () => {
+	render(<Box data-testid="box" style={{ padding: 20 }} />);
 
-		expect(screen.getByTestId('box-1')).toHaveStyle({
-			padding: '20px',
-		});
+	expect(screen.getByTestId('box')).toHaveStyle({
+		padding: '20px',
 	});
 });
 
-describe('attributes', () => {
-	it('should render with the "id attributes"', () => {
-		render(
-			<Box data-testid="box-1" id="box-1-id">
-				This is the content of the box
-			</Box>
-		);
+it('should render with the "id" attributes', () => {
+	render(<Box data-testid="box" id="box-1" />);
 
-		expect(screen.getByTestId('box-1')).toHaveAttribute('id', 'box-1-id');
-	});
-
-	it('should not render with invalid html attribute', () => {
-		render(
-			// @ts-expect-error
-			<Box data-testid="box-1" foo="bar">
-				This is the content of the box
-			</Box>
-		);
-
-		expect(screen.getByTestId('box-1')).not.toHaveAttribute('foo');
-	});
+	expect(screen.getByTestId('box')).toHaveAttribute('id', 'box-1');
 });
 
-describe('events', () => {
-	it('should not render the content when toggled off', async () => {
-		const user = userEvent.setup();
+it('should not render with invalid html attribute', () => {
+	render(
+		// @ts-expect-error
+		<Box data-testid="box" foo="bar" />
+	);
 
-		render(
-			<Box data-testid="box-1" collapsible>
-				This is the content of the box
-			</Box>
-		);
+	expect(screen.getByTestId('box')).not.toHaveAttribute('foo');
+});
 
-		const button = screen.getByRole('button', { name: 'Toggle panel' });
-		const content = screen.getByText('This is the content of the box');
+it('should not render the content when toggled off', async () => {
+	const user = userEvent.setup();
 
-		expect(content).toBeVisible();
-		await user.click(button);
-		expect(content).not.toBeVisible();
-	});
+	render(
+		<Box data-testid="box" collapsible>
+			This is the content of the box
+		</Box>
+	);
+
+	const button = screen.getByRole('button', { name: 'Toggle panel' });
+	const content = screen.getByText('This is the content of the box');
+
+	expect(content).toBeVisible();
+
+	await user.click(button);
+
+	expect(content).not.toBeVisible();
 });

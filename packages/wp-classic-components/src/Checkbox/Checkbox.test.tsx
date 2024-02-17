@@ -1,181 +1,197 @@
+import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
-import { Checkbox } from './Checkbox';
+import { expect, it, vi } from 'vitest';
+import Meta, { Default } from './Checkbox.stories';
 
-it('should render the checkbox', () => {
-	render(<Checkbox>Agree</Checkbox>);
+const Checkbox = composeStory(Default, Meta);
 
-	const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+it('should render the component', () => {
+	render(<Checkbox />);
+
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
 
 	expect(checkbox).toBeInTheDocument();
+	expect(checkbox).toBeEnabled();
 });
 
 it('should render with the description', () => {
-	render(<Checkbox description="This is the description">Agree</Checkbox>);
+	render(
+		<Checkbox description="When checked WordPress will correct invalid nested XHTML" />
+	);
 
-	const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
 
-	expect(checkbox).toHaveAccessibleDescription('This is the description');
+	expect(checkbox).toHaveAccessibleDescription(
+		'When checked WordPress will correct invalid nested XHTML'
+	);
 });
 
-describe('styles', () => {
-	it('should render with the static class', () => {
-		render(<Checkbox>Agree</Checkbox>);
+it('should render with the static class', () => {
+	render(<Checkbox data-testid="checkbox" />);
 
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+	const root = screen.getByTestId('checkbox');
 
-		expect(checkbox.parentNode?.parentNode).toHaveClass(
-			'wp-classic-Checkbox-root'
-		);
-	});
-
-	it('should render with the custom class', () => {
-		render(<Checkbox className="foo-bar">Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox.parentNode?.parentNode).toHaveClass('foo-bar');
-	});
-
-	it('should render with the inline styles', () => {
-		render(<Checkbox style={{ padding: 30 }}>Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox.parentNode?.parentNode).toHaveStyle({ padding: '30px' });
-	});
+	expect(root).toHaveClass('wp-classic-Checkbox-root');
 });
 
-describe('attributes', () => {
-	it('should render with the "name" attribute', () => {
-		render(<Checkbox name="agree">Agree</Checkbox>);
+it('should render with the custom class', () => {
+	render(<Checkbox className="foo-bar" data-testid="checkbox" />);
 
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+	const root = screen.getByTestId('checkbox');
 
-		expect(checkbox).toHaveAttribute('name', 'agree');
-	});
-
-	it('should render with the "id" attribute', () => {
-		render(
-			<Checkbox id="checkbox-1" data-testid="checkbox">
-				Agree
-			</Checkbox>
-		);
-
-		const root = screen.getByTestId('checkbox');
-
-		expect(root).toHaveAttribute('id', 'checkbox-1');
-	});
-
-	it('should not render with invalid html attribute', () => {
-		// @ts-expect-error
-		render(<Checkbox foo="bar">Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).not.toHaveAttribute('foo');
-	});
+	expect(root).toHaveClass('foo-bar');
 });
 
-describe('a11y', () => {
-	it('should be excluded from tab order', () => {
-		render(<Checkbox excludeFromTabOrder>Agree</Checkbox>);
+it('should render with the inline styles', () => {
+	render(<Checkbox style={{ padding: 30 }} data-testid="checkbox" />);
 
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+	const root = screen.getByTestId('checkbox');
 
-		expect(checkbox).toHaveAttribute('tabindex', '-1');
-	});
+	expect(root).toHaveStyle({ padding: '30px' });
 });
 
-describe('states', () => {
-	it('should be checked', async () => {
-		render(<Checkbox>Agree</Checkbox>);
+it('should render with the "name" attribute', () => {
+	render(<Checkbox name="correct_xhtml" />);
 
-		const user = userEvent.setup();
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		await user.click(checkbox);
-
-		expect(checkbox).toBeChecked();
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
 	});
 
-	it('should be checked (by default)', () => {
-		render(<Checkbox defaultSelected>Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).toBeChecked();
-	});
-
-	it('should be checked (controlled)', () => {
-		render(<Checkbox isSelected>Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).toBeChecked();
-	});
-
-	it('should be readonly', () => {
-		render(<Checkbox isReadOnly>Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).toHaveAttribute('aria-readonly', 'true');
-	});
-
-	it('should be disabled', () => {
-		render(<Checkbox isDisabled>Agree</Checkbox>);
-
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).toBeDisabled();
-	});
-
-	it('should be checked on click', async () => {
-		render(<Checkbox name="agree">Agree</Checkbox>);
-
-		const user = userEvent.setup();
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).not.toBeChecked();
-		await user.click(checkbox);
-		expect(checkbox).toBeChecked();
-	});
-
-	it('should be unchecked on click', async () => {
-		render(
-			<Checkbox name="agree" defaultSelected>
-				Agree
-			</Checkbox>
-		);
-
-		const user = userEvent.setup();
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
-
-		expect(checkbox).toBeChecked();
-		await user.click(checkbox);
-		expect(checkbox).not.toBeChecked();
-	});
+	expect(checkbox).toHaveAttribute('name', 'correct_xhtml');
 });
 
-describe('events', () => {
-	it('should call the "onChange" callback', async () => {
-		const fn = vi.fn();
-		const user = userEvent.setup();
+it('should render with the "id" attribute', () => {
+	render(<Checkbox id="checkbox-1" data-testid="checkbox" />);
 
-		render(<Checkbox onChange={fn}>Agree</Checkbox>);
+	const root = screen.getByTestId('checkbox');
 
-		const checkbox = screen.getByRole('checkbox', { name: 'Agree' });
+	expect(root).toHaveAttribute('id', 'checkbox-1');
+});
 
-		await user.click(checkbox);
+it('should not render with invalid html attribute', () => {
+	// @ts-expect-error
+	render(<Checkbox foo="bar" data-testid="checkbox" />);
 
-		expect(fn).toBeCalledTimes(1);
-		expect(fn).toBeCalledWith(true);
-
-		await user.click(checkbox);
-
-		expect(fn).toBeCalledTimes(2);
-		expect(fn).toBeCalledWith(false);
+	const root = screen.getByTestId('checkbox');
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
 	});
+
+	expect(root).not.toHaveAttribute('foo');
+	expect(checkbox).not.toHaveAttribute('foo');
+});
+
+it('should be excluded from tab order', () => {
+	render(<Checkbox excludeFromTabOrder />);
+
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	expect(checkbox).toHaveAttribute('tabindex', '-1');
+});
+
+it('should be checked', async () => {
+	render(<Checkbox />);
+
+	const user = userEvent.setup();
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	await user.click(checkbox);
+
+	expect(checkbox).toBeChecked();
+});
+
+it('should be checked (by default)', () => {
+	render(<Checkbox defaultSelected />);
+
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	expect(checkbox).toBeChecked();
+});
+
+it('should be checked (controlled)', () => {
+	render(<Checkbox isSelected />);
+
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	expect(checkbox).toBeChecked();
+});
+
+it('should be readonly', () => {
+	render(<Checkbox isReadOnly />);
+
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	expect(checkbox).toHaveAttribute('aria-readonly', 'true');
+});
+
+it('should be disabled', () => {
+	render(<Checkbox isDisabled />);
+
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	expect(checkbox).toBeDisabled();
+});
+
+it('should be checked on click', async () => {
+	render(<Checkbox name="agree" />);
+
+	const user = userEvent.setup();
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	expect(checkbox).not.toBeChecked();
+	await user.click(checkbox);
+	expect(checkbox).toBeChecked();
+});
+
+it('should be unchecked on click', async () => {
+	render(<Checkbox name="agree" defaultSelected />);
+
+	const user = userEvent.setup();
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	expect(checkbox).toBeChecked();
+	await user.click(checkbox);
+	expect(checkbox).not.toBeChecked();
+});
+
+it('should call the "onChange" callback', async () => {
+	const fn = vi.fn();
+	const user = userEvent.setup();
+
+	render(<Checkbox onChange={fn} />);
+
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
+
+	await user.click(checkbox);
+
+	expect(fn).toBeCalledTimes(1);
+	expect(fn).toBeCalledWith(true);
+
+	await user.click(checkbox);
+
+	expect(fn).toBeCalledTimes(2);
+	expect(fn).toBeCalledWith(false);
 });

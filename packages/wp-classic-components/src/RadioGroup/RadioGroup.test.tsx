@@ -1,23 +1,22 @@
+import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
 import { Radio } from './Radio';
-import { RadioGroup } from './RadioGroup';
+import Meta, { Default } from './RadioGroup.stories';
 
-it('should render the radio input', () => {
-	render(
-		<RadioGroup label="For each post in a feed, include">
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+const RadioGroup = composeStory(Default, Meta);
 
-	const firstRadio = screen.getByRole('radio', { name: 'Full text' });
-	const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+it('should render the component', () => {
+	render(<RadioGroup />);
+
+	const firstRadio = screen.queryByRole('radio', { name: 'Full text' });
 
 	expect(firstRadio).toBeInTheDocument();
 	expect(firstRadio).toBeEnabled();
 	expect(firstRadio).toHaveAttribute('type', 'radio');
+
+	const secondRadio = screen.queryByRole('radio', { name: 'Excerpt' });
 
 	expect(secondRadio).toBeInTheDocument();
 	expect(secondRadio).toBeEnabled();
@@ -26,36 +25,28 @@ it('should render the radio input', () => {
 
 it('should render with the description', () => {
 	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			description="The length of text to display on the feed"
-		>
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
+		<RadioGroup description="The length of text to display on the feed" />
 	);
 
-	expect(
-		screen.getByRole('radiogroup', { name: 'For each post in a feed, include' })
-	).toHaveAccessibleDescription('The length of text to display on the feed');
+	const group = screen.getByRole('radiogroup', {
+		name: 'For each post in a feed, include',
+	});
+
+	expect(group).toHaveAccessibleDescription(
+		'The length of text to display on the feed'
+	);
 });
 
 it('should render with the static class', () => {
 	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			description="The length of text to display on the feed"
-		>
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
+		<RadioGroup description="The length of text to display on the feed" />
 	);
 
-	expect(
-		screen.getByRole('radiogroup', {
-			name: 'For each post in a feed, include',
-		})
-	).toHaveClass('wp-classic-RadioGroup-root');
+	const group = screen.getByRole('radiogroup', {
+		name: 'For each post in a feed, include',
+	});
+
+	expect(group).toHaveClass('wp-classic-RadioGroup-root');
 
 	screen.getAllByRole('radio').forEach((radio) => {
 		expect(radio).toHaveClass('wp-classic-Radio-input');
@@ -65,25 +56,18 @@ it('should render with the static class', () => {
 
 it('should render with the custom class', () => {
 	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			description="The length of text to display on the feed"
-			className="radio-group-class"
-		>
+		<RadioGroup className="radio-group-class">
 			<Radio value="full-text" className="radio-item-class">
 				Full text
-			</Radio>
-			<Radio value="excerpt" className="radio-item-class">
-				Excerpt
 			</Radio>
 		</RadioGroup>
 	);
 
-	expect(
-		screen.getByRole('radiogroup', {
-			name: 'For each post in a feed, include',
-		})
-	).toHaveClass('radio-group-class');
+	const group = screen.getByRole('radiogroup', {
+		name: 'For each post in a feed, include',
+	});
+
+	expect(group).toHaveClass('radio-group-class');
 
 	screen.getAllByRole('radio').forEach((radio) => {
 		expect(radio.parentNode).toHaveClass('radio-item-class');
@@ -92,35 +76,18 @@ it('should render with the custom class', () => {
 
 it('should render with the inline style', () => {
 	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			description="The length of text to display on the feed"
-			style={{ margin: 15 }}
-		>
-			<Radio
-				value="full-text"
-				className="radio-item-class"
-				style={{ padding: 10 }}
-			>
-				Full text
-			</Radio>
-			<Radio
-				value="excerpt"
-				className="radio-item-class"
-				style={{ padding: 10 }}
-			>
+		<RadioGroup style={{ margin: 15 }}>
+			<Radio value="excerpt" style={{ padding: 10 }}>
 				Excerpt
 			</Radio>
 		</RadioGroup>
 	);
 
-	expect(
-		screen.getByRole('radiogroup', {
-			name: 'For each post in a feed, include',
-		})
-	).toHaveStyle({
-		margin: '15px',
+	const group = screen.getByRole('radiogroup', {
+		name: 'For each post in a feed, include',
 	});
+
+	expect(group).toHaveStyle({ margin: '15px' });
 
 	screen.getAllByRole('radio').forEach((radio) => {
 		expect(radio.parentNode).toHaveStyle({
@@ -130,55 +97,43 @@ it('should render with the inline style', () => {
 });
 
 it('should render with the "id" attribute', async () => {
-	render(
-		<RadioGroup label="For each post in a feed, include" id="radio-group-1">
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup id="radio-group-1" />);
 
-	expect(
-		screen.getByRole('radiogroup', {
-			name: 'For each post in a feed, include',
-		})
-	).toHaveAttribute('id', 'radio-group-1');
+	const group = screen.getByRole('radiogroup', {
+		name: 'For each post in a feed, include',
+	});
+
+	expect(group).toHaveAttribute('id', 'radio-group-1');
 });
 
 it('should not render with invalid html attribute', async () => {
 	render(
 		// @ts-expect-error
-		<RadioGroup label="For each post in a feed, include" foo="bar">
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
+		<RadioGroup foo="bar" />
 	);
 
-	expect(
-		screen.getByRole('radiogroup', {
-			name: 'For each post in a feed, include',
-		})
-	).not.toHaveAttribute('foo');
+	const group = screen.getByRole('radiogroup', {
+		name: 'For each post in a feed, include',
+	});
+
+	expect(group).not.toHaveAttribute('foo');
+
+	screen.getAllByRole('radio').forEach((radio) => {
+		expect(radio.parentNode).not.toHaveAttribute('foo');
+	});
 });
 
 it('should retain the role', () => {
-	render(
-		<RadioGroup label="For each post in a feed, include" role="presentation">
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup role="presentation" />);
+
+	const group = screen.getByRole('radiogroup');
 
 	// Role "presentation" does not override the role "radiogroup".
-	expect(screen.getByRole('radiogroup')).toBeInTheDocument();
+	expect(group).toBeInTheDocument();
 });
 
 it('should render with default orientation', () => {
-	render(
-		<RadioGroup label="For each post in a feed, include">
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup />);
 
 	expect(screen.getByRole('radiogroup')).toHaveAttribute(
 		'aria-orientation',
@@ -187,15 +142,7 @@ it('should render with default orientation', () => {
 });
 
 it('should set orientation to horizontal', () => {
-	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			orientation="horizontal"
-		>
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup orientation="horizontal" />);
 
 	expect(screen.getByRole('radiogroup')).toHaveAttribute(
 		'aria-orientation',
@@ -206,12 +153,7 @@ it('should set orientation to horizontal', () => {
 it('should be checked', async () => {
 	const user = userEvent.setup();
 
-	render(
-		<RadioGroup label="For each post in a feed, include">
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup label="For each post in a feed, include" />);
 
 	const firstRadio = screen.getByRole('radio', { name: 'Full text' });
 	const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
@@ -228,95 +170,65 @@ it('should be checked', async () => {
 it('should be checked (by default)', async () => {
 	const user = userEvent.setup();
 
-	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			defaultValue="full-text"
-		>
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup defaultValue="full-text"></RadioGroup>);
 
-	const firstRadio = screen.getByRole('radio', { name: 'Full text' });
-	const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+	const fullText = screen.getByRole('radio', { name: 'Full text' });
+	const excerpt = screen.getByRole('radio', { name: 'Excerpt' });
 
-	expect(firstRadio).toBeChecked();
-	expect(secondRadio).not.toBeChecked();
+	expect(fullText).toBeChecked();
+	expect(excerpt).not.toBeChecked();
 
-	await user.click(secondRadio);
+	await user.click(excerpt);
 
-	expect(firstRadio).not.toBeChecked();
-	expect(secondRadio).toBeChecked();
+	expect(fullText).not.toBeChecked();
+	expect(excerpt).toBeChecked();
 });
 
 it('should be checked (controlled)', async () => {
 	const user = userEvent.setup();
 
-	render(
-		<RadioGroup label="For each post in a feed, include" value="full-text">
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup value="full-text" />);
 
-	const firstRadio = screen.getByRole('radio', { name: 'Full text' });
-	const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+	const fullText = screen.getByRole('radio', { name: 'Full text' });
+	const excerpt = screen.getByRole('radio', { name: 'Excerpt' });
 
-	expect(firstRadio).toBeChecked();
-	expect(secondRadio).not.toBeChecked();
+	expect(fullText).toBeChecked();
+	expect(excerpt).not.toBeChecked();
 
-	await user.click(secondRadio);
+	await user.click(excerpt);
 
-	expect(firstRadio).toBeChecked(); // Remains to be checked.
-	expect(secondRadio).not.toBeChecked();
+	expect(fullText).toBeChecked(); // Remains to be checked.
+	expect(excerpt).not.toBeChecked();
 });
 
 it('should be disabled', () => {
-	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			defaultValue="full-text"
-			isDisabled
-		>
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup isDisabled />);
 
-	expect(screen.getByRole('radio', { name: 'Full text' })).toBeDisabled();
-	expect(screen.getByRole('radio', { name: 'Excerpt' })).toBeDisabled();
+	screen.getAllByRole('radio').forEach((radio) => {
+		expect(radio).toBeDisabled();
+	});
 });
 
 it('should be readonly', async () => {
 	const user = userEvent.setup();
 
-	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			defaultValue="full-text"
-			isReadOnly
-		>
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup defaultValue="full-text" isReadOnly />);
 
-	expect(
-		screen.getByRole('radiogroup', {
-			name: 'For each post in a feed, include',
-		})
-	).toHaveAttribute('aria-readonly', 'true');
+	const group = screen.getByRole('radiogroup', {
+		name: 'For each post in a feed, include',
+	});
 
-	const firstRadio = screen.getByRole('radio', { name: 'Full text' });
-	const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+	expect(group).toHaveAttribute('aria-readonly', 'true');
 
-	expect(firstRadio).toBeChecked();
-	expect(secondRadio).not.toBeChecked();
+	const fullText = screen.getByRole('radio', { name: 'Full text' });
+	const excerpt = screen.getByRole('radio', { name: 'Excerpt' });
 
-	await user.click(secondRadio);
+	expect(fullText).toBeChecked();
+	expect(excerpt).not.toBeChecked();
 
-	expect(secondRadio).not.toBeChecked();
+	await user.click(excerpt);
+
+	expect(excerpt).not.toBeChecked();
 });
 
 it('should be marked as invalid and show error message', () => {
@@ -363,27 +275,18 @@ it('should call the "onChange" callback', async () => {
 	const fn = vi.fn();
 	const user = userEvent.setup();
 
-	render(
-		<RadioGroup
-			label="For each post in a feed, include"
-			onChange={fn}
-			defaultValue="full-text"
-		>
-			<Radio value="full-text">Full text</Radio>
-			<Radio value="excerpt">Excerpt</Radio>
-		</RadioGroup>
-	);
+	render(<RadioGroup onChange={fn} defaultValue="full-text" />);
 
-	const firstRadio = screen.getByRole('radio', { name: 'Full text' });
-	const secondRadio = screen.getByRole('radio', { name: 'Excerpt' });
+	const fullText = screen.getByRole('radio', { name: 'Full text' });
+	const excerpt = screen.getByRole('radio', { name: 'Excerpt' });
 
-	expect(firstRadio).toBeChecked();
-	expect(secondRadio).not.toBeChecked();
+	expect(fullText).toBeChecked();
+	expect(excerpt).not.toBeChecked();
 
-	await user.click(secondRadio);
+	await user.click(excerpt);
 
-	expect(firstRadio).not.toBeChecked();
-	expect(secondRadio).toBeChecked();
+	expect(fullText).not.toBeChecked();
+	expect(excerpt).toBeChecked();
 	expect(fn).toBeCalledTimes(1);
 	expect(fn).toBeCalledWith('excerpt');
 });

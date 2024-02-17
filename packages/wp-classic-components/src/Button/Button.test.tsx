@@ -1,20 +1,23 @@
+import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Icon, desktop } from '@wordpress/icons';
 import { expect, it, vi } from 'vitest';
-import { Button } from './Button';
+import Meta, { Default } from './Button.stories';
+
+const Button = composeStory(Default, Meta);
 
 it('should render the component', () => {
-	render(<Button>Save changes</Button>);
+	render(<Button />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
-	expect(button).toBeEnabled();
 	expect(button).toBeInTheDocument();
+	expect(button).toBeEnabled();
 });
 
 it('should render as "secondary" variant', () => {
-	render(<Button variant="secondary">Save changes</Button>);
+	render(<Button variant="secondary" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -22,7 +25,7 @@ it('should render as "secondary" variant', () => {
 });
 
 it('should render "small" size', () => {
-	render(<Button size="small">Save changes</Button>);
+	render(<Button size="small" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -30,7 +33,7 @@ it('should render "small" size', () => {
 });
 
 it('should render "large" size', () => {
-	render(<Button size="large">Save changes</Button>);
+	render(<Button size="large" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -38,7 +41,7 @@ it('should render "large" size', () => {
 });
 
 it('should render "hero" size', () => {
-	render(<Button size="hero">Save changes</Button>);
+	render(<Button size="hero" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -46,7 +49,7 @@ it('should render "hero" size', () => {
 });
 
 it('should render with the static class', () => {
-	render(<Button>Save changes</Button>);
+	render(<Button />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -55,7 +58,7 @@ it('should render with the static class', () => {
 });
 
 it('should render with the custom class name', () => {
-	render(<Button className="foo-bar">Save changes</Button>);
+	render(<Button className="foo-bar" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -63,7 +66,7 @@ it('should render with the custom class name', () => {
 });
 
 it('should render with the inline style', () => {
-	render(<Button style={{ width: 100 }}>Save changes</Button>);
+	render(<Button style={{ width: 100 }} />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -71,7 +74,7 @@ it('should render with the inline style', () => {
 });
 
 it('should render with the "id"', () => {
-	render(<Button id="1">Save changes</Button>);
+	render(<Button id="1" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -79,7 +82,7 @@ it('should render with the "id"', () => {
 });
 
 it('should render with the type "submit"', () => {
-	render(<Button type="submit">Save changes</Button>);
+	render(<Button type="submit" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -87,7 +90,7 @@ it('should render with the type "submit"', () => {
 });
 
 it('should render with the type "reset"', () => {
-	render(<Button type="reset">Save changes</Button>);
+	render(<Button type="reset" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -95,15 +98,15 @@ it('should render with the type "reset"', () => {
 });
 
 it('should render with the "aria-*" label', () => {
-	render(<Button aria-label="Save changes" />);
+	render(<Button aria-label="Update changes" />);
 
-	const button = screen.getByRole('button', { name: 'Save changes' });
+	const button = screen.getByRole('button', { name: 'Update changes' });
 
-	expect(button).toHaveAttribute('aria-label', 'Save changes');
+	expect(button).toHaveAttribute('aria-label', 'Update changes');
 });
 
 it('should render with the "role" attribute', () => {
-	render(<Button role="link">Save changes</Button>);
+	render(<Button role="link" />);
 
 	const button = screen.getByRole('link', { name: 'Save changes' });
 
@@ -111,7 +114,7 @@ it('should render with the "role" attribute', () => {
 });
 
 it('should render with the "tabindex" attribute', () => {
-	render(<Button excludeFromTabOrder>Save changes</Button>);
+	render(<Button excludeFromTabOrder />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -119,7 +122,7 @@ it('should render with the "tabindex" attribute', () => {
 });
 
 it('should be disabled', () => {
-	render(<Button isDisabled>Save changes</Button>);
+	render(<Button isDisabled />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -127,11 +130,7 @@ it('should be disabled', () => {
 });
 
 it('should render with the prefix', () => {
-	render(
-		<Button prefix={<Icon icon={desktop} data-testid="prefix" />}>
-			Save changes
-		</Button>
-	);
+	render(<Button prefix={<Icon icon={desktop} data-testid="prefix" />} />);
 
 	const icon = screen.queryByTestId('prefix');
 
@@ -139,11 +138,7 @@ it('should render with the prefix', () => {
 });
 
 it('should render with the suffix', () => {
-	render(
-		<Button suffix={<Icon icon={desktop} data-testid="suffix" />}>
-			Save changes
-		</Button>
-	);
+	render(<Button suffix={<Icon icon={desktop} data-testid="suffix" />} />);
 
 	const icon = screen.queryByTestId('suffix');
 
@@ -154,7 +149,7 @@ it('should call the "onPress" callback', async () => {
 	const fn = vi.fn();
 	const user = userEvent.setup();
 
-	render(<Button onPress={fn}>Save changes</Button>);
+	render(<Button onPress={fn} />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -167,7 +162,7 @@ it('should call the "onHoverChange" callback', async () => {
 	const fn = vi.fn();
 	const user = userEvent.setup();
 
-	render(<Button onHoverChange={fn}>Save changes</Button>);
+	render(<Button onHoverChange={fn} />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
@@ -179,7 +174,7 @@ it('should call the "onFocusChange" callback', async () => {
 	const fn = vi.fn();
 	const user = userEvent.setup();
 
-	render(<Button onFocusChange={fn}>Save changes</Button>);
+	render(<Button onFocusChange={fn} />);
 
 	await user.tab();
 

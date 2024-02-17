@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CheckboxGroup } from './CheckboxGroup';
-import { Checkbox } from '../Checkbox/Checkbox';
+import { Checkbox } from '../Checkbox';
 
 const meta: Meta<typeof CheckboxGroup> = {
 	title: 'Components/CheckboxGroup',
@@ -30,22 +30,23 @@ const meta: Meta<typeof CheckboxGroup> = {
 	},
 	args: {
 		label: 'Hide on screen',
+		children: [
+			<Checkbox key="permalink" value="permalink">
+				Permalink
+			</Checkbox>,
+			<Checkbox key="excerpt" value="excerpt">
+				Excerpt
+			</Checkbox>,
+			<Checkbox key="author" value="author">
+				Author
+			</Checkbox>,
+		],
 	},
 };
 
 type Story = StoryObj<typeof CheckboxGroup>;
 
-export const Default: Story = {
-	render(args) {
-		return (
-			<CheckboxGroup {...args}>
-				<Checkbox value="permalink">Permalink</Checkbox>
-				<Checkbox value="excerpt">Excerpt</Checkbox>
-				<Checkbox value="discussion">Discussion</Checkbox>
-			</CheckboxGroup>
-		);
-	},
-};
+export const Default: Story = {};
 
 export const Disabled: Story = {
 	parameters: {
@@ -56,7 +57,6 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	render: Default.render,
 };
 
 export const ReadOnly: Story = {
@@ -70,7 +70,6 @@ export const ReadOnly: Story = {
 		isReadOnly: true,
 		value: ['permalink', 'excerpt'],
 	},
-	render: Default.render,
 };
 
 export const Required: Story = {
@@ -82,7 +81,6 @@ export const Required: Story = {
 	args: {
 		isRequired: true,
 	},
-	render: Default.render,
 };
 
 export const Invalid: Story = {
@@ -99,7 +97,6 @@ export const Invalid: Story = {
 			}
 		},
 	},
-	render: Default.render,
 };
 
 export const CheckedDefault: Story = {
@@ -107,7 +104,6 @@ export const CheckedDefault: Story = {
 	args: {
 		defaultValue: ['permalink'],
 	},
-	render: Default.render,
 };
 
 export const CheckedControlled: Story = {
@@ -115,7 +111,6 @@ export const CheckedControlled: Story = {
 	args: {
 		value: ['permalink'],
 	},
-	render: Default.render,
 };
 
 export const OrientationHorizontal: Story = {
@@ -128,14 +123,12 @@ export const OrientationHorizontal: Story = {
 	args: {
 		orientation: 'horizontal',
 	},
-	render: Default.render,
 };
 
 export const WithDescription: Story = {
 	args: {
 		description: 'Choose which elements to hide on screen.',
 	},
-	render: Default.render,
 };
 
 export const WithDescriptionBeforeInput: Story = {
@@ -149,7 +142,6 @@ export const WithDescriptionBeforeInput: Story = {
 		descriptionArea: 'before-input',
 		description: 'Choose which elements to hide on screen.',
 	},
-	render: Default.render,
 };
 
 export default meta;

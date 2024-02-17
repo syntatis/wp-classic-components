@@ -1,71 +1,64 @@
+import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
-import { TextField } from './TextField';
+import Meta, { Default } from './TextField.stories';
 
-it('should render the textarea', () => {
-	render(<TextField label="Username" />);
+const TextField = composeStory(Default, Meta);
 
-	const input = screen.getByLabelText('Username');
+it('should render the component', () => {
+	render(<TextField />);
 
-	expect(input).toBeInTheDocument();
+	const input = screen.queryByLabelText('Site Name');
+
 	expect(input).toBeEnabled();
+	expect(input).toBeInTheDocument();
 	expect(input).toHaveAttribute('type', 'text');
 });
 
 it('should render with the static class', () => {
-	render(<TextField label="Username" />);
+	render(<TextField data-testid="textfield" />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toHaveClass('wp-classic-TextField-input');
 	expect(input.parentNode).toHaveClass('wp-classic-TextField-root');
 });
 
 it('should render with the custom class name', () => {
-	render(<TextField label="Username" className="input" />);
+	render(<TextField className="input" data-testid="textfield" />);
 
-	const input = screen.getByLabelText('Username');
+	const root = screen.getByTestId('textfield');
 
-	expect(input.parentNode).toHaveClass('wp-classic-TextField-root', 'input');
+	expect(root).toHaveClass('wp-classic-TextField-root', 'input');
 });
 
 it('should render with the "code" class', () => {
-	render(<TextField label="Username" isCode />);
+	render(<TextField isCode />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toHaveClass('code');
 });
 
 it('should render with the inline style', () => {
-	render(<TextField label="Username" style={{ paddingRight: 30 }} />);
+	render(<TextField style={{ paddingRight: 30 }} data-testid="textfield" />);
 
-	const input = screen.getByLabelText('Username');
+	const root = screen.getByTestId('textfield');
 
-	expect(input.parentNode).toHaveStyle({ 'padding-right': '30px' });
+	expect(root).toHaveStyle({ 'padding-right': '30px' });
 });
 
 it('should render with the description', () => {
-	render(<TextField label="Username" description="This is the description!" />);
+	render(<TextField description="Add your site name" />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
-	expect(input).toHaveAccessibleDescription('This is the description!');
-});
-
-it('should render with the description', () => {
-	render(<TextField label="Username" description="This is the description!" />);
-
-	const input = screen.getByLabelText('Username');
-
-	expect(input).toHaveAccessibleDescription('This is the description!');
+	expect(input).toHaveAccessibleDescription('Add your site name');
 });
 
 it('should render with "id" attribute', () => {
-	render(
-		<TextField label="Username" id="input-id-1" data-testid="textfield" />
-	);
+	render(<TextField id="input-id-1" data-testid="textfield" />);
 
 	const root = screen.getByTestId('textfield');
 
@@ -73,72 +66,71 @@ it('should render with "id" attribute', () => {
 });
 
 it('should render with "tabindex" attribute', () => {
-	render(<TextField label="Username" excludeFromTabOrder />);
+	render(<TextField excludeFromTabOrder />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toHaveAttribute('tabindex', '-1');
 });
 
 it('should render with "type" attribute', () => {
-	render(<TextField label="Username" type="email" />);
+	render(<TextField type="email" />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toHaveAttribute('type', 'email');
 });
 
 it('should not render invalid html attributes', async () => {
 	// @ts-expect-error
-	render(<TextField label="Username" foo="bar" />);
+	render(<TextField foo="bar" data-testid="textfield" />);
 
-	const input = screen.getByLabelText('Username');
+	const root = screen.getByTestId('textfield');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).not.toHaveAttribute('foo');
-	expect(input.parentNode).not.toHaveAttribute('foo');
+	expect(root).not.toHaveAttribute('foo');
 });
 
 it('should be disabled', () => {
-	render(<TextField label="Username" isDisabled />);
+	render(<TextField isDisabled />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toBeDisabled();
 });
 
 it('should be readonly', () => {
-	render(<TextField label="Username" isReadOnly />);
+	render(<TextField isReadOnly />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toHaveAttribute('readonly');
 });
 
 it('should be marked as required', () => {
-	render(<TextField label="Username" isRequired />);
+	render(<TextField isRequired />);
 
-	const input = screen.getByLabelText(new RegExp('Username *'));
+	const input = screen.getByLabelText(new RegExp('Site Name *'));
 
 	expect(input).toBeRequired();
 });
 
 it('should be marked as invalid and show error message', () => {
-	render(
-		<TextField label="Username" validate={() => 'This is the error message!'} />
-	);
+	render(<TextField validate={() => 'An unexpected error occurred!'} />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toBeInvalid();
-	expect(input).toHaveAccessibleDescription('This is the error message!');
+	expect(input).toHaveAccessibleDescription('An unexpected error occurred!');
 });
 
 it('should have value (default)', async () => {
 	const user = userEvent.setup();
 
-	render(<TextField label="Username" defaultValue="foo" />);
+	render(<TextField defaultValue="foo" />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	await user.type(input, '-bar');
 
@@ -148,9 +140,9 @@ it('should have value (default)', async () => {
 it('should have value (controlled)', async () => {
 	const user = userEvent.setup();
 
-	render(<TextField label="Username" value="foo" />);
+	render(<TextField value="foo" />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toHaveValue('foo');
 
@@ -163,9 +155,9 @@ it('should call "onChange" callback', async () => {
 	const fn = vi.fn();
 	const user = userEvent.setup();
 
-	render(<TextField label="Username" onChange={fn} />);
+	render(<TextField onChange={fn} />);
 
-	const input = screen.getByLabelText('Username');
+	const input = screen.getByLabelText('Site Name');
 
 	await user.type(input, 'Hello World!');
 

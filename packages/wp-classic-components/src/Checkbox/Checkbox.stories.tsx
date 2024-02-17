@@ -31,9 +31,7 @@ const meta: Meta<typeof Checkbox> = {
 type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
-	args: {
-		id: 'checkbox-1',
-	},
+	args: {},
 };
 
 export const Disabled: Story = {

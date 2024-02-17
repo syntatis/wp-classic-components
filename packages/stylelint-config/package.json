@@ -9,7 +9,7 @@
 		"scss",
 		"stylelint"
 	],
-	"main": "index.js",
+	"main": "index.cjs",
 	"files": [
 		"index.js"
 	],

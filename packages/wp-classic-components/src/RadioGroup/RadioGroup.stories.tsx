@@ -29,23 +29,21 @@ const meta: Meta<typeof RadioGroup> = {
 		},
 	},
 	args: {
-		label: 'Time format',
+		label: 'For each post in a feed, include',
+		children: [
+			<Radio key="full-text" value="full-text">
+				Full text
+			</Radio>,
+			<Radio key="excerpt" value="excerpt">
+				Excerpt
+			</Radio>,
+		],
 	},
 };
 
 type Story = StoryObj<typeof RadioGroup>;
 
-export const Default: Story = {
-	render(args) {
-		return (
-			<RadioGroup {...args}>
-				<Radio value="g:i a">4:18 am</Radio>
-				<Radio value="g:i A">4:18 AM</Radio>
-				<Radio value="H:i">04:18</Radio>
-			</RadioGroup>
-		);
-	},
-};
+export const Default: Story = {};
 
 export const Disabled: Story = {
 	parameters: {
@@ -56,7 +54,6 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	render: Default.render,
 };
 
 export const ReadOnly: Story = {
@@ -69,7 +66,6 @@ export const ReadOnly: Story = {
 	args: {
 		isReadOnly: true,
 	},
-	render: Default.render,
 };
 
 export const Invalid: Story = {
@@ -81,7 +77,6 @@ export const Invalid: Story = {
 			}
 		},
 	},
-	render: Default.render,
 };
 
 export const CheckedDefault: Story = {
@@ -89,7 +84,6 @@ export const CheckedDefault: Story = {
 	args: {
 		defaultValue: 'g:i a',
 	},
-	render: Default.render,
 };
 
 export const CheckedControlled: Story = {
@@ -97,7 +91,6 @@ export const CheckedControlled: Story = {
 	args: {
 		value: 'g:i a',
 	},
-	render: Default.render,
 };
 
 export const OrientationHorizontal: Story = {
@@ -111,14 +104,12 @@ export const OrientationHorizontal: Story = {
 		orientation: 'horizontal',
 		value: 'g:i a',
 	},
-	render: Default.render,
 };
 
 export const WithDescription: Story = {
 	args: {
 		description: 'The time format will be used when displaying dates.',
 	},
-	render: Default.render,
 };
 
 export const WithDescriptionBeforeInput: Story = {
@@ -131,7 +122,6 @@ export const WithDescriptionBeforeInput: Story = {
 	args: {
 		description: 'The time format will be used when displaying dates.',
 	},
-	render: Default.render,
 };
 
 export default meta;
