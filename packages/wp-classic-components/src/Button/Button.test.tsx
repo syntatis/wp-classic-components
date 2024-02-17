@@ -111,7 +111,7 @@ it('should render with the "aria-*" label', () => {
 it('should render with the "role" attribute', () => {
 	render(<Button role="link" />);
 
-	const button = screen.getByRole('link', { name: 'Save changes' });
+	const button = screen.queryByRole('link', { name: 'Save changes' });
 
 	expect(button).toBeInTheDocument();
 });
@@ -170,7 +170,14 @@ it('should call the "onHoverChange" callback', async () => {
 	const button = screen.getByRole('button', { name: 'Save changes' });
 
 	await user.hover(button);
+
 	expect(fn).toBeCalledTimes(1);
+	expect(fn).toBeCalledWith(true); // isHovering: `true`.
+
+	await user.unhover(button);
+
+	expect(fn).toBeCalledTimes(2);
+	expect(fn).toBeCalledWith(false); // isHovering: `true`.
 });
 
 it('should call the "onFocusChange" callback', async () => {

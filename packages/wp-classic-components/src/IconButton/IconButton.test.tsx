@@ -103,3 +103,76 @@ it('should render with the "aria-*" label', () => {
 
 	expect(button).toHaveAttribute('aria-label', 'Download changes');
 });
+
+it('should render with the "role" attribute', () => {
+	render(<IconButton role="link" />);
+
+	const button = screen.queryByRole('link', { name: 'Download' });
+
+	expect(button).toBeInTheDocument();
+});
+
+it('should render with the "tabindex" attribute', () => {
+	render(<IconButton excludeFromTabOrder />);
+
+	const button = screen.getByRole('button', { name: 'Download' });
+
+	expect(button).toHaveAttribute('tabindex', '-1');
+});
+
+it('should be disabled', () => {
+	render(<IconButton isDisabled />);
+
+	const button = screen.getByRole('button', { name: 'Download' });
+
+	expect(button).toBeDisabled();
+});
+
+it('should call the "onPress" callback', async () => {
+	const fn = vi.fn();
+	const user = userEvent.setup();
+
+	render(<IconButton onPress={fn} />);
+
+	const button = screen.getByRole('button', { name: 'Download' });
+
+	await user.click(button);
+
+	expect(fn).toBeCalledTimes(1);
+});
+
+it('should call the "onHoverChange" callback', async () => {
+	const fn = vi.fn();
+	const user = userEvent.setup();
+
+	render(<IconButton onHoverChange={fn} />);
+
+	const button = screen.getByRole('button', { name: 'Download' });
+
+	await user.hover(button);
+
+	expect(fn).toBeCalledTimes(1);
+	expect(fn).toBeCalledWith(true); // isHovering: `true`.
+
+	await user.unhover(button);
+
+	expect(fn).toBeCalledTimes(2);
+	expect(fn).toBeCalledWith(false); // isHovering: `false`.
+});
+
+it('should call the "onFocusChange" callback', async () => {
+	const fn = vi.fn();
+	const user = userEvent.setup();
+
+	render(<IconButton onFocusChange={fn} />);
+
+	await user.tab();
+
+	expect(fn).toBeCalledTimes(1);
+	expect(fn).toBeCalledWith(true); // isFocused: `true`.
+
+	await user.tab();
+
+	expect(fn).toBeCalledTimes(2);
+	expect(fn).toBeCalledWith(false); // isFocused: `false`.
+});
