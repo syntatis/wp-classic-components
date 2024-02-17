@@ -37,68 +37,58 @@ it('should render with the custom class', () => {
 	expect(link).toHaveClass('hello-world');
 });
 
-// it('should render with the inline style', () => {
-// 	render(
-// 		<Link href="/" style={{ margin: 10 }}>
-// 			Hello world
-// 		</Link>
-// 	);
+it('should render with the inline style', () => {
+	render(<Link href="/" style={{ margin: 10 }} />);
 
-// 	expect(
-// 		screen.getByRole('link', {
-// 			name: 'Hello world',
-// 		})
-// 	).toHaveStyle({ margin: '10px' });
-// });
+	const link = screen.getByRole('link', {
+		name: 'WordPress',
+	});
 
-// it('should render with the "id" attribute', () => {
-// 	render(
-// 		<Link href="/" id="hello-world-1">
-// 			Hello world
-// 		</Link>
-// 	);
+	expect(link).toHaveStyle({ margin: '10px' });
+});
 
-// 	expect(
-// 		screen.getByRole('link', {
-// 			name: 'Hello world',
-// 		})
-// 	).toHaveAttribute('id', 'hello-world-1');
-// });
+it('should render with the "id" attribute', () => {
+	render(<Link href="/" id="hello-world-1" />);
 
-// it('should not render with invalid html attribute', () => {
-// 	render(
-// 		// @ts-expect-error
-// 		<Link href="/" foo="bar">
-// 			Hello world
-// 		</Link>
-// 	);
+	const link = screen.getByRole('link', {
+		name: 'WordPress',
+	});
 
-// 	expect(
-// 		screen.getByRole('link', {
-// 			name: 'Hello world',
-// 		})
-// 	).not.toHaveAttribute('foo');
-// });
+	expect(link).toHaveAttribute('id', 'hello-world-1');
+});
 
-// it('should render with the prefix node', () => {
-// 	render(
-// 		<Link href="/" prefix={<Icon data-testid="wp-icon" icon={wordpress} />}>
-// 			Hello world
-// 		</Link>
-// 	);
+it('should not render with invalid html attribute', () => {
+	render(
+		// @ts-expect-error
+		<Link href="/" foo="bar" />
+	);
 
-// 	expect(screen.getByTestId('wp-icon')).toBeInTheDocument();
-// });
+	const link = screen.getByRole('link', {
+		name: 'WordPress',
+	});
 
-// it('should render with the suffix node', () => {
-// 	render(
-// 		<Link
-// 			href="/"
-// 			suffix={<Icon data-testid="wp-icon-download" icon={download} />}
-// 		>
-// 			Hello world
-// 		</Link>
-// 	);
+	expect(link).not.toHaveAttribute('foo');
+});
 
-// 	expect(screen.getByTestId('wp-icon-download')).toBeInTheDocument();
-// });
+it('should render with the prefix node', () => {
+	render(
+		<Link href="/" prefix={<Icon data-testid="wp-icon" icon={wordpress} />} />
+	);
+
+	const icon = screen.queryByTestId('wp-icon');
+
+	expect(icon).toBeInTheDocument();
+});
+
+it('should render with the suffix node', () => {
+	render(
+		<Link
+			href="/"
+			suffix={<Icon data-testid="wp-icon-download" icon={download} />}
+		/>
+	);
+
+	const icon = screen.queryByTestId('wp-icon-download');
+
+	expect(icon).toBeInTheDocument();
+});
