@@ -45,7 +45,7 @@
   },
   "scripts": {
     "build:storybook": "storybook build",
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run build -w @syntatis/wp-classic-components",
     "chromatic": "chromatic --build-script-name=build:storybook",
     "format:scripts": "eslint --fix",
     "format:styles": "stylelint '**/*.scss' --fix",
