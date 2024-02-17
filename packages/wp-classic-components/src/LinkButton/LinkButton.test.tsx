@@ -1,25 +1,23 @@
+import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import { Icon, wordpress } from '@wordpress/icons';
 import { expect, it } from 'vitest';
-import { LinkButton } from './LinkButton';
+import Meta, { Default } from './LinkButton.stories';
+
+const LinkButton = composeStory(Default, Meta);
 
 it('should render the component', () => {
-	render(<LinkButton href="https://wordpress.org">Go to WordPress</LinkButton>);
+	render(<LinkButton />);
 
-	const link = screen.getByRole('link', { name: 'Go to WordPress' });
+	const link = screen.queryByRole('link', { name: 'Go to WordPress' });
 
 	expect(link).toBeInTheDocument();
-	expect(link).toBeEnabled();
 	expect(link).toHaveClass('button');
 	expect(link).toHaveAttribute('href', 'https://wordpress.org');
 });
 
 it('should render as "secondary" variant', () => {
-	render(
-		<LinkButton variant="secondary" href="https://wordpress.org">
-			Go to WordPress
-		</LinkButton>
-	);
+	render(<LinkButton variant="secondary" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -27,11 +25,7 @@ it('should render as "secondary" variant', () => {
 });
 
 it('should render "small" size', () => {
-	render(
-		<LinkButton size="small" variant="secondary" href="https://wordpress.org">
-			Go to WordPress
-		</LinkButton>
-	);
+	render(<LinkButton size="small" variant="secondary" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -39,11 +33,7 @@ it('should render "small" size', () => {
 });
 
 it('should render "large" size', () => {
-	render(
-		<LinkButton size="large" href="https://wordpress.org">
-			Go to WordPress
-		</LinkButton>
-	);
+	render(<LinkButton size="large" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -51,11 +41,7 @@ it('should render "large" size', () => {
 });
 
 it('should render "hero" size', () => {
-	render(
-		<LinkButton size="hero" href="https://wordpress.org">
-			Go to WordPress
-		</LinkButton>
-	);
+	render(<LinkButton size="hero" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -63,7 +49,7 @@ it('should render "hero" size', () => {
 });
 
 it('should render with the static class', () => {
-	render(<LinkButton href="https://wordpress.org">Go to WordPress</LinkButton>);
+	render(<LinkButton />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -71,11 +57,7 @@ it('should render with the static class', () => {
 });
 
 it('should render with the custom class name', () => {
-	render(
-		<LinkButton className="foo-bar" href="https://wordpress.org">
-			Go to WordPress
-		</LinkButton>
-	);
+	render(<LinkButton className="foo-bar" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -83,11 +65,7 @@ it('should render with the custom class name', () => {
 });
 
 it('should render with the inline style', () => {
-	render(
-		<LinkButton style={{ width: 50 }} href="https://wordpress.org">
-			Go to WordPress
-		</LinkButton>
-	);
+	render(<LinkButton style={{ width: 50 }} />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -95,11 +73,7 @@ it('should render with the inline style', () => {
 });
 
 it('should render with the "id"', () => {
-	render(
-		<LinkButton id="link-button-2" href="https://wordpress.org">
-			Go to WordPress
-		</LinkButton>
-	);
+	render(<LinkButton id="link-button-2" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -122,11 +96,7 @@ it('should render with the "aria-*" attributes', () => {
 });
 
 it('should render with the "data-*" label attributes', () => {
-	render(
-		<LinkButton data-invalid="true" href="https://wordpress.org">
-			Go to WordPress
-		</LinkButton>
-	);
+	render(<LinkButton data-invalid="true" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
 
@@ -135,12 +105,7 @@ it('should render with the "data-*" label attributes', () => {
 
 it('should render with the prefix', () => {
 	render(
-		<LinkButton
-			href="https://wordpress.org"
-			prefix={<Icon icon={wordpress} data-testid="prefix" />}
-		>
-			Go to WordPress
-		</LinkButton>
+		<LinkButton prefix={<Icon icon={wordpress} data-testid="prefix" />} />
 	);
 
 	const icon = screen.queryByTestId('prefix');
@@ -150,12 +115,7 @@ it('should render with the prefix', () => {
 
 it('should render with the suffix', () => {
 	render(
-		<LinkButton
-			href="https://wordpress.org"
-			suffix={<Icon icon={wordpress} data-testid="suffix" />}
-		>
-			Go to WordPress
-		</LinkButton>
+		<LinkButton suffix={<Icon icon={wordpress} data-testid="suffix" />} />
 	);
 
 	const icon = screen.queryByTestId('suffix');
