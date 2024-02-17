@@ -40,5 +40,4 @@ jobs:
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-          npx lerna version ${{ inputs.semver }} --yes
           npx lerna publish from-package --yes
