@@ -1,5 +1,4 @@
 import { useProps } from '@/hooks';
-import { Icon, close } from '@wordpress/icons';
 import { useRef } from 'react';
 import { AriaButtonProps, useButton } from 'react-aria';
 
@@ -17,7 +16,7 @@ export const ClearButton = (props: AriaButtonProps) => {
 			aria-label="Clear search input"
 			ref={ref}
 		>
-			<Icon icon={close} />
+			<span className="dashicons dashicons-dismiss"></span>
 		</button>
 	);
 };

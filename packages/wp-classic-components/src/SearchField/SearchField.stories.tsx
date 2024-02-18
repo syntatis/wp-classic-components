@@ -49,4 +49,10 @@ export const Disabled: Story = {
 	},
 };
 
+export const WithPlaceholder: Story = {
+	args: {
+		placeholder: 'e.g. How to create a block?',
+	},
+};
+
 export default meta;

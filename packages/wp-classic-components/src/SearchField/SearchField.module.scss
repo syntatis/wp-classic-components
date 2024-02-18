@@ -1,4 +1,5 @@
 @use '../../scss/mixins/input';
+@use '../../scss/variables/colors';
 
 :global(.wp-core-ui) {
 	.root {
@@ -20,8 +21,12 @@
 			border: none;
 			outline: none;
 
-			svg {
-				max-width: 14px;
+			:global(.dashicons) {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 14px;
+				color: colors.$gray-30;
 			}
 		}
 

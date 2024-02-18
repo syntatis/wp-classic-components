@@ -10,8 +10,6 @@ const meta: Meta<typeof Notice> = {
 	},
 	args: {
 		children: 'Settings saved.',
-		level: 'info',
-		variant: 'default',
 	},
 	component: Notice,
 	parameters: {
