@@ -1,6 +1,7 @@
 import { Decorator, Preview } from '@storybook/react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect } from 'react';
+
 import './preview.scss';
 
 const DEFAULT_THEME = 'light' as const;
@@ -40,22 +41,22 @@ const preview: Preview = {
 		actions: {
 			argTypesRegex: '^on[A-Z].*',
 		},
-		options: {
-			storySort: {
-				method: 'alphabetical',
-			},
+		backgrounds: {
+			disable: true,
 		},
 		controls: {
+			expanded: true,
 			hideNoControlsWarning: true,
 			matchers: {
 				color: /(background|color)$/i,
 				date: /Date$/,
 			},
-			expanded: true,
 			sort: 'requiredFirst',
 		},
-		backgrounds: {
-			disable: true,
+		options: {
+			storySort: {
+				method: 'alphabetical',
+			},
 		},
 	},
 };

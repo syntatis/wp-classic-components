@@ -1,55 +1,66 @@
 import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
-import { Icon, download, wordpress } from '@wordpress/icons';
 import { expect, it } from 'vitest';
 
-import Meta, { Default } from './Link.stories';
+import Meta, { Default } from './IconLinkButton.stories';
 
-const Link = composeStory(Default, Meta);
+const IconLinkButton = composeStory(Default, Meta);
 
 it('should render the component', () => {
-	render(<Link />);
+	render(<IconLinkButton />);
 
 	const link = screen.queryByRole('link', {
 		name: 'WordPress',
 	});
+	const icon = screen.queryByTestId('icon');
 
 	expect(link).toBeInTheDocument();
 	expect(link).toHaveAttribute('href', 'https://wordpress.org');
+	expect(link).toHaveClass('button', 'button-primary');
+	expect(icon).toBeInTheDocument();
 });
 
 it('should render with the static class', () => {
-	render(<Link />);
+	render(<IconLinkButton />);
 
 	const link = screen.queryByRole('link', {
 		name: 'WordPress',
 	});
 
-	expect(link).toHaveClass('wp-classic-Link-root');
+	expect(link).toHaveClass(
+		'button',
+		'button-primary',
+		'wp-classic-IconLinkButton-root'
+	);
 });
 
 it('should render with the custom class', () => {
-	render(<Link className="hello-world" href="/" />);
+	render(<IconLinkButton className="hello-world" href="/" />);
 
 	const link = screen.getByRole('link', {
 		name: 'WordPress',
 	});
 
-	expect(link).toHaveClass('hello-world', 'wp-classic-Link-root');
+	expect(link).toHaveClass(
+		'button',
+		'button-primary',
+		'hello-world',
+		'wp-classic-IconLinkButton-root'
+	);
 });
 
 it('should render with the inline style', () => {
-	render(<Link href="/" style={{ margin: 10 }} />);
+	render(<IconLinkButton href="/" style={{ margin: 20 }} />);
 
 	const link = screen.getByRole('link', {
 		name: 'WordPress',
 	});
 
-	expect(link).toHaveStyle({ margin: '10px' });
+	expect(link).toHaveStyle({ margin: '20px' });
 });
 
 it('should render with the "target" attribute', () => {
-	render(<Link href="/" id="hello-world-1" target="_blank" />);
+	render(<IconLinkButton href="/" target="_blank" />);
 
 	const link = screen.getByRole('link', {
 		name: 'WordPress',
@@ -59,7 +70,7 @@ it('should render with the "target" attribute', () => {
 });
 
 it('should render with the "id" attribute', () => {
-	render(<Link href="/" id="hello-world-1" />);
+	render(<IconLinkButton href="/" id="hello-world-1" />);
 
 	const link = screen.getByRole('link', {
 		name: 'WordPress',
@@ -71,7 +82,7 @@ it('should render with the "id" attribute', () => {
 it('should not render with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
-		<Link foo="bar" href="/" />
+		<IconLinkButton foo="bar" href="/" />
 	);
 
 	const link = screen.getByRole('link', {
@@ -79,27 +90,4 @@ it('should not render with invalid html attribute', () => {
 	});
 
 	expect(link).not.toHaveAttribute('foo');
-});
-
-it('should render with the prefix node', () => {
-	render(
-		<Link href="/" prefix={<Icon data-testid="wp-icon" icon={wordpress} />} />
-	);
-
-	const icon = screen.queryByTestId('wp-icon');
-
-	expect(icon).toBeInTheDocument();
-});
-
-it('should render with the suffix node', () => {
-	render(
-		<Link
-			href="/"
-			suffix={<Icon data-testid="wp-icon-download" icon={download} />}
-		/>
-	);
-
-	const icon = screen.queryByTestId('wp-icon-download');
-
-	expect(icon).toBeInTheDocument();
 });

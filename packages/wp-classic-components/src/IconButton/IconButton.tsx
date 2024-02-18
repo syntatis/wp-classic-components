@@ -1,8 +1,8 @@
 import { mergeProps, useObjectRef } from '@react-aria/utils';
-import { useProps } from '@syntatis/react-hooks';
-import { GlobalProps } from '@syntatis/types';
 import { Icon } from '@wordpress/icons';
 import { IconProps } from '@wordpress/icons/build-types/icon';
+import { useProps } from 'packages/hooks';
+import { GlobalProps } from 'packages/types';
 import { ReactElement, forwardRef } from 'react';
 import {
 	AriaButtonProps,

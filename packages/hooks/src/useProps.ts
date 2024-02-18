@@ -1,4 +1,5 @@
-import { GlobalProps } from '@syntatis/types';
+import { GlobalProps } from 'packages/types';
+
 import { ClassNamesArgs, useClasses } from './useClasses';
 
 interface PropsArgs extends GlobalProps {}
@@ -9,10 +10,10 @@ interface RootPropsArgs {
 
 export function useProps<T>(name: string, props?: PropsArgs & T) {
 	const {
-		id,
-		style,
 		className,
 		'data-testid': testId,
+		id,
+		style,
 		...componentProps
 	} = props || ({} as PropsArgs & T);
 	const { clsx } = useClasses(name);
@@ -24,13 +25,13 @@ export function useProps<T>(name: string, props?: PropsArgs & T) {
 			const { classNames } = args || {};
 
 			return {
-				id,
-				style,
 				className: clsx({
 					classNames: [classNames, className],
 					prefixedNames: 'root',
 				}),
 				'data-testid': testId,
+				id,
+				style,
 			};
 		},
 	};

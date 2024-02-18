@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-named-as-default
 import clsx from 'clsx';
 
-type Value = string | number | boolean | undefined | null;
+type Value = boolean | null | number | string | undefined;
 type Mapping = Record<string, unknown>;
-type Argument = Value | Mapping | ArgumentArray;
+type Argument = ArgumentArray | Mapping | Value;
 type ArgumentArray = Argument[];
 
 export type ClassNamesArgs = Argument | ArgumentArray;
@@ -39,7 +39,7 @@ export function useClasses(component: string): ClassesReturn {
 
 	return {
 		clsx: (args: ClsxArgs) => {
-			const { prefixedNames = '', classNames = '' } = args;
+			const { classNames = '', prefixedNames = '' } = args;
 			const prefixed = parsePrefixedNames(prefixedNames).map(
 				(name) => `${prefix}${name}`
 			);

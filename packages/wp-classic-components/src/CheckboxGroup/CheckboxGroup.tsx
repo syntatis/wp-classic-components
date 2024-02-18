@@ -4,8 +4,8 @@ import {
 	CheckboxGroupState,
 	useCheckboxGroupState,
 } from '@react-stately/checkbox';
-import { useProps } from '@syntatis/react-hooks';
-import { GlobalProps } from '@syntatis/types';
+import { useProps } from 'packages/hooks';
+import { GlobalProps } from 'packages/types';
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
 
 import { CheckboxProps } from '../Checkbox';
