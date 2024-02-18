@@ -7,7 +7,6 @@ import './preview.scss';
 const DEFAULT_THEME = 'light' as const;
 const ThemeDecorator: Decorator = (Story, context) => {
 	const id = context.id;
-	const theme = context.globals?.theme || DEFAULT_THEME;
 	const viewMode = context?.viewMode;
 
 	useEffect(() => {
@@ -20,7 +19,7 @@ const ThemeDecorator: Decorator = (Story, context) => {
 				}
 			});
 		}
-	}, [theme, viewMode, id]);
+	}, [viewMode, id]);
 
 	return (
 		<div className="wp-core-ui">
