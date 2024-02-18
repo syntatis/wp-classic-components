@@ -1,6 +1,6 @@
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { useProps } from 'packages/hooks';
-import { GlobalProps } from 'packages/types';
+import { Affixable, GlobalProps } from 'packages/types';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
 
@@ -8,6 +8,7 @@ import * as classes from './Link.module.scss';
 
 export interface LinkProps
 	extends GlobalProps,
+		Affixable,
 		Omit<HoverProps, 'isDisabled'>,
 		Omit<
 			AriaLinkOptions,
@@ -24,14 +25,6 @@ export interface LinkProps
 	 * The content to display inside the link.
 	 */
 	children: ReactNode;
-	/**
-	 * The content displayed before the link label.
-	 */
-	prefix?: ReactNode;
-	/**
-	 * The content displayed after the link label.
-	 */
-	suffix?: ReactNode;
 	/**
 	 * Change the link variant.
 	 */

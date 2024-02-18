@@ -2,6 +2,8 @@ export * from './src/Box';
 export * from './src/Button';
 export * from './src/Checkbox';
 export * from './src/CheckboxGroup';
+export * from './src/IconButton';
+export * from './src/IconLinkButton';
 export * from './src/Link';
 export * from './src/LinkButton';
 export * from './src/Notice';
