@@ -1,4 +1,4 @@
-# 📦 wp-classic-components
+# 📟 wp-classic-components
 
 [![ci](https://github.com/syntatis/wp-classic-components/actions/workflows/ci.yml/badge.svg)](https://github.com/syntatis/wp-classic-components/actions/workflows/ci.yml)
 
