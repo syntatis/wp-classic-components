@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { useClasses, parsePrefixedNames } from './useClasses';
+
+import { parsePrefixedNames, useClasses } from './useClasses';
 
 describe('parsePrefixedNames', () => {
 	it('should return parse classes to be prefixed', () => {
