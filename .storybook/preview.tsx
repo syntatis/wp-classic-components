@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 
 import './preview.scss';
 
-const DEFAULT_THEME = 'light' as const;
 const ThemeDecorator: Decorator = (Story, context) => {
 	const id = context.id;
 	const viewMode = context?.viewMode;
@@ -22,20 +21,13 @@ const ThemeDecorator: Decorator = (Story, context) => {
 	}, [viewMode, id]);
 
 	return (
-		<div className="wp-core-ui">
-			<div style={{ maxWidth: '50vw', width: '100%' }}>
-				<Story {...context} />
-			</div>
+		<div className="wp-core-ui" style={{ maxWidth: '50vw', width: '100%' }}>
+			<Story {...context} />
 		</div>
 	);
 };
 const preview: Preview = {
 	decorators: [ThemeDecorator],
-	globalTypes: {
-		theme: {
-			defaultValue: DEFAULT_THEME,
-		},
-	},
 	parameters: {
 		actions: {
 			argTypesRegex: '^on[A-Z].*',
