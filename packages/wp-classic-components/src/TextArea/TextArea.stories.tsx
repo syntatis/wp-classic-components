@@ -106,6 +106,12 @@ export const ValueControlled: Story = {
 	name: 'Value (controlled)',
 };
 
+export const WithPlaceholder: Story = {
+	args: {
+		placeholder: 'e.g. A tagline for your site.',
+	},
+};
+
 export const WithDescription: Story = {
 	args: {
 		description: 'In a few words, explain what this site is about.',
