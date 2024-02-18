@@ -80,14 +80,13 @@ export const Invalid: Story = {
 
 export const InvalidControlled: Story = {
 	args: {
-		errorMessage: 'This field is required.',
+		errorMessage: 'An unexpected error occurred.',
 		isInvalid: true,
-		isRequired: true,
 	},
 	name: 'Invalid (controlled)',
 	parameters: {
 		controls: {
-			exclude: ['isRequired'],
+			exclude: ['isInvalid'],
 		},
 	},
 };

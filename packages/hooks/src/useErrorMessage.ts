@@ -32,6 +32,6 @@ export function useErrorMessage(props: ErrorMessageArgs) {
 	errorMessageList.push(...validationErrors);
 
 	return {
-		errorMessageList,
+		errorMessageList: isInvalid ? errorMessageList : [],
 	};
 }

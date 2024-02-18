@@ -79,6 +79,19 @@ export const Invalid: Story = {
 	},
 };
 
+export const InvalidControlled: Story = {
+	args: {
+		errorMessage: 'An unexpected error occurred.',
+		isInvalid: true,
+	},
+	name: 'Invalid (controlled)',
+	parameters: {
+		controls: {
+			exclude: ['isInvalid'],
+		},
+	},
+};
+
 export const ValueDefault: Story = {
 	args: {
 		defaultValue: 'Hello World',
