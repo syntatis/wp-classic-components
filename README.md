@@ -1,8 +1,5 @@
-<div align="center">
-  <strong>📦 wp-classic-components</strong>
-  <p>WordPress dashboard UI components with the classic styles</p>
+# 📦 wp-classic-components
 
 [![ci](https://github.com/syntatis/wp-classic-components/actions/workflows/ci.yml/badge.svg)](https://github.com/syntatis/wp-classic-components/actions/workflows/ci.yml)
-</div>
 
----
+WordPress dashboard UI components with the classic styles
