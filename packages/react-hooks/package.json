@@ -1,0 +1,15 @@
+{
+  "name": "@syntatis/react-hooks",
+  "description": "A collection of reusable React hooks",
+  "version": "0.1.0",
+  "license": "MIT",
+	"private": true,
+  "keywords": [
+    "classnames",
+    "hooks",
+    "react"
+  ],
+	"peerDependencies": {
+		"react": "^18.0.0"
+	}
+}

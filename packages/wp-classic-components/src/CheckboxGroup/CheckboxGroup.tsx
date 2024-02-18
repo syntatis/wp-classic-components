@@ -1,10 +1,10 @@
-import { useProps } from '@/hooks';
 import { AriaCheckboxGroupProps, useCheckboxGroup } from '@react-aria/checkbox';
 import { useObjectRef } from '@react-aria/utils';
 import {
 	CheckboxGroupState,
 	useCheckboxGroupState,
 } from '@react-stately/checkbox';
+import { useProps } from '@syntatis/react-hooks';
 import { GlobalProps } from '@syntatis/types';
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
 import * as classes from './CheckboxGroup.module.scss';

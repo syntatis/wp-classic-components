@@ -1,5 +1,5 @@
-import { useProps } from '@/hooks';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
+import { useProps } from '@syntatis/react-hooks';
 import { Affixable, GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef } from 'react';
 import {

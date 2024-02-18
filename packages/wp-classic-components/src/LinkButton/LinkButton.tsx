@@ -1,5 +1,5 @@
-import { useProps } from '@/hooks';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
+import { useProps } from '@syntatis/react-hooks';
 import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
