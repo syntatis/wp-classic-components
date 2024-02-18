@@ -1,6 +1,6 @@
 import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
+import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef, useRef, useState } from 'react';
 import { useButton, useId } from 'react-aria';
 import * as classes from './Box.module.scss';

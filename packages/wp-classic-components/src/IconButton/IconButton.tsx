@@ -1,6 +1,6 @@
 import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
+import { GlobalProps } from '@syntatis/types';
 import { Icon } from '@wordpress/icons';
 import { IconProps } from '@wordpress/icons/build-types/icon';
 import { ReactElement, forwardRef } from 'react';

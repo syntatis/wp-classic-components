@@ -1,6 +1,6 @@
 import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
+import { GlobalProps } from '@syntatis/types';
 import {
 	ReactNode,
 	createContext,

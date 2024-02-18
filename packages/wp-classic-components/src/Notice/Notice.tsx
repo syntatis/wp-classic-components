@@ -1,6 +1,6 @@
 import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
+import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
 import * as classes from './Notice.module.scss';
