@@ -9,6 +9,7 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
+
 import * as classes from './Button.module.scss';
 
 interface ButtonProps
@@ -18,27 +19,27 @@ interface ButtonProps
 		Omit<AriaButtonProps, 'elementType' | 'target'> {
 	children?: ReactNode;
 	/**
+	 * The size of the button.
+	 */
+	size?: 'hero' | 'large' | 'small';
+	/**
 	 * The variant of the button.
 	 *
 	 * @default 'primary'
 	 */
-	variant?: 'primary' | 'secondary' | 'link' | 'link-danger';
-	/**
-	 * The size of the button.
-	 */
-	size?: 'small' | 'large' | 'hero';
+	variant?: 'link' | 'link-danger' | 'primary' | 'secondary';
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(props, forwardedRef) => {
 		const {
-			children,
-			variant = 'primary',
-			prefix,
-			suffix,
 			autoFocus,
-			size,
+			children,
+			prefix,
 			role,
+			size,
+			suffix,
+			variant = 'primary',
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { buttonProps } = useButton(props, ref);
@@ -55,8 +56,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						`${size ? `button-${size}` : ''}`,
 						`button-${variant === 'link-danger' ? 'link' : variant}`,
 						{
-							[classes.hasAffix]: hasAffix,
 							'button-link-delete': variant === 'link-danger',
+							[classes.hasAffix]: hasAffix,
 						},
 						classes.root,
 					],
@@ -67,8 +68,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{prefix && (
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'prefix'],
 							classNames: [classes.prefix, classes.affix],
+							prefixedNames: ['affix', 'prefix'],
 						})}
 					>
 						{prefix}
@@ -77,8 +78,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'infix'],
 							classNames: [classes.infix, classes.affix],
+							prefixedNames: ['affix', 'infix'],
 						})}
 					>
 						{children}
@@ -87,8 +88,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{suffix && (
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'suffix'],
 							classNames: [classes.suffix, classes.affix],
+							prefixedNames: ['affix', 'suffix'],
 						})}
 					>
 						{suffix}

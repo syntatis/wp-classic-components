@@ -1,6 +1,7 @@
 import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import { expect, it } from 'vitest';
+
 import Meta, { Default } from './CheckboxGroup.stories';
 
 const CheckboxGroup = composeStory(Default, Meta);

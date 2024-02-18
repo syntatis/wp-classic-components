@@ -2,6 +2,7 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
+
 import Meta, { Default } from './Notice.stories';
 
 const Notice = composeStory(Default, Meta);
@@ -79,7 +80,7 @@ it('should render with the static class', () => {
 });
 
 it('should render with the custom class', () => {
-	render(<Notice data-testid="notice" className="notice-foo-bar" />);
+	render(<Notice className="notice-foo-bar" data-testid="notice" />);
 
 	const notice = screen.getByTestId('notice');
 

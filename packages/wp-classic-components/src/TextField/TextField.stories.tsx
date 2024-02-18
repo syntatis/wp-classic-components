@@ -1,10 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { TextField } from './TextField';
 
 const meta: Meta<typeof TextField> = {
-	title: 'Components/TextField',
+	argTypes: {
+		description: {
+			control: 'text',
+		},
+		label: {
+			control: 'text',
+		},
+	},
+	args: {
+		label: 'Site Name',
+	},
 	component: TextField,
-	tags: ['autodocs'],
 	parameters: {
 		controls: {
 			include: [
@@ -20,17 +30,8 @@ const meta: Meta<typeof TextField> = {
 			],
 		},
 	},
-	argTypes: {
-		label: {
-			control: 'text',
-		},
-		description: {
-			control: 'text',
-		},
-	},
-	args: {
-		label: 'Site Name',
-	},
+	tags: ['autodocs'],
+	title: 'Components/TextField',
 };
 
 type Story = StoryObj<typeof TextField>;
@@ -38,35 +39,30 @@ type Story = StoryObj<typeof TextField>;
 export const Default: Story = {};
 
 export const Disabled: Story = {
+	args: {
+		isDisabled: true,
+	},
 	parameters: {
 		controls: {
 			exclude: ['isDisabled'],
 		},
 	},
-	args: {
-		isDisabled: true,
-	},
 };
 
 export const ReadOnly: Story = {
+	args: {
+		isReadOnly: true,
+		value: 'Hello World',
+	},
 	name: 'ReadOnly',
 	parameters: {
 		controls: {
 			exclude: ['isReadOnly'],
 		},
 	},
-	args: {
-		value: 'Hello World',
-		isReadOnly: true,
-	},
 };
 
 export const Invalid: Story = {
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
-		},
-	},
 	args: {
 		isRequired: true,
 		validate(value) {
@@ -75,20 +71,25 @@ export const Invalid: Story = {
 			}
 		},
 	},
+	parameters: {
+		controls: {
+			exclude: ['isRequired'],
+		},
+	},
 };
 
 export const ValueDefault: Story = {
-	name: 'Value (default)',
 	args: {
 		defaultValue: 'Hello World',
 	},
+	name: 'Value (default)',
 };
 
 export const ValueControlled: Story = {
-	name: 'Value (controlled)',
 	args: {
 		value: 'Hello World',
 	},
+	name: 'Value (controlled)',
 };
 
 export const WithDescription: Story = {
@@ -98,15 +99,15 @@ export const WithDescription: Story = {
 };
 
 export const WithDescriptionBeforeInput: Story = {
+	args: {
+		description: 'In a few words, explain what this site is about.',
+		descriptionArea: 'before-input',
+	},
 	name: 'With Description (before-input)',
 	parameters: {
 		controls: {
 			exclude: ['descriptionArea'],
 		},
-	},
-	args: {
-		descriptionArea: 'before-input',
-		description: 'In a few words, explain what this site is about.',
 	},
 };
 

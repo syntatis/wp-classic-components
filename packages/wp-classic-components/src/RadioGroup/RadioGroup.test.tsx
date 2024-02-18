@@ -2,6 +2,7 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
+
 import { Radio } from './Radio';
 import Meta, { Default } from './RadioGroup.stories';
 
@@ -57,7 +58,7 @@ it('should render with the static class', () => {
 it('should render with the custom class', () => {
 	render(
 		<RadioGroup className="radio-group-class">
-			<Radio value="full-text" className="radio-item-class">
+			<Radio className="radio-item-class" value="full-text">
 				Full text
 			</Radio>
 		</RadioGroup>
@@ -77,7 +78,7 @@ it('should render with the custom class', () => {
 it('should render with the inline style', () => {
 	render(
 		<RadioGroup style={{ margin: 15 }}>
-			<Radio value="excerpt" style={{ padding: 10 }}>
+			<Radio style={{ padding: 10 }} value="excerpt">
 				Excerpt
 			</Radio>
 		</RadioGroup>
@@ -257,7 +258,7 @@ it('should be marked as invalid and show error message', () => {
 
 it('should be marked as required', () => {
 	render(
-		<RadioGroup label="For each post in a feed, include" isRequired>
+		<RadioGroup isRequired label="For each post in a feed, include">
 			<Radio value="full-text">Full text</Radio>
 			<Radio value="excerpt">Excerpt</Radio>
 		</RadioGroup>
@@ -275,7 +276,7 @@ it('should call the "onChange" callback', async () => {
 	const fn = vi.fn();
 	const user = userEvent.setup();
 
-	render(<RadioGroup onChange={fn} defaultValue="full-text" />);
+	render(<RadioGroup defaultValue="full-text" onChange={fn} />);
 
 	const fullText = screen.getByRole('radio', { name: 'Full text' });
 	const excerpt = screen.getByRole('radio', { name: 'Excerpt' });

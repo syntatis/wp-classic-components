@@ -1,10 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Checkbox } from './Checkbox';
 
 const meta: Meta<typeof Checkbox> = {
-	title: 'Components/Checkbox',
+	argTypes: {
+		children: {
+			control: 'text',
+		},
+	},
+	args: {
+		children: 'WordPress should correct invalidly nested XHTML automatically',
+	},
 	component: Checkbox,
-	tags: ['autodocs'],
 	parameters: {
 		controls: {
 			include: [
@@ -18,14 +25,8 @@ const meta: Meta<typeof Checkbox> = {
 			],
 		},
 	},
-	argTypes: {
-		children: {
-			control: 'text',
-		},
-	},
-	args: {
-		children: 'WordPress should correct invalidly nested XHTML automatically',
-	},
+	tags: ['autodocs'],
+	title: 'Components/Checkbox',
 };
 
 type Story = StoryObj<typeof Checkbox>;
@@ -41,25 +42,25 @@ export const Disabled: Story = {
 };
 
 export const ReadOnly: Story = {
-	name: 'ReadOnly',
 	args: {
 		defaultSelected: true,
 		isReadOnly: true,
 	},
+	name: 'ReadOnly',
 };
 
 export const SelectedDefault: Story = {
-	name: 'Selected (default)',
 	args: {
 		defaultSelected: true,
 	},
+	name: 'Selected (default)',
 };
 
 export const SelectedControlled: Story = {
-	name: 'Selected (controlled)',
 	args: {
 		isSelected: true,
 	},
+	name: 'Selected (controlled)',
 };
 
 export const WithDescription: Story = {

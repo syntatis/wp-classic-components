@@ -3,6 +3,7 @@ import { useProps } from '@syntatis/react-hooks';
 import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
+
 import * as classes from './LinkButton.module.scss';
 
 const DEFAULT_VARIANT = 'primary';
@@ -26,30 +27,30 @@ export interface LinkButtonProps
 	 */
 	children?: ReactNode;
 	/**
+	 * The content displayed before the link label.
+	 */
+	prefix?: ReactNode;
+	/**
+	 * The size of the button.
+	 */
+	size?: 'hero' | 'large' | 'small';
+	/**
+	 * The content displayed after the link label.
+	 */
+	suffix?: ReactNode;
+	/**
 	 * Change the link variant.
 	 *
 	 * @default 'primary'
 	 */
 	variant?: 'primary' | 'secondary';
-	/**
-	 * The size of the button.
-	 */
-	size?: 'small' | 'large' | 'hero';
-	/**
-	 * The content displayed before the link label.
-	 */
-	prefix?: ReactNode;
-	/**
-	 * The content displayed after the link label.
-	 */
-	suffix?: ReactNode;
 }
 
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 	(props, forwardedRef) => {
-		const { children, variant = DEFAULT_VARIANT, size } = props;
+		const { children, size, variant = DEFAULT_VARIANT } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { clsx, rootProps, componentProps } = useProps('LinkButton', props);
+		const { clsx, componentProps, rootProps } = useProps('LinkButton', props);
 		const { linkProps } = useLink(componentProps, ref);
 		const { hoverProps } = useHover(componentProps);
 		const { prefix, suffix } = props;
@@ -74,8 +75,8 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{prefix && (
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'prefix'],
 							classNames: [classes.prefix, classes.affix],
+							prefixedNames: ['affix', 'prefix'],
 						})}
 					>
 						{prefix}
@@ -84,8 +85,8 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'infix'],
 							classNames: [classes.infix, classes.affix],
+							prefixedNames: ['affix', 'infix'],
 						})}
 					>
 						{children}
@@ -94,8 +95,8 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{suffix && (
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'suffix'],
 							classNames: [classes.suffix, classes.affix],
+							prefixedNames: ['affix', 'suffix'],
 						})}
 					>
 						{suffix}

@@ -1,16 +1,10 @@
-import { Icon, wordpress, external } from '@wordpress/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { Icon, external, wordpress } from '@wordpress/icons';
+
 import { Link } from './Link';
 
 const meta: Meta<typeof Link> = {
-	title: 'Components/Link',
-	component: Link,
-	tags: ['autodocs'],
-	parameters: {
-		controls: {
-			include: ['children', 'href', 'target', 'onFocusChange', 'onHoverChange'],
-		},
-	},
 	argTypes: {
 		children: {
 			control: 'text',
@@ -24,6 +18,14 @@ const meta: Meta<typeof Link> = {
 		children: 'WordPress',
 		href: 'https://wordpress.org',
 	},
+	component: Link,
+	parameters: {
+		controls: {
+			include: ['children', 'href', 'target', 'onFocusChange', 'onHoverChange'],
+		},
+	},
+	tags: ['autodocs'],
+	title: 'Components/Link',
 };
 
 type Story = StoryObj<typeof Link>;
@@ -31,17 +33,17 @@ type Story = StoryObj<typeof Link>;
 export const Default: Story = {};
 
 export const VariantDanger: Story = {
-	name: 'Variant (danger)',
 	args: {
 		variant: 'danger',
 	},
+	name: 'Variant (danger)',
 };
 
 export const VariantWarning: Story = {
-	name: 'Variant (warning)',
 	args: {
 		variant: 'warning',
 	},
+	name: 'Variant (warning)',
 };
 
 export const WithPrefix: Story = {

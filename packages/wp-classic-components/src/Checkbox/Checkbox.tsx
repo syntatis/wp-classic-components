@@ -8,20 +8,21 @@ import {
 	useCheckboxGroupItem,
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
-import * as classes from './Checkbox.module.scss';
+
 import { CheckboxGroupContext } from '../CheckboxGroup';
+import * as classes from './Checkbox.module.scss';
 
 export interface CheckboxProps
 	extends GlobalProps,
 		// WordPress does not support indeterminate state for checkboxes (yet).
-		Omit<AriaCheckboxProps, 'isIndeterminate' | 'isRequired' | 'isInvalid'> {
+		Omit<AriaCheckboxProps, 'isIndeterminate' | 'isInvalid' | 'isRequired'> {
 	description?: ReactNode;
 }
 
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
 		const { children, description } = props;
-		const { clsx, rootProps, componentProps } = useProps('Checkbox', props);
+		const { clsx, componentProps, rootProps } = useProps('Checkbox', props);
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
 		const labelId = useId();
@@ -31,7 +32,7 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 				useId()
 			:	undefined;
 		const groupState = useContext(CheckboxGroupContext);
-		const { inputProps, labelProps, isDisabled, isReadOnly } =
+		const { inputProps, isDisabled, isReadOnly, labelProps } =
 			groupState ?
 				// eslint-disable-next-line react-hooks/rules-of-hooks
 				useCheckboxGroupItem(
@@ -72,32 +73,32 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 				})}
 			>
 				<label
-					ref={ref}
-					id={labelId}
 					className={clsx({
 						classNames: classes.label,
 						prefixedNames: 'label',
 					})}
+					id={labelId}
+					ref={ref}
 				>
 					<input
 						{...inputProps}
-						ref={inputRef}
-						aria-labelledby={labelId}
 						aria-describedby={descriptionId}
+						aria-labelledby={labelId}
 						className={clsx({
-							prefixedNames: 'input',
 							classNames: classes.input,
+							prefixedNames: 'input',
 						})}
+						ref={inputRef}
 					/>
 					{label}
 				</label>
 				{description && (
 					<div
-						id={descriptionId}
 						className={clsx({
 							classNames: [classes.description, 'description'],
 							prefixedNames: 'description',
 						})}
+						id={descriptionId}
 					>
 						{description}
 					</div>

@@ -2,6 +2,7 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
+
 import Meta, { Default } from './TextArea.stories';
 
 const TextArea = composeStory(Default, Meta);
@@ -26,7 +27,7 @@ it('should render with the static class', () => {
 });
 
 it('should render with the custom class', () => {
-	render(<TextArea data-testid="textarea" className="custom-class" />);
+	render(<TextArea className="custom-class" data-testid="textarea" />);
 
 	const root = screen.getByTestId('textarea');
 
@@ -34,7 +35,7 @@ it('should render with the custom class', () => {
 });
 
 it('should render with the inline style', () => {
-	render(<TextArea style={{ marginRight: 10 }} data-testid="textarea" />);
+	render(<TextArea data-testid="textarea" style={{ marginRight: 10 }} />);
 
 	const root = screen.getByTestId('textarea');
 
@@ -66,7 +67,7 @@ it('should render the "rows" attribute', () => {
 });
 
 it('should render with the "id" attribute', () => {
-	render(<TextArea id="textarea-id-1" data-testid="textarea" />);
+	render(<TextArea data-testid="textarea" id="textarea-id-1" />);
 
 	const root = screen.getByTestId('textarea');
 
@@ -167,7 +168,7 @@ it('should call "onChange" callback', async () => {
 
 it('should not render invalid html attributes', async () => {
 	// @ts-expect-error
-	render(<TextArea foo="bar" data-testid="textarea" />);
+	render(<TextArea data-testid="textarea" foo="bar" />);
 
 	const root = screen.getByTestId('textarea');
 	const textarea = screen.getByLabelText('Tagline');

@@ -3,6 +3,7 @@ import { useProps } from '@syntatis/react-hooks';
 import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
+
 import * as classes from './Link.module.scss';
 
 export interface LinkProps
@@ -24,10 +25,6 @@ export interface LinkProps
 	 */
 	children: ReactNode;
 	/**
-	 * Change the link variant.
-	 */
-	variant?: 'warning' | 'danger';
-	/**
 	 * The content displayed before the link label.
 	 */
 	prefix?: ReactNode;
@@ -35,13 +32,17 @@ export interface LinkProps
 	 * The content displayed after the link label.
 	 */
 	suffix?: ReactNode;
+	/**
+	 * Change the link variant.
+	 */
+	variant?: 'danger' | 'warning';
 }
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 	(props, forwardedRef) => {
-		const { children, variant, prefix, suffix } = props;
+		const { children, prefix, suffix, variant } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { clsx, rootProps, componentProps } = useProps('Link', props);
+		const { clsx, componentProps, rootProps } = useProps('Link', props);
 		const { linkProps } = useLink(componentProps, ref);
 		const { hoverProps } = useHover(componentProps);
 		const hasAffix = !!prefix || !!suffix;
@@ -64,8 +65,8 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{prefix && (
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'prefix'],
 							classNames: [classes.prefix, classes.affix],
+							prefixedNames: ['affix', 'prefix'],
 						})}
 					>
 						{prefix}
@@ -74,8 +75,8 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'infix'],
 							classNames: [classes.infix, classes.affix],
+							prefixedNames: ['affix', 'infix'],
 						})}
 					>
 						{children}
@@ -84,8 +85,8 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{suffix && (
 					<span
 						className={clsx({
-							prefixedNames: ['affix', 'suffix'],
 							classNames: [classes.suffix, classes.affix],
+							prefixedNames: ['affix', 'suffix'],
 						})}
 					>
 						{suffix}

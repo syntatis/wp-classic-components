@@ -3,22 +3,11 @@ import { useProps } from '@syntatis/react-hooks';
 import { GlobalProps } from '@syntatis/types';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
+
 import * as classes from './Notice.module.scss';
 
 interface NoticeProps extends GlobalProps {
 	children: ReactNode;
-	/**
-	 * The severity level of the notice.
-	 *
-	 * @default 'info'
-	 */
-	level?: 'info' | 'success' | 'warning' | 'error';
-	/**
-	 * The notice style variations.
-	 *
-	 * @default 'default'
-	 */
-	variant?: 'default' | 'alt';
 	/**
 	 * Determines whether the notice can be dismissed. You can customize the label
 	 * of the dismiss button by passing an object, which is useful for
@@ -26,7 +15,7 @@ interface NoticeProps extends GlobalProps {
 	 *
 	 * @default false
 	 */
-	dismissable?: boolean | { label: string };
+	dismissable?: { label: string } | boolean;
 	/**
 	 * Whether the notice should be dismissed.
 	 *
@@ -34,9 +23,21 @@ interface NoticeProps extends GlobalProps {
 	 */
 	isDismissed?: boolean;
 	/**
+	 * The severity level of the notice.
+	 *
+	 * @default 'info'
+	 */
+	level?: 'error' | 'info' | 'success' | 'warning';
+	/**
 	 * The callback to call when the notice is dismissed.
 	 */
 	onDismiss?: () => void;
+	/**
+	 * The notice style variations.
+	 *
+	 * @default 'default'
+	 */
+	variant?: 'alt' | 'default';
 }
 
 export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
@@ -44,10 +45,10 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 		const {
 			children,
 			dismissable = false,
-			level = 'info',
-			variant,
 			isDismissed,
+			level = 'info',
 			onDismiss,
+			variant,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const buttonRef = useObjectRef<HTMLButtonElement>(null);
@@ -77,8 +78,8 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 				>
 					<div
 						className={clsx({
-							prefixedNames: 'content',
 							classNames: classes.content,
+							prefixedNames: 'content',
 						})}
 					>
 						{children}
@@ -86,13 +87,13 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 					{isDismissable && (
 						<button
 							{...buttonProps}
-							className="notice-dismiss"
-							type="button"
 							aria-label={
 								typeof dismissable === 'object' ?
 									dismissable.label
 								:	'Dismiss notice'
 							}
+							className="notice-dismiss"
+							type="button"
 						/>
 					)}
 				</div>

@@ -7,8 +7,9 @@ import {
 import { useProps } from '@syntatis/react-hooks';
 import { GlobalProps } from '@syntatis/types';
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
-import * as classes from './CheckboxGroup.module.scss';
+
 import { CheckboxProps } from '../Checkbox';
+import * as classes from './CheckboxGroup.module.scss';
 
 export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
 	null
@@ -22,7 +23,7 @@ interface CheckboxGroupProps extends GlobalProps, AriaCheckboxGroupProps {
 	 *
 	 * @before 'after-input'
 	 */
-	descriptionArea?: 'before-input' | 'after-input';
+	descriptionArea?: 'after-input' | 'before-input';
 	/**
 	 * The orientation of the checkbox group.
 	 *
@@ -35,28 +36,28 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 	(props, forwardedRef) => {
 		const {
 			children,
-			label,
 			description,
 			descriptionArea,
-			orientation = 'vertical',
-			isRequired,
 			errorMessage,
 			id,
+			isRequired,
+			label,
+			orientation = 'vertical',
 		} = props;
-		const { clsx, rootProps, componentProps } = useProps(
+		const { clsx, componentProps, rootProps } = useProps(
 			'CheckboxGroup',
 			props
 		);
 		const ref = useObjectRef(forwardedRef);
 		const state = useCheckboxGroupState(componentProps);
 		const {
-			groupProps,
-			labelProps,
 			descriptionProps,
 			errorMessageProps,
+			groupProps,
 			isInvalid,
-			validationErrors,
+			labelProps,
 			validationDetails,
+			validationErrors,
 		} = useCheckboxGroup(
 			{
 				id,
@@ -71,29 +72,29 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					classNames: [
 						classes.root,
 						{
-							[classes.horizontal]: orientation === 'horizontal',
 							[classes.descriptionBeforeInput]:
 								descriptionArea === 'before-input',
+							[classes.horizontal]: orientation === 'horizontal',
 						},
 					],
 				})}
 				{...groupProps}
-				ref={ref}
 				aria-invalid={isInvalid}
+				ref={ref}
 			>
 				<span
 					{...labelProps}
 					className={clsx({
-						prefixedNames: 'label',
 						classNames: classes.label,
+						prefixedNames: 'label',
 					})}
 				>
 					{label}
 					{isRequired ?
 						<span
 							className={clsx({
-								prefixedNames: 'marked-required',
 								classNames: classes.markedRequired,
+								prefixedNames: 'marked-required',
 							})}
 						>
 							*
@@ -103,8 +104,8 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 				<CheckboxGroupContext.Provider value={state}>
 					<div
 						className={clsx({
-							prefixedNames: 'items',
 							classNames: classes.items,
+							prefixedNames: 'items',
 						})}
 					>
 						{children}
@@ -114,8 +115,8 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					<div
 						{...descriptionProps}
 						className={clsx({
-							prefixedNames: 'description',
 							classNames: classes.description,
+							prefixedNames: 'description',
 						})}
 					>
 						{description}
@@ -125,15 +126,15 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 					<div
 						{...errorMessageProps}
 						className={clsx({
-							prefixedNames: 'error-message',
 							classNames: classes.errorMessage,
+							prefixedNames: 'error-message',
 						})}
 					>
 						{typeof errorMessage === 'function' ?
 							errorMessage({
 								isInvalid,
-								validationErrors,
 								validationDetails,
+								validationErrors,
 							})
 						:	errorMessage}
 						{validationErrors.join(' ')}

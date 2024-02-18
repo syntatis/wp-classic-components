@@ -2,6 +2,7 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
+
 import Meta, { Default } from './Checkbox.stories';
 
 const Checkbox = composeStory(Default, Meta);
@@ -48,7 +49,7 @@ it('should render with the custom class', () => {
 });
 
 it('should render with the inline styles', () => {
-	render(<Checkbox style={{ padding: 30 }} data-testid="checkbox" />);
+	render(<Checkbox data-testid="checkbox" style={{ padding: 30 }} />);
 
 	const root = screen.getByTestId('checkbox');
 
@@ -66,7 +67,7 @@ it('should render with the "name" attribute', () => {
 });
 
 it('should render with the "id" attribute', () => {
-	render(<Checkbox id="checkbox-1" data-testid="checkbox" />);
+	render(<Checkbox data-testid="checkbox" id="checkbox-1" />);
 
 	const root = screen.getByTestId('checkbox');
 
@@ -75,7 +76,7 @@ it('should render with the "id" attribute', () => {
 
 it('should not render with invalid html attribute', () => {
 	// @ts-expect-error
-	render(<Checkbox foo="bar" data-testid="checkbox" />);
+	render(<Checkbox data-testid="checkbox" foo="bar" />);
 
 	const root = screen.getByTestId('checkbox');
 	const checkbox = screen.getByRole('checkbox', {
@@ -163,7 +164,7 @@ it('should be checked on click', async () => {
 });
 
 it('should be unchecked on click', async () => {
-	render(<Checkbox name="agree" defaultSelected />);
+	render(<Checkbox defaultSelected name="agree" />);
 
 	const user = userEvent.setup();
 	const checkbox = screen.getByRole('checkbox', {

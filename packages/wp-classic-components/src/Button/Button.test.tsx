@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Icon, desktop } from '@wordpress/icons';
 import { expect, it, vi } from 'vitest';
+
 import Meta, { Default } from './Button.stories';
 
 const Button = composeStory(Default, Meta);
@@ -133,7 +134,7 @@ it('should be disabled', () => {
 });
 
 it('should render with the prefix', () => {
-	render(<Button prefix={<Icon icon={desktop} data-testid="prefix" />} />);
+	render(<Button prefix={<Icon data-testid="prefix" icon={desktop} />} />);
 
 	const icon = screen.queryByTestId('prefix');
 
@@ -141,7 +142,7 @@ it('should render with the prefix', () => {
 });
 
 it('should render with the suffix', () => {
-	render(<Button suffix={<Icon icon={desktop} data-testid="suffix" />} />);
+	render(<Button suffix={<Icon data-testid="suffix" icon={desktop} />} />);
 
 	const icon = screen.queryByTestId('suffix');
 

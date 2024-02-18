@@ -11,29 +11,30 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
+
 import * as classes from './IconButton.module.scss';
 
 interface IconButtonProps
 	extends GlobalProps,
 		HoverProps,
-		Omit<AriaButtonProps, 'elementType' | 'target' | 'aria-label'> {
+		Omit<AriaButtonProps, 'aria-label' | 'elementType' | 'target'> {
 	'aria-label': string;
 	children: ReactElement<IconProps, typeof Icon>;
+	/**
+	 * The size of the button.
+	 */
+	size?: 'large' | 'small';
 	/**
 	 * The variant of the button.
 	 *
 	 * @default 'primary'
 	 */
 	variant?: 'primary' | 'secondary';
-	/**
-	 * The size of the button.
-	 */
-	size?: 'small' | 'large';
 }
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 	(props, forwardedRef) => {
-		const { children, variant = 'primary', autoFocus, size, role } = props;
+		const { autoFocus, children, role, size, variant = 'primary' } = props;
 		const ref = useObjectRef(forwardedRef);
 		const { buttonProps } = useButton(props, ref);
 		const { hoverProps } = useHover(props);

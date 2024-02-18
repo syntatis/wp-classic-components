@@ -1,11 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Radio } from './Radio';
 import { RadioGroup } from './RadioGroup';
 
 const meta: Meta<typeof RadioGroup> = {
-	title: 'Components/RadioGroup',
+	argTypes: {
+		description: {
+			control: 'text',
+		},
+		label: {
+			control: 'text',
+		},
+	},
+	args: {
+		children: [
+			<Radio key="full-text" value="full-text">
+				Full text
+			</Radio>,
+			<Radio key="excerpt" value="excerpt">
+				Excerpt
+			</Radio>,
+		],
+		label: 'For each post in a feed, include',
+	},
 	component: RadioGroup,
-	tags: ['autodocs'],
 	parameters: {
 		controls: {
 			include: [
@@ -20,25 +38,8 @@ const meta: Meta<typeof RadioGroup> = {
 			],
 		},
 	},
-	argTypes: {
-		label: {
-			control: 'text',
-		},
-		description: {
-			control: 'text',
-		},
-	},
-	args: {
-		label: 'For each post in a feed, include',
-		children: [
-			<Radio key="full-text" value="full-text">
-				Full text
-			</Radio>,
-			<Radio key="excerpt" value="excerpt">
-				Excerpt
-			</Radio>,
-		],
-	},
+	tags: ['autodocs'],
+	title: 'Components/RadioGroup',
 };
 
 type Story = StoryObj<typeof RadioGroup>;
@@ -46,25 +47,25 @@ type Story = StoryObj<typeof RadioGroup>;
 export const Default: Story = {};
 
 export const Disabled: Story = {
+	args: {
+		isDisabled: true,
+	},
 	parameters: {
 		controls: {
 			exclude: ['isDisabled'],
 		},
 	},
-	args: {
-		isDisabled: true,
-	},
 };
 
 export const ReadOnly: Story = {
+	args: {
+		isReadOnly: true,
+	},
 	name: 'ReadOnly',
 	parameters: {
 		controls: {
 			exclude: ['isReadOnly'],
 		},
-	},
-	args: {
-		isReadOnly: true,
 	},
 };
 
@@ -80,29 +81,29 @@ export const Invalid: Story = {
 };
 
 export const CheckedDefault: Story = {
-	name: 'Checked (default)',
 	args: {
 		defaultValue: 'g:i a',
 	},
+	name: 'Checked (default)',
 };
 
 export const CheckedControlled: Story = {
-	name: 'Checked (controlled)',
 	args: {
 		value: 'g:i a',
 	},
+	name: 'Checked (controlled)',
 };
 
 export const OrientationHorizontal: Story = {
+	args: {
+		orientation: 'horizontal',
+		value: 'g:i a',
+	},
 	name: 'Orientation (horizontal)',
 	parameters: {
 		controls: {
 			exclude: ['orientation'],
 		},
-	},
-	args: {
-		orientation: 'horizontal',
-		value: 'g:i a',
 	},
 };
 
@@ -113,14 +114,14 @@ export const WithDescription: Story = {
 };
 
 export const WithDescriptionBeforeInput: Story = {
+	args: {
+		description: 'The time format will be used when displaying dates.',
+	},
 	name: 'With Description (before-input)',
 	parameters: {
 		controls: {
 			exclude: ['descriptionArea'],
 		},
-	},
-	args: {
-		description: 'The time format will be used when displaying dates.',
 	},
 };
 

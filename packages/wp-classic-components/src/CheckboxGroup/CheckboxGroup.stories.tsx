@@ -1,11 +1,32 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CheckboxGroup } from './CheckboxGroup';
+
 import { Checkbox } from '../Checkbox';
+import { CheckboxGroup } from './CheckboxGroup';
 
 const meta: Meta<typeof CheckboxGroup> = {
-	title: 'Components/CheckboxGroup',
+	argTypes: {
+		description: {
+			control: 'text',
+		},
+		label: {
+			control: 'text',
+		},
+	},
+	args: {
+		children: [
+			<Checkbox key="permalink" value="permalink">
+				Permalink
+			</Checkbox>,
+			<Checkbox key="excerpt" value="excerpt">
+				Excerpt
+			</Checkbox>,
+			<Checkbox key="author" value="author">
+				Author
+			</Checkbox>,
+		],
+		label: 'Hide on screen',
+	},
 	component: CheckboxGroup,
-	tags: ['autodocs'],
 	parameters: {
 		controls: {
 			include: [
@@ -20,28 +41,8 @@ const meta: Meta<typeof CheckboxGroup> = {
 			],
 		},
 	},
-	argTypes: {
-		label: {
-			control: 'text',
-		},
-		description: {
-			control: 'text',
-		},
-	},
-	args: {
-		label: 'Hide on screen',
-		children: [
-			<Checkbox key="permalink" value="permalink">
-				Permalink
-			</Checkbox>,
-			<Checkbox key="excerpt" value="excerpt">
-				Excerpt
-			</Checkbox>,
-			<Checkbox key="author" value="author">
-				Author
-			</Checkbox>,
-		],
-	},
+	tags: ['autodocs'],
+	title: 'Components/CheckboxGroup',
 };
 
 type Story = StoryObj<typeof CheckboxGroup>;
@@ -49,46 +50,41 @@ type Story = StoryObj<typeof CheckboxGroup>;
 export const Default: Story = {};
 
 export const Disabled: Story = {
+	args: {
+		isDisabled: true,
+	},
 	parameters: {
 		controls: {
 			exclude: ['isDisabled'],
 		},
 	},
-	args: {
-		isDisabled: true,
-	},
 };
 
 export const ReadOnly: Story = {
+	args: {
+		isReadOnly: true,
+		value: ['permalink', 'excerpt'],
+	},
 	name: 'ReadOnly',
 	parameters: {
 		controls: {
 			exclude: ['isReadOnly'],
 		},
 	},
-	args: {
-		isReadOnly: true,
-		value: ['permalink', 'excerpt'],
-	},
 };
 
 export const Required: Story = {
+	args: {
+		isRequired: true,
+	},
 	parameters: {
 		controls: {
 			exclude: ['isRequired'],
 		},
-	},
-	args: {
-		isRequired: true,
 	},
 };
 
 export const Invalid: Story = {
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
-		},
-	},
 	args: {
 		isRequired: true,
 		validate(value) {
@@ -97,31 +93,36 @@ export const Invalid: Story = {
 			}
 		},
 	},
+	parameters: {
+		controls: {
+			exclude: ['isRequired'],
+		},
+	},
 };
 
 export const CheckedDefault: Story = {
-	name: 'Checked (default)',
 	args: {
 		defaultValue: ['permalink'],
 	},
+	name: 'Checked (default)',
 };
 
 export const CheckedControlled: Story = {
-	name: 'Checked (controlled)',
 	args: {
 		value: ['permalink'],
 	},
+	name: 'Checked (controlled)',
 };
 
 export const OrientationHorizontal: Story = {
+	args: {
+		orientation: 'horizontal',
+	},
 	name: 'Orientation (horizontal)',
 	parameters: {
 		controls: {
 			exclude: ['orientation'],
 		},
-	},
-	args: {
-		orientation: 'horizontal',
 	},
 };
 
@@ -132,15 +133,15 @@ export const WithDescription: Story = {
 };
 
 export const WithDescriptionBeforeInput: Story = {
+	args: {
+		description: 'Choose which elements to hide on screen.',
+		descriptionArea: 'before-input',
+	},
 	name: 'With Description (before-input)',
 	parameters: {
 		controls: {
 			exclude: ['descriptionArea'],
 		},
-	},
-	args: {
-		descriptionArea: 'before-input',
-		description: 'Choose which elements to hide on screen.',
 	},
 };
 

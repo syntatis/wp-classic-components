@@ -1,25 +1,10 @@
-import { Icon, external } from '@wordpress/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { Icon, external } from '@wordpress/icons';
+
 import { LinkButton } from './LinkButton';
 
 const meta: Meta<typeof LinkButton> = {
-	title: 'Components/LinkButton',
-	component: LinkButton,
-	tags: ['autodocs'],
-	parameters: {
-		controls: {
-			include: [
-				'children',
-				'excludeFromTabOrder',
-				'href',
-				'size',
-				'target',
-				'variant',
-				'onFocusChange',
-				'onHoverChange',
-			],
-		},
-	},
 	argTypes: {
 		children: {
 			control: {
@@ -34,9 +19,26 @@ const meta: Meta<typeof LinkButton> = {
 		},
 	},
 	args: {
-		href: 'https://wordpress.org',
 		children: 'Go to WordPress',
+		href: 'https://wordpress.org',
 	},
+	component: LinkButton,
+	parameters: {
+		controls: {
+			include: [
+				'children',
+				'excludeFromTabOrder',
+				'href',
+				'size',
+				'target',
+				'variant',
+				'onFocusChange',
+				'onHoverChange',
+			],
+		},
+	},
+	tags: ['autodocs'],
+	title: 'Components/LinkButton',
 };
 
 type Story = StoryObj<typeof LinkButton>;
@@ -44,50 +46,50 @@ type Story = StoryObj<typeof LinkButton>;
 export const Default: Story = {};
 
 export const VariantSecondary: Story = {
+	args: {
+		variant: 'secondary',
+	},
 	name: 'Variant (secondary)',
 	parameters: {
 		controls: {
 			exclude: ['variant'],
 		},
 	},
-	args: {
-		variant: 'secondary',
-	},
 };
 
 export const SizeSmall: Story = {
+	args: {
+		size: 'small',
+	},
 	name: 'Size (small)',
 	parameters: {
 		controls: {
 			exclude: ['size'],
 		},
 	},
-	args: {
-		size: 'small',
-	},
 };
 
 export const SizeLarge: Story = {
+	args: {
+		size: 'large',
+	},
 	name: 'Size (large)',
 	parameters: {
 		controls: {
 			exclude: ['size'],
 		},
 	},
-	args: {
-		size: 'large',
-	},
 };
 
 export const SizeHero: Story = {
+	args: {
+		size: 'hero',
+	},
 	name: 'Size (hero)',
 	parameters: {
 		controls: {
 			exclude: ['size'],
 		},
-	},
-	args: {
-		size: 'hero',
 	},
 };
 

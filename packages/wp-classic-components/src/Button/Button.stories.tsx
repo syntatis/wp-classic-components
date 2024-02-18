@@ -1,11 +1,21 @@
-import { Icon, download, upload } from '@wordpress/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { Icon, download, upload } from '@wordpress/icons';
+
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
-	title: 'Components/Button',
+	argTypes: {
+		children: {
+			control: {
+				type: 'text',
+			},
+		},
+	},
+	args: {
+		children: 'Save changes',
+	},
 	component: Button,
-	tags: ['autodocs'],
 	parameters: {
 		controls: {
 			include: [
@@ -21,16 +31,8 @@ const meta: Meta<typeof Button> = {
 			],
 		},
 	},
-	argTypes: {
-		children: {
-			control: {
-				type: 'text',
-			},
-		},
-	},
-	args: {
-		children: 'Save changes',
-	},
+	tags: ['autodocs'],
+	title: 'Components/Button',
 };
 
 type Story = StoryObj<typeof Button>;
@@ -38,85 +40,85 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {};
 
 export const VariantSecondary: Story = {
+	args: {
+		variant: 'secondary',
+	},
 	name: 'Variant (secondary)',
 	parameters: {
 		controls: {
 			exclude: ['variant'],
 		},
 	},
-	args: {
-		variant: 'secondary',
-	},
 };
 
 export const VariantLink: Story = {
+	args: {
+		variant: 'link',
+	},
 	name: 'Variant (link)',
 	parameters: {
 		controls: {
 			exclude: ['variant'],
 		},
 	},
-	args: {
-		variant: 'link',
-	},
 };
 
 export const VariantLinkDanger: Story = {
+	args: {
+		variant: 'link-danger',
+	},
 	name: 'Variant (link-danger)',
 	parameters: {
 		controls: {
 			exclude: ['variant'],
 		},
 	},
-	args: {
-		variant: 'link-danger',
-	},
 };
 
 export const SizeSmall: Story = {
+	args: {
+		size: 'small',
+	},
 	name: 'Size (small)',
 	parameters: {
 		controls: {
 			exclude: ['size'],
 		},
 	},
-	args: {
-		size: 'small',
-	},
 };
 
 export const SizeLarge: Story = {
+	args: {
+		size: 'large',
+	},
 	name: 'Size (large)',
 	parameters: {
 		controls: {
 			exclude: ['size'],
 		},
 	},
-	args: {
-		size: 'large',
-	},
 };
 
 export const SizeHero: Story = {
+	args: {
+		size: 'hero',
+	},
 	name: 'Size (hero)',
 	parameters: {
 		controls: {
 			exclude: ['size'],
 		},
 	},
-	args: {
-		size: 'hero',
-	},
 };
 
 export const Disabled: Story = {
+	args: {
+		isDisabled: true,
+	},
 	parameters: {
 		controls: {
 			exclude: ['isDisabled'],
 		},
-	},
-	args: {
-		isDisabled: true,
 	},
 };
 

@@ -1,11 +1,9 @@
 module.exports = {
 	env: {
+		browser: true,
 		es6: true,
 		node: true,
-		browser: true,
 	},
-	parser: '@typescript-eslint/parser',
-	plugins: ['@stylistic'],
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
@@ -15,25 +13,31 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:react/jsx-runtime',
 		'plugin:prettier/recommended',
-		'plugin:storybook/recommended',
+		'plugin:perfectionist/recommended-natural',
 	],
-	settings: {
-		react: {
-			version: 'detect',
+	overrides: [
+		{
+			files: ['*.config.{js,jsx,ts,tsx,mts}', '*.d.{js,jsx,ts,tsx}'],
+			rules: {
+				'import/no-default-export': 'off',
+			},
 		},
-		'import/resolver': {
-			typescript: true,
-			node: true,
+		{
+			files: ['*.test.{js,jsx,ts,tsx,mts}'],
+			rules: {
+				'@typescript-eslint/ban-ts-comment': 'off',
+			},
 		},
-	},
+	],
+	parser: '@typescript-eslint/parser',
+	plugins: ['@stylistic'],
 	rules: {
-		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
 		'@stylistic/max-len': [
 			'error',
 			{
 				// Primary use is to set limit for the comments.
 				// @see prettier/prettier.
-				code: 90,
+				code: 100,
 				comments: 120,
 				ignoreRegExpLiterals: true,
 				ignoreStrings: true,
@@ -45,45 +49,46 @@ module.exports = {
 			'error',
 			{
 				blankLine: 'always',
-				prev: '*',
 				next: ['block-like', 'return', 'continue', 'throw'],
+				prev: '*',
 			},
 			{
 				blankLine: 'always',
-				prev: ['const', 'let', 'var'],
 				next: '*',
+				prev: ['const', 'let', 'var'],
 			},
 			{
 				blankLine: 'never',
-				prev: ['const', 'let', 'var'],
 				next: ['const', 'let', 'var'],
+				prev: ['const', 'let', 'var'],
 			},
 			{
 				blankLine: 'always',
-				prev: 'directive',
 				next: '*',
+				prev: 'directive',
 			},
 			{
 				blankLine: 'never',
-				prev: 'directive',
 				next: 'directive',
+				prev: 'directive',
 			},
 			{
 				blankLine: 'always',
-				prev: '*',
 				next: 'default',
-			},
-			{
-				blankLine: 'never',
 				prev: '*',
-				next: 'break',
 			},
 			{
 				blankLine: 'never',
-				prev: 'case',
+				next: 'break',
+				prev: '*',
+			},
+			{
+				blankLine: 'never',
 				next: 'case',
+				prev: 'case',
 			},
 		],
+		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
 		'import/newline-after-import': [
 			'error',
 			{
@@ -107,58 +112,31 @@ module.exports = {
 				'prefer-inline': true,
 			},
 		],
-		'import/order': [
-			'error',
-			{
-				groups: [
-					'builtin',
-					'external',
-					'internal',
-					['type', 'object'],
-					['parent', 'sibling', 'index'],
-				],
-				alphabetize: {
-					order: 'asc',
-					orderImportKind: 'asc',
-				},
-				'newlines-between': 'never',
-			},
-		],
 		'prettier/prettier': [
 			'error',
 			{
+				experimentalTernaries: true,
 				printWidth: 80,
 				singleQuote: true,
 				trailingComma: 'es5',
 				useTabs: true,
-				experimentalTernaries: true,
 			},
 		],
-		'react/prop-types': 'off',
 		'react/function-component-definition': [
 			2,
 			{
 				namedComponents: 'arrow-function',
 			},
 		],
+		'react/prop-types': 'off',
 	},
-	overrides: [
-		{
-			files: [
-				'*.config.{js,jsx,ts,tsx,mts}',
-				'*.d.{js,jsx,ts,tsx}',
-				'*.stories.{js,jsx,ts,tsx}',
-				'*.stories.{js,jsx,ts,tsx}',
-			],
-			rules: {
-				'import/no-default-export': 'off',
-			},
+	settings: {
+		'import/resolver': {
+			node: true,
+			typescript: true,
 		},
-		{
-			files: ['*.test.{js,jsx,ts,tsx,mts}'],
-			rules: {
-				'@typescript-eslint/ban-ts-comment': 'off',
-			},
+		react: {
+			version: 'detect',
 		},
-	],
+	},
 };

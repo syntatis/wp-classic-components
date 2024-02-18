@@ -2,6 +2,7 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
+
 import Meta, { Default } from './TextField.stories';
 
 const TextField = composeStory(Default, Meta);
@@ -42,7 +43,7 @@ it('should render with the "code" class', () => {
 });
 
 it('should render with the inline style', () => {
-	render(<TextField style={{ paddingRight: 30 }} data-testid="textfield" />);
+	render(<TextField data-testid="textfield" style={{ paddingRight: 30 }} />);
 
 	const root = screen.getByTestId('textfield');
 
@@ -58,7 +59,7 @@ it('should render with the description', () => {
 });
 
 it('should render with "id" attribute', () => {
-	render(<TextField id="input-id-1" data-testid="textfield" />);
+	render(<TextField data-testid="textfield" id="input-id-1" />);
 
 	const root = screen.getByTestId('textfield');
 
@@ -83,7 +84,7 @@ it('should render with "type" attribute', () => {
 
 it('should not render invalid html attributes', async () => {
 	// @ts-expect-error
-	render(<TextField foo="bar" data-testid="textfield" />);
+	render(<TextField data-testid="textfield" foo="bar" />);
 
 	const root = screen.getByTestId('textfield');
 	const input = screen.getByLabelText('Site Name');

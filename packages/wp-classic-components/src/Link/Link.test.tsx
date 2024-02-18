@@ -2,6 +2,7 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import { Icon, download, wordpress } from '@wordpress/icons';
 import { expect, it } from 'vitest';
+
 import Meta, { Default } from './Link.stories';
 
 const Link = composeStory(Default, Meta);
@@ -28,7 +29,7 @@ it('should render with the static class', () => {
 });
 
 it('should render with the custom class', () => {
-	render(<Link href="/" className="hello-world" />);
+	render(<Link className="hello-world" href="/" />);
 
 	const link = screen.getByRole('link', {
 		name: 'WordPress',
@@ -60,7 +61,7 @@ it('should render with the "id" attribute', () => {
 it('should not render with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
-		<Link href="/" foo="bar" />
+		<Link foo="bar" href="/" />
 	);
 
 	const link = screen.getByRole('link', {

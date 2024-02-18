@@ -2,6 +2,7 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import { Icon, wordpress } from '@wordpress/icons';
 import { expect, it } from 'vitest';
+
 import Meta, { Default } from './LinkButton.stories';
 
 const LinkButton = composeStory(Default, Meta);
@@ -83,9 +84,9 @@ it('should render with the "id"', () => {
 it('should render with the "aria-*" attributes', () => {
 	render(
 		<LinkButton
-			href="https://jetpack.com"
-			aria-label="Go to Jetpack"
 			aria-describedby="jetpack-description"
+			aria-label="Go to Jetpack"
+			href="https://jetpack.com"
 		/>
 	);
 
@@ -105,7 +106,7 @@ it('should render with the "data-*" label attributes', () => {
 
 it('should render with the prefix', () => {
 	render(
-		<LinkButton prefix={<Icon icon={wordpress} data-testid="prefix" />} />
+		<LinkButton prefix={<Icon data-testid="prefix" icon={wordpress} />} />
 	);
 
 	const icon = screen.queryByTestId('prefix');
@@ -115,7 +116,7 @@ it('should render with the prefix', () => {
 
 it('should render with the suffix', () => {
 	render(
-		<LinkButton suffix={<Icon icon={wordpress} data-testid="suffix" />} />
+		<LinkButton suffix={<Icon data-testid="suffix" icon={wordpress} />} />
 	);
 
 	const icon = screen.queryByTestId('suffix');

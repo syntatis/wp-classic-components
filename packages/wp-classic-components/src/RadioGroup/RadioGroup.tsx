@@ -4,6 +4,7 @@ import { GlobalProps } from '@syntatis/types';
 import { ReactElement, ReactNode, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';
+
 import { RadioContext } from './Radio';
 import * as classes from './RadioGroup.module.scss';
 
@@ -15,7 +16,7 @@ interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
 	 *
 	 * @before 'after-input'
 	 */
-	descriptionArea?: 'before-input' | 'after-input';
+	descriptionArea?: 'after-input' | 'before-input';
 	/**
 	 * The orientation of the checkbox group.
 	 *
@@ -26,9 +27,9 @@ interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 	(props, forwardedRef) => {
-		const { label, children, isRequired, id } = props;
+		const { children, id, isRequired, label } = props;
 		const { description, descriptionArea } = props;
-		const { clsx, rootProps, componentProps } = useProps('RadioGroup', props);
+		const { clsx, componentProps, rootProps } = useProps('RadioGroup', props);
 		const ref = useObjectRef(forwardedRef);
 		const state = useRadioGroupState(componentProps);
 		const {
@@ -58,22 +59,22 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 					],
 				})}
 				{...radioGroupProps}
-				ref={ref}
 				data-description-area={descriptionArea}
+				ref={ref}
 			>
 				<span
 					{...labelProps}
 					className={clsx({
-						prefixedNames: 'label',
 						classNames: classes.label,
+						prefixedNames: 'label',
 					})}
 				>
 					{label}
 					{isRequired ?
 						<span
 							className={clsx({
-								prefixedNames: 'marked-required',
 								classNames: classes.markedRequired,
+								prefixedNames: 'marked-required',
 							})}
 						>
 							*
@@ -83,8 +84,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 				<RadioContext.Provider value={state}>
 					<div
 						className={clsx({
-							prefixedNames: 'items',
 							classNames: classes.items,
+							prefixedNames: 'items',
 						})}
 					>
 						{children}
@@ -94,8 +95,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 					<div
 						{...errorMessageProps}
 						className={clsx({
-							prefixedNames: 'error-message',
 							classNames: classes.errorMessage,
+							prefixedNames: 'error-message',
 						})}
 					>
 						{validationErrors.join(' ')}
@@ -105,8 +106,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 					<div
 						{...descriptionProps}
 						className={clsx({
-							prefixedNames: 'description',
 							classNames: classes.description,
+							prefixedNames: 'description',
 						})}
 					>
 						{description}

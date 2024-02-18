@@ -2,8 +2,9 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it } from 'vitest';
-import Meta, { Default } from './Box.stories';
+
 import { Button } from '../Button';
+import Meta, { Default } from './Box.stories';
 
 const Box = composeStory(Default, Meta);
 
@@ -53,7 +54,7 @@ it('should render with the static class', () => {
 });
 
 it('should render with the custom class name', () => {
-	render(<Box data-testid="box" className="box-1-class-name" />);
+	render(<Box className="box-1-class-name" data-testid="box" />);
 
 	expect(screen.getByTestId('box')).toHaveClass('box-1-class-name');
 });
@@ -85,7 +86,7 @@ it('should not render the content when toggled off', async () => {
 	const user = userEvent.setup();
 
 	render(
-		<Box data-testid="box" collapsible>
+		<Box collapsible data-testid="box">
 			This is the content of the box
 		</Box>
 	);

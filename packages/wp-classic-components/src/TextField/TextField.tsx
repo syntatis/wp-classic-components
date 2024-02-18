@@ -3,28 +3,18 @@ import { useProps } from '@syntatis/react-hooks';
 import { GlobalProps } from '@syntatis/types';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
+
 import * as classes from './TextField.module.scss';
 
 interface TextFieldProps
 	extends GlobalProps,
 		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid'> {
 	/**
-	 * The input type.
-	 *
-	 * @default 'text'
-	 */
-	type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
-	/**
 	 * Where to place the description.
 	 *
 	 * @before 'after-input'
 	 */
-	descriptionArea?: 'before-input' | 'after-input';
-	/**
-	 * Setting this `true` will render the text within the text field
-	 * with a monospace font.
-	 */
-	isCode?: boolean;
+	descriptionArea?: 'after-input' | 'before-input';
 	/**
 	 * Whether to allow or disallow 1Password helper.
 	 *
@@ -32,20 +22,31 @@ interface TextFieldProps
 	 * @see https://developer.1password.com/docs/web/compatible-website-design/
 	 */
 	ignore1Password?: boolean;
+	/**
+	 * Setting this `true` will render the text within the text field
+	 * with a monospace font.
+	 */
+	isCode?: boolean;
+	/**
+	 * The input type.
+	 *
+	 * @default 'text'
+	 */
+	type?: 'email' | 'password' | 'search' | 'tel' | 'text' | 'url';
 }
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, forwardedRef) => {
-		const { label, isRequired, isDisabled } = props;
+		const { isDisabled, isRequired, label } = props;
 		const { description, descriptionArea } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { clsx, rootProps, componentProps } = useProps('TextField', props);
+		const { clsx, componentProps, rootProps } = useProps('TextField', props);
 		const {
-			isInvalid,
-			inputProps,
-			labelProps,
 			descriptionProps,
 			errorMessageProps,
+			inputProps,
+			isInvalid,
+			labelProps,
 			validationErrors,
 		} = useTextField(componentProps, ref);
 
@@ -55,10 +56,10 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					classNames: [
 						classes.root,
 						{
-							[classes.disabled]: isDisabled,
-							[classes.invalid]: isInvalid,
 							[classes.descriptionBeforeInput]:
 								descriptionArea === 'before-input',
+							[classes.disabled]: isDisabled,
+							[classes.invalid]: isInvalid,
 						},
 					],
 				})}
@@ -67,16 +68,16 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					<label
 						{...labelProps}
 						className={clsx({
-							prefixedNames: 'label',
 							classNames: classes.label,
+							prefixedNames: 'label',
 						})}
 					>
 						{label}
 						{isRequired ?
 							<span
 								className={clsx({
-									prefixedNames: 'marked-required',
 									classNames: classes.markedRequired,
+									prefixedNames: 'marked-required',
 								})}
 							>
 								*
@@ -86,21 +87,21 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 				)}
 				<input
 					{...inputProps}
-					ref={ref}
 					className={clsx({
-						prefixedNames: 'input',
 						classNames: {
 							[classes.input]: true,
 							['code']: props.isCode,
 						},
+						prefixedNames: 'input',
 					})}
+					ref={ref}
 				/>
 				{isInvalid && (
 					<p
 						{...errorMessageProps}
 						className={clsx({
-							prefixedNames: 'error-message',
 							classNames: classes.errorMessage,
+							prefixedNames: 'error-message',
 						})}
 					>
 						{validationErrors.join(' ')}
@@ -110,8 +111,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					<p
 						{...descriptionProps}
 						className={clsx({
-							prefixedNames: 'description',
 							classNames: [classes.description, 'description'],
+							prefixedNames: 'description',
 						})}
 					>
 						{description}
