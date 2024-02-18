@@ -58,6 +58,10 @@
 		grid-row: 3 / 4;
 		margin-block: 6px 0;
 		color: colors.$invalid;
+
+		p {
+			margin-block: 0 2px;
+		}
 	}
 }
 
