@@ -1,6 +1,6 @@
+import { useErrorMessage, useProps } from '@/hooks';
+import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
-import { useErrorMessage, useProps } from 'packages/hooks';
-import { GlobalProps } from 'packages/types';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 

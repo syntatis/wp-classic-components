@@ -1,4 +1,4 @@
-import { GlobalProps } from 'packages/types';
+import { GlobalProps } from '@/types';
 
 import { ClassNamesArgs, useClasses } from './useClasses';
 

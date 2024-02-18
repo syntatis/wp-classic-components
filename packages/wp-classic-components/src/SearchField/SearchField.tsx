@@ -1,6 +1,6 @@
+import { useErrorMessage, useProps } from '@/hooks';
+import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
-import { useProps } from 'packages/hooks';
-import { GlobalProps } from 'packages/types';
 import { forwardRef } from 'react';
 import { AriaSearchFieldProps, useSearchField } from 'react-aria';
 import { useSearchFieldState } from 'react-stately';
@@ -33,7 +33,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
 			labelProps,
 			validationErrors,
 		} = useSearchField(componentProps, state, ref);
-		const { errorMessage } = props;
+		const {} = useErrorMessage();
 
 		return (
 			<div
