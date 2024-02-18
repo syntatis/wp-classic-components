@@ -1,4 +1,4 @@
-import { GlobalProps } from '@syntatis/types';
+import { GlobalProps } from 'packages/types';
 import { ClassNamesArgs, useClasses } from './useClasses';
 
 interface PropsArgs extends GlobalProps {}
