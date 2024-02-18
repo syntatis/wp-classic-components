@@ -10,6 +10,7 @@ import {
 } from 'react';
 import { AriaRadioProps, useRadio } from 'react-aria';
 import { RadioGroupState } from 'react-stately';
+
 import * as classes from './Radio.module.scss';
 
 export const RadioContext = createContext<RadioGroupState | null>(null);
@@ -23,8 +24,8 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 		const { children, className } = props;
 		const {
 			clsx,
-			rootProps,
 			componentProps: restProps,
+			rootProps,
 		} = useProps('Radio', props);
 		const ref = useObjectRef(forwardedRef);
 		const inputRef = useRef<HTMLInputElement>(null);
@@ -36,7 +37,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 			throw new Error('"Radio" input must be added as a group');
 		}
 
-		const { inputProps, labelProps, isDisabled } = radioProps;
+		const { inputProps, isDisabled, labelProps } = radioProps;
 
 		return (
 			<label
@@ -53,11 +54,11 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
 			>
 				<input
 					{...inputProps}
-					ref={inputRef}
 					className={clsx({
-						prefixedNames: 'input',
 						classNames: classes.input,
+						prefixedNames: 'input',
 					})}
+					ref={inputRef}
 				/>
 				<span {...labelProps}>{children}</span>
 			</label>
