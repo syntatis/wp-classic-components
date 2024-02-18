@@ -5,6 +5,7 @@ import { forwardRef } from 'react';
 import { AriaSearchFieldProps, useSearchField } from 'react-aria';
 import { useSearchFieldState } from 'react-stately';
 
+import { ClearButton } from './ClearButton';
 import * as classes from './SearchField.module.scss';
 
 interface SearchFieldProps
@@ -20,20 +21,33 @@ interface SearchFieldProps
 
 export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
 	(props, forwardedRef) => {
-		const { description, descriptionArea, isDisabled, isRequired, label } =
-			props;
+		const {
+			description,
+			descriptionArea,
+			errorMessage,
+			isDisabled,
+			isRequired,
+			label,
+		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const { clsx, componentProps, rootProps } = useProps('SearchField', props);
 		const state = useSearchFieldState(props);
 		const {
+			clearButtonProps,
 			descriptionProps,
 			errorMessageProps,
 			inputProps,
 			isInvalid,
 			labelProps,
+			validationDetails,
 			validationErrors,
 		} = useSearchField(componentProps, state, ref);
-		const {} = useErrorMessage();
+		const { errorMessageList } = useErrorMessage({
+			errorMessage,
+			isInvalid,
+			validationDetails,
+			validationErrors,
+		});
 
 		return (
 			<div
@@ -70,27 +84,37 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
 						:	''}
 					</label>
 				)}
-				<input
-					{...inputProps}
+				<div
 					className={clsx({
-						classNames: {
-							[classes.input]: true,
-						},
-						prefixedNames: 'input',
+						classNames: classes.inputWrapper,
+						prefixedNames: 'input-wrapper',
 					})}
-					ref={ref}
-					type="search"
-				/>
-				{isInvalid && (
-					<p
+				>
+					<input
+						{...inputProps}
+						className={clsx({
+							classNames: {
+								[classes.input]: true,
+							},
+							prefixedNames: 'input',
+						})}
+						ref={ref}
+						type="search"
+					/>
+					{state.value && <ClearButton {...clearButtonProps} />}
+				</div>
+				{errorMessageList.length >= 1 && (
+					<div
 						{...errorMessageProps}
 						className={clsx({
 							classNames: classes.errorMessage,
 							prefixedNames: 'error-message',
 						})}
 					>
-						{validationErrors.join(' ')}
-					</p>
+						{errorMessageList.map((message, index) => {
+							return <p key={index}>{message}</p>;
+						})}
+					</div>
 				)}
 				{description && (
 					<p
