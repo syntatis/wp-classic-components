@@ -42,4 +42,4 @@ jobs:
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-          npx lerna publish from-package --yes
+          npx lerna publish from-git --yes
