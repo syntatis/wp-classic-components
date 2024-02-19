@@ -12,6 +12,9 @@
   ],
   "main": "index.js",
   "files": [
+		"base.js",
+		"react.js",
+		"typescript.js",
     "index.js"
   ],
   "dependencies": {
