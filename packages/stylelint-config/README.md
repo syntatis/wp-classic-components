@@ -1,4 +1,4 @@
-📦 stylelint-config
+# 📦 stylelint-config
 
 A collection of Stylelint configurations for CSS and SCSS. Based on popular style guides, like:
 
