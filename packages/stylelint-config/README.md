@@ -1,9 +1,4 @@
-<div align="center">
-  <strong>📦 stylelint-config</strong>
-  <p>CSS and SCSS linter configs</p>
-</div>
-
----
+📦 stylelint-config
 
 A collection of Stylelint configurations for CSS and SCSS. Based on popular style guides, like:
 
