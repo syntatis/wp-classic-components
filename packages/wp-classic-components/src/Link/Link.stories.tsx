@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { Icon, external, wordpress } from '@wordpress/icons';
-
 import { Link } from './Link';
 
 const meta: Meta<typeof Link> = {

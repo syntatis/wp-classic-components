@@ -3,7 +3,6 @@ import { useProps } from 'packages/hooks';
 import { GlobalProps } from 'packages/types';
 import { ReactNode, forwardRef, useRef, useState } from 'react';
 import { useButton, useId } from 'react-aria';
-
 import * as classes from './Box.module.scss';
 
 interface BoxProps extends GlobalProps {

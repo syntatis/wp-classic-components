@@ -5,7 +5,6 @@ import { useProps } from 'packages/hooks';
 import { GlobalProps } from 'packages/types';
 import { ReactElement, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
-
 import * as classes from './IconLinkButton.module.scss';
 
 export interface IconLinkButtonProps

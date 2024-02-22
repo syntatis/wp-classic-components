@@ -11,7 +11,6 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
-
 import * as classes from './IconButton.module.scss';
 
 interface IconButtonProps

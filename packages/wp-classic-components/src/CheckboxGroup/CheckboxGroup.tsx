@@ -7,7 +7,6 @@ import {
 import { useProps } from 'packages/hooks';
 import { GlobalProps } from 'packages/types';
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
-
 import { CheckboxProps } from '../Checkbox';
 import * as classes from './CheckboxGroup.module.scss';
 

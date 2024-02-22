@@ -3,7 +3,6 @@ import { useProps } from 'packages/hooks';
 import { Affixable, GlobalProps } from 'packages/types';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
-
 import * as classes from './Link.module.scss';
 
 export interface LinkProps

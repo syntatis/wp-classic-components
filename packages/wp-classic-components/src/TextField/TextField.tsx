@@ -3,7 +3,6 @@ import { useProps } from 'packages/hooks';
 import { GlobalProps } from 'packages/types';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
-
 import * as classes from './TextField.module.scss';
 
 interface TextFieldProps

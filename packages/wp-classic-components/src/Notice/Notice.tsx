@@ -3,7 +3,6 @@ import { useProps } from 'packages/hooks';
 import { GlobalProps } from 'packages/types';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
-
 import * as classes from './Notice.module.scss';
 
 interface NoticeProps extends GlobalProps {
