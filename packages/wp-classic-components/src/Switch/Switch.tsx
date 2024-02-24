@@ -47,10 +47,14 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 						],
 					})}
 					{...labelProps}
-					aria-describedby={descriptionId}
 				>
 					<VisuallyHidden>
-						<input {...inputProps} {...focusProps} ref={ref} />
+						<input
+							{...inputProps}
+							{...focusProps}
+							aria-describedby={descriptionId}
+							ref={ref}
+						/>
 					</VisuallyHidden>
 					<div
 						className={clsx({
