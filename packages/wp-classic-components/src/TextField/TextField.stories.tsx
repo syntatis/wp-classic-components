@@ -63,7 +63,7 @@ export const Required: Story = {
 	},
 };
 
-export const Invalid: Story = {
+export const Validated: Story = {
 	args: {
 		validate(value) {
 			if (!value) {
@@ -73,7 +73,7 @@ export const Invalid: Story = {
 	},
 };
 
-export const InvalidControlled: Story = {
+export const Invalid: Story = {
 	args: {
 		isInvalid: true,
 	},

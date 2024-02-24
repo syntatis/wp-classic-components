@@ -68,9 +68,8 @@ export const ReadOnly: Story = {
 	},
 };
 
-export const Invalid: Story = {
+export const Validated: Story = {
 	args: {
-		isRequired: true,
 		validate(value) {
 			if (!value) {
 				return 'Please select a time format.';

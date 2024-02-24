@@ -54,51 +54,30 @@ export const ReadOnly: Story = {
 		value: 'How to...',
 	},
 	name: 'ReadOnly',
-	parameters: {
-		controls: {
-			exclude: ['isReadOnly'],
-		},
-	},
 };
 
 export const Required: Story = {
 	args: {
 		isRequired: true,
 	},
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
-		},
-	},
 };
 
-export const Invalid: Story = {
+export const Validated: Story = {
 	args: {
-		isRequired: true,
 		validate(value) {
 			if (!value) {
 				return 'Search query is invalid.';
 			}
 		},
 	},
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
-		},
-	},
 };
 
-export const InvalidControlled: Story = {
+export const Invalid: Story = {
 	args: {
 		errorMessage: 'An unexpected error occurred.',
 		isInvalid: true,
 	},
 	name: 'Invalid (controlled)',
-	parameters: {
-		controls: {
-			exclude: ['isInvalid'],
-		},
-	},
 };
 
 export const ValueDefault: Story = {

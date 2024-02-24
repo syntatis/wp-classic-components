@@ -83,18 +83,12 @@ export const Required: Story = {
 	},
 };
 
-export const Invalid: Story = {
+export const Validated: Story = {
 	args: {
-		isRequired: true,
 		validate(value) {
 			if (value.length === 0) {
 				return 'Please select at least one option.';
 			}
-		},
-	},
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
 		},
 	},
 };

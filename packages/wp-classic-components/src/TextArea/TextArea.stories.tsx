@@ -62,9 +62,8 @@ export const ReadOnly: Story = {
 	},
 };
 
-export const Invalid: Story = {
+export const Validated: Story = {
 	args: {
-		isRequired: true,
 		validate(value) {
 			if (!value) {
 				return 'This field is required.';
@@ -78,7 +77,7 @@ export const Invalid: Story = {
 	},
 };
 
-export const InvalidControlled: Story = {
+export const Invalid: Story = {
 	args: {
 		errorMessage: 'An unexpected error occurred.',
 		isInvalid: true,
