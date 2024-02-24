@@ -55,25 +55,20 @@ export const ReadOnly: Story = {
 		value: 'Hello World',
 	},
 	name: 'ReadOnly',
-	parameters: {
-		controls: {
-			exclude: ['isReadOnly'],
-		},
+};
+
+export const Required: Story = {
+	args: {
+		isRequired: true,
 	},
 };
 
 export const Invalid: Story = {
 	args: {
-		isRequired: true,
 		validate(value) {
 			if (!value) {
 				return 'This field is required.';
 			}
-		},
-	},
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
 		},
 	},
 };
@@ -83,11 +78,6 @@ export const InvalidControlled: Story = {
 		isInvalid: true,
 	},
 	name: 'Invalid (controlled)',
-	parameters: {
-		controls: {
-			exclude: ['isInvalid'],
-		},
-	},
 };
 
 export const ValueDefault: Story = {

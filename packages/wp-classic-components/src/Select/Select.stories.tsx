@@ -3,24 +3,18 @@ import { Select } from './Select';
 import { SelectItem } from './SelectItem';
 
 const meta: Meta<typeof Select> = {
+	argTypes: {
+		description: {
+			control: 'text',
+		},
+		label: {
+			control: 'text',
+		},
+		name: {
+			control: 'text',
+		},
+	},
 	args: {
-		children: [
-			<SelectItem key="subcriber" value="subscriber">
-				Subscriber
-			</SelectItem>,
-			<SelectItem key="contributor" value="contributor">
-				Contributor
-			</SelectItem>,
-			<SelectItem key="author" value="author">
-				Author
-			</SelectItem>,
-			<SelectItem key="editor" value="editor">
-				Editor
-			</SelectItem>,
-			<SelectItem key="administrator" value="administrator">
-				Administrator
-			</SelectItem>,
-		],
 		label: 'Role',
 	},
 	component: Select,
@@ -33,6 +27,8 @@ const meta: Meta<typeof Select> = {
 				'isRequired',
 				'label',
 				'name',
+				'onSelectionChange',
+				'onFocusChange',
 			],
 		},
 	},
@@ -42,13 +38,59 @@ const meta: Meta<typeof Select> = {
 
 type Story = StoryObj<typeof Select>;
 
-export const Default: Story = {};
+export const Default: Story = {
+	render(props) {
+		return (
+			<Select {...props}>
+				<SelectItem>— Select —</SelectItem>
+				<SelectItem>Subscriber</SelectItem>
+				<SelectItem>Contributor</SelectItem>
+				<SelectItem>Author</SelectItem>
+				<SelectItem>Editor</SelectItem>
+				<SelectItem>Administrator</SelectItem>
+			</Select>
+		);
+	},
+};
+
+export const Disabled: Story = {
+	args: {
+		isDisabled: true,
+	},
+	render: Default.render,
+};
 
 export const Required: Story = {
 	args: {
-		isInvalid: true,
 		isRequired: true,
 	},
+	render: Default.render,
+};
+
+export const Invalid: Story = {
+	args: {
+		validate(value) {
+			if (!value || value === '— Select —') {
+				return 'Please select a role.';
+			}
+		},
+	},
+	render: Default.render,
+};
+
+export const InvalidControlled: Story = {
+	args: {
+		isInvalid: true,
+	},
+	name: 'Invalid (controlled)',
+	render: Default.render,
+};
+
+export const Selected: Story = {
+	args: {
+		selectedItem: 'Author',
+	},
+	render: Default.render,
 };
 
 export default meta;
