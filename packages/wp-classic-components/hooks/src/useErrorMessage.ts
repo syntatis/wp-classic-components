@@ -26,8 +26,6 @@ export function useErrorMessage(props: ErrorMessageArgs) {
 			})
 		:	errorMessageProps;
 
-	console.log(errorMessageRendered);
-
 	if (errorMessageRendered) {
 		errorMessageList.push(errorMessageRendered);
 	}
