@@ -1,7 +1,6 @@
 import { useProps } from '@/hooks';
 import { useRef } from 'react';
 import { AriaButtonProps, useButton } from 'react-aria';
-
 import * as classes from './SearchField.module.scss';
 
 export const ClearButton = (props: AriaButtonProps) => {
