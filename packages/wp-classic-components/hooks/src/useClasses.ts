@@ -23,7 +23,7 @@ interface ClassesReturn {
 	 * pass `root` as the first argument, the resulting
 	 * class name will be wp-classic-Link-root.
 	 */
-	clsx: (args: ClsxArgs) => string;
+	clsx: (args: ClsxArgs) => string | undefined;
 }
 
 export function parsePrefixedNames(names: string | string[]): string[] {
@@ -41,10 +41,11 @@ export function useClasses(component: string): ClassesReturn {
 		clsx: (args: ClsxArgs) => {
 			const { classNames = '', prefixedNames = '' } = args;
 			const prefixed = parsePrefixedNames(prefixedNames).map(
-				(name) => `${prefix}${name}`
+				(name) => name && `${prefix}${name}`
 			);
+			const c = clsx(prefixed, classNames);
 
-			return clsx(prefixed, classNames);
+			return c.trim() !== '' ? c : undefined;
 		},
 	};
 }
