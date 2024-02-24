@@ -7,6 +7,7 @@ const config: StorybookConfig = {
 		'@storybook/addon-essentials',
 		'@storybook/addon-links',
 		'@storybook/addon-styling',
+		'@storybook/addon-interactions',
 	],
 	core: {},
 	docs: {

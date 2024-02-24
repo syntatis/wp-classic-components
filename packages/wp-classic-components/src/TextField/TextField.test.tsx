@@ -116,12 +116,55 @@ it('should be marked as required', () => {
 	expect(input).toBeRequired();
 });
 
-it('should be marked as invalid and show error message', () => {
-	render(<TextField validate={() => 'An unexpected error occurred!'} />);
+it('should be marked as invalid based on value evaluation', async () => {
+	const user = userEvent.setup();
+
+	render(
+		<form method="POST">
+			<TextField
+				validate={(v) => {
+					if (v === 'x') {
+						return 'An unexpected error occurred!';
+					}
+				}}
+			/>
+		</form>
+	);
 
 	const input = screen.getByLabelText('Site Name');
 
+	expect(input).not.toBeInvalid();
+
+	await user.type(input, 'x{Enter}');
+
+	screen.debug(input);
+
 	expect(input).toBeInvalid();
+	expect(input).toHaveAccessibleDescription('An unexpected error occurred!');
+});
+
+it('should render error message on top of validation message', async () => {
+	const user = userEvent.setup();
+
+	render(
+		<TextField
+			errorMessage={(v) => (v.isInvalid ? 'Error:' : '')}
+			validate={(v) => (v === 'y' ? 'Value "y" is not allowed!' : undefined)}
+		/>
+	);
+
+	const input = screen.getByLabelText('Site Name');
+
+	await user.type(input, 'y{Enter}');
+
+	expect(input).toHaveAccessibleDescription('Error: Value "y" is not allowed!');
+});
+
+it('should be show error message (controlled)', () => {
+	render(<TextField errorMessage="An unexpected error occurred!" />);
+
+	const input = screen.getByLabelText('Site Name');
+
 	expect(input).toHaveAccessibleDescription('An unexpected error occurred!');
 });
 

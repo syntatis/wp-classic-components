@@ -79,7 +79,6 @@ export const Invalid: Story = {
 
 export const InvalidControlled: Story = {
 	args: {
-		errorMessage: 'An unexpected error occurred.',
 		isInvalid: true,
 	},
 	name: 'Invalid (controlled)',
@@ -127,6 +126,13 @@ export const WithDescriptionBeforeInput: Story = {
 			exclude: ['descriptionArea'],
 		},
 	},
+};
+
+export const WithErrorMessageControlled: Story = {
+	args: {
+		errorMessage: 'An unexpected error occurred!',
+	},
+	name: 'With Error Message (controlled)',
 };
 
 export default meta;

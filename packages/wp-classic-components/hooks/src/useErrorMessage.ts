@@ -26,12 +26,14 @@ export function useErrorMessage(props: ErrorMessageArgs) {
 			})
 		:	errorMessageProps;
 
+	console.log(errorMessageRendered);
+
 	if (errorMessageRendered) {
 		errorMessageList.push(errorMessageRendered);
 	}
 	errorMessageList.push(...validationErrors);
 
 	return {
-		errorMessageList: isInvalid ? errorMessageList : [],
+		errorMessageList: errorMessageList || [],
 	};
 }
