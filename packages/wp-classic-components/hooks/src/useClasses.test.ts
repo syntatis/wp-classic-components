@@ -42,4 +42,20 @@ describe('useClasses', async () => {
 			'wp-classic-ComponentName-123 wp-classic-ComponentName-456 wp-classic-ComponentName-789 foo bar'
 		);
 	});
+
+	it('should not return class with prefix', () => {
+		expect(
+			result.current.clsx({
+				classNames: 'only-class',
+			})
+		).toEqual('only-class');
+	});
+
+	it('should return undefined', () => {
+		expect(
+			result.current.clsx({
+				classNames: '',
+			})
+		).toBeUndefined();
+	});
 });

@@ -1,0 +1,31 @@
+@use '../../scss/variables/colors';
+
+:global(.wp-core-ui) {
+	.root {
+		display: flex;
+		gap: 4px;
+		align-items: center;
+
+		.track {
+			fill: colors.$gray-10;
+		}
+
+		.thumb {
+			fill: colors.$white;
+		}
+
+		.label {
+			font-weight: 600;
+		}
+
+		.focusRing {
+			stroke: colors.$blue-30;
+		}
+
+		&.isSelected {
+			.track {
+				fill: colors.$blue-30;
+			}
+		}
+	}
+}
