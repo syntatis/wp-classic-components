@@ -31,9 +31,8 @@ dist
 tmp
 
 # debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*-debug.log*
+*-error.log*
 .pnpm-debug.log*
 
 # local env files
