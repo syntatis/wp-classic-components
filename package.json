@@ -29,6 +29,7 @@
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-istanbul": "^1.3.1",
     "@wordpress/icons": "^9.41.0",
     "chromatic": "^10.6.1",
     "eslint": "^8.55.0",
@@ -55,6 +56,8 @@
     "lint:types": "tsc --noEmit",
     "lint": "npm run lint:scripts && npm run lint:styles && npm run lint:types",
     "storybook": "storybook dev -p 6007",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   }
 }
