@@ -1,9 +1,12 @@
+import { useProps } from '@/hooks';
+import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
-import { useProps } from 'packages/hooks';
-import { GlobalProps } from 'packages/types';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
 import * as classes from './Notice.module.scss';
+
+const DEFAULT_LEVEL = 'info';
+const DEFAULT_VARIANT = 'default';
 
 interface NoticeProps extends GlobalProps {
 	children: ReactNode;
@@ -45,9 +48,9 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 			children,
 			dismissable = false,
 			isDismissed,
-			level = 'info',
+			level = DEFAULT_LEVEL,
 			onDismiss,
-			variant,
+			variant = DEFAULT_VARIANT,
 		} = props;
 		const ref = useObjectRef(forwardedRef);
 		const buttonRef = useObjectRef<HTMLButtonElement>(null);

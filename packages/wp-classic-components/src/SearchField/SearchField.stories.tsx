@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextField } from './TextField';
+import { SearchField } from './SearchField';
 
-const meta: Meta<typeof TextField> = {
+const meta: Meta<typeof SearchField> = {
 	argTypes: {
 		description: {
 			control: 'text',
@@ -11,9 +11,9 @@ const meta: Meta<typeof TextField> = {
 		},
 	},
 	args: {
-		label: 'Site Name',
+		label: 'Search',
 	},
-	component: TextField,
+	component: SearchField,
 	parameters: {
 		controls: {
 			include: [
@@ -21,19 +21,19 @@ const meta: Meta<typeof TextField> = {
 				'type',
 				'description',
 				'descriptionArea',
-				'isCode',
 				'isDisabled',
 				'isReadOnly',
 				'isRequired',
 				'onChange',
+				'onSubmit',
 			],
 		},
 	},
 	tags: ['autodocs'],
-	title: 'Components/TextField',
+	title: 'Components/SearchField',
 };
 
-type Story = StoryObj<typeof TextField>;
+type Story = StoryObj<typeof SearchField>;
 
 export const Default: Story = {};
 
@@ -51,7 +51,7 @@ export const Disabled: Story = {
 export const ReadOnly: Story = {
 	args: {
 		isReadOnly: true,
-		value: 'Hello World',
+		value: 'How to...',
 	},
 	name: 'ReadOnly',
 	parameters: {
@@ -61,12 +61,23 @@ export const ReadOnly: Story = {
 	},
 };
 
+export const Required: Story = {
+	args: {
+		isRequired: true,
+	},
+	parameters: {
+		controls: {
+			exclude: ['isRequired'],
+		},
+	},
+};
+
 export const Invalid: Story = {
 	args: {
 		isRequired: true,
 		validate(value) {
 			if (!value) {
-				return 'This field is required.';
+				return 'Search query is invalid.';
 			}
 		},
 	},
@@ -92,33 +103,33 @@ export const InvalidControlled: Story = {
 
 export const ValueDefault: Story = {
 	args: {
-		defaultValue: 'Hello World',
+		defaultValue: 'WooCommerce',
 	},
 	name: 'Value (default)',
 };
 
 export const ValueControlled: Story = {
 	args: {
-		value: 'Hello World',
+		value: 'WooCommerce',
 	},
 	name: 'Value (controlled)',
 };
 
 export const WithPlaceholder: Story = {
 	args: {
-		placeholder: 'e.g. WordPress',
+		placeholder: 'e.g. How to create a block?',
 	},
 };
 
 export const WithDescription: Story = {
 	args: {
-		description: 'In a few words, explain what this site is about.',
+		description: 'Search the post, pages, and other post types.',
 	},
 };
 
 export const WithDescriptionBeforeInput: Story = {
 	args: {
-		description: 'In a few words, explain what this site is about.',
+		description: 'Search the post, pages, and other post types.',
 		descriptionArea: 'before-input',
 	},
 	name: 'With Description (before-input)',

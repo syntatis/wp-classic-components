@@ -1,6 +1,6 @@
+import { useProps } from '@/hooks';
+import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
-import { useProps } from 'packages/hooks';
-import { GlobalProps } from 'packages/types';
 import { ReactElement, ReactNode, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';

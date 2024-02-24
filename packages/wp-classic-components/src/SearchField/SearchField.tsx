@@ -2,43 +2,37 @@ import { useErrorMessage, useProps } from '@/hooks';
 import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
-import { AriaTextFieldProps, useTextField } from 'react-aria';
-import * as classes from './TextField.module.scss';
+import { AriaSearchFieldProps, useSearchField } from 'react-aria';
+import { useSearchFieldState } from 'react-stately';
+import { ClearButton } from './ClearButton';
+import * as classes from './SearchField.module.scss';
 
-interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
+interface SearchFieldProps
+	extends GlobalProps,
+		Omit<AriaSearchFieldProps, 'type'> {
 	/**
 	 * Where to place the description.
 	 *
 	 * @default after-input
 	 */
 	descriptionArea?: 'after-input' | 'before-input';
-	/**
-	 * Whether to allow or disallow 1Password helper.
-	 *
-	 * @default false
-	 * @see https://developer.1password.com/docs/web/compatible-website-design/
-	 */
-	ignore1Password?: boolean;
-	/**
-	 * Setting this `true` will render the text within the text field
-	 * with a monospace font.
-	 */
-	isCode?: boolean;
-	/**
-	 * The input type.
-	 *
-	 * @default text
-	 */
-	type?: 'email' | 'password' | 'tel' | 'text' | 'url';
 }
 
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
 	(props, forwardedRef) => {
-		const { errorMessage, isDisabled, isRequired, label } = props;
-		const { description, descriptionArea } = props;
-		const ref = useObjectRef(forwardedRef);
-		const { clsx, componentProps, rootProps } = useProps('TextField', props);
 		const {
+			description,
+			descriptionArea,
+			errorMessage,
+			isDisabled,
+			isRequired,
+			label,
+		} = props;
+		const ref = useObjectRef(forwardedRef);
+		const { clsx, componentProps, rootProps } = useProps('SearchField', props);
+		const state = useSearchFieldState(props);
+		const {
+			clearButtonProps,
 			descriptionProps,
 			errorMessageProps,
 			inputProps,
@@ -46,7 +40,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			labelProps,
 			validationDetails,
 			validationErrors,
-		} = useTextField(componentProps, ref);
+		} = useSearchField(componentProps, state, ref);
 		const { errorMessageList } = useErrorMessage({
 			errorMessage,
 			isInvalid,
@@ -89,17 +83,25 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 						:	''}
 					</label>
 				)}
-				<input
-					{...inputProps}
+				<div
 					className={clsx({
-						classNames: {
-							[classes.input]: true,
-							['code']: props.isCode,
-						},
-						prefixedNames: 'input',
+						classNames: classes.inputWrapper,
+						prefixedNames: 'input-wrapper',
 					})}
-					ref={ref}
-				/>
+				>
+					<input
+						{...inputProps}
+						className={clsx({
+							classNames: {
+								[classes.input]: true,
+							},
+							prefixedNames: 'input',
+						})}
+						ref={ref}
+						type="search"
+					/>
+					{state.value && <ClearButton {...clearButtonProps} />}
+				</div>
 				{errorMessageList.length >= 1 && (
 					<div
 						{...errorMessageProps}
@@ -129,4 +131,4 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	}
 );
 
-TextField.displayName = 'TextField';
+SearchField.displayName = 'SearchField';

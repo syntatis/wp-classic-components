@@ -1,6 +1,6 @@
+import { useErrorMessage, useProps } from '@/hooks';
+import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
-import { useProps } from 'packages/hooks';
-import { GlobalProps } from 'packages/types';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
 import * as classes from './TextArea.module.scss';
@@ -8,9 +8,7 @@ import * as classes from './TextArea.module.scss';
 const DEFAULT_ROWS = 5;
 const DEFAULT_COLS = 50;
 
-interface TextAreaProps
-	extends GlobalProps,
-		Omit<AriaTextFieldProps, 'errorMessage' | 'isInvalid' | 'type'> {
+interface TextAreaProps extends GlobalProps, Omit<AriaTextFieldProps, 'type'> {
 	/**
 	 * Defines the number of columnes in the `textarea`.
 	 *
@@ -20,7 +18,7 @@ interface TextAreaProps
 	/**
 	 * Where to place the description.
 	 *
-	 * @before 'after-input'
+	 * @default after-input
 	 */
 	descriptionArea?: 'after-input' | 'before-input';
 	/**
@@ -42,6 +40,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			cols = DEFAULT_COLS,
 			description,
 			descriptionArea,
+			errorMessage,
 			isDisabled,
 			isRequired,
 			label,
@@ -55,6 +54,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			inputProps,
 			isInvalid,
 			labelProps,
+			validationDetails,
 			validationErrors,
 		} = useTextField(
 			{
@@ -63,6 +63,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			},
 			ref
 		);
+		const { errorMessageList } = useErrorMessage({
+			errorMessage,
+			isInvalid,
+			validationDetails,
+			validationErrors,
+		});
 
 		return (
 			<div
@@ -112,16 +118,18 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 					ref={ref}
 					rows={rows}
 				/>
-				{isInvalid && (
-					<p
+				{errorMessageList.length >= 1 && (
+					<div
 						{...errorMessageProps}
 						className={clsx({
 							classNames: classes.errorMessage,
 							prefixedNames: 'error-message',
 						})}
 					>
-						{validationErrors.join(' ')}
-					</p>
+						{errorMessageList.map((message, index) => {
+							return <p key={index}>{message}</p>;
+						})}
+					</div>
 				)}
 				{description && (
 					<p
