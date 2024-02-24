@@ -8,5 +8,7 @@ export * from './src/Link';
 export * from './src/LinkButton';
 export * from './src/Notice';
 export * from './src/RadioGroup';
+export * from './src/SearchField';
+export * from './src/Spinner';
 export * from './src/TextArea';
 export * from './src/TextField';

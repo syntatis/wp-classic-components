@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import { AriaRole, CSSProperties, ReactNode } from 'react';
 
 export interface Styleable {
 	className?: string;
@@ -26,5 +26,5 @@ export interface Affixable extends Prefixable, Suffixable {}
  */
 export interface GlobalProps extends Styleable, Testable {
 	id?: string | undefined;
-	role?: string | undefined;
+	role?: AriaRole | undefined;
 }

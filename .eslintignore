@@ -3,4 +3,8 @@ dist
 node_modules
 storybook-static
 temp
+tmp
+wordpress
+
+# Exceptions
 !.storybook
