@@ -4,6 +4,11 @@ import { Spinner } from './Spinner';
 const meta: Meta<typeof Spinner> = {
 	args: {},
 	component: Spinner,
+	parameters: {
+		controls: {
+			include: ['size', 'aria-valuetext'],
+		},
+	},
 	tags: ['autodocs'],
 	title: 'Components/Spinner',
 };
