@@ -113,6 +113,23 @@ module.exports = {
 				'prefer-inline': true,
 			},
 		],
+		'perfectionist/sort-imports': [
+			'error',
+			{
+				groups: [
+					'type',
+					['builtin', 'external'],
+					'internal-type',
+					'internal',
+					['parent-type', 'sibling-type', 'index-type'],
+					['parent', 'sibling', 'index'],
+					'object',
+					'unknown',
+				],
+				'newlines-between': 'never',
+				type: 'natural',
+			},
+		],
 		'prettier/prettier': [
 			'error',
 			{

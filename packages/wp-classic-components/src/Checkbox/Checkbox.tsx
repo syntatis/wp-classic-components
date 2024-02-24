@@ -8,7 +8,6 @@ import {
 	useCheckboxGroupItem,
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
-
 import { CheckboxGroupContext } from '../CheckboxGroup';
 import * as classes from './Checkbox.module.scss';
 

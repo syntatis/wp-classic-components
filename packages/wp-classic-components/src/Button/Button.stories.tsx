@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { Icon, download, upload } from '@wordpress/icons';
-
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {

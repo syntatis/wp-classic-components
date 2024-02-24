@@ -1,5 +1,4 @@
 import { GlobalProps } from '@/types';
-
 import { ClassNamesArgs, useClasses } from './useClasses';
 
 interface PropsArgs extends GlobalProps {}

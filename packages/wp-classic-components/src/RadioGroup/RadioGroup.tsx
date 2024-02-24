@@ -4,7 +4,6 @@ import { useObjectRef } from '@react-aria/utils';
 import { ReactElement, ReactNode, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';
-
 import { RadioContext } from './Radio';
 import * as classes from './RadioGroup.module.scss';
 

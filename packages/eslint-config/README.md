@@ -1,9 +1,4 @@
-<div align="center">
-  <strong>📦 eslint-config</strong>
-  <p>JavaScript, TypeScript and React linter configs</p>
-</div>
-
----
+# 📦 eslint-config
 
 A collection of ESLint configurations for JavaScript, TypeScript and React projects. Based on popular style guides, like:
 

@@ -2,7 +2,6 @@ import { composeStory } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it } from 'vitest';
-
 import { Button } from '../Button';
 import Meta, { Default } from './Box.stories';
 
