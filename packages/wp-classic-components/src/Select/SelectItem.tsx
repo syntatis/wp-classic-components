@@ -2,7 +2,10 @@ import { OptionHTMLAttributes, forwardRef } from 'react';
 import { useObjectRef } from 'react-aria';
 
 export interface SelectItemProps
-	extends OptionHTMLAttributes<HTMLOptionElement> {}
+	extends OptionHTMLAttributes<HTMLOptionElement> {
+	children: string;
+	value: string;
+}
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItemProps>(
 	(props, forwardedRef) => {

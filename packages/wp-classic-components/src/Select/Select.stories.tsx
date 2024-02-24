@@ -21,11 +21,19 @@ const meta: Meta<typeof Select> = {
 				Administrator
 			</SelectItem>,
 		],
+		label: 'Role',
 	},
 	component: Select,
 	parameters: {
 		controls: {
-			include: [],
+			include: [
+				'description',
+				'isDisabled',
+				'isInvalid',
+				'isRequired',
+				'label',
+				'name',
+			],
 		},
 	},
 	tags: ['autodocs'],
@@ -35,5 +43,12 @@ const meta: Meta<typeof Select> = {
 type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {};
+
+export const Required: Story = {
+	args: {
+		isInvalid: true,
+		isRequired: true,
+	},
+};
 
 export default meta;
