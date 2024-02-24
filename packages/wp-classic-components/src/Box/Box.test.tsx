@@ -81,7 +81,7 @@ it('should not render with invalid html attribute', () => {
 	expect(screen.getByTestId('box')).not.toHaveAttribute('foo');
 });
 
-it('should not render the content when toggled off', async () => {
+it('should be collapsible', async () => {
 	const user = userEvent.setup();
 
 	render(
@@ -98,4 +98,46 @@ it('should not render the content when toggled off', async () => {
 	await user.click(button);
 
 	expect(content).not.toBeVisible();
+});
+
+it('should render collapsible label as string', async () => {
+	const user = userEvent.setup();
+
+	render(
+		<Box collapsible="Toggle this box" data-testid="box">
+			This is the content of the box
+		</Box>
+	);
+
+	const button = screen.getByRole('button', { name: 'Toggle this box' });
+	const content = screen.getByText('This is the content of the box');
+
+	expect(content).toBeVisible();
+
+	await user.click(button);
+
+	expect(content).not.toBeVisible();
+});
+
+it('should render collapsible label as function', async () => {
+	const user = userEvent.setup();
+
+	render(
+		<Box
+			collapsible={(isExpanded) => (isExpanded ? 'Collapse' : 'Expand')}
+			data-testid="box"
+		>
+			This is the content of the box
+		</Box>
+	);
+
+	const button = screen.getByRole('button', { name: 'Collapse' });
+	const content = screen.getByText('This is the content of the box');
+
+	expect(content).toBeVisible();
+
+	await user.click(button);
+
+	expect(content).not.toBeVisible();
+	expect(screen.queryByRole('button', { name: 'Expand' })).toBeEnabled();
 });

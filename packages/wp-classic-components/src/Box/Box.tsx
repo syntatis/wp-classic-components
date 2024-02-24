@@ -18,10 +18,7 @@ interface BoxProps extends GlobalProps {
 	 *
 	 * @default false
 	 */
-	collapsible?:
-		| { label: (isExpanded: boolean) => string }
-		| { label: string }
-		| boolean;
+	collapsible?: ((isExpanded: boolean) => string) | boolean | string;
 	/**
 	 * Whether the post box should be expanded by default or not.
 	 *
@@ -61,14 +58,19 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 			},
 			buttonRef
 		);
-		let toggleLabel = title ? `Toggle panel: ${title}` : 'Toggle panel';
+		let toggleLabel = null;
 
-		if (typeof collapsible === 'object') {
-			if (typeof collapsible.label === 'function') {
-				toggleLabel = collapsible.label(expanded);
-			} else {
-				toggleLabel = collapsible.label;
-			}
+		switch (typeof collapsible) {
+			case 'function':
+				toggleLabel = collapsible(expanded);
+				break;
+			case 'string':
+				toggleLabel = collapsible;
+				break;
+
+			default:
+				toggleLabel = title ? `Toggle panel: ${title}` : 'Toggle panel';
+				break;
 		}
 
 		return (
