@@ -9,7 +9,7 @@ interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
 	/**
 	 * Where to place the description.
 	 *
-	 * @before 'after-input'
+	 * @default after-input
 	 */
 	descriptionArea?: 'after-input' | 'before-input';
 	/**
@@ -27,7 +27,7 @@ interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
 	/**
 	 * The input type.
 	 *
-	 * @default 'text'
+	 * @default text
 	 */
 	type?: 'email' | 'password' | 'tel' | 'text' | 'url';
 }

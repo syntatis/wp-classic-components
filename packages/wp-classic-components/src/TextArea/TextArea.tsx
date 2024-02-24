@@ -18,7 +18,7 @@ interface TextAreaProps extends GlobalProps, Omit<AriaTextFieldProps, 'type'> {
 	/**
 	 * Where to place the description.
 	 *
-	 * @before 'after-input'
+	 * @default after-input
 	 */
 	descriptionArea?: 'after-input' | 'before-input';
 	/**
