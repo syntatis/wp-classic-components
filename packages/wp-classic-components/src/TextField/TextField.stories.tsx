@@ -11,6 +11,7 @@ const meta: Meta<typeof TextField> = {
 		},
 	},
 	args: {
+		id: 'site-name',
 		label: 'Site Name',
 	},
 	component: TextField,
