@@ -132,8 +132,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 					onBlur={selectProps.onBlur}
 					onChange={(e) => state.setSelectedKey(e.target.value)}
 					onFocus={selectProps.onFocus}
-					onKeyDown={selectProps.onKeyDown}
-					onKeyUp={selectProps.onKeyUp}
 					ref={ref}
 					value={state.selectedKey}
 				>
