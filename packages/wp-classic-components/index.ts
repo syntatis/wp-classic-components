@@ -9,6 +9,7 @@ export * from './src/LinkButton';
 export * from './src/Notice';
 export * from './src/RadioGroup';
 export * from './src/SearchField';
+export * from './src/Select';
 export * from './src/Spinner';
 export * from './src/Switch';
 export * from './src/TextArea';
