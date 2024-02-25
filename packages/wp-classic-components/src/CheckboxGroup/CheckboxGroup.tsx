@@ -38,7 +38,6 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			description,
 			descriptionArea,
 			errorMessage,
-			id,
 			isRequired,
 			label,
 			orientation = 'vertical',
@@ -57,13 +56,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 			labelProps,
 			validationDetails,
 			validationErrors,
-		} = useCheckboxGroup(
-			{
-				id,
-				...componentProps,
-			},
-			state
-		);
+		} = useCheckboxGroup(componentProps, state);
 
 		return (
 			<div
