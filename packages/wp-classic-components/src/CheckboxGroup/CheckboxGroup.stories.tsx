@@ -59,7 +59,7 @@ export const ReadOnly: Story = {
 		isReadOnly: true,
 		value: ['permalink', 'excerpt'],
 	},
-	name: 'ReadOnly',},
+	name: 'ReadOnly',
 };
 
 export const Required: Story = {
