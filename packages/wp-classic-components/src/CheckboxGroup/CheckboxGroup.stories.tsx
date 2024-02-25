@@ -52,11 +52,6 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	parameters: {
-		controls: {
-			exclude: ['isDisabled'],
-		},
-	},
 };
 
 export const ReadOnly: Story = {
@@ -64,22 +59,12 @@ export const ReadOnly: Story = {
 		isReadOnly: true,
 		value: ['permalink', 'excerpt'],
 	},
-	name: 'ReadOnly',
-	parameters: {
-		controls: {
-			exclude: ['isReadOnly'],
-		},
-	},
+	name: 'ReadOnly',},
 };
 
 export const Required: Story = {
 	args: {
 		isRequired: true,
-	},
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
-		},
 	},
 };
 

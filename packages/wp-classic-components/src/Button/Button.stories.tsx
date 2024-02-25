@@ -113,11 +113,6 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	parameters: {
-		controls: {
-			exclude: ['isDisabled'],
-		},
-	},
 };
 
 export const WithPrefix: Story = {

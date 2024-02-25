@@ -42,11 +42,6 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	parameters: {
-		controls: {
-			exclude: ['isDisabled'],
-		},
-	},
 };
 
 export const ReadOnly: Story = {
@@ -55,11 +50,6 @@ export const ReadOnly: Story = {
 		value: 'Hello World',
 	},
 	name: 'ReadOnly',
-	parameters: {
-		controls: {
-			exclude: ['isReadOnly'],
-		},
-	},
 };
 
 export const Required: Story = {
