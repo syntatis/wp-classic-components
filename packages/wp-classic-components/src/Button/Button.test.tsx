@@ -48,7 +48,7 @@ it('should render "hero" size', () => {
 	expect(button).toHaveClass('button-hero');
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<Button />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -60,7 +60,7 @@ it('should render with the static class', () => {
 	);
 });
 
-it('should render with the custom class name', () => {
+it('should have custom class name', () => {
 	render(<Button className="foo-bar" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -68,7 +68,7 @@ it('should render with the custom class name', () => {
 	expect(button).toHaveClass('foo-bar');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<Button style={{ width: 100 }} />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -76,7 +76,7 @@ it('should render with the inline style', () => {
 	expect(button).toHaveStyle({ width: '100px' });
 });
 
-it('should render with the "id"', () => {
+it('should have "id"', () => {
 	render(<Button id="1" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -84,7 +84,7 @@ it('should render with the "id"', () => {
 	expect(button).toHaveAttribute('id', '1');
 });
 
-it('should render with the type "submit"', () => {
+it('should have type "submit"', () => {
 	render(<Button type="submit" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -92,7 +92,7 @@ it('should render with the type "submit"', () => {
 	expect(button).toHaveAttribute('type', 'submit');
 });
 
-it('should render with the type "reset"', () => {
+it('should have type "reset"', () => {
 	render(<Button type="reset" />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -100,7 +100,7 @@ it('should render with the type "reset"', () => {
 	expect(button).toHaveAttribute('type', 'reset');
 });
 
-it('should render with the "aria-*" label', () => {
+it('should have "aria-*" label', () => {
 	render(<Button aria-label="Update changes" />);
 
 	const button = screen.getByRole('button', { name: 'Update changes' });
@@ -108,7 +108,7 @@ it('should render with the "aria-*" label', () => {
 	expect(button).toHaveAttribute('aria-label', 'Update changes');
 });
 
-it('should render with the "role" attribute', () => {
+it('should have "role" attribute', () => {
 	render(<Button role="link" />);
 
 	const button = screen.queryByRole('link', { name: 'Save changes' });
@@ -116,7 +116,7 @@ it('should render with the "role" attribute', () => {
 	expect(button).toBeInTheDocument();
 });
 
-it('should render with the "tabindex" attribute', () => {
+it('should have "tabindex" attribute', () => {
 	render(<Button excludeFromTabOrder />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -132,7 +132,7 @@ it('should be disabled', () => {
 	expect(button).toBeDisabled();
 });
 
-it('should render with the prefix', () => {
+it('should have prefix', () => {
 	render(<Button prefix={<Icon data-testid="prefix" icon={desktop} />} />);
 
 	const icon = screen.queryByTestId('prefix');
@@ -140,7 +140,7 @@ it('should render with the prefix', () => {
 	expect(icon).toBeInTheDocument();
 });
 
-it('should render with the suffix', () => {
+it('should have suffix', () => {
 	render(<Button suffix={<Icon data-testid="suffix" icon={desktop} />} />);
 
 	const icon = screen.queryByTestId('suffix');

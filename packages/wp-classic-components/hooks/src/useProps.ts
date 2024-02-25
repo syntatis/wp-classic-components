@@ -1,25 +1,28 @@
 import { GlobalProps } from '@/types';
 import { ClassNamesArgs, useClasses } from './useClasses';
 
-interface PropsArgs extends GlobalProps {}
+interface ComponentPropsArgs extends GlobalProps {}
 
 interface RootPropsArgs {
 	classNames: ClassNamesArgs;
 }
 
-export function useProps<T>(name: string, props?: PropsArgs & T) {
+export function useProps<T>(name: string, props?: ComponentPropsArgs & T) {
 	const {
 		className,
 		'data-testid': testId,
 		id,
 		style,
 		...componentProps
-	} = props || ({} as PropsArgs & T);
+	} = props || ({} as ComponentPropsArgs & T);
 	const { clsx } = useClasses(name);
 
 	return {
 		clsx,
-		componentProps,
+		componentProps: {
+			...componentProps,
+			id,
+		},
 		rootProps(args?: RootPropsArgs) {
 			const { classNames } = args || {};
 
@@ -29,7 +32,7 @@ export function useProps<T>(name: string, props?: PropsArgs & T) {
 					prefixedNames: 'root',
 				}),
 				'data-testid': testId,
-				id,
+				id: id ? `${id}-${name}-root` : undefined,
 				style,
 			};
 		},

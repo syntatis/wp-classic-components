@@ -17,7 +17,7 @@ it('should render the component', () => {
 	expect(link).toHaveAttribute('href', 'https://wordpress.org');
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<Link />);
 
 	const link = screen.queryByRole('link', {
@@ -27,7 +27,7 @@ it('should render with the static class', () => {
 	expect(link).toHaveClass('wp-classic-Link-root');
 });
 
-it('should render with the custom class', () => {
+it('should have custom class', () => {
 	render(<Link className="hello-world" href="/" />);
 
 	const link = screen.getByRole('link', {
@@ -37,7 +37,7 @@ it('should render with the custom class', () => {
 	expect(link).toHaveClass('hello-world', 'wp-classic-Link-root');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<Link href="/" style={{ margin: 10 }} />);
 
 	const link = screen.getByRole('link', {
@@ -47,7 +47,7 @@ it('should render with the inline style', () => {
 	expect(link).toHaveStyle({ margin: '10px' });
 });
 
-it('should render with the "target" attribute', () => {
+it('should have "target" attribute', () => {
 	render(<Link href="/" id="hello-world-1" target="_blank" />);
 
 	const link = screen.getByRole('link', {
@@ -57,7 +57,7 @@ it('should render with the "target" attribute', () => {
 	expect(link).toHaveAttribute('target', '_blank');
 });
 
-it('should render with the "id" attribute', () => {
+it('should have "id" attribute', () => {
 	render(<Link href="/" id="hello-world-1" />);
 
 	const link = screen.getByRole('link', {
@@ -67,7 +67,7 @@ it('should render with the "id" attribute', () => {
 	expect(link).toHaveAttribute('id', 'hello-world-1');
 });
 
-it('should not render with invalid html attribute', () => {
+it('should not have with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
 		<Link foo="bar" href="/" />
@@ -80,7 +80,7 @@ it('should not render with invalid html attribute', () => {
 	expect(link).not.toHaveAttribute('foo');
 });
 
-it('should render with the prefix node', () => {
+it('should have prefix node', () => {
 	render(
 		<Link href="/" prefix={<Icon data-testid="wp-icon" icon={wordpress} />} />
 	);
@@ -90,7 +90,7 @@ it('should render with the prefix node', () => {
 	expect(icon).toBeInTheDocument();
 });
 
-it('should render with the suffix node', () => {
+it('should have suffix node', () => {
 	render(
 		<Link
 			href="/"

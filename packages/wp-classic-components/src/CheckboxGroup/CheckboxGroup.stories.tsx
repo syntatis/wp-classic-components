@@ -52,11 +52,6 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	parameters: {
-		controls: {
-			exclude: ['isDisabled'],
-		},
-	},
 };
 
 export const ReadOnly: Story = {
@@ -65,36 +60,20 @@ export const ReadOnly: Story = {
 		value: ['permalink', 'excerpt'],
 	},
 	name: 'ReadOnly',
-	parameters: {
-		controls: {
-			exclude: ['isReadOnly'],
-		},
-	},
 };
 
 export const Required: Story = {
 	args: {
 		isRequired: true,
 	},
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
-		},
-	},
 };
 
-export const Invalid: Story = {
+export const Validated: Story = {
 	args: {
-		isRequired: true,
 		validate(value) {
 			if (value.length === 0) {
 				return 'Please select at least one option.';
 			}
-		},
-	},
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
 		},
 	},
 };

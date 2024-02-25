@@ -38,12 +38,6 @@ export const Default: Story = {};
 export const Disabled: Story = {
 	args: {
 		isDisabled: true,
-		isSelected: true,
-	},
-	parameters: {
-		controls: {
-			exclude: ['isDisabled'],
-		},
 	},
 };
 

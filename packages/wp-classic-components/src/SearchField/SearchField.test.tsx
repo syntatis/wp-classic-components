@@ -16,7 +16,7 @@ it('should render the component', () => {
 	expect(input).toHaveAttribute('type', 'search');
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<SearchField data-testid="searchfield" />);
 
 	const root = screen.getByTestId('searchfield');
@@ -26,7 +26,7 @@ it('should render with the static class', () => {
 	expect(root).toHaveClass('wp-classic-SearchField-root');
 });
 
-it('should render with the custom class name', () => {
+it('should have custom class name', () => {
 	render(<SearchField className="blog-search" data-testid="searchfield" />);
 
 	const root = screen.getByTestId('searchfield');
@@ -34,7 +34,7 @@ it('should render with the custom class name', () => {
 	expect(root).toHaveClass('wp-classic-SearchField-root', 'blog-search');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(
 		<SearchField data-testid="searchfield" style={{ paddingRight: 30 }} />
 	);
@@ -44,7 +44,7 @@ it('should render with the inline style', () => {
 	expect(root).toHaveStyle({ 'padding-right': '30px' });
 });
 
-it('should render with the description', () => {
+it('should have description', () => {
 	render(
 		<SearchField description="Search the post, pages, and other post types." />
 	);
@@ -56,15 +56,15 @@ it('should render with the description', () => {
 	);
 });
 
-it('should render with "id" attribute', () => {
-	render(<SearchField data-testid="searchfield" id="search-input-id-1" />);
+it('should have "id" attribute', () => {
+	render(<SearchField data-testid="searchfield" id="custom-posts" />);
 
 	const root = screen.getByTestId('searchfield');
 
-	expect(root).toHaveAttribute('id', 'search-input-id-1');
+	expect(root).toHaveAttribute('id', 'custom-posts-SearchField-root');
 });
 
-it('should render with "tabindex" attribute', () => {
+it('should have "tabindex" attribute', () => {
 	render(<SearchField excludeFromTabOrder />);
 
 	const input = screen.getByLabelText('Search');
@@ -81,7 +81,7 @@ it('should retain the "type" attribute', () => {
 	expect(input).toHaveAttribute('type', 'search');
 });
 
-it('should not render invalid html attributes', async () => {
+it('should not have invalid html attributes', async () => {
 	// @ts-expect-error
 	render(<SearchField data-testid="searchfield" foo="bar" />);
 

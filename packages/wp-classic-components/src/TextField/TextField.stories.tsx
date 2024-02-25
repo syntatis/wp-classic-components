@@ -11,6 +11,7 @@ const meta: Meta<typeof TextField> = {
 		},
 	},
 	args: {
+		id: 'site-name',
 		label: 'Site Name',
 	},
 	component: TextField,
@@ -41,11 +42,6 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	parameters: {
-		controls: {
-			exclude: ['isDisabled'],
-		},
-	},
 };
 
 export const ReadOnly: Story = {
@@ -54,39 +50,29 @@ export const ReadOnly: Story = {
 		value: 'Hello World',
 	},
 	name: 'ReadOnly',
-	parameters: {
-		controls: {
-			exclude: ['isReadOnly'],
-		},
+};
+
+export const Required: Story = {
+	args: {
+		isRequired: true,
 	},
 };
 
-export const Invalid: Story = {
+export const Validated: Story = {
 	args: {
-		isRequired: true,
 		validate(value) {
 			if (!value) {
 				return 'This field is required.';
 			}
 		},
 	},
-	parameters: {
-		controls: {
-			exclude: ['isRequired'],
-		},
-	},
 };
 
-export const InvalidControlled: Story = {
+export const Invalid: Story = {
 	args: {
 		isInvalid: true,
 	},
 	name: 'Invalid (controlled)',
-	parameters: {
-		controls: {
-			exclude: ['isInvalid'],
-		},
-	},
 };
 
 export const ValueDefault: Story = {

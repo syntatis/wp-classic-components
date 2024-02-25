@@ -16,16 +16,17 @@ it('should render the component', () => {
 	expect(input).toHaveAttribute('type', 'text');
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<TextField data-testid="textfield" />);
 
 	const input = screen.getByLabelText('Site Name');
+	const root = screen.getByTestId('textfield');
 
 	expect(input).toHaveClass('wp-classic-TextField-input');
-	expect(input.parentNode).toHaveClass('wp-classic-TextField-root');
+	expect(root).toHaveClass('wp-classic-TextField-root');
 });
 
-it('should render with the custom class name', () => {
+it('should have custom class name', () => {
 	render(<TextField className="input" data-testid="textfield" />);
 
 	const root = screen.getByTestId('textfield');
@@ -33,7 +34,7 @@ it('should render with the custom class name', () => {
 	expect(root).toHaveClass('wp-classic-TextField-root', 'input');
 });
 
-it('should render with the "code" class', () => {
+it('should have "code" class', () => {
 	render(<TextField isCode />);
 
 	const input = screen.getByLabelText('Site Name');
@@ -41,7 +42,7 @@ it('should render with the "code" class', () => {
 	expect(input).toHaveClass('code');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<TextField data-testid="textfield" style={{ paddingRight: 30 }} />);
 
 	const root = screen.getByTestId('textfield');
@@ -49,7 +50,7 @@ it('should render with the inline style', () => {
 	expect(root).toHaveStyle({ 'padding-right': '30px' });
 });
 
-it('should render with the description', () => {
+it('should have description', () => {
 	render(<TextField description="Add your site name" />);
 
 	const input = screen.getByLabelText('Site Name');
@@ -57,15 +58,17 @@ it('should render with the description', () => {
 	expect(input).toHaveAccessibleDescription('Add your site name');
 });
 
-it('should render with "id" attribute', () => {
-	render(<TextField data-testid="textfield" id="input-id-1" />);
+it('should have "id" attribute', () => {
+	render(<TextField data-testid="textfield" id="site-name" />);
 
 	const root = screen.getByTestId('textfield');
+	const input = screen.getByLabelText('Site Name');
 
-	expect(root).toHaveAttribute('id', 'input-id-1');
+	expect(root).toHaveAttribute('id', 'site-name-TextField-root');
+	expect(input).toHaveAttribute('id', 'site-name');
 });
 
-it('should render with "tabindex" attribute', () => {
+it('should have "tabindex" attribute', () => {
 	render(<TextField excludeFromTabOrder />);
 
 	const input = screen.getByLabelText('Site Name');
@@ -73,7 +76,7 @@ it('should render with "tabindex" attribute', () => {
 	expect(input).toHaveAttribute('tabindex', '-1');
 });
 
-it('should render with "type" attribute', () => {
+it('should have "type" attribute', () => {
 	render(<TextField type="email" />);
 
 	const input = screen.getByLabelText('Site Name');
@@ -81,7 +84,7 @@ it('should render with "type" attribute', () => {
 	expect(input).toHaveAttribute('type', 'email');
 });
 
-it('should not render invalid html attributes', async () => {
+it('should not have invalid html attributes', async () => {
 	// @ts-expect-error
 	render(<TextField data-testid="textfield" foo="bar" />);
 
@@ -120,24 +123,20 @@ it('should be marked as invalid based on value evaluation', async () => {
 	const user = userEvent.setup();
 
 	render(
-		<form method="POST">
-			<TextField
-				validate={(v) => {
-					if (v === 'x') {
-						return 'An unexpected error occurred!';
-					}
-				}}
-			/>
-		</form>
+		<TextField
+			validate={(v) => {
+				if (v === 'x') {
+					return 'An unexpected error occurred!';
+				}
+			}}
+		/>
 	);
 
 	const input = screen.getByLabelText('Site Name');
 
 	expect(input).not.toBeInvalid();
 
-	await user.type(input, 'x{Enter}');
-
-	screen.debug(input);
+	await user.type(input, 'x');
 
 	expect(input).toBeInvalid();
 	expect(input).toHaveAccessibleDescription('An unexpected error occurred!');
@@ -155,12 +154,12 @@ it('should render error message on top of validation message', async () => {
 
 	const input = screen.getByLabelText('Site Name');
 
-	await user.type(input, 'y{Enter}');
+	await user.type(input, 'y');
 
 	expect(input).toHaveAccessibleDescription('Error: Value "y" is not allowed!');
 });
 
-it('should be show error message (controlled)', () => {
+it('should show the error message (controlled)', () => {
 	render(<TextField errorMessage="An unexpected error occurred!" />);
 
 	const input = screen.getByLabelText('Site Name');

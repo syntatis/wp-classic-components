@@ -49,11 +49,6 @@ export const Disabled: Story = {
 	args: {
 		isDisabled: true,
 	},
-	parameters: {
-		controls: {
-			exclude: ['isDisabled'],
-		},
-	},
 };
 
 export const ReadOnly: Story = {
@@ -61,16 +56,16 @@ export const ReadOnly: Story = {
 		isReadOnly: true,
 	},
 	name: 'ReadOnly',
-	parameters: {
-		controls: {
-			exclude: ['isReadOnly'],
-		},
+};
+
+export const Required: Story = {
+	args: {
+		isRequired: true,
 	},
 };
 
-export const Invalid: Story = {
+export const Validated: Story = {
 	args: {
-		isRequired: true,
 		validate(value) {
 			if (!value) {
 				return 'Please select a time format.';

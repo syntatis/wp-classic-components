@@ -39,7 +39,7 @@ it('should render "large" size', () => {
 	expect(button).toHaveClass('button', 'button-large');
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<IconButton />);
 
 	const button = screen.getByRole('button', { name: 'Download' });
@@ -51,7 +51,7 @@ it('should render with the static class', () => {
 	);
 });
 
-it('should render with the custom class name', () => {
+it('should have custom class name', () => {
 	render(<IconButton className="foo-bar" />);
 
 	const button = screen.getByRole('button', { name: 'Download' });
@@ -64,7 +64,7 @@ it('should render with the custom class name', () => {
 	);
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<IconButton style={{ width: 100 }} />);
 
 	const button = screen.getByRole('button', { name: 'Download' });
@@ -72,7 +72,7 @@ it('should render with the inline style', () => {
 	expect(button).toHaveStyle({ width: '100px' });
 });
 
-it('should render with the "id"', () => {
+it('should have "id"', () => {
 	render(<IconButton id="icon-button-1" />);
 
 	const button = screen.getByRole('button', { name: 'Download' });
@@ -80,7 +80,7 @@ it('should render with the "id"', () => {
 	expect(button).toHaveAttribute('id', 'icon-button-1');
 });
 
-it('should render with the type "submit"', () => {
+it('should have type "submit"', () => {
 	render(<IconButton type="submit" />);
 
 	const button = screen.getByRole('button', { name: 'Download' });
@@ -88,7 +88,7 @@ it('should render with the type "submit"', () => {
 	expect(button).toHaveAttribute('type', 'submit');
 });
 
-it('should render with the type "reset"', () => {
+it('should have type "reset"', () => {
 	render(<IconButton type="reset" />);
 
 	const button = screen.getByRole('button', { name: 'Download' });
@@ -96,7 +96,7 @@ it('should render with the type "reset"', () => {
 	expect(button).toHaveAttribute('type', 'reset');
 });
 
-it('should render with the "aria-*" label', () => {
+it('should have "aria-*" label', () => {
 	render(<IconButton aria-label="Download changes" />);
 
 	const button = screen.getByRole('button', { name: 'Download changes' });
@@ -104,7 +104,7 @@ it('should render with the "aria-*" label', () => {
 	expect(button).toHaveAttribute('aria-label', 'Download changes');
 });
 
-it('should render with the "role" attribute', () => {
+it('should have "role" attribute', () => {
 	render(<IconButton role="link" />);
 
 	const button = screen.queryByRole('link', { name: 'Download' });
@@ -112,7 +112,7 @@ it('should render with the "role" attribute', () => {
 	expect(button).toBeInTheDocument();
 });
 
-it('should render with the "tabindex" attribute', () => {
+it('should have "tabindex" attribute', () => {
 	render(<IconButton excludeFromTabOrder />);
 
 	const button = screen.getByRole('button', { name: 'Download' });

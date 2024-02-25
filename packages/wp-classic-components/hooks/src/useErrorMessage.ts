@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-interface ErrorMessageArgs {
+interface UseErrorMessageArgs {
 	errorMessage?:
 		| ((args: {
 				isInvalid: boolean;
@@ -13,8 +13,14 @@ interface ErrorMessageArgs {
 	validationErrors: string[];
 }
 
-export function useErrorMessage(props: ErrorMessageArgs) {
-	const errorMessageList = [];
+interface UseErrorMessageReturn {
+	errorMessageList: Array<ReactNode>;
+}
+
+export function useErrorMessage(
+	props: UseErrorMessageArgs
+): UseErrorMessageReturn {
+	const errorMessageList: Array<ReactNode> = [];
 	const { isInvalid, validationDetails, validationErrors } = props;
 	const { errorMessage: errorMessageProps } = props;
 	const errorMessageRendered =
