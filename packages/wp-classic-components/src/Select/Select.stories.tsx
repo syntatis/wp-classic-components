@@ -128,9 +128,16 @@ export const Invalid: Story = {
 
 export const WithErrorMessage: Story = {
 	args: {
-		errorMessage: 'Please select a valid language.',
+		errorMessage: 'An unexpected error occurred.',
 	},
 	name: 'With Error Message (controlled)',
+	render: Default.render,
+};
+
+export const WithDescription: Story = {
+	args: {
+		description: 'Select the language for the site.',
+	},
 	render: Default.render,
 };
 

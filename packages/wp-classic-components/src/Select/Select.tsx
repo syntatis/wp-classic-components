@@ -20,7 +20,16 @@ interface SelectProps
 			| 'selectedKey'
 		> {
 	children: Array<ChildItem> | ChildItem;
+	/**
+	 * Provide hint for the select input.
+	 */
 	description?: ReactNode;
+	/**
+	 * Where to place the description.
+	 *
+	 * @default after-input
+	 */
+	descriptionArea?: 'after-input' | 'before-input';
 	label?: ReactNode;
 	name: string;
 	selectedItem?: string;
@@ -32,7 +41,9 @@ function determineKey(props: SelectItemProps) {
 	return value || children;
 }
 
-function getKeys(children: Array<ChildItem> | ChildItem): Array<string> {
+function getKeys(
+	children: Array<ChildItem> | ChildItem
+): Array<string> | undefined {
 	return Children.map(children, (child) => {
 		const { props } = child as ChildItem;
 
@@ -66,7 +77,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 		const state = useSelectState({
 			...props,
 			children: mapChildren(children),
-			defaultSelectedKey: selectedItem || getKeys(children).at(0),
+			defaultSelectedKey: selectedItem || getKeys(children)?.at(0),
 		});
 		const {
 			descriptionProps,
@@ -146,7 +157,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 						})}
 					>
 						{errorMessageList.map((message, index) => {
-							return <p key={index}>{message}</p>;
+							return <p key={`error-message-${index}`}>{message}</p>;
 						})}
 					</div>
 				)}
