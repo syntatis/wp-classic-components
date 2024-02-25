@@ -23,7 +23,7 @@ it('should render the component', () => {
 	expect(secondRadio).toHaveAttribute('type', 'radio');
 });
 
-it('should render with the description', () => {
+it('should have description', () => {
 	render(
 		<RadioGroup description="The length of text to display on the feed" />
 	);
@@ -37,7 +37,7 @@ it('should render with the description', () => {
 	);
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(
 		<RadioGroup description="The length of text to display on the feed" />
 	);
@@ -54,7 +54,7 @@ it('should render with the static class', () => {
 	});
 });
 
-it('should render with the custom class', () => {
+it('should have custom class', () => {
 	render(
 		<RadioGroup className="radio-group-class">
 			<Radio className="radio-item-class" value="full-text">
@@ -74,7 +74,7 @@ it('should render with the custom class', () => {
 	});
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(
 		<RadioGroup style={{ margin: 15 }}>
 			<Radio style={{ padding: 10 }} value="excerpt">
@@ -96,7 +96,7 @@ it('should render with the inline style', () => {
 	});
 });
 
-it('should render with the "id" attribute', async () => {
+it('should have "id" attribute', async () => {
 	render(<RadioGroup id="radio-group-1" />);
 
 	const group = screen.getByRole('radiogroup', {

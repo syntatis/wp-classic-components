@@ -19,7 +19,7 @@ it('should render the component', () => {
 	expect(icon).toBeInTheDocument();
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<IconLinkButton />);
 
 	const link = screen.queryByRole('link', {
@@ -33,7 +33,7 @@ it('should render with the static class', () => {
 	);
 });
 
-it('should render with the custom class', () => {
+it('should have custom class', () => {
 	render(<IconLinkButton className="hello-world" href="/" />);
 
 	const link = screen.getByRole('link', {
@@ -48,7 +48,7 @@ it('should render with the custom class', () => {
 	);
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<IconLinkButton href="/" style={{ margin: 20 }} />);
 
 	const link = screen.getByRole('link', {
@@ -58,7 +58,7 @@ it('should render with the inline style', () => {
 	expect(link).toHaveStyle({ margin: '20px' });
 });
 
-it('should render with the "target" attribute', () => {
+it('should have "target" attribute', () => {
 	render(<IconLinkButton href="/" target="_blank" />);
 
 	const link = screen.getByRole('link', {
@@ -68,7 +68,7 @@ it('should render with the "target" attribute', () => {
 	expect(link).toHaveAttribute('target', '_blank');
 });
 
-it('should render with the "id" attribute', () => {
+it('should have "id" attribute', () => {
 	render(<IconLinkButton href="/" id="hello-world-1" />);
 
 	const link = screen.getByRole('link', {

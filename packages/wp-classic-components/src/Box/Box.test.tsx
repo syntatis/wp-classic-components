@@ -17,7 +17,7 @@ it('should render the component', () => {
 	).toBeInTheDocument();
 });
 
-it('should render with the title', () => {
+it('should have title', () => {
 	render(<Box title="Site Health" />);
 
 	expect(
@@ -25,7 +25,7 @@ it('should render with the title', () => {
 	).toBeInTheDocument();
 });
 
-it('should render with the toggle button', async () => {
+it('should have toggle button', async () => {
 	render(<Box collapsible />);
 
 	const button = screen.getByRole('button', { name: 'Toggle panel' });
@@ -34,7 +34,7 @@ it('should render with the toggle button', async () => {
 	expect(button).toBeEnabled();
 });
 
-it('should render with the footer', () => {
+it('should have footer', () => {
 	render(<Box footer={<Button>Save changes</Button>} />);
 
 	const button = screen.getByRole('button', { name: 'Save changes' });
@@ -43,7 +43,7 @@ it('should render with the footer', () => {
 	expect(button).toBeEnabled();
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<Box data-testid="box" />);
 
 	expect(screen.getByTestId('box')).toHaveClass(
@@ -52,13 +52,13 @@ it('should render with the static class', () => {
 	);
 });
 
-it('should render with the custom class name', () => {
+it('should have custom class name', () => {
 	render(<Box className="box-1-class-name" data-testid="box" />);
 
 	expect(screen.getByTestId('box')).toHaveClass('box-1-class-name');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<Box data-testid="box" style={{ padding: 20 }} />);
 
 	expect(screen.getByTestId('box')).toHaveStyle({
@@ -66,7 +66,7 @@ it('should render with the inline style', () => {
 	});
 });
 
-it('should render with the "id" attributes', () => {
+it('should have "id" attributes', () => {
 	render(<Box data-testid="box" id="box-1" />);
 
 	expect(screen.getByTestId('box')).toHaveAttribute('id', 'box-1');

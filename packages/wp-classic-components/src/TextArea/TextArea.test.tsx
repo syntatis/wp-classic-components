@@ -15,7 +15,7 @@ it('should render the component', () => {
 	expect(textarea).toBeInTheDocument();
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<TextArea data-testid="textarea" />);
 
 	const root = screen.getByTestId('textarea');
@@ -25,7 +25,7 @@ it('should render with the static class', () => {
 	expect(textarea).toHaveClass('wp-classic-TextArea-input');
 });
 
-it('should render with the custom class', () => {
+it('should have custom class', () => {
 	render(<TextArea className="custom-class" data-testid="textarea" />);
 
 	const root = screen.getByTestId('textarea');
@@ -33,7 +33,7 @@ it('should render with the custom class', () => {
 	expect(root).toHaveClass('wp-classic-TextArea-root', 'custom-class');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<TextArea data-testid="textarea" style={{ marginRight: 10 }} />);
 
 	const root = screen.getByTestId('textarea');
@@ -41,7 +41,7 @@ it('should render with the inline style', () => {
 	expect(root).toHaveStyle({ 'margin-right': '10px' });
 });
 
-it('should render with the "code" class', () => {
+it('should have "code" class', () => {
 	render(<TextArea isCode />);
 
 	const textarea = screen.getByLabelText('Tagline');
@@ -65,7 +65,7 @@ it('should render the "rows" attribute', () => {
 	expect(textarea).toHaveAttribute('rows', '200');
 });
 
-it('should render with the "id" attribute', () => {
+it('should have "id" attribute', () => {
 	render(<TextArea data-testid="textarea" id="textarea-id-1" />);
 
 	const root = screen.getByTestId('textarea');
@@ -73,7 +73,7 @@ it('should render with the "id" attribute', () => {
 	expect(root).toHaveAttribute('id', 'textarea-id-1');
 });
 
-it('should render with the "tabindex" attribute', () => {
+it('should have "tabindex" attribute', () => {
 	render(<TextArea excludeFromTabOrder />);
 
 	const textarea = screen.getByLabelText('Tagline');

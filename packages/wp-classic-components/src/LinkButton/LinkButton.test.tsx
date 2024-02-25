@@ -48,7 +48,7 @@ it('should render "hero" size', () => {
 	expect(link).toHaveClass(...['button', 'button-hero']);
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<LinkButton />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
@@ -56,7 +56,7 @@ it('should render with the static class', () => {
 	expect(link).toHaveClass(...['button', 'wp-classic-LinkButton-root']);
 });
 
-it('should render with the custom class name', () => {
+it('should have custom class name', () => {
 	render(<LinkButton className="foo-bar" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
@@ -64,7 +64,7 @@ it('should render with the custom class name', () => {
 	expect(link).toHaveClass('wp-classic-LinkButton-root', 'foo-bar');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<LinkButton style={{ width: 50 }} />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
@@ -72,7 +72,7 @@ it('should render with the inline style', () => {
 	expect(link).toHaveStyle({ width: '50px' });
 });
 
-it('should render with the "id"', () => {
+it('should have "id"', () => {
 	render(<LinkButton id="link-button-2" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
@@ -80,7 +80,7 @@ it('should render with the "id"', () => {
 	expect(link).toHaveAttribute('id', 'link-button-2');
 });
 
-it('should render with the "aria-*" attributes', () => {
+it('should have "aria-*" attributes', () => {
 	render(
 		<LinkButton
 			aria-describedby="jetpack-description"
@@ -95,7 +95,7 @@ it('should render with the "aria-*" attributes', () => {
 	expect(link).toHaveAttribute('href', 'https://jetpack.com');
 });
 
-it('should render with the "data-*" label attributes', () => {
+it('should have "data-*" label attributes', () => {
 	render(<LinkButton data-invalid="true" />);
 
 	const link = screen.getByRole('link', { name: 'Go to WordPress' });
@@ -103,7 +103,7 @@ it('should render with the "data-*" label attributes', () => {
 	expect(link).toHaveAttribute('data-invalid', 'true');
 });
 
-it('should render with the prefix', () => {
+it('should have prefix', () => {
 	render(
 		<LinkButton prefix={<Icon data-testid="prefix" icon={wordpress} />} />
 	);
@@ -113,7 +113,7 @@ it('should render with the prefix', () => {
 	expect(icon).toBeInTheDocument();
 });
 
-it('should render with the suffix', () => {
+it('should have suffix', () => {
 	render(
 		<LinkButton suffix={<Icon data-testid="suffix" icon={wordpress} />} />
 	);

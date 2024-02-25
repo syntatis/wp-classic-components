@@ -15,7 +15,7 @@ it('should render the component', () => {
 	expect(spinner).toHaveTextContent('Loading');
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<Spinner data-testid="spinner" />);
 
 	const spinner = screen.queryByTestId('spinner');
@@ -23,7 +23,7 @@ it('should render with the static class', () => {
 	expect(spinner).toHaveClass('wp-classic-Spinner-root');
 });
 
-it('should render with the custom class name', () => {
+it('should have custom class name', () => {
 	render(<Spinner className="content-spinner" data-testid="spinner" />);
 
 	const spinner = screen.queryByTestId('spinner');
@@ -31,7 +31,7 @@ it('should render with the custom class name', () => {
 	expect(spinner).toHaveClass('wp-classic-Spinner-root', 'content-spinner');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<Spinner data-testid="spinner" style={{ marginBottom: 10 }} />);
 
 	const spinner = screen.queryByTestId('spinner');
@@ -41,7 +41,7 @@ it('should render with the inline style', () => {
 	});
 });
 
-it('should render with the "id" attribute', () => {
+it('should have "id" attribute', () => {
 	render(<Spinner data-testid="spinner" id="spinner-1" />);
 
 	const spinner = screen.queryByTestId('spinner');

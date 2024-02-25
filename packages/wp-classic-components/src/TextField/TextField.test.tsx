@@ -16,7 +16,7 @@ it('should render the component', () => {
 	expect(input).toHaveAttribute('type', 'text');
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<TextField data-testid="textfield" />);
 
 	const input = screen.getByLabelText('Site Name');
@@ -25,7 +25,7 @@ it('should render with the static class', () => {
 	expect(input.parentNode).toHaveClass('wp-classic-TextField-root');
 });
 
-it('should render with the custom class name', () => {
+it('should have custom class name', () => {
 	render(<TextField className="input" data-testid="textfield" />);
 
 	const root = screen.getByTestId('textfield');
@@ -33,7 +33,7 @@ it('should render with the custom class name', () => {
 	expect(root).toHaveClass('wp-classic-TextField-root', 'input');
 });
 
-it('should render with the "code" class', () => {
+it('should have "code" class', () => {
 	render(<TextField isCode />);
 
 	const input = screen.getByLabelText('Site Name');
@@ -41,7 +41,7 @@ it('should render with the "code" class', () => {
 	expect(input).toHaveClass('code');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<TextField data-testid="textfield" style={{ paddingRight: 30 }} />);
 
 	const root = screen.getByTestId('textfield');
@@ -49,7 +49,7 @@ it('should render with the inline style', () => {
 	expect(root).toHaveStyle({ 'padding-right': '30px' });
 });
 
-it('should render with the description', () => {
+it('should have description', () => {
 	render(<TextField description="Add your site name" />);
 
 	const input = screen.getByLabelText('Site Name');

@@ -36,7 +36,7 @@ it('should render the description', () => {
 	);
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<CheckboxGroup />);
 
 	const root = screen.getByRole('group', { name: 'Hide on screen' });
@@ -44,7 +44,7 @@ it('should render with the static class', () => {
 	expect(root).toHaveClass('wp-classic-CheckboxGroup-root');
 });
 
-it('should render with the custom class', () => {
+it('should have custom class', () => {
 	render(<CheckboxGroup className="post-type-setting" />);
 
 	const root = screen.getByRole('group', { name: 'Hide on screen' });
@@ -55,7 +55,7 @@ it('should render with the custom class', () => {
 	);
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<CheckboxGroup style={{ margin: 50 }} />);
 
 	const root = screen.getByRole('group', { name: 'Hide on screen' });
@@ -63,7 +63,7 @@ it('should render with the inline style', () => {
 	expect(root).toHaveStyle({ margin: '50px' });
 });
 
-it('should render with the "id" attribute', () => {
+it('should have "id" attribute', () => {
 	render(<CheckboxGroup id="checkbox-group-1" />);
 
 	const root = screen.getByRole('group', { name: 'Hide on screen' });

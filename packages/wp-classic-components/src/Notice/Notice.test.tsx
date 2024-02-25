@@ -70,7 +70,7 @@ it('should render as error "level" variant', () => {
 	expect(notice).toHaveClass('notice', 'notice-error');
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<Notice data-testid="notice" />);
 
 	const notice = screen.getByTestId('notice');
@@ -78,7 +78,7 @@ it('should render with the static class', () => {
 	expect(notice).toHaveClass('wp-classic-Notice-root', 'notice', 'notice-info');
 });
 
-it('should render with the custom class', () => {
+it('should have custom class', () => {
 	render(<Notice className="notice-foo-bar" data-testid="notice" />);
 
 	const notice = screen.getByTestId('notice');
@@ -86,7 +86,7 @@ it('should render with the custom class', () => {
 	expect(notice).toHaveClass('notice-foo-bar');
 });
 
-it('should render with the inline style', () => {
+it('should have inline style', () => {
 	render(<Notice data-testid="notice" style={{ margin: 100 }} />);
 
 	const notice = screen.getByTestId('notice');
@@ -94,7 +94,7 @@ it('should render with the inline style', () => {
 	expect(notice).toHaveStyle({ margin: '100px' });
 });
 
-it('should render with the "id" attributes', () => {
+it('should have "id" attributes', () => {
 	render(<Notice data-testid="notice" id="notice-2" />);
 
 	const notice = screen.getByTestId('notice');

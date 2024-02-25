@@ -17,7 +17,7 @@ it('should render the component', () => {
 	expect(checkbox).toBeEnabled();
 });
 
-it('should render with the description', () => {
+it('should have description', () => {
 	render(
 		<Checkbox description="When checked WordPress will correct invalid nested XHTML" />
 	);
@@ -31,7 +31,7 @@ it('should render with the description', () => {
 	);
 });
 
-it('should render with the static class', () => {
+it('should have static class', () => {
 	render(<Checkbox data-testid="checkbox" />);
 
 	const root = screen.getByTestId('checkbox');
@@ -39,7 +39,7 @@ it('should render with the static class', () => {
 	expect(root).toHaveClass('wp-classic-Checkbox-root');
 });
 
-it('should render with the custom class', () => {
+it('should have custom class', () => {
 	render(<Checkbox className="foo-bar" data-testid="checkbox" />);
 
 	const root = screen.getByTestId('checkbox');
@@ -47,7 +47,7 @@ it('should render with the custom class', () => {
 	expect(root).toHaveClass('foo-bar');
 });
 
-it('should render with the inline styles', () => {
+it('should have inline styles', () => {
 	render(<Checkbox data-testid="checkbox" style={{ padding: 30 }} />);
 
 	const root = screen.getByTestId('checkbox');
@@ -55,7 +55,7 @@ it('should render with the inline styles', () => {
 	expect(root).toHaveStyle({ padding: '30px' });
 });
 
-it('should render with the "name" attribute', () => {
+it('should have "name" attribute', () => {
 	render(<Checkbox name="correct_xhtml" />);
 
 	const checkbox = screen.getByRole('checkbox', {
@@ -65,7 +65,7 @@ it('should render with the "name" attribute', () => {
 	expect(checkbox).toHaveAttribute('name', 'correct_xhtml');
 });
 
-it('should render with the "id" attribute', () => {
+it('should have "id" attribute', () => {
 	render(<Checkbox data-testid="checkbox" id="checkbox-1" />);
 
 	const root = screen.getByTestId('checkbox');
