@@ -62,6 +62,12 @@ export const ReadOnly: Story = {
 	},
 };
 
+export const Required: Story = {
+	args: {
+		isRequired: true,
+	},
+};
+
 export const Validated: Story = {
 	args: {
 		validate(value) {
@@ -79,15 +85,9 @@ export const Validated: Story = {
 
 export const Invalid: Story = {
 	args: {
-		errorMessage: 'An unexpected error occurred.',
 		isInvalid: true,
 	},
 	name: 'Invalid (controlled)',
-	parameters: {
-		controls: {
-			exclude: ['isInvalid'],
-		},
-	},
 };
 
 export const ValueDefault: Story = {

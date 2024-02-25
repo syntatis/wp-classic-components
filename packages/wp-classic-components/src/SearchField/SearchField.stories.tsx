@@ -74,7 +74,6 @@ export const Validated: Story = {
 
 export const Invalid: Story = {
 	args: {
-		errorMessage: 'An unexpected error occurred.',
 		isInvalid: true,
 	},
 	name: 'Invalid (controlled)',
