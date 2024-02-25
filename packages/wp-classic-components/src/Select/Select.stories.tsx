@@ -23,6 +23,7 @@ const meta: Meta<typeof Select> = {
 		controls: {
 			include: [
 				'description',
+				'descriptionArea',
 				'isDisabled',
 				'isInvalid',
 				'isRequired',
@@ -138,6 +139,15 @@ export const WithDescription: Story = {
 	args: {
 		description: 'Select the language for the site.',
 	},
+	render: Default.render,
+};
+
+export const WithDescriptionBeforeInput: Story = {
+	args: {
+		description: 'Select the language for the site.',
+		descriptionArea: 'before-input',
+	},
+	name: 'With Description (before-input)',
 	render: Default.render,
 };
 
