@@ -44,6 +44,7 @@ export const WithTitle: Story = {
 	args: {
 		title: 'Site Health',
 	},
+	name: 'With Title (as string)',
 };
 
 export const WithAdvancedTitle: Story = {
@@ -59,6 +60,7 @@ export const WithAdvancedTitle: Story = {
 			</>
 		),
 	},
+	name: 'With Title (as element)',
 };
 
 export const WithFooter: Story = {
