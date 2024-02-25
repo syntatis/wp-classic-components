@@ -38,7 +38,7 @@ interface SelectProps
 function determineKey(props: SelectItemProps) {
 	const { children, value } = props;
 
-	return value || children;
+	return typeof value === 'string' ? value : children;
 }
 
 function getKeys(
@@ -149,7 +149,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 					onChange={(e) => state.setSelectedKey(e.target.value)}
 					onFocus={selectProps.onFocus}
 					ref={ref}
-					tabIndex={componentProps.excludeFromTabOrder ? -1 : 0}
+					required={componentProps.isRequired}
+					tabIndex={componentProps.excludeFromTabOrder ? -1 : undefined}
 					value={state.selectedKey}
 				>
 					{children}

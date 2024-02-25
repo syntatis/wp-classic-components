@@ -77,3 +77,72 @@ it('should have "tabindex" attribute', () => {
 
 	expect(select).toHaveAttribute('tabindex', '-1');
 });
+
+it('should not change "type" attribute', () => {
+	// @ts-expect-error
+	render(<Select data-testid="select" type="email" />);
+
+	const select = screen.getByLabelText('Site Language');
+	const root = screen.getByTestId('select');
+
+	expect(select).not.toHaveAttribute('type');
+	expect(root).not.toHaveAttribute('type');
+});
+
+it('should not have invalid html attribute', () => {
+	// @ts-expect-error
+	render(<Select data-testid="select" foo="bar" />);
+
+	const select = screen.getByLabelText('Site Language');
+	const root = screen.getByTestId('select');
+
+	expect(select).not.toHaveAttribute('foo');
+	expect(root).not.toHaveAttribute('foo');
+});
+
+it('should be disabled', () => {
+	render(<Select isDisabled />);
+
+	const select = screen.getByLabelText('Site Language');
+
+	expect(select).toBeDisabled();
+});
+
+it('should be marked as required', () => {
+	render(<Select isRequired />);
+
+	const select = screen.getByLabelText(new RegExp('Site Language *'));
+
+	expect(select).toBeRequired();
+});
+
+it('should have selected item value', () => {
+	render(<Select selectedItem="Bahasa Indonesia" />);
+
+	const select = screen.getByLabelText('Site Language');
+
+	expect(select).toHaveValue('Bahasa Indonesia');
+});
+
+it('should default to first item when selected item passed is invalid', () => {
+	render(<Select selectedItem="Bahasa" />);
+
+	const select = screen.getByLabelText('Site Language');
+
+	expect(select).toHaveValue('');
+});
+
+it('should call "onSelectionChange" callback when selecting an option', async () => {
+	const user = userEvent.setup();
+	const fn = vi.fn();
+
+	render(<Select onSelectionChange={fn} />);
+
+	const select = screen.getByLabelText('Site Language');
+
+	await user.selectOptions(select, 'Afrikaans');
+
+	expect(select).toHaveValue('Afrikaans');
+	expect(fn).toHaveBeenCalledOnce();
+	expect(fn).toHaveBeenCalledWith('Afrikaans');
+});

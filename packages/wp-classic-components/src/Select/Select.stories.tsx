@@ -16,6 +16,7 @@ const meta: Meta<typeof Select> = {
 		},
 	},
 	args: {
+		id: 'foo',
 		label: 'Site Language',
 	},
 	component: Select,
@@ -44,7 +45,7 @@ export const Default: Story = {
 	render(props) {
 		return (
 			<Select {...props}>
-				<SelectItem>— Select —</SelectItem>
+				<SelectItem value="">— Select —</SelectItem>
 				<SelectGroup label="Installed">
 					<SelectItem>English (United State)</SelectItem>
 					<SelectItem>Bahasa Indonesia</SelectItem>
