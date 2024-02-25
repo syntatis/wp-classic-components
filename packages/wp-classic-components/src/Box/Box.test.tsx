@@ -67,9 +67,12 @@ it('should have inline style', () => {
 });
 
 it('should have "id" attributes', () => {
-	render(<Box data-testid="box" id="box-1" />);
+	render(<Box data-testid="box" id="health-widget" />);
 
-	expect(screen.getByTestId('box')).toHaveAttribute('id', 'box-1');
+	expect(screen.getByTestId('box')).toHaveAttribute(
+		'id',
+		'health-widget-Box-root'
+	);
 });
 
 it('should not render with invalid html attribute', () => {

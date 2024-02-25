@@ -37,10 +37,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 		const { errorMessage, isDisabled, isRequired, label } = props;
 		const { description, descriptionArea } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { clsx, componentProps, rootProps } = useProps('TextField', {
-			...props,
-			id: props.id && props.id.trim() !== '' ? `${props.id}-root` : undefined,
-		});
+		const { clsx, componentProps, rootProps } = useProps('TextField', props);
 		const {
 			descriptionProps,
 			errorMessageProps,
@@ -49,13 +46,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			labelProps,
 			validationDetails,
 			validationErrors,
-		} = useTextField(
-			{
-				...componentProps,
-				id: props.id,
-			},
-			ref
-		);
+		} = useTextField(componentProps, ref);
 		const { errorMessageList } = useErrorMessage({
 			errorMessage,
 			isInvalid,

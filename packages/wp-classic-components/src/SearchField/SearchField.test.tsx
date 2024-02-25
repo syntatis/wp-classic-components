@@ -56,15 +56,15 @@ it('should have description', () => {
 	);
 });
 
-it('should render with "id" attribute', () => {
-	render(<SearchField data-testid="searchfield" id="search-input-id-1" />);
+it('should have "id" attribute', () => {
+	render(<SearchField data-testid="searchfield" id="custom-posts" />);
 
 	const root = screen.getByTestId('searchfield');
 
-	expect(root).toHaveAttribute('id', 'search-input-id-1');
+	expect(root).toHaveAttribute('id', 'custom-posts-SearchField-root');
 });
 
-it('should render with "tabindex" attribute', () => {
+it('should have "tabindex" attribute', () => {
 	render(<SearchField excludeFromTabOrder />);
 
 	const input = screen.getByLabelText('Search');

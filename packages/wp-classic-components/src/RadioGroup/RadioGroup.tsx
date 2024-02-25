@@ -26,9 +26,11 @@ interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 	(props, forwardedRef) => {
-		const { children, id, isRequired, label } = props;
+		const { children, isRequired, label } = props;
 		const { description, descriptionArea } = props;
-		const { clsx, componentProps, rootProps } = useProps('RadioGroup', props);
+		const { clsx, componentProps, rootProps } = useProps('RadioGroup', props, {
+			isInputType: true,
+		});
 		const ref = useObjectRef(forwardedRef);
 		const state = useRadioGroupState(componentProps);
 		const {
@@ -38,13 +40,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 			labelProps,
 			radioGroupProps,
 			validationErrors,
-		} = useRadioGroup(
-			{
-				id,
-				...componentProps,
-			},
-			state
-		);
+		} = useRadioGroup(componentProps, state);
 
 		return (
 			<div

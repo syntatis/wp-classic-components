@@ -65,6 +65,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 		const {
 			children,
 			description,
+			descriptionArea,
 			errorMessage,
 			isDisabled,
 			isRequired,
@@ -101,6 +102,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 					classNames: [
 						classes.root,
 						{
+							[classes.descriptionBeforeInput]:
+								descriptionArea === 'before-input',
 							[classes.disabled]: isDisabled,
 							[classes.invalid]: isInvalid,
 						},
@@ -131,6 +134,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 				)}
 				<select
 					{...filterDOMProps(componentProps, { labelable: true })}
+					aria-describedby={selectProps['aria-describedby']}
+					aria-labelledby={selectProps['aria-labelledby']}
 					className={clsx({
 						classNames: {
 							[classes.input]: true,

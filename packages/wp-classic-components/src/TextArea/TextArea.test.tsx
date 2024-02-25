@@ -66,11 +66,13 @@ it('should render the "rows" attribute', () => {
 });
 
 it('should have "id" attribute', () => {
-	render(<TextArea data-testid="textarea" id="textarea-id-1" />);
+	render(<TextArea data-testid="textarea" id="tagline" />);
 
 	const root = screen.getByTestId('textarea');
+	const textarea = screen.getByLabelText('Tagline');
 
-	expect(root).toHaveAttribute('id', 'textarea-id-1');
+	expect(root).toHaveAttribute('id', 'tagline-TextArea-root');
+	expect(textarea).toHaveAttribute('id', 'tagline');
 });
 
 it('should have "tabindex" attribute', () => {
@@ -81,7 +83,7 @@ it('should have "tabindex" attribute', () => {
 	expect(textarea).toHaveAttribute('tabindex', '-1');
 });
 
-it('should render with description', () => {
+it('should have description', () => {
 	render(<TextArea description="Describe what's the site is about" />);
 
 	const textarea = screen.getByLabelText('Tagline');

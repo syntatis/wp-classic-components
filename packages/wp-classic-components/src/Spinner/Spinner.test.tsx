@@ -42,11 +42,11 @@ it('should have inline style', () => {
 });
 
 it('should have "id" attribute', () => {
-	render(<Spinner data-testid="spinner" id="spinner-1" />);
+	render(<Spinner data-testid="spinner" id="unique" />);
 
 	const spinner = screen.queryByTestId('spinner');
 
-	expect(spinner).toHaveAttribute('id', 'spinner-1');
+	expect(spinner).toHaveAttribute('id', 'unique-Spinner-root');
 });
 
 it('should not render invalid html attributes', async () => {

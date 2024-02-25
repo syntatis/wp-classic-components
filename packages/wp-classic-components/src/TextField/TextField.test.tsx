@@ -20,9 +20,10 @@ it('should have static class', () => {
 	render(<TextField data-testid="textfield" />);
 
 	const input = screen.getByLabelText('Site Name');
+	const root = screen.getByTestId('textfield');
 
 	expect(input).toHaveClass('wp-classic-TextField-input');
-	expect(input.parentNode).toHaveClass('wp-classic-TextField-root');
+	expect(root).toHaveClass('wp-classic-TextField-root');
 });
 
 it('should have custom class name', () => {
@@ -57,17 +58,17 @@ it('should have description', () => {
 	expect(input).toHaveAccessibleDescription('Add your site name');
 });
 
-it('should render with "id" attribute', () => {
-	render(<TextField data-testid="textfield" id="input-id-1" />);
+it('should have "id" attribute', () => {
+	render(<TextField data-testid="textfield" id="site-name" />);
 
 	const root = screen.getByTestId('textfield');
 	const input = screen.getByLabelText('Site Name');
 
-	expect(root).toHaveAttribute('id', 'input-id-1-root');
-	expect(input).toHaveAttribute('id', 'input-id-1');
+	expect(root).toHaveAttribute('id', 'site-name-TextField-root');
+	expect(input).toHaveAttribute('id', 'site-name');
 });
 
-it('should render with "tabindex" attribute', () => {
+it('should have "tabindex" attribute', () => {
 	render(<TextField excludeFromTabOrder />);
 
 	const input = screen.getByLabelText('Site Name');
@@ -75,7 +76,7 @@ it('should render with "tabindex" attribute', () => {
 	expect(input).toHaveAttribute('tabindex', '-1');
 });
 
-it('should render with "type" attribute', () => {
+it('should have "type" attribute', () => {
 	render(<TextField type="email" />);
 
 	const input = screen.getByLabelText('Site Name');

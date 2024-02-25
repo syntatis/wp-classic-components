@@ -9,7 +9,12 @@ describe('rootProps', () => {
 				useProps('ComponentName', { id: 'test-id-1' })
 			);
 
-			expect(result.current.rootProps()).toHaveProperty('id', 'test-id-1');
+			expect(result.current.rootProps()).toHaveProperty(
+				'id',
+				'test-id-1-ComponentName-root'
+			);
+
+			expect(result.current.componentProps).toHaveProperty('id', 'test-id-1');
 		});
 
 		it('should return "id" as undefined', () => {
@@ -78,6 +83,20 @@ describe('rootProps', () => {
 				'data-testid',
 				undefined
 			);
+		});
+
+		it('should return "id"', () => {
+			const { result } = renderHook(() =>
+				useProps('ComponentName', {
+					id: 'unique-1',
+				})
+			);
+
+			expect(result.current.rootProps()).toHaveProperty(
+				'id',
+				'unique-1-ComponentName-root'
+			);
+			expect(result.current.componentProps).toHaveProperty('id', 'unique-1');
 		});
 	});
 });

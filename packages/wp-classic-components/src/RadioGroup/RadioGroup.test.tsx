@@ -132,7 +132,7 @@ it('should retain the role', () => {
 	expect(group).toBeInTheDocument();
 });
 
-it('should render with default orientation', () => {
+it('should have default orientation', () => {
 	render(<RadioGroup />);
 
 	expect(screen.getByRole('radiogroup')).toHaveAttribute(

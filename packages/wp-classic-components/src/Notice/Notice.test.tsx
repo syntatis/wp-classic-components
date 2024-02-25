@@ -95,11 +95,11 @@ it('should have inline style', () => {
 });
 
 it('should have "id" attributes', () => {
-	render(<Notice data-testid="notice" id="notice-2" />);
+	render(<Notice data-testid="notice" id="setting-alert" />);
 
 	const notice = screen.getByTestId('notice');
 
-	expect(notice).toHaveAttribute('id', 'notice-2');
+	expect(notice).toHaveAttribute('id', 'setting-alert-Notice-root');
 });
 
 it('should not render with invalid html attribute', () => {

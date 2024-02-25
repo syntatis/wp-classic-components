@@ -66,11 +66,15 @@ it('should have "name" attribute', () => {
 });
 
 it('should have "id" attribute', () => {
-	render(<Checkbox data-testid="checkbox" id="checkbox-1" />);
+	render(<Checkbox data-testid="checkbox" id="xhtml" />);
 
 	const root = screen.getByTestId('checkbox');
+	const checkbox = screen.getByRole('checkbox', {
+		name: 'WordPress should correct invalidly nested XHTML automatically',
+	});
 
-	expect(root).toHaveAttribute('id', 'checkbox-1');
+	expect(root).toHaveAttribute('id', 'xhtml-Checkbox-root');
+	expect(checkbox).toHaveAttribute('id', 'xhtml');
 });
 
 it('should not render with invalid html attribute', () => {
