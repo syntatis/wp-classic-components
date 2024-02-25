@@ -28,9 +28,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 	(props, forwardedRef) => {
 		const { children, isRequired, label } = props;
 		const { description, descriptionArea } = props;
-		const { clsx, componentProps, rootProps } = useProps('RadioGroup', props, {
-			isInputType: true,
-		});
+		const { clsx, componentProps, rootProps } = useProps('RadioGroup', props);
 		const ref = useObjectRef(forwardedRef);
 		const state = useRadioGroupState(componentProps);
 		const {
