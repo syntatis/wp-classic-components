@@ -49,7 +49,7 @@ it('should have "id" attribute', () => {
 	expect(spinner).toHaveAttribute('id', 'unique-Spinner-root');
 });
 
-it('should not render invalid html attributes', async () => {
+it('should not have invalid html attributes', async () => {
 	// @ts-expect-error
 	render(<Spinner data-testid="spinner" foo="bar" />);
 

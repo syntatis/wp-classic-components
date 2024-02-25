@@ -81,7 +81,7 @@ it('should retain the "type" attribute', () => {
 	expect(input).toHaveAttribute('type', 'search');
 });
 
-it('should not render invalid html attributes', async () => {
+it('should not have invalid html attributes', async () => {
 	// @ts-expect-error
 	render(<SearchField data-testid="searchfield" foo="bar" />);
 

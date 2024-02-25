@@ -106,7 +106,7 @@ it('should have "id" attribute', async () => {
 	expect(group).toHaveAttribute('id', 'radio-group-1');
 });
 
-it('should not render with invalid html attribute', async () => {
+it('should not have with invalid html attribute', async () => {
 	render(
 		// @ts-expect-error
 		<RadioGroup foo="bar" />

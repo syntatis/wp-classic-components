@@ -84,7 +84,7 @@ it('should have "type" attribute', () => {
 	expect(input).toHaveAttribute('type', 'email');
 });
 
-it('should not render invalid html attributes', async () => {
+it('should not have invalid html attributes', async () => {
 	// @ts-expect-error
 	render(<TextField data-testid="textfield" foo="bar" />);
 

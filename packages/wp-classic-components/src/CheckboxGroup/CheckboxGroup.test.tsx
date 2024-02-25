@@ -71,7 +71,7 @@ it('should have "id" attribute', () => {
 	expect(root).toHaveAttribute('id', 'checkbox-group-1');
 });
 
-it('should not render with invalid html attribute', () => {
+it('should not have with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
 		<CheckboxGroup foo="bar" />

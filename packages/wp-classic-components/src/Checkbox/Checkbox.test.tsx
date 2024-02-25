@@ -77,7 +77,7 @@ it('should have "id" attribute', () => {
 	expect(checkbox).toHaveAttribute('id', 'xhtml');
 });
 
-it('should not render with invalid html attribute', () => {
+it('should not have with invalid html attribute', () => {
 	// @ts-expect-error
 	render(<Checkbox data-testid="checkbox" foo="bar" />);
 

@@ -102,7 +102,7 @@ it('should have "id" attributes', () => {
 	expect(notice).toHaveAttribute('id', 'setting-alert-Notice-root');
 });
 
-it('should not render with invalid html attribute', () => {
+it('should not have with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
 		<Notice data-testid="notice" foo="bar" />

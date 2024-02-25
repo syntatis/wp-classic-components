@@ -67,7 +67,7 @@ it('should have "id" attribute', () => {
 	expect(link).toHaveAttribute('id', 'hello-world-1');
 });
 
-it('should not render with invalid html attribute', () => {
+it('should not have with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
 		<Link foo="bar" href="/" />

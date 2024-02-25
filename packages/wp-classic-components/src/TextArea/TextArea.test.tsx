@@ -167,7 +167,7 @@ it('should call "onChange" callback', async () => {
 	expect(fn).toHaveBeenCalledWith('Abc');
 });
 
-it('should not render invalid html attributes', async () => {
+it('should not have invalid html attributes', async () => {
 	// @ts-expect-error
 	render(<TextArea data-testid="textarea" foo="bar" />);
 

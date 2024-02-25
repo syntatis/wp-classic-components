@@ -75,7 +75,7 @@ it('should have "id" attributes', () => {
 	);
 });
 
-it('should not render with invalid html attribute', () => {
+it('should not have with invalid html attribute', () => {
 	render(
 		// @ts-expect-error
 		<Box data-testid="box" foo="bar" />
