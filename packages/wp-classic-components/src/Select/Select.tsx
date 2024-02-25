@@ -149,6 +149,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 					onChange={(e) => state.setSelectedKey(e.target.value)}
 					onFocus={selectProps.onFocus}
 					ref={ref}
+					tabIndex={componentProps.excludeFromTabOrder ? -1 : 0}
 					value={state.selectedKey}
 				>
 					{children}

@@ -69,3 +69,11 @@ it('should have "id" attribute', () => {
 	expect(root).toHaveAttribute('id', 'setting-option-Select-root');
 	expect(select).toHaveAttribute('id', 'setting-option');
 });
+
+it('should have "tabindex" attribute', () => {
+	render(<Select excludeFromTabOrder />);
+
+	const select = screen.getByLabelText('Site Language');
+
+	expect(select).toHaveAttribute('tabindex', '-1');
+});
