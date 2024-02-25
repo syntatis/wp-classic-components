@@ -10,10 +10,25 @@
 		}
 
 		.heading {
+			box-sizing: border-box;
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			width: 100%;
+			height: max-content;
+			max-height: 37px;
 			padding: 8px 12px;
-			margin: 0;
-			font-size: 14px;
 			line-height: 1.4;
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin: 0;
+				font-size: 14px;
+			}
 		}
 
 		.content {

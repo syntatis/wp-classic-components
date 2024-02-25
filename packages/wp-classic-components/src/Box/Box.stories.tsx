@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../Button';
+import { Select } from '../Select';
+import { SelectItem } from '../Select/SelectItem';
 import { Box } from './Box';
 
 const meta: Meta<typeof Box> = {
@@ -41,6 +43,21 @@ export const Collapsible: Story = {
 export const WithTitle: Story = {
 	args: {
 		title: 'Site Health',
+	},
+};
+
+export const WithAdvancedTitle: Story = {
+	args: {
+		collapsible: true,
+		title: (
+			<>
+				<h2>Site Health</h2> &mdash;{' '}
+				<Select name="site">
+					<SelectItem>Blog</SelectItem>
+					<SelectItem>Shop</SelectItem>
+				</Select>
+			</>
+		),
 	},
 };
 
