@@ -116,6 +116,22 @@ it('should be marked as required', () => {
 	expect(select).toBeRequired();
 });
 
+it('should be marked invalid', () => {
+	render(<Select isInvalid />);
+
+	const select = screen.getByLabelText('Site Language');
+
+	expect(select).toBeInvalid();
+});
+
+it('should show the error message (controlled)', () => {
+	render(<Select errorMessage="An unexpected error occurrred." />);
+
+	const select = screen.getByLabelText('Site Language');
+
+	expect(select).toHaveAccessibleDescription('An unexpected error occurrred.');
+});
+
 it('should have selected item value', () => {
 	render(<Select selectedItem="Bahasa Indonesia" />);
 
@@ -145,4 +161,21 @@ it('should call "onSelectionChange" callback when selecting an option', async ()
 	expect(select).toHaveValue('Afrikaans');
 	expect(fn).toHaveBeenCalledOnce();
 	expect(fn).toHaveBeenCalledWith('Afrikaans');
+});
+
+it('should be marked as invalid based on value evaluation', async () => {
+	render(
+		<Select
+			validate={(v) => {
+				if (v === '') {
+					return 'Invalid selected value!';
+				}
+			}}
+		/>
+	);
+
+	const input = screen.getByLabelText('Site Language');
+
+	expect(input).toBeInvalid();
+	expect(input).toHaveAccessibleDescription('Invalid selected value!');
 });

@@ -123,24 +123,20 @@ it('should be marked as invalid based on value evaluation', async () => {
 	const user = userEvent.setup();
 
 	render(
-		<form method="POST">
-			<TextField
-				validate={(v) => {
-					if (v === 'x') {
-						return 'An unexpected error occurred!';
-					}
-				}}
-			/>
-		</form>
+		<TextField
+			validate={(v) => {
+				if (v === 'x') {
+					return 'An unexpected error occurred!';
+				}
+			}}
+		/>
 	);
 
 	const input = screen.getByLabelText('Site Name');
 
 	expect(input).not.toBeInvalid();
 
-	await user.type(input, 'x{Enter}');
-
-	screen.debug(input);
+	await user.type(input, 'x');
 
 	expect(input).toBeInvalid();
 	expect(input).toHaveAccessibleDescription('An unexpected error occurred!');
@@ -158,12 +154,12 @@ it('should render error message on top of validation message', async () => {
 
 	const input = screen.getByLabelText('Site Name');
 
-	await user.type(input, 'y{Enter}');
+	await user.type(input, 'y');
 
 	expect(input).toHaveAccessibleDescription('Error: Value "y" is not allowed!');
 });
 
-it('should be show error message (controlled)', () => {
+it('should show the error message (controlled)', () => {
 	render(<TextField errorMessage="An unexpected error occurred!" />);
 
 	const input = screen.getByLabelText('Site Name');

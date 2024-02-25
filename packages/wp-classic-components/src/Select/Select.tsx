@@ -135,6 +135,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 				<select
 					{...filterDOMProps(componentProps, { labelable: true })}
 					aria-describedby={selectProps['aria-describedby']}
+					aria-invalid={isInvalid || undefined}
 					aria-labelledby={selectProps['aria-labelledby']}
 					className={clsx({
 						classNames: {

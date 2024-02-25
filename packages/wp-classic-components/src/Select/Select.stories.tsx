@@ -16,7 +16,6 @@ const meta: Meta<typeof Select> = {
 		},
 	},
 	args: {
-		id: 'foo',
 		label: 'Site Language',
 	},
 	component: Select,
