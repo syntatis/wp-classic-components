@@ -62,6 +62,16 @@ describe('rootProps', () => {
 				'wp-classic-ComponentName-root'
 			);
 		});
+
+		it('should override prefixed name', () => {
+			const { result } = renderHook(() => useProps('ComponentName'));
+
+			expect(
+				result.current.rootProps({
+					prefixedNames: 'foo-bar',
+				})
+			).toHaveProperty('className', 'wp-classic-ComponentName-foo-bar');
+		});
 	});
 
 	describe('data-testid', () => {

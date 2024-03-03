@@ -4,7 +4,8 @@ import { ClassNamesArgs, useClasses } from './useClasses';
 interface ComponentPropsArgs extends GlobalProps {}
 
 interface RootPropsArgs {
-	classNames: ClassNamesArgs;
+	classNames?: ClassNamesArgs;
+	prefixedNames?: string | string[];
 }
 
 export function useProps<T>(name: string, props?: ComponentPropsArgs & T) {
@@ -24,12 +25,12 @@ export function useProps<T>(name: string, props?: ComponentPropsArgs & T) {
 			id,
 		},
 		rootProps(args?: RootPropsArgs) {
-			const { classNames } = args || {};
+			const { classNames, prefixedNames } = args || {};
 
 			return {
 				className: clsx({
 					classNames: [classNames, className],
-					prefixedNames: 'root',
+					prefixedNames: prefixedNames || 'root',
 				}),
 				'data-testid': testId,
 				id: id ? `${id}-${name}-root` : undefined,
