@@ -1,0 +1,11 @@
+@use '../../scss/variables/colors';
+
+.root {
+	.tabItem {
+		padding: 5px 10px;
+		font-size: 14px;
+		font-weight: 600;
+		color: colors.$gray-60;
+		background-color: colors.$gray-5;
+	}
+}

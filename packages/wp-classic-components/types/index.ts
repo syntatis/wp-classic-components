@@ -1,7 +1,7 @@
 import { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 
 export interface Styleable {
-	className?: string;
+	className?: Pick<HTMLAttributes<HTMLDivElement>, 'className'>;
 	style?: CSSProperties;
 }
 
