@@ -36,7 +36,8 @@
 		}
 
 		&.focusRing {
-			color: red;
+			outline: 2px solid colors.$blue-40;
+			outline-offset: 1px;
 		}
 	}
 
