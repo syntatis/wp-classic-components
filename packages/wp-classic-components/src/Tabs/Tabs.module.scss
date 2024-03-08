@@ -18,7 +18,7 @@
 		background-color: colors.$gray-5;
 		border: 1px solid colors.$gray-10;
 
-		&:hover {
+		&:hover:not(.isDisabled, .isSelected) {
 			color: colors.$gray-70;
 			cursor: pointer;
 			background-color: colors.$white;
@@ -29,9 +29,15 @@
     	background: #f0f0f1;
 			border-bottom: 1px solid #f0f0f1;
 		}
+
+		&.isDisabled {
+			color: colors.$gray-20;
+			cursor: not-allowed;
+		}
 	}
 
+	.tabList,
 	.tabPanel {
-		padding-top: 10px;
+		padding-top: 5px;
 	}
 }

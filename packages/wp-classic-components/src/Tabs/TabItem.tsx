@@ -14,7 +14,7 @@ export const TabItem = (props: TabItemProps) => {
 	const { key, rendered } = item;
 	const ref = useRef(null);
 	const { rootProps } = useProps('Tabs', props);
-	const { isSelected, tabProps } = useTab({ key }, state, ref);
+	const { isDisabled, isSelected, tabProps } = useTab({ key }, state, ref);
 
 	return (
 		<div
@@ -22,6 +22,7 @@ export const TabItem = (props: TabItemProps) => {
 				classNames: [
 					styles.tabItem,
 					{
+						[styles.isDisabled]: isDisabled,
 						[styles.isSelected]: isSelected,
 					},
 				],

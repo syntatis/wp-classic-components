@@ -19,14 +19,39 @@ export const Default: Story = {
 	render(props) {
 		return (
 			<Tabs {...props}>
-				<Tab title="General">General</Tab>
-				<Tab title="Products">Products</Tab>
-				<Tab title="Shipping">Shipping</Tab>
-				<Tab title="Payments">Payments</Tab>
-				<Tab title="Accounts & Privacy">Accounts & Privacy</Tab>
+				<Tab key="general" title="General">
+					<h2>General</h2>
+					<p>
+						This is where your business is located. Tax rates and shipping rates
+						will use this address.
+					</p>
+				</Tab>
+				<Tab key="shipping" title="Shipping">
+					<h2>Shipping zones</h2>
+					<p>
+						A shipping zone consists of the region(s) you&apos;d like to ship to
+						and the shipping method(s) offered. A shopper can only be matched to
+						one zone, and we&apos;ll use their shipping address to show them the
+						methods available in their area.
+					</p>
+				</Tab>
+				<Tab key="payments" title="Payments">
+					<h2>Payment Methods</h2>
+					<p>
+						Installed payment methods are listed below and can be sorted to
+						control their display order on the frontend.
+					</p>
+				</Tab>
 			</Tabs>
 		);
 	},
+};
+
+export const Disabled: Story = {
+	args: {
+		disabledKeys: ['payments'],
+	},
+	render: Default.render,
 };
 
 export default meta;
