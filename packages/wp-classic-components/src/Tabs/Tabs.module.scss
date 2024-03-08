@@ -34,6 +34,10 @@
 			color: colors.$gray-20;
 			cursor: not-allowed;
 		}
+
+		&.focusRing {
+			color: red;
+		}
 	}
 
 	.tabList,

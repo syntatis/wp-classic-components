@@ -1,10 +1,10 @@
 import { useProps } from '@/hooks';
 import { useRef } from 'react';
-import { useTab } from 'react-aria';
+import { FocusRingProps, useFocusRing, useTab } from 'react-aria';
 import { Node, TabListState } from 'react-stately';
 import styles from './Tabs.module.scss';
 
-interface TabItemProps {
+interface TabItemProps extends Omit<FocusRingProps, 'children'> {
 	item: Node<object>;
 	state: TabListState<object>;
 }
@@ -13,8 +13,9 @@ export const TabItem = (props: TabItemProps) => {
 	const { item, state } = props;
 	const { key, rendered } = item;
 	const ref = useRef(null);
-	const { rootProps } = useProps('Tabs', props);
+	const { componentProps, rootProps } = useProps('Tabs', props);
 	const { isDisabled, isSelected, tabProps } = useTab({ key }, state, ref);
+	const { focusProps, isFocusVisible } = useFocusRing(componentProps);
 
 	return (
 		<div
@@ -22,6 +23,7 @@ export const TabItem = (props: TabItemProps) => {
 				classNames: [
 					styles.tabItem,
 					{
+						[styles.focusRing]: isFocusVisible,
 						[styles.isDisabled]: isDisabled,
 						[styles.isSelected]: isSelected,
 					},
@@ -29,6 +31,7 @@ export const TabItem = (props: TabItemProps) => {
 				prefixedNames: 'item',
 			})}
 			{...tabProps}
+			{...focusProps}
 			ref={ref}
 		>
 			{rendered}
