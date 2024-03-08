@@ -29,7 +29,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 					{...tabListProps}
 					className={clsx({
 						classNames: styles.tabList,
-						prefixedNames: 'tab-list',
+						prefixedNames: 'list',
 					})}
 					ref={ref}
 				>

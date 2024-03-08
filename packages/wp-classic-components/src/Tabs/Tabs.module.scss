@@ -1,11 +1,37 @@
 @use '../../scss/variables/colors';
 
 .root {
+	.tabList {
+		display: flex;
+		gap: 0.5rem;
+		border-bottom: 1px solid colors.$gray-10;
+	}
+
 	.tabItem {
+		position: relative;
+		top: 1px;
 		padding: 5px 10px;
 		font-size: 14px;
 		font-weight: 600;
+		line-height: 1.71;
 		color: colors.$gray-60;
 		background-color: colors.$gray-5;
+		border: 1px solid colors.$gray-10;
+
+		&:hover {
+			color: colors.$gray-70;
+			cursor: pointer;
+			background-color: colors.$white;
+		}
+
+		&.isSelected {
+    	color: colors.$black;
+    	background: #f0f0f1;
+			border-bottom: 1px solid #f0f0f1;
+		}
+	}
+
+	.tabPanel {
+		padding-top: 10px;
 	}
 }

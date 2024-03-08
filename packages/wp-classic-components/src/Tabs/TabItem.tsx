@@ -14,13 +14,18 @@ export const TabItem = (props: TabItemProps) => {
 	const { key, rendered } = item;
 	const ref = useRef(null);
 	const { rootProps } = useProps('Tabs', props);
-	const { tabProps } = useTab({ key }, state, ref);
+	const { isSelected, tabProps } = useTab({ key }, state, ref);
 
 	return (
 		<div
 			{...rootProps({
-				classNames: styles.tabItem,
-				prefixedNames: 'tab-item',
+				classNames: [
+					styles.tabItem,
+					{
+						[styles.isSelected]: isSelected,
+					},
+				],
+				prefixedNames: 'item',
 			})}
 			{...tabProps}
 			ref={ref}

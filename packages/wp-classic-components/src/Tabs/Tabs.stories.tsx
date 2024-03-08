@@ -19,8 +19,11 @@ export const Default: Story = {
 	render(props) {
 		return (
 			<Tabs {...props}>
-				<Tab title="Tab 1">Hello World</Tab>
-				<Tab title="Tab 2">Hello World 2</Tab>
+				<Tab title="General">General</Tab>
+				<Tab title="Products">Products</Tab>
+				<Tab title="Shipping">Shipping</Tab>
+				<Tab title="Payments">Payments</Tab>
+				<Tab title="Accounts & Privacy">Accounts & Privacy</Tab>
 			</Tabs>
 		);
 	},
