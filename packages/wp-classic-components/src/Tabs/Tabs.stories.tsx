@@ -54,4 +54,11 @@ export const Disabled: Story = {
 	render: Default.render,
 };
 
+export const WithDefaultActive: Story = {
+	args: {
+		defaultSelectedKey: 'shipping',
+	},
+	render: Default.render,
+};
+
 export default meta;
