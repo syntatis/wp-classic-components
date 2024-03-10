@@ -13,4 +13,5 @@ export * from './src/Select';
 export * from './src/Spinner';
 export * from './src/Switch';
 export * from './src/TextArea';
+export * from './src/Tabs';
 export * from './src/TextField';
