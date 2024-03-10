@@ -1,5 +1,11 @@
+import { forwardRef } from 'react';
+
 interface ModalProps {}
 
-export const Modal = (props: ModalProps) => {
-	return null;
-};
+export const Modal = forwardRef<HTMLDivElement, ModalProps>(
+	(props, forwardedRef) => {
+		return null;
+	}
+);
+
+Modal.displayName = 'Modal';
