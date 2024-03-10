@@ -1,29 +1,42 @@
 import { useProps } from '@/hooks';
 import { GlobalProps } from '@/types';
 import { ReactElement, forwardRef } from 'react';
-import { useObjectRef, useTabList } from 'react-aria';
-import { TabListProps, useTabListState } from 'react-stately';
+import { AriaTabListOptions, useObjectRef, useTabList } from 'react-aria';
+import { useTabListState } from 'react-stately';
 import { TabProps } from './Tab';
 import { TabItem } from './TabItem';
 import { TabPanel } from './TabPanel';
 import styles from './Tabs.module.scss';
+import { useTabsProvider } from './TabsProvider';
 
-interface TabsProps extends GlobalProps, Omit<TabListProps<object>, 'items'> {
+interface TabsProps
+	extends GlobalProps,
+		Omit<AriaTabListOptions<object>, 'items'> {
 	children: Array<ReactElement<TabProps>> | ReactElement<TabProps>;
 }
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 	(props: TabsProps, forwardedRef) => {
+		const { orientation } = props;
 		const ref = useObjectRef(forwardedRef);
+		const { context } = useTabsProvider();
 		const { clsx, componentProps, rootProps } = useProps('Tabs', props);
 		const state = useTabListState(componentProps);
-		const { tabListProps } = useTabList(componentProps, state, ref);
+		const { tabListProps } = useTabList(
+			{
+				...componentProps,
+				orientation: context === 'settings' ? 'horizontal' : orientation,
+			},
+			state,
+			ref
+		);
 
 		return (
 			<div
 				{...rootProps({
 					classNames: styles.root,
 				})}
+				data-context={context}
 			>
 				<div
 					{...tabListProps}
