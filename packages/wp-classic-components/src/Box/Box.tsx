@@ -3,6 +3,7 @@ import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef, useRef, useState } from 'react';
 import { useButton, useId } from 'react-aria';
+import { TabsProvider } from '../Tabs/TabsProvider';
 import * as classes from './Box.module.scss';
 
 interface BoxProps extends GlobalProps {
@@ -128,7 +129,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 						})}
 						id={contentId}
 					>
-						{children}
+						<TabsProvider context="box">{children}</TabsProvider>
 					</div>
 				)}
 				{expanded && footer && (

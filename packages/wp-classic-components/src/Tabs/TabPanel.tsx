@@ -19,7 +19,7 @@ export const TabPanel = (props: TabPanelProps) => {
 			{...tabPanelProps}
 			className={clsx({
 				classNames: styles.tabPanel,
-				prefixedNames: 'tab-panel',
+				prefixedNames: 'panel',
 			})}
 			ref={ref}
 		>

@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../Button';
 import { Select } from '../Select';
 import { SelectItem } from '../Select/SelectItem';
+import { Tabs } from '../Tabs';
+import { Tab } from '../Tabs/Tab';
 import { Box } from './Box';
 
 const meta: Meta<typeof Box> = {
@@ -66,6 +68,26 @@ export const WithAdvancedTitle: Story = {
 export const WithFooter: Story = {
 	args: {
 		footer: <Button>Save changes</Button>,
+	},
+};
+
+export const WithTabs: Story = {
+	render(props) {
+		return (
+			<Box {...props} title="Site Health">
+				<Tabs>
+					<Tab key="info" title="Info">
+						<p>
+							Contains all the information you need to know about your site
+							health.
+						</p>
+					</Tab>
+					<Tab key="test" title="Tests">
+						<p>Perform tests to check your site health.</p>
+					</Tab>
+				</Tabs>
+			</Box>
+		);
 	},
 };
 
