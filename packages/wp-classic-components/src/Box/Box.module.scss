@@ -109,6 +109,12 @@
 				border-right: 0;
 				border-bottom: 1px solid colors.$gray-10;
 				border-left: 0;
+				transition: background-color 0.3s ease;
+			}
+
+			:global(.wp-classic-Tabs-item[data-focus-visible="true"]) {
+				z-index: 1;
+				outline-offset: 2px;
 			}
 
 			:global(.wp-classic-Tabs-item[aria-selected="true"]) {

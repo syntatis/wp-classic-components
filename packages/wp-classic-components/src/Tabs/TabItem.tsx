@@ -23,7 +23,6 @@ export const TabItem = (props: TabItemProps) => {
 				classNames: [
 					styles.tabItem,
 					{
-						[styles.focusRing]: isFocusVisible,
 						[styles.isDisabled]: isDisabled,
 						[styles.isSelected]: isSelected,
 					},
@@ -32,6 +31,7 @@ export const TabItem = (props: TabItemProps) => {
 			})}
 			{...tabProps}
 			{...focusProps}
+			data-focus-visible={isFocusVisible}
 			ref={ref}
 		>
 			{rendered}

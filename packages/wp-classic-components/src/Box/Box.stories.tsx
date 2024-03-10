@@ -76,7 +76,7 @@ export const WithTabs: Story = {
 		return (
 			<Box {...props} title="Site Health">
 				<Tabs>
-					<Tab key="info" title="Info">
+					<Tab key="general" title="General">
 						<p>
 							Contains all the information you need to know about your site
 							health.
@@ -84,6 +84,12 @@ export const WithTabs: Story = {
 					</Tab>
 					<Tab key="test" title="Tests">
 						<p>Perform tests to check your site health.</p>
+					</Tab>
+					<Tab key="other" title="Other">
+						<p>
+							Contains all the information you need to know about your site
+							health.
+						</p>
 					</Tab>
 				</Tabs>
 			</Box>

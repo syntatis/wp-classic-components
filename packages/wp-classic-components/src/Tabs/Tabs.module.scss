@@ -35,7 +35,7 @@
 			cursor: not-allowed;
 		}
 
-		&.focusRing {
+		&[data-focus-visible="true"] {
 			outline: 2px solid colors.$blue-40;
 			outline-offset: 1px;
 		}
