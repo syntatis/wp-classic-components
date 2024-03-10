@@ -17,15 +17,17 @@ interface TabsProps
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 	(props: TabsProps, forwardedRef) => {
-		const { orientation } = props;
 		const ref = useObjectRef(forwardedRef);
 		const { context } = useTabsProvider();
 		const { clsx, componentProps, rootProps } = useProps('Tabs', props);
 		const state = useTabListState(componentProps);
+		let { orientation } = props;
+
+		orientation = context === 'settings' ? 'horizontal' : orientation;
 		const { tabListProps } = useTabList(
 			{
 				...componentProps,
-				orientation: context === 'settings' ? 'horizontal' : orientation,
+				orientation,
 			},
 			state,
 			ref
@@ -37,6 +39,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 					classNames: styles.root,
 				})}
 				data-context={context}
+				data-orientation={orientation}
 			>
 				<div
 					{...tabListProps}

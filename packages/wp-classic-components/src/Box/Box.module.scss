@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../scss/variables/colors';
 
 :global(.wp-core-ui) {
@@ -55,6 +56,12 @@
 			border-block-end-width: 0;
 		}
 
+		/**
+		 * ========================================================================
+		 * Tabs
+		 * ========================================================================
+		 */
+
 		:global(.wp-classic-Tabs-list[aria-orientation="horizontal"]) {
 			gap: 0.4rem;
 			padding-right: 5px;
@@ -63,6 +70,10 @@
 
 		:global(.wp-classic-Tabs-item) {
 			font-size: 12px;
+
+			&:hover:not([aria-selected="true"], [aria-disabled="true"]) {
+				background-color: colors.$gray-0;
+			}
 		}
 
 		:global(.wp-classic-Tabs-item[aria-selected="true"]) {
@@ -71,7 +82,39 @@
 		}
 
 		:global(.wp-classic-Tabs-panel) {
-			padding: 10px;
+			padding: 10px 12px;
+		}
+
+		:global(.wp-classic-Tabs-root[data-orientation="vertical"]) {
+			display: flex;
+
+			:global(.wp-classic-Tabs-panel) {
+				width: 100%;
+			}
+		}
+
+		:global(.wp-classic-Tabs-list[aria-orientation="vertical"]) {
+			flex-direction: column;
+			gap: 0;
+			width: 18%;
+			padding-top: 0;
+			padding-bottom: 12px;
+			border-right: 1px solid colors.$gray-10;
+			border-bottom: 0;
+
+			:global(.wp-classic-Tabs-item) {
+				top: 0;
+				padding: 8px 12px;
+				border-top: 0;
+				border-right: 0;
+				border-bottom: 1px solid colors.$gray-10;
+				border-left: 0;
+			}
+
+			:global(.wp-classic-Tabs-item[aria-selected="true"]) {
+				margin-right: -1px;
+				border-right: 1px solid colors.$white;
+			}
 		}
 	}
 }

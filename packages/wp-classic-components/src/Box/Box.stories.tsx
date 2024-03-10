@@ -91,4 +91,31 @@ export const WithTabs: Story = {
 	},
 };
 
+export const WithTabsVertical: Story = {
+	name: 'With Tabs (vertical)',
+	render(props) {
+		return (
+			<Box {...props} title="Site Health">
+				<Tabs orientation="vertical">
+					<Tab key="general" title="General">
+						<p>
+							Contains all the information you need to know about your site
+							health.
+						</p>
+					</Tab>
+					<Tab key="test" title="Tests">
+						<p>Perform tests to check your site health.</p>
+					</Tab>
+					<Tab key="other" title="Other">
+						<p>
+							Contains all the information you need to know about your site
+							health.
+						</p>
+					</Tab>
+				</Tabs>
+			</Box>
+		);
+	},
+};
+
 export default meta;
