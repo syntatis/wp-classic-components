@@ -102,7 +102,7 @@ export const WithTabsVertical: Story = {
 	render(props) {
 		return (
 			<Box {...props} title="Site Health">
-				<Tabs orientation="vertical">
+				<Tabs disabledKeys={['general']} orientation="vertical">
 					<Tab key="general" title="General">
 						<p>
 							Contains all the information you need to know about your site

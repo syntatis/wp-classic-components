@@ -24,13 +24,13 @@
 			background-color: colors.$white;
 		}
 
-		[data-selected="true"] {
+		&[data-selected="true"] {
     	color: colors.$black;
     	background: #f0f0f1;
 			border-bottom: 1px solid #f0f0f1;
 		}
 
-		[data-disabled="true"] {
+		&[data-disabled="true"] {
 			color: colors.$gray-20;
 			cursor: not-allowed;
 		}
