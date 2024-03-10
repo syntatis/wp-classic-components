@@ -20,18 +20,14 @@ export const TabItem = (props: TabItemProps) => {
 	return (
 		<div
 			{...rootProps({
-				classNames: [
-					styles.tabItem,
-					{
-						[styles.isDisabled]: isDisabled,
-						[styles.isSelected]: isSelected,
-					},
-				],
+				classNames: styles.tabItem,
 				prefixedNames: 'item',
 			})}
 			{...tabProps}
 			{...focusProps}
-			data-focus-visible={isFocusVisible}
+			data-disabled={isDisabled || undefined}
+			data-focus-visible={isFocusVisible || undefined}
+			data-selected={isSelected || undefined}
 			ref={ref}
 		>
 			{rendered}

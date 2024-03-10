@@ -18,19 +18,19 @@
 		background-color: colors.$gray-5;
 		border: 1px solid colors.$gray-10;
 
-		&:hover:not(.isDisabled, .isSelected) {
+		&:hover:not([data-disabled="true"], [data-selected="true"]) {
 			color: colors.$gray-70;
 			cursor: pointer;
 			background-color: colors.$white;
 		}
 
-		&.isSelected {
+		[data-selected="true"] {
     	color: colors.$black;
     	background: #f0f0f1;
 			border-bottom: 1px solid #f0f0f1;
 		}
 
-		&.isDisabled {
+		[data-disabled="true"] {
 			color: colors.$gray-20;
 			cursor: not-allowed;
 		}

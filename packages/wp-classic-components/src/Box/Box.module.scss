@@ -90,6 +90,7 @@
 
 			:global(.wp-classic-Tabs-panel) {
 				width: 100%;
+				padding: 12px 24px 24px;
 			}
 		}
 
@@ -109,7 +110,7 @@
 				border-right: 0;
 				border-bottom: 1px solid colors.$gray-10;
 				border-left: 0;
-				transition: background-color 0.3s ease;
+				transition: background-color 0.1s linear;
 			}
 
 			:global(.wp-classic-Tabs-item[data-focus-visible="true"]) {
