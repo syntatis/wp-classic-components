@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../scss/variables/colors';
 
 :global(.wp-core-ui) {
@@ -5,15 +6,30 @@
 		.header {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: flex-end;
 			border-bottom: 1px solid colors.$gray-10;
 		}
 
 		.heading {
+			box-sizing: border-box;
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			width: 100%;
+			height: max-content;
+			max-height: 37px;
 			padding: 8px 12px;
-			margin: 0;
-			font-size: 14px;
 			line-height: 1.4;
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin: 0;
+				font-size: 14px;
+			}
 		}
 
 		.content {
@@ -22,6 +38,11 @@
 			margin: var(--wp-classic-postbox-content-margin, 11px 0 0);
 			font-size: 13px;
 			line-height: 1.4;
+
+			&:has(:global(.wp-classic-Tabs-root)) {
+				padding: 0;
+				margin: 0;
+			}
 		}
 
 		.footer {
@@ -33,6 +54,74 @@
 
 		&.collapsed {
 			border-block-end-width: 0;
+		}
+
+		/**
+		 * ========================================================================
+		 * Tabs
+		 * ========================================================================
+		 */
+
+		:global(.wp-classic-Tabs-list[aria-orientation="horizontal"]) {
+			gap: 0.4rem;
+			padding-right: 5px;
+			padding-left: 5px;
+		}
+
+		:global(.wp-classic-Tabs-item) {
+			font-size: 12px;
+
+			&:hover:not([aria-selected="true"], [aria-disabled="true"]) {
+				background-color: colors.$gray-0;
+			}
+		}
+
+		:global(.wp-classic-Tabs-item[aria-selected="true"]) {
+			background-color: colors.$white;
+			border-bottom-color: colors.$white;
+		}
+
+		:global(.wp-classic-Tabs-panel) {
+			padding: 10px 12px;
+		}
+
+		:global(.wp-classic-Tabs-root[data-orientation="vertical"]) {
+			display: flex;
+
+			:global(.wp-classic-Tabs-panel) {
+				width: 100%;
+				padding: 12px 24px 24px;
+			}
+		}
+
+		:global(.wp-classic-Tabs-list[aria-orientation="vertical"]) {
+			flex-direction: column;
+			gap: 0;
+			width: 18%;
+			padding-top: 0;
+			padding-bottom: 12px;
+			border-right: 1px solid colors.$gray-10;
+			border-bottom: 0;
+
+			:global(.wp-classic-Tabs-item) {
+				top: 0;
+				padding: 8px 12px;
+				border-top: 0;
+				border-right: 0;
+				border-bottom: 1px solid colors.$gray-10;
+				border-left: 0;
+				transition: background-color 0.1s linear;
+			}
+
+			:global(.wp-classic-Tabs-item[data-focus-visible="true"]) {
+				z-index: 1;
+				outline-offset: 2px;
+			}
+
+			:global(.wp-classic-Tabs-item[aria-selected="true"]) {
+				margin-right: -1px;
+				border-right: 1px solid colors.$white;
+			}
 		}
 	}
 }

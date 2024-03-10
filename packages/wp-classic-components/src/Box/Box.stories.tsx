@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../Button';
+import { Select } from '../Select';
+import { SelectItem } from '../Select/SelectItem';
+import { Tabs } from '../Tabs';
+import { Tab } from '../Tabs/Tab';
 import { Box } from './Box';
 
 const meta: Meta<typeof Box> = {
@@ -42,11 +46,81 @@ export const WithTitle: Story = {
 	args: {
 		title: 'Site Health',
 	},
+	name: 'With Title (as string)',
+};
+
+export const WithAdvancedTitle: Story = {
+	args: {
+		collapsible: true,
+		title: (
+			<>
+				<h2>Site Health</h2> &mdash;{' '}
+				<Select name="site">
+					<SelectItem>Blog</SelectItem>
+					<SelectItem>Shop</SelectItem>
+				</Select>
+			</>
+		),
+	},
+	name: 'With Title (as element)',
 };
 
 export const WithFooter: Story = {
 	args: {
 		footer: <Button>Save changes</Button>,
+	},
+};
+
+export const WithTabs: Story = {
+	render(props) {
+		return (
+			<Box {...props} title="Site Health">
+				<Tabs>
+					<Tab key="general" title="General">
+						<p>
+							Contains all the information you need to know about your site
+							health.
+						</p>
+					</Tab>
+					<Tab key="test" title="Tests">
+						<p>Perform tests to check your site health.</p>
+					</Tab>
+					<Tab key="other" title="Other">
+						<p>
+							Contains all the information you need to know about your site
+							health.
+						</p>
+					</Tab>
+				</Tabs>
+			</Box>
+		);
+	},
+};
+
+export const WithTabsVertical: Story = {
+	name: 'With Tabs (vertical)',
+	render(props) {
+		return (
+			<Box {...props} title="Site Health">
+				<Tabs orientation="vertical">
+					<Tab key="general" title="General">
+						<p>
+							Contains all the information you need to know about your site
+							health.
+						</p>
+					</Tab>
+					<Tab key="test" title="Tests">
+						<p>Perform tests to check your site health.</p>
+					</Tab>
+					<Tab key="other" title="Other">
+						<p>
+							Contains all the information you need to know about your site
+							health.
+						</p>
+					</Tab>
+				</Tabs>
+			</Box>
+		);
 	},
 };
 

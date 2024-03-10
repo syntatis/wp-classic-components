@@ -3,6 +3,7 @@ import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef, useRef, useState } from 'react';
 import { useButton, useId } from 'react-aria';
+import { TabsProvider } from '../Tabs/TabsProvider';
 import * as classes from './Box.module.scss';
 
 interface BoxProps extends GlobalProps {
@@ -58,6 +59,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 			},
 			buttonRef
 		);
+		const renderedTitle = typeof title === 'string' ? <h2>{title}</h2> : title;
 		let toggleLabel = null;
 
 		switch (typeof collapsible) {
@@ -93,14 +95,16 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 							prefixedNames: 'header',
 						})}
 					>
-						<h2
-							className={clsx({
-								classNames: classes.heading,
-								prefixedNames: 'heading',
-							})}
-						>
-							{title}
-						</h2>
+						{renderedTitle && (
+							<div
+								className={clsx({
+									classNames: [classes.heading],
+									prefixedNames: 'heading',
+								})}
+							>
+								{renderedTitle}
+							</div>
+						)}
 						{collapsible && (
 							<button
 								{...buttonProps}
@@ -125,7 +129,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
 						})}
 						id={contentId}
 					>
-						{children}
+						<TabsProvider context="box">{children}</TabsProvider>
 					</div>
 				)}
 				{expanded && footer && (

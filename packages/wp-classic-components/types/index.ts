@@ -1,7 +1,7 @@
-import { AriaRole, CSSProperties, ReactNode } from 'react';
+import { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 
 export interface Styleable {
-	className?: string;
+	className?: Pick<HTMLAttributes<HTMLDivElement>, 'className'>;
 	style?: CSSProperties;
 }
 
@@ -24,7 +24,7 @@ export interface Affixable extends Prefixable, Suffixable {}
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
  */
-export interface GlobalProps extends Styleable, Testable {
-	id?: string | undefined;
-	role?: AriaRole | undefined;
-}
+export interface GlobalProps
+	extends Styleable,
+		Testable,
+		Pick<HTMLAttributes<HTMLElement>, 'id' | 'role'> {}
