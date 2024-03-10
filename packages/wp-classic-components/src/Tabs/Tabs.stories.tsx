@@ -6,7 +6,7 @@ const meta: Meta<typeof Tabs> = {
 	component: Tabs,
 	parameters: {
 		controls: {
-			include: [],
+			include: ['isDisabled', 'defaultSelectedKey'],
 		},
 	},
 	tags: ['autodocs'],
@@ -20,7 +20,7 @@ export const Default: Story = {
 		return (
 			<Tabs {...props}>
 				<Tab key="general" title="General">
-					<h2>General</h2>
+					<h2>Business</h2>
 					<p>
 						This is where your business is located. Tax rates and shipping rates
 						will use this address.
@@ -49,12 +49,19 @@ export const Default: Story = {
 
 export const Disabled: Story = {
 	args: {
+		isDisabled: true,
+	},
+	render: Default.render,
+};
+
+export const WithDisabledKeys: Story = {
+	args: {
 		disabledKeys: ['payments'],
 	},
 	render: Default.render,
 };
 
-export const WithDefaultActive: Story = {
+export const WithDefaultSelected: Story = {
 	args: {
 		defaultSelectedKey: 'shipping',
 	},
