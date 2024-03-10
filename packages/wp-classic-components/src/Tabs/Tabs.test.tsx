@@ -60,3 +60,11 @@ it('should select selected key', () => {
 	expect(general).toHaveAttribute('aria-selected', 'false');
 	expect(payments).toHaveAttribute('aria-selected', 'false');
 });
+
+it('should retain orientation', () => {
+	render(<Tabs orientation="vertical" />);
+
+	const tabList = screen.queryByRole('tablist');
+
+	expect(tabList).toHaveAttribute('aria-orientation', 'horizontal');
+});
