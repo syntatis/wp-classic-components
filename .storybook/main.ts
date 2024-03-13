@@ -1,20 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { StorybookConfig } from '@storybook/react-vite';
+import { dirname, join } from 'path';
 import tsConfigPaths from 'vite-tsconfig-paths';
+
+function getAbsolutePath(value: string): any {
+	return dirname(require.resolve(join(value, 'package.json')));
+}
 
 const config: StorybookConfig = {
 	addons: [
-		'@storybook/addon-a11y',
-		'@storybook/addon-essentials',
-		'@storybook/addon-links',
-		'@storybook/addon-styling',
-		'@storybook/addon-interactions',
+		getAbsolutePath('@storybook/addon-a11y'),
+		getAbsolutePath('@storybook/addon-essentials'),
+		getAbsolutePath('@storybook/addon-links'),
+		getAbsolutePath('@storybook/addon-interactions'),
 	],
 	core: {},
 	docs: {
 		autodocs: 'tag',
 	},
 	framework: {
-		name: '@storybook/react-vite',
+		name: getAbsolutePath('@storybook/react-vite'),
 		options: {},
 	},
 	stories: ['../packages/wp-classic-components/src/**/*.stories.@(ts|tsx)'],
