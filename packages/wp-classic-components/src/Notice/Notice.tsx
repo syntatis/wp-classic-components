@@ -17,7 +17,7 @@ interface NoticeProps extends GlobalProps {
 	 *
 	 * @default false
 	 */
-	dismissable?: { label: string } | boolean;
+	isDismissable?: { label: string } | boolean;
 	/**
 	 * Whether the notice should be dismissed.
 	 *
@@ -46,7 +46,7 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 	(props, forwardedRef) => {
 		const {
 			children,
-			dismissable = false,
+			isDismissable = false,
 			isDismissed,
 			level = DEFAULT_LEVEL,
 			onDismiss,
@@ -62,8 +62,8 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 			buttonRef
 		);
 		const isDismissable =
-			dismissable === true ||
-			(typeof dismissable === 'object' && dismissable.label);
+			isDismissable === true ||
+			(typeof isDismissable === 'object' && isDismissable.label);
 
 		return (
 			!isDismissed && (
@@ -90,8 +90,8 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 						<button
 							{...buttonProps}
 							aria-label={
-								typeof dismissable === 'object' ?
-									dismissable.label
+								typeof isDismissable === 'object' ?
+									isDismissable.label
 								:	'Dismiss notice'
 							}
 							className="notice-dismiss"

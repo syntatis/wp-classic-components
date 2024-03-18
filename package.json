@@ -11,6 +11,7 @@
     "packages/*"
   ],
   "devDependencies": {
+		"@syntatis/wp-classic-components": "file:./packages/wp-classic-components",
 		"@storybook/test": "^8.0.0",
     "@storybook/addon-a11y": "^8.0.0",
     "@storybook/addon-essentials": "^8.0.0",

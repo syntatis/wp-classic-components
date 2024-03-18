@@ -6,7 +6,7 @@ export * from './src/IconButton';
 export * from './src/IconLinkButton';
 export * from './src/Link';
 export * from './src/LinkButton';
-export * from './src/Modal';
+export * from './src/Dialog';
 export * from './src/Notice';
 export * from './src/RadioGroup';
 export * from './src/SearchField';

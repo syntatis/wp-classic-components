@@ -1,0 +1,19 @@
+@use '../../scss/variables/colors';
+
+.underlay {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+}
+
+.modal {
+	background-color: colors.$white;
+}
+
+.root {
+	background: colors.$white;
+}
