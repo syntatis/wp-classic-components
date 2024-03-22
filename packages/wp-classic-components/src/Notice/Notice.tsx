@@ -61,9 +61,6 @@ export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 			},
 			buttonRef
 		);
-		const isDismissable =
-			isDismissable === true ||
-			(typeof isDismissable === 'object' && isDismissable.label);
 
 		return (
 			!isDismissed && (

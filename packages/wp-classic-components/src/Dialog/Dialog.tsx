@@ -4,6 +4,7 @@ import { ReactNode, forwardRef } from 'react';
 import {
 	AriaDialogProps,
 	AriaModalOverlayProps,
+	FocusScope,
 	useDialog,
 	useObjectRef,
 } from 'react-aria';
@@ -25,15 +26,17 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 		const { dialogProps, titleProps } = useDialog(componentProps, ref);
 
 		return (
-			<div
-				{...rootProps({
-					classNames: classes.root,
-				})}
-				{...dialogProps}
-			>
-				{title && <h3 {...titleProps}>{title}</h3>}
-				{children}
-			</div>
+			<FocusScope autoFocus contain restoreFocus>
+				<div
+					{...rootProps({
+						classNames: classes.root,
+					})}
+					{...dialogProps}
+				>
+					{title && <h3 {...titleProps}>{title}</h3>}
+					{children}
+				</div>
+			</FocusScope>
 		);
 	}
 );

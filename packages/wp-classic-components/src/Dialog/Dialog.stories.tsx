@@ -34,10 +34,7 @@ export const Default: Story = {
 			<DialogTrigger
 				render={() => (
 					<Dialog {...props}>
-						<form action="" method="get">
-							<p>Hello World</p>
-							<button>Submit</button>
-						</form>
+						<p>Hello World</p>
 					</Dialog>
 				)}
 			>
