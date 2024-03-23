@@ -22,18 +22,33 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 	(props, forwardedRef) => {
 		const { children, title } = props;
 		const ref = useObjectRef(forwardedRef);
-		const { componentProps, rootProps } = useProps('Dialog', props);
+		const { clsx, componentProps, rootProps } = useProps('Dialog', props);
 		const { dialogProps, titleProps } = useDialog(componentProps, ref);
 
 		return (
 			<FocusScope autoFocus contain restoreFocus>
 				<div
 					{...rootProps({
-						classNames: classes.root,
+						classNames: [classes.root],
 					})}
 					{...dialogProps}
 				>
-					{title && <h3 {...titleProps}>{title}</h3>}
+					<header
+						className={clsx({
+							classNames: [classes.header, 'header'],
+						})}
+					>
+						{title && (
+							<h3
+								{...titleProps}
+								className={clsx({
+									classNames: [classes.title, 'title'],
+								})}
+							>
+								{title}
+							</h3>
+						)}
+					</header>
 					{children}
 				</div>
 			</FocusScope>
