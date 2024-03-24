@@ -10,16 +10,7 @@ const meta: Meta<typeof Dialog> = {
 	component: Dialog,
 	parameters: {
 		controls: {
-			include: [
-				'label',
-				'description',
-				'descriptionArea',
-				'orientation',
-				'isRequired',
-				'isDisabled',
-				'isReadOnly',
-				'onChange',
-			],
+			include: ['title', 'maxWidth', 'maxHeight'],
 		},
 	},
 	tags: ['autodocs'],

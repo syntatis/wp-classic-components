@@ -37,7 +37,11 @@ export interface DialogProps
 	 * @default 50vw
 	 */
 	maxWidth?: number | string;
-	title?: ReactNode;
+	/**
+	 * The title of the dialog. If provided, it will renderred
+	 * as the heading on the dialog.
+	 */
+	title: ReactNode;
 }
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
@@ -90,4 +94,4 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 	}
 );
 
-Dialog.displayName = 'Modal';
+Dialog.displayName = 'Dialog';
