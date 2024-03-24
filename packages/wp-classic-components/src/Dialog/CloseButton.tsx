@@ -27,11 +27,8 @@ export const CloseButton = (props: CloseButtonProps) => {
 			{...buttonProps}
 			{...focusProps}
 		>
-			<Icon
-				icon={closeSmall}
-				onPointerEnterCapture={undefined}
-				onPointerLeaveCapture={undefined}
-			/>
+			{/* @ts-expect-error - an issue from the upstream library */}
+			<Icon icon={closeSmall} />
 		</button>
 	);
 };

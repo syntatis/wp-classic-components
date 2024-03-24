@@ -1,4 +1,4 @@
-import { ReactElement, cloneElement } from 'react';
+import { ReactElement, cloneElement, useEffect, useState } from 'react';
 import { useOverlayTrigger } from 'react-aria';
 import { OverlayTriggerProps } from 'react-stately';
 import { Dialog, DialogProps } from './Dialog';
@@ -7,6 +7,7 @@ import { Modal } from './Modal';
 
 interface DialogTriggerProps extends OverlayTriggerProps {
 	children: ReactElement;
+	portalSelector?: string;
 	render: (close: () => void) => ReactElement<DialogProps, typeof Dialog>;
 }
 
@@ -28,10 +29,23 @@ const Trigger = (props: DialogTriggerProps) => {
 };
 
 export const DialogTrigger = (props: DialogTriggerProps) => {
-	const { children, render, ...rest } = props;
+	const { children, portalSelector, render, ...rest } = props;
+	const [portalContainer, setPortalContainer] = useState<Element | undefined>();
+
+	useEffect(() => {
+		if (!portalSelector) {
+			return;
+		}
+
+		const portalElement = document.querySelector(portalSelector);
+
+		if (portalElement) {
+			setPortalContainer(portalElement);
+		}
+	}, [portalSelector]);
 
 	return (
-		<DialogProvider {...rest}>
+		<DialogProvider {...rest} portalContainer={portalContainer}>
 			<Trigger render={render}>{children}</Trigger>
 		</DialogProvider>
 	);

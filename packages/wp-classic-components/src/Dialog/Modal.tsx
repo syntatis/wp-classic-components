@@ -11,7 +11,7 @@ interface ModalProps extends AriaModalOverlayProps {
 export const Modal = (props: ModalProps) => {
 	const { children, isDismissable = true } = props;
 	const ref = useRef(null);
-	const { state } = useDialogContext();
+	const { portalContainer, state } = useDialogContext();
 	const { componentProps, rootProps } = useProps('Dialog', props);
 	const { modalProps, underlayProps } = useModalOverlay(
 		{
@@ -23,7 +23,7 @@ export const Modal = (props: ModalProps) => {
 	);
 
 	return (
-		<Overlay>
+		<Overlay portalContainer={portalContainer}>
 			<div {...underlayProps} className={classes.underlay}>
 				<div
 					{...rootProps({
