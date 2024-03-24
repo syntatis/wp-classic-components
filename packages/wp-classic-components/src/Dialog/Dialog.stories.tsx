@@ -34,7 +34,9 @@ export const Default: Story = {
 			<DialogTrigger
 				render={() => (
 					<Dialog {...props}>
-						<p>Hello World</p>
+						<div style={{ height: '100%', padding: 20, width: '100%' }}>
+							<p>Hello World</p>
+						</div>
 					</Dialog>
 				)}
 			>

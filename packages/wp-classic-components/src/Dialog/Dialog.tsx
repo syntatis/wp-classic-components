@@ -1,6 +1,6 @@
 import { useProps } from '@/hooks';
 import { GlobalProps } from '@/types';
-import { ReactNode, forwardRef } from 'react';
+import { CSSProperties, ReactNode, forwardRef } from 'react';
 import {
 	AriaDialogProps,
 	AriaModalOverlayProps,
@@ -8,13 +8,35 @@ import {
 	useDialog,
 	useObjectRef,
 } from 'react-aria';
+import { CloseButton } from './CloseButton';
 import * as classes from './Dialog.module.scss';
+import { useDialogContext } from './DialogProvider';
 
 export interface DialogProps
 	extends AriaDialogProps,
 		AriaModalOverlayProps,
 		Omit<GlobalProps, 'role'> {
 	children?: ReactNode;
+	/**
+	 * Set the maximum height of the dialog.
+	 *
+	 * If set as a number if will be treated as pixels.
+	 * For example, `maxHeight={300}` will be equal
+	 * to `300px`.
+	 *
+	 * @default 300px
+	 */
+	maxHeight?: number | string;
+	/**
+	 * Set the maximum width of the dialog.
+	 *
+	 * If set as a number if will be treated as pixels.
+	 * For example, `maxWidth={50}` will be equal
+	 * to `50px`.
+	 *
+	 * @default 50vw
+	 */
+	maxWidth?: number | string;
 	title?: ReactNode;
 }
 
@@ -24,12 +46,23 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 		const ref = useObjectRef(forwardedRef);
 		const { clsx, componentProps, rootProps } = useProps('Dialog', props);
 		const { dialogProps, titleProps } = useDialog(componentProps, ref);
+		const { state } = useDialogContext();
 
 		return (
 			<FocusScope autoFocus contain restoreFocus>
 				<div
 					{...rootProps({
 						classNames: [classes.root],
+						styles: {
+							'--wp-classic-dialog-max-height':
+								typeof props.maxHeight === 'number' ?
+									`${props.maxHeight}px`
+								:	props.maxHeight || undefined,
+							'--wp-classic-dialog-max-width':
+								typeof props.maxWidth === 'number' ?
+									`${props.maxWidth}px`
+								:	props.maxWidth || undefined,
+						} as CSSProperties,
 					})}
 					{...dialogProps}
 				>
@@ -39,15 +72,16 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 						})}
 					>
 						{title && (
-							<h3
+							<h1
 								{...titleProps}
 								className={clsx({
 									classNames: [classes.title, 'title'],
 								})}
 							>
 								{title}
-							</h3>
+							</h1>
 						)}
+						<CloseButton onPress={state.close} />
 					</header>
 					{children}
 				</div>
