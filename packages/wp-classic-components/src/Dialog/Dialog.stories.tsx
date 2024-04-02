@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../Button';
-import { Tabs } from '../Tabs';
-import { Tab } from '../Tabs/Tab';
-import { Dialog } from './Dialog';
-import { DialogTrigger } from './DialogTrigger';
+import {
+	Button,
+	Dialog,
+	DialogTrigger,
+	Tab,
+	Tabs,
+} from '@syntatis/wp-classic-components';
 
 const meta: Meta<typeof Dialog> = {
 	args: {
