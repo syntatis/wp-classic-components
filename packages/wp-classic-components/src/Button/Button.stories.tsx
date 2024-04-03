@@ -118,14 +118,26 @@ export const Disabled: Story = {
 export const WithPrefix: Story = {
 	args: {
 		children: 'Upload',
-		suffix: <Icon icon={upload} />,
+		suffix: (
+			<Icon
+				icon={upload}
+				onPointerEnterCapture={undefined}
+				onPointerLeaveCapture={undefined}
+			/>
+		),
 	},
 };
 
 export const WithSuffix: Story = {
 	args: {
 		children: 'Download',
-		suffix: <Icon icon={download} />,
+		suffix: (
+			<Icon
+				icon={download}
+				onPointerEnterCapture={undefined}
+				onPointerLeaveCapture={undefined}
+			/>
+		),
 	},
 };
 
