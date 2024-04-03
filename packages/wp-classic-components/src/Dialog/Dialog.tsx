@@ -18,6 +18,13 @@ export interface DialogProps
 		Omit<GlobalProps, 'role'> {
 	children?: ReactNode;
 	/**
+	 * Add the footer component on the dialog.
+	 *
+	 * This will be rendered at the bottom of the dialog. It can be added with anything,
+	 * but typically contains an array of action buttons.
+	 */
+	footer: ReactNode;
+	/**
 	 * Set the maximum height of the dialog.
 	 *
 	 * If set as a number if will be treated as pixels.
@@ -46,7 +53,7 @@ export interface DialogProps
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 	(props, forwardedRef) => {
-		const { children, title } = props;
+		const { children, footer, title } = props;
 		const ref = useObjectRef(forwardedRef);
 		const { clsx, componentProps, rootProps } = useProps('Dialog', props);
 		const { dialogProps, titleProps } = useDialog(componentProps, ref);
@@ -88,6 +95,15 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 						<CloseButton onPress={state.close} />
 					</header>
 					{children}
+					{footer && (
+						<footer
+							className={clsx({
+								classNames: [classes.footer, 'footer'],
+							})}
+						>
+							{footer}
+						</footer>
+					)}
 				</div>
 			</FocusScope>
 		);
