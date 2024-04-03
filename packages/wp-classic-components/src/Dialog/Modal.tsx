@@ -12,7 +12,7 @@ export const Modal = (props: ModalProps) => {
 	const { children, isDismissable = true } = props;
 	const ref = useRef(null);
 	const { portalContainer, state } = useDialogContext();
-	const { componentProps, rootProps } = useProps('Dialog', props);
+	const { clsx, componentProps, rootProps } = useProps('Dialog', props);
 	const { modalProps, underlayProps } = useModalOverlay(
 		{
 			...componentProps,
@@ -24,7 +24,12 @@ export const Modal = (props: ModalProps) => {
 
 	return (
 		<Overlay portalContainer={portalContainer}>
-			<div {...underlayProps} className={classes.underlay}>
+			<div
+				{...underlayProps}
+				className={clsx({
+					classNames: [classes.underlay, 'wp-core-ui'],
+				})}
+			>
 				<div
 					{...rootProps({
 						classNames: classes.modal,
