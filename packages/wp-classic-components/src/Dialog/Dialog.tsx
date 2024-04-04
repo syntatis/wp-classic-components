@@ -1,5 +1,5 @@
 import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
+import { Styleable, Testable } from '@/types';
 import { CSSProperties, ReactNode, forwardRef } from 'react';
 import {
 	AriaDialogProps,
@@ -13,9 +13,10 @@ import * as classes from './Dialog.module.scss';
 import { useDialogContext } from './DialogProvider';
 
 export interface DialogProps
-	extends AriaDialogProps,
-		AriaModalOverlayProps,
-		Omit<GlobalProps, 'role'> {
+	extends Styleable,
+		Testable,
+		Omit<AriaDialogProps, 'role'>,
+		AriaModalOverlayProps {
 	children?: ReactNode;
 	/**
 	 * Add the footer component on the dialog.
