@@ -57,7 +57,13 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 		const { children, footer, title } = props;
 		const ref = useObjectRef(forwardedRef);
 		const { clsx, componentProps, rootProps } = useProps('Dialog', props);
-		const { dialogProps, titleProps } = useDialog(componentProps, ref);
+		const { dialogProps, titleProps } = useDialog(
+			{
+				...componentProps,
+				role: 'dialog',
+			},
+			ref
+		);
 		const { state } = useDialogContext();
 
 		return (

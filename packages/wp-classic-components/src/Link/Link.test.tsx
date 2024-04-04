@@ -82,7 +82,17 @@ it('should not have with invalid html attribute', () => {
 
 it('should have prefix node', () => {
 	render(
-		<Link href="/" prefix={<Icon data-testid="wp-icon" icon={wordpress} />} />
+		<Link
+			href="/"
+			prefix={
+				<Icon
+					data-testid="wp-icon"
+					icon={wordpress}
+					onPointerEnterCapture={undefined}
+					onPointerLeaveCapture={undefined}
+				/>
+			}
+		/>
 	);
 
 	const icon = screen.queryByTestId('wp-icon');
@@ -94,7 +104,14 @@ it('should have suffix node', () => {
 	render(
 		<Link
 			href="/"
-			suffix={<Icon data-testid="wp-icon-download" icon={download} />}
+			suffix={
+				<Icon
+					data-testid="wp-icon-download"
+					icon={download}
+					onPointerEnterCapture={undefined}
+					onPointerLeaveCapture={undefined}
+				/>
+			}
 		/>
 	);
 

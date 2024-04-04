@@ -93,13 +93,25 @@ export const SizeHero: Story = {
 
 export const WithPrefix: Story = {
 	args: {
-		suffix: <Icon icon={external} />,
+		suffix: (
+			<Icon
+				icon={external}
+				onPointerEnterCapture={undefined}
+				onPointerLeaveCapture={undefined}
+			/>
+		),
 	},
 };
 
 export const WithSuffix: Story = {
 	args: {
-		suffix: <Icon icon={external} />,
+		suffix: (
+			<Icon
+				icon={external}
+				onPointerEnterCapture={undefined}
+				onPointerLeaveCapture={undefined}
+			/>
+		),
 	},
 };
 
