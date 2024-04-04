@@ -63,16 +63,22 @@
 		 */
 
 		:global(.wp-classic-Tabs-list[aria-orientation="horizontal"]) {
-			gap: 0.4rem;
+			gap: 0;
 			padding-right: 5px;
 			padding-left: 5px;
 		}
 
 		:global(.wp-classic-Tabs-item) {
 			font-size: 12px;
+			font-weight: 400;
+
+			&:not([aria-selected="true"]) {
+				background: transparent;
+				border: 1px solid transparent;
+			}
 
 			&:hover:not([aria-selected="true"], [aria-disabled="true"]) {
-				background-color: colors.$gray-0;
+				color: colors.$blue-50;
 			}
 		}
 
@@ -84,6 +90,12 @@
 		:global(.wp-classic-Tabs-panel) {
 			padding: 10px 12px;
 		}
+
+		/**
+		 * ========================================================================
+		 * Tabs: Vertical
+		 * ========================================================================
+		 */
 
 		:global(.wp-classic-Tabs-root[data-orientation="vertical"]) {
 			display: flex;
@@ -100,15 +112,17 @@
 			width: 18%;
 			padding-top: 0;
 			padding-bottom: 12px;
+			background-color: colors.$blue-0;
 			border-right: 1px solid colors.$gray-10;
 			border-bottom: 0;
 
 			:global(.wp-classic-Tabs-item) {
 				top: 0;
 				padding: 8px 12px;
-				border-top: 0;
+				color: colors.$blue-50;
+				border-top: 1px solid transparent;
 				border-right: 0;
-				border-bottom: 1px solid colors.$gray-10;
+				border-bottom: 1px solid transparent;
 				border-left: 0;
 				transition: background-color 0.1s linear;
 			}
@@ -118,9 +132,21 @@
 				outline-offset: 2px;
 			}
 
+			:global(.wp-classic-Tabs-item:hover:not([aria-selected="true"], [aria-disabled="true"])) {
+				color: colors.$blue-60;
+			}
+
 			:global(.wp-classic-Tabs-item[aria-selected="true"]) {
 				margin-right: -1px;
+				color: colors.$black;
+				border-top: 1px solid colors.$gray-10;
 				border-right: 1px solid colors.$white;
+				border-bottom: 1px solid colors.$gray-10;
+			}
+
+			:global(.wp-classic-Tabs-item[aria-selected="true"]:first-child) {
+				border-top: 1px solid transparent;
+				border-bottom: 1px solid colors.$gray-10;
 			}
 		}
 	}

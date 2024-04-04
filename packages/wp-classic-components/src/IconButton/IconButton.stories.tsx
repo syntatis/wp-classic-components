@@ -5,7 +5,13 @@ import { IconButton } from './IconButton';
 const meta: Meta<typeof IconButton> = {
 	args: {
 		'aria-label': 'Download',
-		children: <Icon icon={download} />,
+		children: (
+			<Icon
+				icon={download}
+				onPointerEnterCapture={undefined}
+				onPointerLeaveCapture={undefined}
+			/>
+		),
 	},
 	component: IconButton,
 	parameters: {

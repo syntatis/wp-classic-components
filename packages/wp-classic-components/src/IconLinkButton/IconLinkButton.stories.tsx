@@ -11,7 +11,14 @@ const meta: Meta<typeof IconLinkButton> = {
 	},
 	args: {
 		'aria-label': 'WordPress',
-		children: <Icon data-testid="icon" icon={wordpress} />,
+		children: (
+			<Icon
+				data-testid="icon"
+				icon={wordpress}
+				onPointerEnterCapture={undefined}
+				onPointerLeaveCapture={undefined}
+			/>
+		),
 		href: 'https://wordpress.org',
 	},
 	component: IconLinkButton,

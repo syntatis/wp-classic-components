@@ -133,7 +133,18 @@ it('should be disabled', () => {
 });
 
 it('should have prefix', () => {
-	render(<Button prefix={<Icon data-testid="prefix" icon={desktop} />} />);
+	render(
+		<Button
+			prefix={
+				<Icon
+					data-testid="prefix"
+					icon={desktop}
+					onPointerEnterCapture={undefined}
+					onPointerLeaveCapture={undefined}
+				/>
+			}
+		/>
+	);
 
 	const icon = screen.queryByTestId('prefix');
 
@@ -141,7 +152,18 @@ it('should have prefix', () => {
 });
 
 it('should have suffix', () => {
-	render(<Button suffix={<Icon data-testid="suffix" icon={desktop} />} />);
+	render(
+		<Button
+			suffix={
+				<Icon
+					data-testid="suffix"
+					icon={desktop}
+					onPointerEnterCapture={undefined}
+					onPointerLeaveCapture={undefined}
+				/>
+			}
+		/>
+	);
 
 	const icon = screen.queryByTestId('suffix');
 

@@ -105,7 +105,16 @@ it('should have "data-*" label attributes', () => {
 
 it('should have prefix', () => {
 	render(
-		<LinkButton prefix={<Icon data-testid="prefix" icon={wordpress} />} />
+		<LinkButton
+			prefix={
+				<Icon
+					data-testid="prefix"
+					icon={wordpress}
+					onPointerEnterCapture={undefined}
+					onPointerLeaveCapture={undefined}
+				/>
+			}
+		/>
 	);
 
 	const icon = screen.queryByTestId('prefix');
@@ -115,7 +124,16 @@ it('should have prefix', () => {
 
 it('should have suffix', () => {
 	render(
-		<LinkButton suffix={<Icon data-testid="suffix" icon={wordpress} />} />
+		<LinkButton
+			suffix={
+				<Icon
+					data-testid="suffix"
+					icon={wordpress}
+					onPointerEnterCapture={undefined}
+					onPointerLeaveCapture={undefined}
+				/>
+			}
+		/>
 	);
 
 	const icon = screen.queryByTestId('suffix');

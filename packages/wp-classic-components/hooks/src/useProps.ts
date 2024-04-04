@@ -1,4 +1,5 @@
 import { GlobalProps } from '@/types';
+import { CSSProperties } from 'react';
 import { ClassNamesArgs, useClasses } from './useClasses';
 
 interface ComponentPropsArgs extends GlobalProps {}
@@ -6,6 +7,7 @@ interface ComponentPropsArgs extends GlobalProps {}
 interface RootPropsArgs {
 	classNames?: ClassNamesArgs;
 	prefixedNames?: string | string[];
+	styles?: CSSProperties;
 }
 
 export function useProps<T>(name: string, props?: ComponentPropsArgs & T) {
@@ -26,6 +28,10 @@ export function useProps<T>(name: string, props?: ComponentPropsArgs & T) {
 		},
 		rootProps(args?: RootPropsArgs) {
 			const { classNames, prefixedNames } = args || {};
+			const rootStyle = {
+				...style,
+				...(args?.styles || {}),
+			};
 
 			return {
 				className: clsx({
@@ -34,7 +40,7 @@ export function useProps<T>(name: string, props?: ComponentPropsArgs & T) {
 				}),
 				'data-testid': testId,
 				id: id ? `${id}-${name}-root` : undefined,
-				style,
+				style: Object.keys(rootStyle).length >= 1 ? rootStyle : undefined,
 			};
 		},
 	};

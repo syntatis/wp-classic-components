@@ -46,13 +46,25 @@ export const VariantWarning: Story = {
 
 export const WithPrefix: Story = {
 	args: {
-		prefix: <Icon icon={wordpress} />,
+		prefix: (
+			<Icon
+				icon={wordpress}
+				onPointerEnterCapture={undefined}
+				onPointerLeaveCapture={undefined}
+			/>
+		),
 	},
 };
 
 export const WithSuffix: Story = {
 	args: {
-		suffix: <Icon icon={external} />,
+		suffix: (
+			<Icon
+				icon={external}
+				onPointerEnterCapture={undefined}
+				onPointerLeaveCapture={undefined}
+			/>
+		),
 	},
 };
 

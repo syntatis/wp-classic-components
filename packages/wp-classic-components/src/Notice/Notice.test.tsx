@@ -15,13 +15,13 @@ it('should render the notice', () => {
 });
 
 it('should render the notice dismiss button', () => {
-	render(<Notice data-testid="notice" dismissable />);
+	render(<Notice data-testid="notice" isDismissable />);
 
 	expect(screen.getByRole('button', { name: 'Dismiss notice' })).toBeEnabled();
 });
 
 it('should render the notice dismiss button with custom label', () => {
-	render(<Notice data-testid="notice" dismissable={{ label: 'Ignore' }} />);
+	render(<Notice data-testid="notice" isDismissable={{ label: 'Ignore' }} />);
 
 	expect(screen.getByRole('button', { name: 'Ignore' })).toBeEnabled();
 });
@@ -125,7 +125,7 @@ it('should call the "onDismiss" callback', async () => {
 	const fn = vi.fn();
 	const user = userEvent.setup();
 
-	render(<Notice data-testid="notice" dismissable onDismiss={fn} />);
+	render(<Notice data-testid="notice" isDismissable onDismiss={fn} />);
 
 	const notice = screen.getByTestId('notice');
 	const dismissButton = screen.getByRole('button', {
