@@ -31,6 +31,16 @@ interface CheckboxGroupProps extends GlobalProps, AriaCheckboxGroupProps {
 	orientation?: 'horizontal' | 'vertical';
 }
 
+/**
+ * ```jsx
+ * import { CheckboxGroup } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `CheckboxGroup` component is used to group a set of checkboxes together.
+ * It is a useful component for grouping related options and allowing users
+ * to select multiple options. The checkboxes within the group can be
+ * arranged horizontally or vertically.
+ */
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 	(props, forwardedRef) => {
 		const {
