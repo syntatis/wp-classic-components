@@ -106,26 +106,16 @@ export const Disabled: Story = {
 export const WithPrefix: Story = {
 	args: {
 		children: 'Upload',
-		suffix: (
-			<Icon
-				icon={upload}
-				onPointerEnterCapture={undefined}
-				onPointerLeaveCapture={undefined}
-			/>
-		),
+		// @ts-expect-error - upstream issues.
+		suffix: <Icon icon={upload} />,
 	},
 };
 
 export const WithSuffix: Story = {
 	args: {
 		children: 'Download',
-		suffix: (
-			<Icon
-				icon={download}
-				onPointerEnterCapture={undefined}
-				onPointerLeaveCapture={undefined}
-			/>
-		),
+		// @ts-expect-error - upstream issues.
+		suffix: <Icon icon={download} />,
 	},
 };
 
