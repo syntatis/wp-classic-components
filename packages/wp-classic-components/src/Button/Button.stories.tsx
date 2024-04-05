@@ -61,18 +61,6 @@ export const VariantLink: Story = {
 	},
 };
 
-export const VariantLinkDanger: Story = {
-	args: {
-		variant: 'link-danger',
-	},
-	name: 'Variant (link-danger)',
-	parameters: {
-		controls: {
-			exclude: ['variant'],
-		},
-	},
-};
-
 export const SizeSmall: Story = {
 	args: {
 		size: 'small',

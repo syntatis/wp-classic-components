@@ -38,6 +38,17 @@ interface BoxProps extends GlobalProps {
 	title?: ReactNode;
 }
 
+/**
+ * ```jsx
+ * import { Box } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The Box component is a special container commonly used in WordPress
+ * for metaboxes or widgets. It consists of a title and content, and
+ * can optionally be collapsible to toggle the visibility of the
+ * content. The content can be any type of component, such as
+ * text, form, charts, etc.
+ */
 export const Box = forwardRef<HTMLDivElement, BoxProps>(
 	(props, forwardedRef) => {
 		const {

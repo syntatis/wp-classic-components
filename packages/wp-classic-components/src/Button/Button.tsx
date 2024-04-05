@@ -12,10 +12,10 @@ import {
 import * as classes from './Button.module.scss';
 
 interface ButtonProps
-	extends GlobalProps,
+	extends AriaButtonProps,
+		GlobalProps,
 		Affixable,
-		HoverProps,
-		Omit<AriaButtonProps, 'elementType' | 'target'> {
+		HoverProps {
 	children?: ReactNode;
 	/**
 	 * The size of the button.
@@ -29,6 +29,17 @@ interface ButtonProps
 	variant?: 'link' | 'link-danger' | 'primary' | 'secondary';
 }
 
+/**
+ * ```jsx
+ * import { Button } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Button` component represents the HTML button element to trigger
+ * an action or event. It comes with a set of predefined variants and
+ * size options. Additionally, it can be extended with "prefix" and
+ * "suffix" where you can add icons or other elements before or
+ * after the button label.
+ */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(props, forwardedRef) => {
 		const {

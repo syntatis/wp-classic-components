@@ -10,6 +10,7 @@ function getAbsolutePath(value: string): any {
 const config: StorybookConfig = {
 	addons: [
 		getAbsolutePath('@storybook/addon-a11y'),
+		getAbsolutePath('@storybook/addon-themes'),
 		getAbsolutePath('@storybook/addon-essentials'),
 		getAbsolutePath('@storybook/addon-links'),
 		getAbsolutePath('@storybook/addon-interactions'),
@@ -22,6 +23,7 @@ const config: StorybookConfig = {
 		name: getAbsolutePath('@storybook/react-vite'),
 		options: {},
 	},
+	staticDirs: ['../wordpress'],
 	stories: ['../packages/wp-classic-components/src/**/*.stories.@(ts|tsx)'],
 	typescript: {
 		reactDocgen: 'react-docgen-typescript',
