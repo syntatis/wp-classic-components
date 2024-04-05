@@ -18,6 +18,16 @@ export interface CheckboxProps
 	description?: ReactNode;
 }
 
+/**
+ * ```jsx
+ * import { Checkbox } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Checkbox` component represents the HTML input element with a type of
+ * "checkbox" to allow users to select one or more options from a list of
+ * choices. It can be used standalone or as part of a `CheckboxGroup`
+ * component.
+ */
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
 		const { children, description } = props;
