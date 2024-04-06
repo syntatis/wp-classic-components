@@ -52,6 +52,17 @@ export interface DialogProps
 	title: ReactNode;
 }
 
+/**
+ * ```jsx
+ * import { Dialog } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Dialog` component is used to display a modal dialog box. It is
+ * a container for content that is overlaid on top of the main content
+ * of a page. In WordPress, it is commonly found when uploading
+ * media plugin, or theme. But it can be used to display any
+ * type of content or form that requires user interaction.
+ */
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 	(props, forwardedRef) => {
 		const { children, footer, title } = props;
