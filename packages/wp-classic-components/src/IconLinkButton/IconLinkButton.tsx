@@ -21,6 +21,15 @@ export interface IconLinkButtonProps
 			| 'onPressStart'
 			| 'onPressUp'
 		> {
+	/**
+	 * The button label.
+	 *
+	 * Since the button will only display an icon, it is required to provide the `aria-label`.
+	 * This label will be used to give the button an accessible label.  Similar to a regular
+	 * button It is highly recommended to provide the label that describes the action that
+	 * the button will perform, such as 'Close dialog' or 'Download'.
+	 * See [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label).
+	 */
 	'aria-label': string;
 	children: ReactElement<IconProps, typeof Icon>;
 	/**
@@ -35,6 +44,16 @@ export interface IconLinkButtonProps
 	variant?: 'primary' | 'secondary';
 }
 
+/**
+ * ```jsx
+ * import { IconLinkButton } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `IconLinkButton` component is a link that looks like a button. It is a combination
+ * of the LinkButton` component that it inherits similar styles, sizes, variants, and
+ * props like the href, target, and rel. One difference is that it will maintain a
+ * it will maintain 1:1 ratio of its size.
+ */
 export const IconLinkButton = forwardRef<
 	HTMLAnchorElement,
 	IconLinkButtonProps
