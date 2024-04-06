@@ -53,6 +53,8 @@ export interface IconLinkButtonProps
  * of the LinkButton` component that it inherits similar styles, sizes, variants, and
  * props like the href, target, and rel. One difference is that it will maintain a
  * it will maintain 1:1 ratio of its size.
+ *
+ * For the icon, checkout the official WordPress icon component [@wordpress/icons](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-icons/).
  */
 export const IconLinkButton = forwardRef<
 	HTMLAnchorElement,
