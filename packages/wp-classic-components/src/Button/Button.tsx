@@ -7,8 +7,8 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
-import { useProps } from '../../hooks';
-import { Affixable, GlobalProps } from '../../types';
+import { Affixable, GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Button.module.scss';
 
 interface ButtonProps

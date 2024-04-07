@@ -2,8 +2,8 @@ import { useObjectRef } from '@react-aria/utils';
 import { ReactElement, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';
-import { useProps } from '../../hooks';
-import { GlobalProps } from '../../types';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import { Radio, RadioContext, RadioProps } from './Radio';
 import * as classes from './RadioGroup.module.scss';
 

@@ -9,8 +9,8 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
-import { useProps } from '../../hooks';
-import { GlobalProps } from '../../types';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './IconButton.module.scss';
 
 interface IconButtonProps

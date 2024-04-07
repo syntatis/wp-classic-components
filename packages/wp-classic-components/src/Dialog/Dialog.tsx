@@ -6,8 +6,8 @@ import {
 	useDialog,
 	useObjectRef,
 } from 'react-aria';
-import { useProps } from '../../hooks';
-import { Styleable, Testable } from '../../types';
+import { Styleable, Testable } from '../types';
+import { useProps } from '../useProps';
 import { CloseButton } from './CloseButton';
 import * as classes from './Dialog.module.scss';
 import { useDialogContext } from './DialogProvider';

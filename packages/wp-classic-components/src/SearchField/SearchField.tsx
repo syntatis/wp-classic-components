@@ -2,8 +2,9 @@ import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaSearchFieldProps, useSearchField } from 'react-aria';
 import { useSearchFieldState } from 'react-stately';
-import { useErrorMessage, useProps } from '../../hooks';
-import { GlobalProps } from '../../types';
+import { GlobalProps } from '../types';
+import { useErrorMessage } from '../useErrorMessage';
+import { useProps } from '../useProps';
 import { ClearButton } from './ClearButton';
 import * as classes from './SearchField.module.scss';
 

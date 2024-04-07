@@ -3,8 +3,8 @@ import { Icon } from '@wordpress/icons';
 import { IconProps } from '@wordpress/icons/build-types/icon';
 import { ReactElement, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
-import { useProps } from '../../hooks';
-import { GlobalProps } from '../../types';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './IconLinkButton.module.scss';
 
 export interface IconLinkButtonProps

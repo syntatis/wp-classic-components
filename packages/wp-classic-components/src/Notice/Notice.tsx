@@ -1,8 +1,8 @@
 import { useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
-import { useProps } from '../../hooks';
-import { GlobalProps } from '../../types';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Notice.module.scss';
 
 const DEFAULT_LEVEL = 'info';

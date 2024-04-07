@@ -8,8 +8,8 @@ import {
 	useSwitch,
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
-import { useProps } from '../../hooks';
-import { GlobalProps } from '../../types';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Switch.module.scss';
 
 interface SwitchProps extends GlobalProps, AriaSwitchProps {

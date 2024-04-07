@@ -1,8 +1,8 @@
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
-import { useProps } from '../../hooks';
-import { Affixable, GlobalProps } from '../../types';
+import { Affixable, GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Link.module.scss';
 
 export interface LinkProps

@@ -2,8 +2,9 @@ import { filterDOMProps } from '@react-aria/utils';
 import { Children, ReactElement, ReactNode, forwardRef } from 'react';
 import { AriaSelectProps, useObjectRef, useSelect } from 'react-aria';
 import { Item, useSelectState } from 'react-stately';
-import { useErrorMessage, useProps } from '../../hooks';
-import { GlobalProps } from '../../types';
+import { GlobalProps } from '../types';
+import { useErrorMessage } from '../useErrorMessage';
+import { useProps } from '../useProps';
 import * as classes from './Select.module.scss';
 import { SelectItem, SelectItemProps } from './SelectItem';
 
