@@ -47,3 +47,6 @@ entrypoints.json
 # composer
 wordpress
 vendor
+
+# packages
+packages/wp-classic-components/types.d.ts
