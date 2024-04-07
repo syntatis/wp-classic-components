@@ -35,7 +35,7 @@ export interface LinkProps
  * import { Link } from '@syntatis/wp-classic-components';
  * ```
  *
- * The Link component is used to create an anchor element that links to
+ * The `Link` component is used to create an anchor element that links to
  * another resource or page. It can also be customized with a prefix
  * and suffix to provide additional context, such as an icon or
  * a badge.

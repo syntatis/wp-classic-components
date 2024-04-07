@@ -9,6 +9,9 @@ const DEFAULT_LEVEL = 'info';
 const DEFAULT_VARIANT = 'default';
 
 interface NoticeProps extends GlobalProps {
+	/**
+	 * The content to display inside the notice.
+	 */
 	children: ReactNode;
 	/**
 	 * Determines whether the notice can be dismissed. You can customize the label
@@ -19,7 +22,10 @@ interface NoticeProps extends GlobalProps {
 	 */
 	isDismissable?: { label: string } | boolean;
 	/**
-	 * Whether the notice should be dismissed.
+	 * Whether the notice should be dismissed. When it is set to `true`, the notice
+	 * will be hidden. This is useful when the notice "dismissed" state should be
+	 * controlled by an external source like a parent component, global state,
+	 * or a context.
 	 *
 	 * @default false
 	 */

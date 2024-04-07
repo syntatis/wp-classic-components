@@ -13,7 +13,14 @@ const meta: Meta<typeof Notice> = {
 	component: Notice,
 	parameters: {
 		controls: {
-			include: ['children', 'level', 'variant', 'onDismiss'],
+			include: [
+				'children',
+				'isDismissed',
+				'isDismissable',
+				'level',
+				'onDismiss',
+				'variant',
+			],
 		},
 	},
 	tags: ['autodocs'],

@@ -45,6 +45,16 @@ export interface LinkButtonProps
 	variant?: 'primary' | 'secondary';
 }
 
+/**
+ * ```jsx
+ * import { LinkButton } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `LinkButton` component is similar to the `Link` component. It creates an
+ * anchor element that functions as a button. It has the same styles, variants,
+ * and sizes as the `Button` component. You can also add a prefix or suffix to
+ * provide additional context, such as an icon.
+ */
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 	(props, forwardedRef) => {
 		const { children, size, variant = DEFAULT_VARIANT } = props;
