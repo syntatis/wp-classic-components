@@ -14,7 +14,7 @@ import * as classes from './Radio.module.scss';
 
 export const RadioContext = createContext<RadioGroupState | null>(null);
 
-interface RadioProps extends GlobalProps, AriaRadioProps {
+export interface RadioProps extends GlobalProps, AriaRadioProps {
 	children: ReactNode;
 }
 
