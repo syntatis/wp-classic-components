@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { Icon } from '@wordpress/icons';
 import { IconProps } from '@wordpress/icons/build-types/icon';
@@ -11,6 +9,8 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
+import { useProps } from '../../hooks';
+import { GlobalProps } from '../../types';
 import * as classes from './IconButton.module.scss';
 
 interface IconButtonProps

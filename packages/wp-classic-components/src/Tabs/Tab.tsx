@@ -1,7 +1,7 @@
-import { GlobalProps } from '@/types';
 import { PartialNode } from '@react-stately/collections';
 import { ReactNode } from 'react';
 import { Key } from 'react-aria';
+import { GlobalProps } from '../../types';
 
 export interface TabProps extends GlobalProps {
 	children: ReactNode;

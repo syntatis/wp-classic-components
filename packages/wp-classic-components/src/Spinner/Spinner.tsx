@@ -1,8 +1,8 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { HTMLAttributes, forwardRef } from 'react';
 import { VisuallyHidden, useObjectRef } from 'react-aria';
 import src from 'wordpress/wp-admin/images/spinner-2x.gif';
+import { useProps } from '../../hooks';
+import { GlobalProps } from '../../types';
 
 const DEFAULT_SIZE = 24;
 

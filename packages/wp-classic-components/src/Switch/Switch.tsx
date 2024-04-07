@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { ReactNode, forwardRef } from 'react';
 import {
 	AriaSwitchProps,
@@ -10,6 +8,8 @@ import {
 	useSwitch,
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
+import { useProps } from '../../hooks';
+import { GlobalProps } from '../../types';
 import * as classes from './Switch.module.scss';
 
 interface SwitchProps extends GlobalProps, AriaSwitchProps {

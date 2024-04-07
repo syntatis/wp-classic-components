@@ -1,10 +1,10 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { Icon } from '@wordpress/icons';
 import { IconProps } from '@wordpress/icons/build-types/icon';
 import { ReactElement, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
+import { useProps } from '../../hooks';
+import { GlobalProps } from '../../types';
 import * as classes from './IconLinkButton.module.scss';
 
 export interface IconLinkButtonProps

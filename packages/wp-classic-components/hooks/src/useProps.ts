@@ -1,5 +1,5 @@
-import { GlobalProps } from '@/types';
 import { CSSProperties } from 'react';
+import { GlobalProps } from '../../types';
 import { ClassNamesArgs, useClasses } from './useClasses';
 
 interface ComponentPropsArgs extends GlobalProps {}

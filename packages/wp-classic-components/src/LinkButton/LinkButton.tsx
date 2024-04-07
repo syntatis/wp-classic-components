@@ -1,8 +1,8 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
+import { useProps } from '../../hooks';
+import { GlobalProps } from '../../types';
 import * as classes from './LinkButton.module.scss';
 
 const DEFAULT_VARIANT = 'primary';

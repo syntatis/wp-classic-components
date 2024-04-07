@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { Styleable, Testable } from '@/types';
 import { CSSProperties, ReactNode, forwardRef } from 'react';
 import {
 	AriaDialogProps,
@@ -8,6 +6,8 @@ import {
 	useDialog,
 	useObjectRef,
 } from 'react-aria';
+import { useProps } from '../../hooks';
+import { Styleable, Testable } from '../../types';
 import { CloseButton } from './CloseButton';
 import * as classes from './Dialog.module.scss';
 import { useDialogContext } from './DialogProvider';

@@ -1,8 +1,8 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { ReactElement, forwardRef } from 'react';
 import { AriaTabListOptions, useObjectRef, useTabList } from 'react-aria';
 import { useTabListState } from 'react-stately';
+import { useProps } from '../../hooks';
+import { GlobalProps } from '../../types';
 import { TabProps } from './Tab';
 import { TabItem } from './TabItem';
 import { TabPanel } from './TabPanel';

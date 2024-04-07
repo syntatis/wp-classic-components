@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { Affixable, GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import {
@@ -9,6 +7,8 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
+import { useProps } from '../../hooks';
+import { Affixable, GlobalProps } from '../../types';
 import * as classes from './Button.module.scss';
 
 interface ButtonProps
