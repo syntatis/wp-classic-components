@@ -18,11 +18,7 @@
 		"jsx": "react-jsx",
 		"incremental": true,
 		"baseUrl": ".",
-		"paths": {
-			"@/*": [
-				"packages/wp-classic-components/*"
-			]
-		}
+		"types": ["vite/client"]
 	},
 	"include": [
 		"**/*.mts",
