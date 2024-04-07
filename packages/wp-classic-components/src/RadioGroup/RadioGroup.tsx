@@ -24,6 +24,15 @@ interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
 	orientation?: 'horizontal' | 'vertical';
 }
 
+/**
+ * ```jsx
+ * import { RadioGroup } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `RadioGroup` component is a wrapper for a group of `Radio` components.
+ * It manages the state as well as provides a name for the group that will
+ * be used to associate several `Radio` components together.
+ */
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 	(props, forwardedRef) => {
 		const { children, isRequired, label } = props;
