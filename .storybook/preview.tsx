@@ -11,22 +11,6 @@ const ThemeDecorator: Decorator = (Story, context) => {
 	const theme = context?.globals.theme || DEFAULT_THEME;
 
 	useEffect(() => {
-		if (theme !== 'default') {
-			document.head.querySelector('#wp-admin-color')?.remove();
-
-			const stylesheet = document.createElement('link');
-
-			stylesheet.setAttribute('rel', 'stylesheet');
-			stylesheet.setAttribute(
-				'href',
-				`/wp-admin/css/colors/${theme}/colors.min.css`
-			);
-			stylesheet.setAttribute('id', 'wp-admin-color');
-			document.head.appendChild(stylesheet);
-		} else {
-			document.head.querySelector('#wp-admin-color')?.remove();
-		}
-
 		if (viewMode === 'docs') {
 			const selector = `#anchor--${id} .docs-story`;
 
