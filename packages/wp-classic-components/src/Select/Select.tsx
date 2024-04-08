@@ -66,8 +66,9 @@ function mapChildren(children: Array<ChildItem> | ChildItem) {
  * import { Select } from '@syntatis/wp-classic-components';
  * ```
  *
- * The `Select` component represents the HTML select element. You can use it
- * to create a dropdown of option that user can select.
+ * The `Select` component represents the HTML select element. It allows
+ * you to create a dropdown of options that users can select from.
+ * You can also group the options if needed.
  */
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 	(props, forwardedRef) => {
