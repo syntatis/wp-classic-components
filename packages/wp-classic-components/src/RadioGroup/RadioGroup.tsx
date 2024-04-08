@@ -1,15 +1,16 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
-import { ReactElement, ReactNode, forwardRef } from 'react';
+import { ReactElement, forwardRef } from 'react';
 import { AriaRadioGroupProps, useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';
-import { RadioContext } from './Radio';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
+import { Radio, RadioContext, RadioProps } from './Radio';
 import * as classes from './RadioGroup.module.scss';
 
 interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
-	children: ReactElement | ReactElement[];
-	description?: ReactNode;
+	children:
+		| Array<ReactElement<RadioProps, typeof Radio>>
+		| ReactElement<RadioProps, typeof Radio>;
 	/**
 	 * Where to place the description.
 	 *
@@ -24,6 +25,15 @@ interface RadioGroupProps extends GlobalProps, AriaRadioGroupProps {
 	orientation?: 'horizontal' | 'vertical';
 }
 
+/**
+ * ```jsx
+ * import { RadioGroup } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `RadioGroup` component is a wrapper for a group of `Radio` component. It manages
+ * the state as well as provides the name for the group that will be used to associate
+ * several `Radio` components together.
+ */
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 	(props, forwardedRef) => {
 		const { children, isRequired, label } = props;

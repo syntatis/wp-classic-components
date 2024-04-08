@@ -55,6 +55,11 @@ export const SelectedDefault: Story = {
 	name: 'Selected (default)',
 };
 
+/**
+ * Use `isSelected` prop to control the selected state of the checkbox.
+ * This prop is useful when you want to manage the checkbox state from
+ * a parent component, external or global state, or context
+ */
 export const SelectedControlled: Story = {
 	args: {
 		isSelected: true,

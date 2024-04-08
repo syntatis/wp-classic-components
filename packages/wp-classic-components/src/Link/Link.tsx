@@ -1,8 +1,8 @@
-import { useProps } from '@/hooks';
-import { Affixable, GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
+import { Affixable, GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Link.module.scss';
 
 export interface LinkProps
@@ -30,6 +30,16 @@ export interface LinkProps
 	variant?: 'danger' | 'warning';
 }
 
+/**
+ * ```jsx
+ * import { Link } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Link` component is used to create an anchor element that links to another
+ * resource or page. It comes with a couple of variants. It can also be extended
+ * with a prefix and suffix to provide additional context, such as an icon or
+ * a badge.
+ */
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 	(props, forwardedRef) => {
 		const { children, prefix, suffix, variant } = props;

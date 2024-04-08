@@ -1,9 +1,10 @@
-import { useErrorMessage, useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaSearchFieldProps, useSearchField } from 'react-aria';
 import { useSearchFieldState } from 'react-stately';
+import { GlobalProps } from '../types';
+import { useErrorMessage } from '../useErrorMessage';
+import { useProps } from '../useProps';
 import { ClearButton } from './ClearButton';
 import * as classes from './SearchField.module.scss';
 
@@ -18,6 +19,15 @@ interface SearchFieldProps
 	descriptionArea?: 'after-input' | 'before-input';
 }
 
+/**
+ * ```jsx
+ * import { SearchField } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `SearchField` component is used to render a text input field for performing
+ * search. It includes an input component with the type set to search and a clear
+ * button to reset the search field.
+ */
 export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
 	(props, forwardedRef) => {
 		const {

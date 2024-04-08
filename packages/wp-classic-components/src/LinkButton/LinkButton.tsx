@@ -1,8 +1,8 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './LinkButton.module.scss';
 
 const DEFAULT_VARIANT = 'primary';
@@ -45,6 +45,16 @@ export interface LinkButtonProps
 	variant?: 'primary' | 'secondary';
 }
 
+/**
+ * ```jsx
+ * import { LinkButton } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `LinkButton` component is similar to the `Link` component. It creates an
+ * anchor element but it will appear like the `Button` component where has the
+ * same styles, variants, and sizes. It can also extended with a prefix or
+ * suffix to provide additional context, such as an icon or a badge.
+ */
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 	(props, forwardedRef) => {
 		const { children, size, variant = DEFAULT_VARIANT } = props;

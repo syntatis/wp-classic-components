@@ -5,13 +5,8 @@ import { IconButton } from './IconButton';
 const meta: Meta<typeof IconButton> = {
 	args: {
 		'aria-label': 'Download',
-		children: (
-			<Icon
-				icon={download}
-				onPointerEnterCapture={undefined}
-				onPointerLeaveCapture={undefined}
-			/>
-		),
+		// @ts-expect-error - upstream issues
+		children: <Icon icon={download} />,
 	},
 	component: IconButton,
 	parameters: {

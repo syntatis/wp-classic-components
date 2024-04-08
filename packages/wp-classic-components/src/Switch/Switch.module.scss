@@ -18,12 +18,12 @@
 		}
 
 		.focusRing {
-			stroke: colors.$blue-30;
+			stroke: colors.$highlight-color;
 		}
 
 		&.isSelected {
 			.track {
-				fill: colors.$blue-30;
+				fill: colors.$highlight-color;
 			}
 		}
 

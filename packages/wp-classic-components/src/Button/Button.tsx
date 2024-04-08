@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { Affixable, GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import {
@@ -9,13 +7,15 @@ import {
 	useFocusRing,
 	useHover,
 } from 'react-aria';
+import { Affixable, GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Button.module.scss';
 
 interface ButtonProps
-	extends GlobalProps,
+	extends AriaButtonProps,
+		GlobalProps,
 		Affixable,
-		HoverProps,
-		Omit<AriaButtonProps, 'elementType' | 'target'> {
+		HoverProps {
 	children?: ReactNode;
 	/**
 	 * The size of the button.
@@ -29,6 +29,16 @@ interface ButtonProps
 	variant?: 'link' | 'link-danger' | 'primary' | 'secondary';
 }
 
+/**
+ * ```jsx
+ * import { Button } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Button` component represents the HTML `button` element to trigger an action
+ * or event with mouse, touch, or keyboard. It comes in different styles and sizes
+ * that you can choose from. You can also add icons or other type of content
+ * before or after the button label.
+ */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(props, forwardedRef) => {
 		const {

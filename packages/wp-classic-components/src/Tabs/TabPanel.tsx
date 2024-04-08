@@ -1,7 +1,7 @@
-import { useProps } from '@/hooks';
 import { useRef } from 'react';
 import { AriaTabPanelProps, useTabPanel } from 'react-aria';
 import { TabListState } from 'react-stately';
+import { useProps } from '../useProps';
 import styles from './Tabs.module.scss';
 
 interface TabPanelProps extends AriaTabPanelProps {

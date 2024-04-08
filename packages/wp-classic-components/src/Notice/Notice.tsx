@@ -1,14 +1,17 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef } from 'react';
 import { useButton } from 'react-aria';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Notice.module.scss';
 
 const DEFAULT_LEVEL = 'info';
 const DEFAULT_VARIANT = 'default';
 
 interface NoticeProps extends GlobalProps {
+	/**
+	 * The content to display inside the notice.
+	 */
 	children: ReactNode;
 	/**
 	 * Determines whether the notice can be dismissed. You can customize the label
@@ -19,7 +22,10 @@ interface NoticeProps extends GlobalProps {
 	 */
 	isDismissable?: { label: string } | boolean;
 	/**
-	 * Whether the notice should be dismissed.
+	 * Whether the notice should be dismissed. When it is set to `true`, the notice
+	 * will be hidden. This is useful when the notice "dismissed" state should be
+	 * controlled by an external source like a parent component, global state,
+	 * or a context.
 	 *
 	 * @default false
 	 */
@@ -42,6 +48,20 @@ interface NoticeProps extends GlobalProps {
 	variant?: 'alt' | 'default';
 }
 
+/**
+ * ```jsx
+ * import { Notice } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Notice` component is used to display a message to the user. It can be used
+ * to provide feedback, warnings, errors, or success message. You can also choose
+ * if users can dismiss it.
+ *
+ * Not that when a user dismisses the notice, developers need to decide what
+ * happens next. If you want it to stay hidden after dismissal, you might
+ * save that choice in the [WordPress option](https://developer.wordpress.org/plugins/settings/options-api/)
+ * or [WordPress transient](https://developer.wordpress.org/apis/transients/).
+ */
 export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 	(props, forwardedRef) => {
 		const {

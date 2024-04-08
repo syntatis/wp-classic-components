@@ -1,8 +1,8 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { HTMLAttributes, forwardRef } from 'react';
 import { VisuallyHidden, useObjectRef } from 'react-aria';
 import src from 'wordpress/wp-admin/images/spinner-2x.gif';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 
 const DEFAULT_SIZE = 24;
 
@@ -21,6 +21,15 @@ interface SpinnerProps extends GlobalProps, HTMLAttributes<HTMLSpanElement> {
 	size?: number;
 }
 
+/**
+ * ```jsx
+ * import { Spinner } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Spinner` component is is a visual indicator that shows the user that something
+ * is loading. You can customize the size of the spinner as well as the text that
+ * will be announced to screen readers.
+ */
 export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(
 	(props, forwardedRef) => {
 		const ref = useObjectRef(forwardedRef);

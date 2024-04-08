@@ -76,22 +76,22 @@ export const Validated: Story = {
 
 export const CheckedDefault: Story = {
 	args: {
-		defaultValue: 'g:i a',
+		defaultValue: 'excerpt',
 	},
 	name: 'Checked (default)',
 };
 
 export const CheckedControlled: Story = {
 	args: {
-		value: 'g:i a',
+		value: 'excerpt',
 	},
 	name: 'Checked (controlled)',
 };
 
 export const OrientationHorizontal: Story = {
 	args: {
+		defaultValue: 'full-text',
 		orientation: 'horizontal',
-		value: 'g:i a',
 	},
 	name: 'Orientation (horizontal)',
 	parameters: {

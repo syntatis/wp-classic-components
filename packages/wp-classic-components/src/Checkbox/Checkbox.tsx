@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useId, useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef, useContext, useRef } from 'react';
 import {
@@ -9,6 +7,8 @@ import {
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
 import { CheckboxGroupContext } from '../CheckboxGroup';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Checkbox.module.scss';
 
 export interface CheckboxProps
@@ -18,6 +18,15 @@ export interface CheckboxProps
 	description?: ReactNode;
 }
 
+/**
+ * ```jsx
+ * import { Checkbox } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Checkbox` component represents the HTML `checkbox` input element. You can
+ * use it to allow users to select one or more options. You can use it as a
+ * standalone or as part of a group with the `CheckboxGroup` component.
+ */
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
 		const { children, description } = props;

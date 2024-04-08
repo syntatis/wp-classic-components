@@ -1,8 +1,9 @@
-import { useErrorMessage, useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
+import { GlobalProps } from '../types';
+import { useErrorMessage } from '../useErrorMessage';
+import { useProps } from '../useProps';
 import * as classes from './TextField.module.scss';
 
 interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
@@ -32,6 +33,15 @@ interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
 	type?: 'email' | 'password' | 'tel' | 'text' | 'url';
 }
 
+/**
+ * ```jsx
+ * import { TextField } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `TextField` component is like the HTML `input` element. It lets users enter
+ * and edit text. Similarly, you can use the `type` prop to set the type of input
+ * field.
+ */
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, forwardedRef) => {
 		const { errorMessage, isDisabled, isRequired, label } = props;

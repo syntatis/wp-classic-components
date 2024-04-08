@@ -1,10 +1,10 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { mergeProps, useObjectRef } from '@react-aria/utils';
 import { Icon } from '@wordpress/icons';
 import { IconProps } from '@wordpress/icons/build-types/icon';
 import { ReactElement, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './IconLinkButton.module.scss';
 
 export interface IconLinkButtonProps
@@ -21,6 +21,15 @@ export interface IconLinkButtonProps
 			| 'onPressStart'
 			| 'onPressUp'
 		> {
+	/**
+	 * The button label.
+	 *
+	 * Since the button will only display an icon, it is required to provide the `aria-label`.
+	 * This label will be used to give the button an accessible label.  Similar to a regular
+	 * button It is highly recommended to provide the label that describes the action that
+	 * the button will perform, such as 'Close dialog' or 'Download'.
+	 * See [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label).
+	 */
 	'aria-label': string;
 	children: ReactElement<IconProps, typeof Icon>;
 	/**
@@ -35,6 +44,17 @@ export interface IconLinkButtonProps
 	variant?: 'primary' | 'secondary';
 }
 
+/**
+ * ```jsx
+ * import { IconLinkButton } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `IconLinkButton` component is a special link that appears like the `IconButton`
+ * component. It's a mix of the `LinkButton` and `IconButton` components, so it
+ * shares similar styles, sizes, and props like `href`, `target`, and `rel`.
+ * One thing that sets it apart, since it will display an icon is that it
+ * always keeps the 1:1 ratio. For the icon, we recommend using the official WordPress icon component [@wordpress/icons](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-icons/).
+ */
 export const IconLinkButton = forwardRef<
 	HTMLAnchorElement,
 	IconLinkButtonProps

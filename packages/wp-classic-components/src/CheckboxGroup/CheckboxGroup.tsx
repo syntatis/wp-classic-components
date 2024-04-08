@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { AriaCheckboxGroupProps, useCheckboxGroup } from '@react-aria/checkbox';
 import { useObjectRef } from '@react-aria/utils';
 import {
@@ -8,6 +6,8 @@ import {
 } from '@react-stately/checkbox';
 import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
 import { CheckboxProps } from '../Checkbox';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './CheckboxGroup.module.scss';
 
 export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
@@ -31,6 +31,16 @@ interface CheckboxGroupProps extends GlobalProps, AriaCheckboxGroupProps {
 	orientation?: 'horizontal' | 'vertical';
 }
 
+/**
+ * ```jsx
+ * import { CheckboxGroup } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `CheckboxGroup` component is used to group a set of checkboxes together.
+ * It is a useful component for grouping related checkboxes and allowing
+ * users to select multiple options. You can also choose whether to
+ * arrange these checkboxes horizontally or vertically.
+ */
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
 	(props, forwardedRef) => {
 		const {

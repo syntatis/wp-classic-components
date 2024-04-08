@@ -1,7 +1,7 @@
-import { useProps } from '@/hooks';
 import { useRef } from 'react';
 import { FocusRingProps, useFocusRing, useTab } from 'react-aria';
 import { Node, TabListState } from 'react-stately';
+import { useProps } from '../useProps';
 import styles from './Tabs.module.scss';
 
 interface TabItemProps extends Omit<FocusRingProps, 'children'> {

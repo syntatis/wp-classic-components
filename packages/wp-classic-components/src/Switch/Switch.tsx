@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { ReactNode, forwardRef } from 'react';
 import {
 	AriaSwitchProps,
@@ -10,6 +8,8 @@ import {
 	useSwitch,
 } from 'react-aria';
 import { useToggleState } from 'react-stately';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Switch.module.scss';
 
 interface SwitchProps extends GlobalProps, AriaSwitchProps {
@@ -19,6 +19,16 @@ interface SwitchProps extends GlobalProps, AriaSwitchProps {
 	description?: ReactNode;
 }
 
+/**
+ * ```jsx
+ * import { Switch } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Switch` component is a visual representation of a switch that can be toggled
+ * on or off. It is similar to a checkbox but represents on/off values instead
+ * of selection. Users can interact with the switch using either the mouse
+ * or keyboard.
+ */
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 	(props, forwardedRef) => {
 		const { children, description } = props;

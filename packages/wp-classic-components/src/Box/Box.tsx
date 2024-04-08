@@ -1,9 +1,9 @@
-import { useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
 import { ReactNode, forwardRef, useRef, useState } from 'react';
 import { useButton, useId } from 'react-aria';
 import { TabsProvider } from '../Tabs/TabsProvider';
+import { GlobalProps } from '../types';
+import { useProps } from '../useProps';
 import * as classes from './Box.module.scss';
 
 interface BoxProps extends GlobalProps {
@@ -38,6 +38,16 @@ interface BoxProps extends GlobalProps {
 	title?: ReactNode;
 }
 
+/**
+ * ```jsx
+ * import { Box } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Box` component is a handy container often used in WordPress for things like
+ * metaboxes or widgets. It has a title and content, and you can collapse it
+ * to hide or show the content as needed. You can put anything inside
+ * the content, like text, forms, charts, and more.
+ */
 export const Box = forwardRef<HTMLDivElement, BoxProps>(
 	(props, forwardedRef) => {
 		const {

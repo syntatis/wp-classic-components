@@ -1,8 +1,9 @@
-import { useErrorMessage, useProps } from '@/hooks';
-import { GlobalProps } from '@/types';
 import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
+import { GlobalProps } from '../types';
+import { useErrorMessage } from '../useErrorMessage';
+import { useProps } from '../useProps';
 import * as classes from './TextArea.module.scss';
 
 const DEFAULT_ROWS = 5;
@@ -34,6 +35,15 @@ interface TextAreaProps extends GlobalProps, Omit<AriaTextFieldProps, 'type'> {
 	rows?: number;
 }
 
+/**
+ * ```jsx
+ * import { TextArea } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `TextArea` component is like the HTML `textarea` element. It lets users enter
+ * and edit text across multiple lines. You can use the `cols` and `rows` props
+ * to set the width and height of the textarea.
+ */
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	(props, forwardedRef) => {
 		const {

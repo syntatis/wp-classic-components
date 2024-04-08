@@ -1,5 +1,3 @@
-import { useProps } from '@/hooks';
-import { Styleable, Testable } from '@/types';
 import { CSSProperties, ReactNode, forwardRef } from 'react';
 import {
 	AriaDialogProps,
@@ -8,6 +6,8 @@ import {
 	useDialog,
 	useObjectRef,
 } from 'react-aria';
+import { Styleable, Testable } from '../types';
+import { useProps } from '../useProps';
 import { CloseButton } from './CloseButton';
 import * as classes from './Dialog.module.scss';
 import { useDialogContext } from './DialogProvider';
@@ -52,6 +52,16 @@ export interface DialogProps
 	title: ReactNode;
 }
 
+/**
+ * ```jsx
+ * import { Dialog } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Dialog` component is used to display a modal dialog box. In WordPress,
+ * it is commonly found when uploading media plugin, or theme. But it can be
+ * used to display any type of content that should appears on top of the
+ * main page content.
+ */
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 	(props, forwardedRef) => {
 		const { children, footer, title } = props;

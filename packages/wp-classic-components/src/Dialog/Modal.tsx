@@ -1,6 +1,6 @@
-import { useProps } from '@/hooks';
 import { ReactNode, useRef } from 'react';
 import { AriaModalOverlayProps, Overlay, useModalOverlay } from 'react-aria';
+import { useProps } from '../useProps';
 import * as classes from './Dialog.module.scss';
 import { useDialogContext } from './DialogProvider';
 
