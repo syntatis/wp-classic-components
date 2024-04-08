@@ -24,12 +24,9 @@ interface SearchFieldProps
  * import { SearchField } from '@syntatis/wp-classic-components';
  * ```
  *
- * The SearchField component is used to render a text input field
- * for performing searches. It includes an input component with
- * the type set to search and a clear button to reset the
- * search field. Additionally, it provides an `onSubmit`
- * prop that allows you to handle the user's search
- * query when they submit it.
+ * The `SearchField` component is used to render a text input field for performing
+ * search. It includes an input component with the type set to search and a clear
+ * button to reset the search field.
  */
 export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
 	(props, forwardedRef) => {

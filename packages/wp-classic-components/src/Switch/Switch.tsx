@@ -24,10 +24,10 @@ interface SwitchProps extends GlobalProps, AriaSwitchProps {
  * import { Switch } from '@syntatis/wp-classic-components';
  * ```
  *
- * The Switch component is a visual representation of a switch that can be
- * toggled on or off. It is similar to a checkbox but represents on/off
- * values instead of selection. Users can interact with the switch
- * using either the mouse or keyboard.
+ * The `Switch` component is a visual representation of a switch that can be toggled
+ * on or off. It is similar to a checkbox but represents on/off values instead
+ * of selection. Users can interact with the switch using either the mouse
+ * or keyboard.
  */
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 	(props, forwardedRef) => {

@@ -38,9 +38,9 @@ interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
  * import { TextField } from '@syntatis/wp-classic-components';
  * ```
  *
- * The `TextField` component is like the HTML `input` element. It lets users
- * enter and edit text. Similarly, you can use the `type` prop to set the
- * type of input field.
+ * The `TextField` component is like the HTML `input` element. It lets users enter
+ * and edit text. Similarly, you can use the `type` prop to set the type of input
+ * field.
  */
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, forwardedRef) => {

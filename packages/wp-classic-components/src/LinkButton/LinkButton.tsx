@@ -51,9 +51,9 @@ export interface LinkButtonProps
  * ```
  *
  * The `LinkButton` component is similar to the `Link` component. It creates an
- * anchor element that functions as a button. It has the same styles, variants,
- * and sizes as the `Button` component. You can also add a prefix or suffix to
- * provide additional context, such as an icon.
+ * anchor element but it will appear like the `Button` component where has the
+ * same styles, variants, and sizes. It can also extended with a prefix or
+ * suffix to provide additional context, such as an icon or a badge.
  */
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 	(props, forwardedRef) => {

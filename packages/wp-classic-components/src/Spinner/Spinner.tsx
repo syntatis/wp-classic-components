@@ -26,9 +26,9 @@ interface SpinnerProps extends GlobalProps, HTMLAttributes<HTMLSpanElement> {
  * import { Spinner } from '@syntatis/wp-classic-components';
  * ```
  *
- * The `Spinner` component is is a visual indicator that shows the user
- * that something is loading. You can customize the size of the spinner
- * as well as the text that will be announced to screen readers.
+ * The `Spinner` component is is a visual indicator that shows the user that something
+ * is loading. You can customize the size of the spinner as well as the text that
+ * will be announced to screen readers.
  */
 export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(
 	(props, forwardedRef) => {

@@ -34,11 +34,10 @@ interface ButtonProps
  * import { Button } from '@syntatis/wp-classic-components';
  * ```
  *
- * The `Button` component represents the HTML button element to trigger an action
- * or event, with mouse, touch, and keyboard interactions. It comes with a set
- * of predefined variants and size options. Additionally, it can be extended
- * with "prefix" and "suffix" to add icons or other elements before or after
- * the button label.
+ * The `Button` component represents the HTML `button` element to trigger an action
+ * or event with mouse, touch, or keyboard. It comes in different styles and sizes
+ * that you can choose from. You can also add icons or other type of content
+ * before or after the button label.
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(props, forwardedRef) => {

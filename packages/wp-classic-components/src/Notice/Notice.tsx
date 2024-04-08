@@ -48,6 +48,20 @@ interface NoticeProps extends GlobalProps {
 	variant?: 'alt' | 'default';
 }
 
+/**
+ * ```jsx
+ * import { Notice } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * The `Notice` component is used to display a message to the user. It can be used
+ * to provide feedback, warnings, errors, or success message. You can also choose
+ * if users can dismiss it.
+ *
+ * Not that when a user dismisses the notice, developers need to decide what
+ * happens next. If you want it to stay hidden after dismissal, you might
+ * save that choice in the [WordPress option](https://developer.wordpress.org/plugins/settings/options-api/)
+ * or [WordPress transient](https://developer.wordpress.org/apis/transients/).
+ */
 export const Notice = forwardRef<HTMLDivElement, NoticeProps>(
 	(props, forwardedRef) => {
 		const {

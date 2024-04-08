@@ -23,10 +23,9 @@ export interface CheckboxProps
  * import { Checkbox } from '@syntatis/wp-classic-components';
  * ```
  *
- * The `Checkbox` component represents the HTML input element with a type of
- * "checkbox" to allow users to select one or more options from a list of
- * choices. It can be used standalone or as part of a `CheckboxGroup`
- * component.
+ * The `Checkbox` component represents the HTML `checkbox` input element. You can
+ * use it to allow users to select one or more options. You can use it as a
+ * standalone or as part of a group with the `CheckboxGroup` component.
  */
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
 	(props, forwardedRef) => {
