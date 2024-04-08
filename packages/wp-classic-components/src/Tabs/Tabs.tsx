@@ -15,6 +15,17 @@ interface TabsProps
 	children: Array<ReactElement<TabProps>> | ReactElement<TabProps>;
 }
 
+/**
+ * ```jsx
+ * import { Tabs } from '@syntatis/wp-classic-components';
+ * ```
+ *
+ * A `Tabs` component is used to organize content. It consists a series of tabs,
+ * each representing a section of content. When a tab is clicked or selected,
+ * the corresponding content associated with that tab is displayed while
+ * hiding the content of other section. This is useful when you have
+ * a long list of content to display in a limited space.
+ */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 	(props: TabsProps, forwardedRef) => {
 		const ref = useObjectRef(forwardedRef);
