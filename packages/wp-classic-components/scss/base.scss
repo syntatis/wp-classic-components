@@ -1,0 +1,47 @@
+@use './variables/colors';
+@use '../../../wordpress/wp-admin/css/colors/modern/colors' as modern-colors;
+@use '../../../wordpress/wp-admin/css/colors/blue/colors' as blue-colors;
+@use '../../../wordpress/wp-admin/css/colors/coffee/colors' as coffee-colors;
+@use '../../../wordpress/wp-admin/css/colors/ectoplasm/colors' as ectoplasm-colors;
+@use '../../../wordpress/wp-admin/css/colors/light/colors' as light-colors;
+@use '../../../wordpress/wp-admin/css/colors/midnight/colors' as midnight-colors;
+@use '../../../wordpress/wp-admin/css/colors/ocean/colors' as ocean-colors;
+@use '../../../wordpress/wp-admin/css/colors/sunrise/colors' as sunrise-colors;
+
+:root {
+	--wp-classic-highlight-color: #{colors.$highlight-color};
+	--wp-classic-invalid-color: #{colors.$invalid};
+	--wp-classic-description-color: #{colors.$description};
+}
+
+.admin-color-modern {
+	--wp-classic-highlight-color: #{modern-colors.$highlight-color};
+}
+
+.admin-color-blue {
+	--wp-classic-highlight-color: #{blue-colors.$highlight-color};
+}
+
+.admin-color-coffee {
+	--wp-classic-highlight-color: #{coffee-colors.$highlight-color};
+}
+
+.admin-color-ectoplasm {
+	--wp-classic-highlight-color: #{ectoplasm-colors.$highlight-color};
+}
+
+.admin-color-light {
+	--wp-classic-highlight-color: #{light-colors.$highlight-color};
+}
+
+.admin-color-midnight {
+	--wp-classic-highlight-color: #{midnight-colors.$highlight-color};
+}
+
+.admin-color-ocean {
+	--wp-classic-highlight-color: #{ocean-colors.$highlight-color};
+}
+
+.admin-color-sunrise {
+	--wp-classic-highlight-color: #{sunrise-colors.$highlight-color};
+}

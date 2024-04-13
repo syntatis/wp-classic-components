@@ -18,12 +18,12 @@
 		}
 
 		.focusRing {
-			stroke: colors.$highlight-color;
+			stroke: var(--wp-classic-highlight-color);
 		}
 
 		&.isSelected {
 			.track {
-				fill: colors.$highlight-color;
+				fill: var(--wp-classic-highlight-color);
 			}
 		}
 
