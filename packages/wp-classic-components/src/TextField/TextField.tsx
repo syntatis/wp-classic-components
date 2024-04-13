@@ -72,7 +72,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 						{
 							[classes.descriptionBeforeInput]:
 								descriptionArea === 'before-input',
-							[classes.disabled]: isDisabled,
 							[classes.invalid]: isInvalid,
 						},
 					],

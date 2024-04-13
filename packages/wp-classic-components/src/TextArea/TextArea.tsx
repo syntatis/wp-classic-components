@@ -88,7 +88,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 						{
 							[classes.descriptionBeforeInput]:
 								descriptionArea === 'before-input',
-							[classes.disabled]: isDisabled,
 							[classes.invalid]: isInvalid,
 						},
 					],

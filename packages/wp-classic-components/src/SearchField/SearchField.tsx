@@ -66,7 +66,6 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
 						{
 							[classes.descriptionBeforeInput]:
 								descriptionArea === 'before-input',
-							[classes.disabled]: isDisabled,
 							[classes.invalid]: isInvalid,
 						},
 					],

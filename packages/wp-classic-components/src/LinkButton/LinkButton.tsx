@@ -84,7 +84,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{prefix && (
 					<span
 						className={clsx({
-							classNames: [classes.prefix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'prefix'],
 						})}
 					>
@@ -94,7 +94,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							classNames: [classes.infix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'infix'],
 						})}
 					>
@@ -104,7 +104,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{suffix && (
 					<span
 						className={clsx({
-							classNames: [classes.suffix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'suffix'],
 						})}
 					>

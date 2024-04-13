@@ -114,7 +114,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 						{
 							[classes.descriptionBeforeInput]:
 								descriptionArea === 'before-input',
-							[classes.disabled]: isDisabled,
 							[classes.invalid]: isInvalid,
 						},
 					],

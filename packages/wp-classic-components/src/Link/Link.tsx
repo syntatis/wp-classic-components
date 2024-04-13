@@ -77,7 +77,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							classNames: [classes.infix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'infix'],
 						})}
 					>

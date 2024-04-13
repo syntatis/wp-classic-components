@@ -115,7 +115,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 					{footer && (
 						<footer
 							className={clsx({
-								classNames: [classes.footer, 'footer'],
+								classNames: ['footer'],
 							})}
 						>
 							{footer}
