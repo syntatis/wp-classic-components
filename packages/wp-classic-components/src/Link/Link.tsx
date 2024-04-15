@@ -3,7 +3,7 @@ import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
 import { Affixable, GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './Link.module.scss';
+import classes from './Link.module.scss';
 
 export interface LinkProps
 	extends GlobalProps,
@@ -77,7 +77,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							classNames: [classes.infix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'infix'],
 						})}
 					>

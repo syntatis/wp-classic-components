@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { AriaButtonProps, useButton } from 'react-aria';
 import { useProps } from '../useProps';
-import * as classes from './SearchField.module.scss';
+import classes from './SearchField.module.scss';
 
 export const ClearButton = (props: AriaButtonProps) => {
 	const ref = useRef<HTMLButtonElement>(null);

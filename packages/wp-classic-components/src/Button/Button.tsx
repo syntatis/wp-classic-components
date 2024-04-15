@@ -9,7 +9,7 @@ import {
 } from 'react-aria';
 import { Affixable, GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './Button.module.scss';
+import classes from './Button.module.scss';
 
 interface ButtonProps
 	extends AriaButtonProps,
@@ -77,7 +77,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{prefix && (
 					<span
 						className={clsx({
-							classNames: [classes.prefix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'prefix'],
 						})}
 					>
@@ -87,7 +87,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							classNames: [classes.infix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'infix'],
 						})}
 					>
@@ -97,7 +97,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{suffix && (
 					<span
 						className={clsx({
-							classNames: [classes.suffix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'suffix'],
 						})}
 					>

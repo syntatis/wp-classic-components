@@ -10,7 +10,7 @@ import { AriaRadioProps, useRadio } from 'react-aria';
 import { RadioGroupState } from 'react-stately';
 import { GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './Radio.module.scss';
+import classes from './Radio.module.scss';
 
 export const RadioContext = createContext<RadioGroupState | null>(null);
 

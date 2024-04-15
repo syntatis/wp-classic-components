@@ -1,5 +1,6 @@
 /* stylelint-disable no-invalid-position-at-import-rule */
 /* stylelint-disable selector-class-pattern */
+@use "../packages/wp-classic-components/scss/base";
 @import '../wordpress/wp-includes/css/dashicons.min.css';
 @import '../wordpress/wp-admin/css/common.min.css';
 @import '../wordpress/wp-admin/css/edit.min.css';

@@ -3,9 +3,9 @@
 @mixin styles-input() {
 	&.invalid {
 		.input {
-			border-color: colors.$invalid;
+			border-color: var(--wp-classic-invalid-color);
 			outline-width: 1px;
-			outline-color: colors.$invalid;
+			outline-color: var(--wp-classic-invalid-color);
 		}
 	}
 }
@@ -22,7 +22,7 @@
 
 	.markedRequired {
 		margin-inline-start: 0.25rem;
-		color: colors.$invalid;
+		color: var(--wp-classic-invalid-color);
 	}
 
 	&[aria-disabled="true"] {
@@ -42,7 +42,7 @@
 	.description {
 		grid-row: 4 / 5;
 		margin-block: 6px 0;
-		color: colors.$description;
+		color: var(--wp-classic-description-color);
 	}
 
 	&.descriptionBeforeInput {
@@ -57,7 +57,7 @@
 	.errorMessage {
 		grid-row: 3 / 4;
 		margin-block: 6px 0;
-		color: colors.$invalid;
+		color: var(--wp-classic-invalid-color);
 
 		p {
 			margin-block: 0 2px;

@@ -3,7 +3,7 @@ import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
 import { GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './LinkButton.module.scss';
+import classes from './LinkButton.module.scss';
 
 const DEFAULT_VARIANT = 'primary';
 
@@ -84,7 +84,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{prefix && (
 					<span
 						className={clsx({
-							classNames: [classes.prefix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'prefix'],
 						})}
 					>
@@ -94,7 +94,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{hasAffix ?
 					<span
 						className={clsx({
-							classNames: [classes.infix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'infix'],
 						})}
 					>
@@ -104,7 +104,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
 				{suffix && (
 					<span
 						className={clsx({
-							classNames: [classes.suffix, classes.affix],
+							classNames: [classes.affix],
 							prefixedNames: ['affix', 'suffix'],
 						})}
 					>

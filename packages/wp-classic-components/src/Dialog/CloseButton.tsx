@@ -2,7 +2,7 @@ import { Icon, closeSmall } from '@wordpress/icons';
 import { useRef } from 'react';
 import { AriaButtonProps, useButton, useFocusRing } from 'react-aria';
 import { useProps } from '../useProps';
-import * as classes from './CloseButton.module.scss';
+import classes from './CloseButton.module.scss';
 
 interface CloseButtonProps
 	extends Omit<AriaButtonProps, 'elementType' | 'target'> {}

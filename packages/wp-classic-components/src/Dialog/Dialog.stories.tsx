@@ -5,7 +5,7 @@ import {
 	DialogTrigger,
 	Tab,
 	Tabs,
-} from '@syntatis/wp-classic-components';
+} from 'packages/wp-classic-components/src';
 
 const meta: Meta<typeof Dialog> = {
 	args: {

@@ -9,7 +9,7 @@ import {
 import { Styleable, Testable } from '../types';
 import { useProps } from '../useProps';
 import { CloseButton } from './CloseButton';
-import * as classes from './Dialog.module.scss';
+import classes from './Dialog.module.scss';
 import { useDialogContext } from './DialogProvider';
 
 export interface DialogProps
@@ -115,7 +115,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 					{footer && (
 						<footer
 							className={clsx({
-								classNames: [classes.footer, 'footer'],
+								classNames: ['footer'],
 							})}
 						>
 							{footer}

@@ -36,7 +36,7 @@
 			}
 
 			&[data-focus-visible="true"] {
-				outline: 2px solid colors.$blue-40;
+				outline: 2px solid var(--wp-classic-highlight-color);
 				outline-offset: 1px;
 			}
 		}

@@ -4,7 +4,7 @@ import { AriaTextFieldProps, useTextField } from 'react-aria';
 import { GlobalProps } from '../types';
 import { useErrorMessage } from '../useErrorMessage';
 import { useProps } from '../useProps';
-import * as classes from './TextArea.module.scss';
+import classes from './TextArea.module.scss';
 
 const DEFAULT_ROWS = 5;
 const DEFAULT_COLS = 50;

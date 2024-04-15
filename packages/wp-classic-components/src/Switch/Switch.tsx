@@ -10,7 +10,7 @@ import {
 import { useToggleState } from 'react-stately';
 import { GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './Switch.module.scss';
+import classes from './Switch.module.scss';
 
 interface SwitchProps extends GlobalProps, AriaSwitchProps {
 	/**
@@ -109,7 +109,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 						</svg>
 						<span
 							className={clsx({
-								classNames: [classes.label],
 								prefixedNames: 'label',
 							})}
 						>
@@ -120,7 +119,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 				{description && (
 					<p
 						className={clsx({
-							classNames: [classes.label, 'description'],
+							classNames: ['description'],
 							prefixedNames: 'description',
 						})}
 						id={descriptionId}
