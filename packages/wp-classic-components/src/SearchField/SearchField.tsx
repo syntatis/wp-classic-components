@@ -6,7 +6,7 @@ import { GlobalProps } from '../types';
 import { useErrorMessage } from '../useErrorMessage';
 import { useProps } from '../useProps';
 import { ClearButton } from './ClearButton';
-import * as classes from './SearchField.module.scss';
+import classes from './SearchField.module.scss';
 
 interface SearchFieldProps
 	extends GlobalProps,

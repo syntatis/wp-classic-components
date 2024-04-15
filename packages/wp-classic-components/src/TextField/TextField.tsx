@@ -4,7 +4,7 @@ import { AriaTextFieldProps, useTextField } from 'react-aria';
 import { GlobalProps } from '../types';
 import { useErrorMessage } from '../useErrorMessage';
 import { useProps } from '../useProps';
-import * as classes from './TextField.module.scss';
+import classes from './TextField.module.scss';
 
 interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
 	/**

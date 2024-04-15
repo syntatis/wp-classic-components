@@ -4,7 +4,7 @@ import { useButton, useId } from 'react-aria';
 import { TabsProvider } from '../Tabs/TabsProvider';
 import { GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './Box.module.scss';
+import classes from './Box.module.scss';
 
 interface BoxProps extends GlobalProps {
 	/**

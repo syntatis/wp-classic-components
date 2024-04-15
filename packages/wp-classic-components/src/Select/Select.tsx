@@ -5,7 +5,7 @@ import { Item, useSelectState } from 'react-stately';
 import { GlobalProps } from '../types';
 import { useErrorMessage } from '../useErrorMessage';
 import { useProps } from '../useProps';
-import * as classes from './Select.module.scss';
+import classes from './Select.module.scss';
 import { SelectItem, SelectItemProps } from './SelectItem';
 
 type ChildItem = ReactElement<SelectItemProps, typeof SelectItem>;

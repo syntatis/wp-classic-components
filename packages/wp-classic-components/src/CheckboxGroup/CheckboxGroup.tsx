@@ -8,7 +8,7 @@ import { ReactElement, ReactNode, createContext, forwardRef } from 'react';
 import { CheckboxProps } from '../Checkbox';
 import { GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './CheckboxGroup.module.scss';
+import classes from './CheckboxGroup.module.scss';
 
 export const CheckboxGroupContext = createContext<CheckboxGroupState | null>(
 	null

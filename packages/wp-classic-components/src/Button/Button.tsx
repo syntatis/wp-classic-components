@@ -9,7 +9,7 @@ import {
 } from 'react-aria';
 import { Affixable, GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './Button.module.scss';
+import classes from './Button.module.scss';
 
 interface ButtonProps
 	extends AriaButtonProps,

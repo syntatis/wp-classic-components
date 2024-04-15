@@ -11,7 +11,7 @@ import {
 } from 'react-aria';
 import { GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './IconButton.module.scss';
+import classes from './IconButton.module.scss';
 
 interface IconButtonProps
 	extends GlobalProps,

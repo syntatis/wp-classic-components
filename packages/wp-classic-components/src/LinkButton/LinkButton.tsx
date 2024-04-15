@@ -3,7 +3,7 @@ import { ReactNode, forwardRef } from 'react';
 import { AriaLinkOptions, HoverProps, useHover, useLink } from 'react-aria';
 import { GlobalProps } from '../types';
 import { useProps } from '../useProps';
-import * as classes from './LinkButton.module.scss';
+import classes from './LinkButton.module.scss';
 
 const DEFAULT_VARIANT = 'primary';
 
