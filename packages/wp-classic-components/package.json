@@ -3,7 +3,6 @@
 	"description": "WordPress dashboard UI components with the classic styles",
 	"version": "0.1.0-alpha.1",
 	"license": "GPL-3.0-or-later",
-	"private": true,
 	"type": "module",
 	"keywords": [
 		"admin-dashboard",
