@@ -16,6 +16,9 @@
 	"files": [
 		"dist"
 	],
+	"publishConfig": {
+    "access": "public"
+  },
 	"dependencies": {
 		"@react-aria/checkbox": "^3.13.0",
 		"@react-aria/utils": "^3.23.0",
