@@ -2,16 +2,6 @@ name: publish
 
 on:
   workflow_dispatch:
-    inputs:
-      semver:
-        description: "SemVer"
-        required: true
-        default: "patch"
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
 
 env:
   NODE_VERSION: 20
@@ -41,4 +31,4 @@ jobs:
       - name: Publish (NPM)
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: npx lerna publish from-package --yes
+        run: npx lerna publish from-package --yes --pre-dist-tag next
