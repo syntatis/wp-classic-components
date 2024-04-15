@@ -46,6 +46,7 @@ export default defineConfig({
 					...pkg.dependencies,
 					...pkg.peerDependencies,
 				}),
+				'@wordpress/*',
 				'react-dom',
 				'react/jsx-dev-runtime',
 				'react/jsx-runtime',
