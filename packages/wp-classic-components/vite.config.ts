@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { extname, relative, resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import vitePluginExternal from 'vite-plugin-external';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import pkg from './package.json';
@@ -39,6 +40,7 @@ export default defineConfig({
 		jsxDev: false,
 	},
 	plugins: [
+		libInjectCss(),
 		tsConfigPaths(),
 		vitePluginExternal({
 			externalizeDeps: [

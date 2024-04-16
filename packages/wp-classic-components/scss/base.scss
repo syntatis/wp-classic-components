@@ -1,47 +1,52 @@
-@use './variables/colors';
-@use '../../../wordpress/wp-admin/css/colors/modern/colors' as modern-colors;
-@use '../../../wordpress/wp-admin/css/colors/blue/colors' as blue-colors;
-@use '../../../wordpress/wp-admin/css/colors/coffee/colors' as coffee-colors;
-@use '../../../wordpress/wp-admin/css/colors/ectoplasm/colors' as ectoplasm-colors;
-@use '../../../wordpress/wp-admin/css/colors/light/colors' as light-colors;
-@use '../../../wordpress/wp-admin/css/colors/midnight/colors' as midnight-colors;
-@use '../../../wordpress/wp-admin/css/colors/ocean/colors' as ocean-colors;
-@use '../../../wordpress/wp-admin/css/colors/sunrise/colors' as sunrise-colors;
+@use './variables/colors' as colors;
+
+/**
+ * Ideally these colors color schemes should be pulled inherited directly from the WordPress color scheme files.
+ * However, WordPress Sass files isn't designed for reusability due to the way it imports the entire `_admin`
+ * file.
+ */
 
 :root {
 	--wp-classic-highlight-color: #{colors.$highlight-color};
+	--wp-classic-outline-color: var(--wp-classic-highlight-color);
 	--wp-classic-invalid-color: #{colors.$invalid};
 	--wp-classic-description-color: #{colors.$description};
-}
-
-.admin-color-modern {
-	--wp-classic-highlight-color: #{modern-colors.$highlight-color};
+	--wp-classic-body-background-color: #f1f1f1;
 }
 
 .admin-color-blue {
-	--wp-classic-highlight-color: #{blue-colors.$highlight-color};
+	--wp-classic-highlight-color: #096484;
 }
 
 .admin-color-coffee {
-	--wp-classic-highlight-color: #{coffee-colors.$highlight-color};
+	--wp-classic-highlight-color: #c7a589;
 }
 
 .admin-color-ectoplasm {
-	--wp-classic-highlight-color: #{ectoplasm-colors.$highlight-color};
+	--wp-classic-highlight-color: #a3b745;
 }
 
 .admin-color-light {
-	--wp-classic-highlight-color: #{light-colors.$highlight-color};
+	--wp-classic-highlight-color: #04a4cc;
+	--wp-classic-body-background-color: #f5f5f5;
+
+	body {
+		background-color: var(--wp-classic-body-background-color);
+	}
 }
 
 .admin-color-midnight {
-	--wp-classic-highlight-color: #{midnight-colors.$highlight-color};
+	--wp-classic-highlight-color: #e14d43;
 }
 
 .admin-color-ocean {
-	--wp-classic-highlight-color: #{ocean-colors.$highlight-color};
+	--wp-classic-highlight-color: #9ebaa0;
 }
 
 .admin-color-sunrise {
-	--wp-classic-highlight-color: #{sunrise-colors.$highlight-color};
+	--wp-classic-highlight-color: #dd823b;
+}
+
+.admin-color-modern {
+	--wp-classic-highlight-color: #3858e9;
 }

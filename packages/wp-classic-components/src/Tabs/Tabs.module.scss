@@ -26,8 +26,8 @@
 
 			&[data-selected="true"] {
 				color: colors.$black;
-				background: #f0f0f1;
-				border-bottom: 1px solid #f0f0f1;
+				background: var(--wp-classic-body-background-color);
+				border-bottom: 1px solid var(--wp-classic-body-background-color);
 			}
 
 			&[data-disabled="true"] {
@@ -36,7 +36,7 @@
 			}
 
 			&[data-focus-visible="true"] {
-				outline: 2px solid var(--wp-classic-highlight-color);
+				outline: 2px solid var(--wp-classic-outline-color);
 				outline-offset: 1px;
 			}
 		}
