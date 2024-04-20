@@ -1,45 +1,45 @@
 {
-	"name": "@syntatis/wp-classic-components",
-	"description": "WordPress dashboard UI components with the classic styles",
-	"version": "0.1.0-alpha.1",
-	"license": "GPL-3.0-or-later",
-	"type": "module",
-	"keywords": [
-		"admin-dashboard",
-		"css-modules",
-		"react",
-		"component-library",
-		"wordpress"
-	],
-	"module": "dist/index.js",
-	"types": "dist/types.d.ts",
-	"files": [
-		"dist"
-	],
-	"publishConfig": {
+  "name": "@syntatis/wp-classic-components",
+  "description": "WordPress dashboard UI components with the classic styles",
+  "version": "0.1.0-alpha.2",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "keywords": [
+    "admin-dashboard",
+    "css-modules",
+    "react",
+    "component-library",
+    "wordpress"
+  ],
+  "module": "dist/index.js",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
     "access": "public"
   },
-	"dependencies": {
-		"@react-aria/checkbox": "^3.13.0",
-		"@react-aria/utils": "^3.23.0",
-		"@react-stately/checkbox": "^3.6.1",
-		"@react-stately/collections": "^3.10.4",
-		"react-aria": "^3.31.1",
-		"react-stately": "^3.29.1"
-	},
-	"devDependencies": {
-		"@vitejs/plugin-react": "^4.2.1",
-		"react": "^18.0.0",
-		"typescript": "^5.3.3",
-		"vite": "^5.1.1",
-		"vite-plugin-dts": "^3.7.2",
-		"vite-plugin-lib-inject-css": "^2.0.0",
-		"vite-tsconfig-paths": "^4.3.1"
-	},
-	"peerDependencies": {
-		"react": "^18.0.0"
-	},
-	"scripts": {
-		"build": "vite build"
-	}
+  "dependencies": {
+    "@react-aria/checkbox": "^3.13.0",
+    "@react-aria/utils": "^3.23.0",
+    "@react-stately/checkbox": "^3.6.1",
+    "@react-stately/collections": "^3.10.4",
+    "react-aria": "^3.31.1",
+    "react-stately": "^3.29.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "react": "^18.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.1",
+    "vite-plugin-dts": "^3.7.2",
+    "vite-plugin-lib-inject-css": "^2.0.0",
+    "vite-tsconfig-paths": "^4.3.1"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "scripts": {
+    "build": "vite build"
+  }
 }
