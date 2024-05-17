@@ -27,7 +27,6 @@ export const CloseButton = (props: CloseButtonProps) => {
 			{...buttonProps}
 			{...focusProps}
 		>
-			{/* @ts-expect-error - an issue from the upstream library */}
 			<Icon icon={closeSmall} />
 		</button>
 	);

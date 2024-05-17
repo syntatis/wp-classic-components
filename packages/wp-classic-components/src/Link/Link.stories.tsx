@@ -46,14 +46,12 @@ export const VariantWarning: Story = {
 
 export const WithPrefix: Story = {
 	args: {
-		// @ts-expect-error - upstream issues
 		prefix: <Icon icon={wordpress} />,
 	},
 };
 
 export const WithSuffix: Story = {
 	args: {
-		// @ts-expect-error - upstream issues
 		suffix: <Icon icon={external} />,
 	},
 };
