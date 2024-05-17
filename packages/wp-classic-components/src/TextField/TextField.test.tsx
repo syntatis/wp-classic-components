@@ -26,7 +26,7 @@ it('should have static class', () => {
 	expect(root).toHaveClass('wp-classic-TextField-root');
 });
 
-it('should have custom class name', () => {
+it('should have custom class', () => {
 	render(<TextField className="input" data-testid="textfield" />);
 
 	const root = screen.getByTestId('textfield');

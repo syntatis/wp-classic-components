@@ -47,9 +47,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			isRequired,
 			label,
 		} = props;
-		let className;
-		const isRegularText = props.className?.includes('regular-text');
+		let className = props.className;
 		const isCode = props.className?.includes('code');
+		const isRegularText = props.className?.includes('regular-text');
 
 		if (isRegularText) {
 			className = props.className?.replace('regular-text', '');
