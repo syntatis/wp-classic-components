@@ -82,7 +82,6 @@ it('should not have with invalid html attribute', () => {
 
 it('should have prefix node', () => {
 	render(
-		// @ts-expect-error - upstream issues
 		<Link href="/" prefix={<Icon data-testid="wp-icon" icon={wordpress} />} />
 	);
 
@@ -95,7 +94,6 @@ it('should have suffix node', () => {
 	render(
 		<Link
 			href="/"
-			// @ts-expect-error - upstream issues
 			suffix={<Icon data-testid="wp-icon-download" icon={download} />}
 		/>
 	);

@@ -105,7 +105,6 @@ it('should have "data-*" label attributes', () => {
 
 it('should have prefix', () => {
 	render(
-		// @ts-expect-error - upstream issues
 		<LinkButton prefix={<Icon data-testid="prefix" icon={wordpress} />} />
 	);
 
@@ -116,7 +115,6 @@ it('should have prefix', () => {
 
 it('should have suffix', () => {
 	render(
-		// @ts-expect-error - upstream issues
 		<LinkButton suffix={<Icon data-testid="suffix" icon={wordpress} />} />
 	);
 
