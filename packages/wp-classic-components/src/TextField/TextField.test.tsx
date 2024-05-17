@@ -26,7 +26,7 @@ it('should have static class', () => {
 	expect(root).toHaveClass('wp-classic-TextField-root');
 });
 
-it('should have custom class name', () => {
+it('should have custom class', () => {
 	render(<TextField className="input" data-testid="textfield" />);
 
 	const root = screen.getByTestId('textfield');
@@ -35,11 +35,19 @@ it('should have custom class name', () => {
 });
 
 it('should have "code" class', () => {
-	render(<TextField isCode />);
+	render(<TextField className="code" />);
 
 	const input = screen.getByLabelText('Site Name');
 
 	expect(input).toHaveClass('code');
+});
+
+it('should have "regular-text" class', () => {
+	render(<TextField className="regular-text" />);
+
+	const input = screen.getByLabelText('Site Name');
+
+	expect(input).toHaveClass('regular-text');
 });
 
 it('should have inline style', () => {

@@ -93,14 +93,12 @@ export const SizeHero: Story = {
 
 export const WithPrefix: Story = {
 	args: {
-		// @ts-expect-error - upstream issues
 		suffix: <Icon icon={external} />,
 	},
 };
 
 export const WithSuffix: Story = {
 	args: {
-		// @ts-expect-error - upstream issues
 		suffix: <Icon icon={external} />,
 	},
 };

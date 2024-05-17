@@ -1,12 +1,12 @@
 import { useObjectRef } from '@react-aria/utils';
 import { forwardRef } from 'react';
 import { AriaTextFieldProps, useTextField } from 'react-aria';
-import { GlobalProps } from '../types';
+import { GlobalProps, Styleable } from '../types';
 import { useErrorMessage } from '../useErrorMessage';
 import { useProps } from '../useProps';
 import classes from './TextField.module.scss';
 
-interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
+interface TextFieldProps extends GlobalProps, AriaTextFieldProps, Styleable {
 	/**
 	 * Where to place the description.
 	 *
@@ -20,11 +20,6 @@ interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
 	 * @see https://developer.1password.com/docs/web/compatible-website-design/
 	 */
 	ignore1Password?: boolean;
-	/**
-	 * Setting this `true` will render the text within the text field
-	 * with a monospace font.
-	 */
-	isCode?: boolean;
 	/**
 	 * The input type.
 	 *
@@ -44,10 +39,30 @@ interface TextFieldProps extends GlobalProps, AriaTextFieldProps {
  */
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	(props, forwardedRef) => {
-		const { errorMessage, isDisabled, isRequired, label } = props;
-		const { description, descriptionArea } = props;
+		const {
+			description,
+			descriptionArea,
+			errorMessage,
+			isDisabled,
+			isRequired,
+			label,
+		} = props;
+		let className = props.className;
+		const isCode = props.className?.includes('code');
+		const isRegularText = props.className?.includes('regular-text');
+
+		if (isRegularText) {
+			className = props.className?.replace('regular-text', '');
+		}
+
+		if (isCode) {
+			className = props.className?.replace('code', '');
+		}
 		const ref = useObjectRef(forwardedRef);
-		const { clsx, componentProps, rootProps } = useProps('TextField', props);
+		const { clsx, componentProps, rootProps } = useProps('TextField', {
+			...props,
+			className,
+		});
 		const {
 			descriptionProps,
 			errorMessageProps,
@@ -69,6 +84,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 				{...rootProps({
 					classNames: [
 						classes.root,
+						className,
 						{
 							[classes.descriptionBeforeInput]:
 								descriptionArea === 'before-input',
@@ -104,7 +120,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					className={clsx({
 						classNames: {
 							[classes.input]: true,
-							['code']: props.isCode,
+							['code']: isCode,
+							['regular-text']: isRegularText,
 						},
 						prefixedNames: 'input',
 					})}

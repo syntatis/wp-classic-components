@@ -11,7 +11,6 @@ const meta: Meta<typeof IconLinkButton> = {
 	},
 	args: {
 		'aria-label': 'WordPress',
-		// @ts-expect-error - upstream issues
 		children: <Icon data-testid="icon" icon={wordpress} />,
 		href: 'https://wordpress.org',
 	},

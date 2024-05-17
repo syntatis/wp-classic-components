@@ -106,7 +106,6 @@ export const Disabled: Story = {
 export const WithPrefix: Story = {
 	args: {
 		children: 'Upload',
-		// @ts-expect-error - upstream issues.
 		suffix: <Icon icon={upload} />,
 	},
 };
@@ -114,7 +113,6 @@ export const WithPrefix: Story = {
 export const WithSuffix: Story = {
 	args: {
 		children: 'Download',
-		// @ts-expect-error - upstream issues.
 		suffix: <Icon icon={download} />,
 	},
 };
