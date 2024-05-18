@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Icon, download, upload } from '@wordpress/icons';
+import { Spinner } from '../Spinner';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -114,6 +115,14 @@ export const WithSuffix: Story = {
 	args: {
 		children: 'Download',
 		suffix: <Icon icon={download} />,
+	},
+};
+
+export const WithSpinner: Story = {
+	args: {
+		children: 'Loading...',
+		isDisabled: true,
+		prefix: <Spinner />,
 	},
 };
 
