@@ -1,7 +1,7 @@
 {
   "name": "@syntatis/wp-classic-components",
   "description": "WordPress dashboard UI components with the classic styles",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0-alpha.7",
   "license": "GPL-3.0-or-later",
   "type": "module",
   "keywords": [
@@ -11,7 +11,7 @@
     "component-library",
     "wordpress"
   ],
-	"sideEffects": [
+  "sideEffects": [
     "**/*.css"
   ],
   "module": "dist/index.js",
