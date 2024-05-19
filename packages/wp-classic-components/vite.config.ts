@@ -19,7 +19,14 @@ export default defineConfig({
 		rollupOptions: {
 			input: Object.fromEntries(
 				glob
-					.sync('src/**/!(*.spec|*.stories|*.test|*.d|types).{ts,tsx}')
+					.sync('src/**/*.{ts,tsx}', {
+						ignore: [
+							'src/**/*.spec.{ts,tsx}',
+							'src/**/*.stories.{ts,tsx}',
+							'src/**/*.test.{ts,tsx}',
+							'src/**/*.d.{ts,tsx}',
+						],
+					})
 					.map((file) => {
 						return [
 							relative(
@@ -46,9 +53,9 @@ export default defineConfig({
 			externalizeDeps: [
 				...Object.keys({
 					...pkg.dependencies,
+					...pkg.devDependencies,
 					...pkg.peerDependencies,
 				}),
-				'@wordpress/*',
 				'react-dom',
 				'react/jsx-dev-runtime',
 				'react/jsx-runtime',
