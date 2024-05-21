@@ -1,6 +1,6 @@
 {
 	"name": "syntatis/wp-classic-components",
-	"license": "GPL-3.0-or-later",
+	"license": "GPL-2.0-or-later",
 	"description": "WordPress admin UI with classic styles",
 	"keywords": [
     "admin-dashboard",
