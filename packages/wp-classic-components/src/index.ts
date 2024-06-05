@@ -1,3 +1,5 @@
+import '../scss/base.scss';
+
 export * from './Box';
 export * from './Button';
 export * from './Checkbox';
